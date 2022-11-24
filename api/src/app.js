@@ -8,7 +8,7 @@ require('./connection')
 app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'));
-
+//hola
 app.use('/', routes);
 
 module.exports = app; 
