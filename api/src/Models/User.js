@@ -12,6 +12,11 @@ const userSchema = new Schema({
     adress: {
         type: String,
         required: true
+    },
+    pass:{
+        type: String,
+        default:0,
+
     }
 });
 
