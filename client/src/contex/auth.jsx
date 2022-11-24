@@ -21,7 +21,8 @@ export function AuthProvider ({children}){
     
     const [user, setUser] = useState("")
     
-    const navigate = useNavigate
+
+    const navigate = useNavigate()
 
     const [userName, serUserName] = useState("")
 
@@ -51,7 +52,7 @@ export function AuthProvider ({children}){
 
 
     return(
-        <authContext.Provider value={{register, login, userName, error, user,  googleAuth,}}>{children}</authContext.Provider>
+        <authContext.Provider value={{register,  userName, error, user}}>{children}</authContext.Provider>
         )
 
 }
