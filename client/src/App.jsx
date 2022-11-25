@@ -4,6 +4,7 @@ import Register from "./page/NavbarPege/Register";
 import { Route, Routes } from "react-router-dom";
 import Home from './component/Home/Home'
 
+
 function App() {
   return (
     <div>
