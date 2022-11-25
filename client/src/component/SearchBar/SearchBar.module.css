@@ -1,0 +1,39 @@
+.main {
+    display: flex;
+    justify-content: space-around ;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 13%;
+    
+}
+
+.link{
+    display: flex;
+    justify-content: space-around ;
+    width: 33%;
+    height: 80%;
+    align-items: center;
+    font-size: 22px;
+    
+}
+
+.image{ 
+    display: flex;
+    justify-content: space-around ;
+    width: 20%;
+    height: 80%;
+    align-items: center;
+
+}
+.image img{
+    object-fit: cover;
+    height: 100%;
+}
+
+.input{
+    display: flex;
+    justify-content: space-around ;
+    width: 46%;
+    height: 80%;
+    align-items: center;
+}
