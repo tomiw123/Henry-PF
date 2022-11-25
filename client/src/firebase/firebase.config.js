@@ -1,17 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getAuth} from "firebase/auth";
-require ('dotenv').config();
-const {
-  FB_KEY, 
-  FB_AUTH_DOMAIN, 
-  FB_PRJECT_ID, 
-  FB_STORAGE_BUCKET, 
-  FB_MESSAGING_SENDER_ID,
-  FB_APP_ID, 
-  FB_MEASUREMENT_ID
-} = process.env;
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyBccrAhGLG61Dby0iZJyXnG-wCLF_989-I",
