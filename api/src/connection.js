@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-
+require ('dotenv').config();
 (async ()=> {
-  const connectionStr = `mongodb+srv://matias:uagjOVYrpnCLqRKG@cluster0.ppkazgd.mongodb.net/dosdagas?retryWrites=true&w=majority`;
+  const connectionStr = `mongodb+srv://hector:b2JWOGEacF65Ske7@cluster0.ppkazgd.mongodb.net/dosdagas?retryWrites=true&w=majority`;
   try{
     const db = await mongoose.connect(connectionStr);
     console.log('BD conectada', db.connection.name)
