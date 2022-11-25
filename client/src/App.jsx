@@ -1,11 +1,13 @@
-import './App.css'
-import Register from './page/NavbarPege/Register'
-import {Route, Routes} from 'react-router-dom'
-import Home from './page/NavbarPege/Home'
 import CreateProduct from './component/CreateProduct/CreateProduct'
+import "./App.css";
+import Register from "./page/NavbarPege/Register";
+import { Route, Routes } from "react-router-dom";
+
+
+import Home from './component/Home/Home'
 
 function App() {
-  return(
+  return (
     <div>
       <Routes>
         <Route path="/" element={<Home/>} />
@@ -13,8 +15,7 @@ function App() {
         <Route path="/create" element={<CreateProduct/>} />
       </Routes>
     </div>
-  )
-
+  );
 }
 
-export default App
+export default App;
