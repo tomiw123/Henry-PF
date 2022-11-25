@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {addProducts} from '../../redux/actions/actions'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import style from '../../component/CreateProduct/Create.module.css'
 
 const CreateProduct = () => {
 
@@ -32,47 +33,51 @@ const CreateProduct = () => {
         })
     }
     return (
-        <div>
-            <Link to='/home'><button>VOLVER</button></Link>
-            <h1>Crear Producto</h1>
-            <form onSubmit={(e) => { handleSubmit(e) }}>
+        <div className={style.container}>
+            <Link to='/'><button className={style.btn}>VOLVER</button></Link>
+            <h1 className={style.title}>Crear Producto</h1>
+            <form className={style.form} onSubmit={(e) => { handleSubmit(e) }}>
                 <div>
-                    <label>nombre:</label>
+                    <label className={style.label}>nombre:</label>
                     <input
                         type="text"
                         name='name'
                         value={input.name}
                         onChange={(e) => { handleChange(e) }}
+                        className={style.input}
                     />
                 </div>
                 <div>
-                    <label>precio:</label>
+                    <label className={style.label}>precio:</label>
                     <input
                         type="number"
                         name='price'
                         value={input.price}
                         onChange={(e) => { handleChange(e) }}
+                        className={style.input}
                     />
                 </div>
                 <div>
-                    <label>imagen:</label>
+                    <label className={style.label}>imagen:</label>
                     <input
                         type="text"
                         name='image'
                         value={input.image}
                         onChange={(e) => { handleChange(e) }}
+                        className={style.input}
                     />
                 </div>
                 <div>
-                    <label>descripcion:</label>
+                    <label className={style.label}>descripcion:</label>
                     <input
                         type="text"
                         name='description'
                         value={input.description}
                         onChange={(e) => { handleChange(e) }}
+                        className={style.input}
                     />
                 </div>
-                <button type='submit'>CREAR</button>
+                <button className={style.btn} type='submit'>CREAR</button>
             </form>
         </div>
     );
