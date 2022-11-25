@@ -1,14 +1,13 @@
 const {Router} = require('express')
 const router = Router();
-const Category = require('../Models/Category.js');
+const {
+    getAllCategories,
+    createCategory,
+    deleteteCategory
+}= require('../Controllers/Category')
 
-router.get('/', async(req,res) =>{
-    try{
-      const categories = await Category.find();
-      res.status(200).json(categories);
-    }catch(err){
-        console.log('no hay categorias')
-    }
-})
+router.get('/', getAllCategories)
+
+
 
 module.exports = router;

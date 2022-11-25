@@ -12,7 +12,7 @@ export default function Card(props){
         
         <h2>${props.precio}</h2>
 
-            <div class="flex-auto flex space-x-4">
+            <div className="flex-auto flex space-x-4">
             <button className={style.button}>Comprar ahora!</button>
            
             <button className={style.button1}>Agregar al carrito</button>

@@ -5,6 +5,9 @@ const recipes = require ('./Recipes')
 const users = require ('./Users')
 
 const router = Router(); 
+const Products = require('./Products')
+
+router.use('/products', Products)
 
 router.use('/products', product)
 router.use ('/categories', categories)
