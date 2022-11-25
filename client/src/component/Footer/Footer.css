@@ -1,0 +1,33 @@
+.footer{
+    height: 200px;
+    background-color: #034122;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.logo{
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.contact{
+    display: flex;
+    justify-content: center;
+}
+
+.rs{
+    background-color: #96da25;
+    width: 40px;
+    height: 40px;
+    margin: 20px;
+    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    color: #034122;
+    width: 30px;
+    height: 30px;
+}

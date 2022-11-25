@@ -1,26 +1,18 @@
 const {Router} = require('express')
 const router = Router();
-const User = require('../Models/User.js');
 
-router.get('/', async(req,res) =>{
-    try{
-      const users = await User.find();
-      res.status(200).json(users);
-    }catch(err){
-        console.log('no hay usuarios')
-    }
-})
+const {
+  getAllUsers,
+  createUser,
+  getUserById,
+  deleteUser,
+  changePassword
+} = require('../Controllers/User.js')
 
-router.post('/', async(req,res) =>{
-  const {name, contact, adress, pass}=req.body
-  try{
-    const users = await User.create({
-      name, contact, adress, pass,
-    });
-    res.status(200).json(users);
-  }catch(err){
-      console.log('no hay usuarios')
-  }
-})
+router.get('/', getAllUsers)
+router.post('/', createUser)
+router.get('/:_id', getUserById)
+router.delete('/:_id', deleteUser)
+router.put('/:_id', changePassword)
 
 module.exports = router;

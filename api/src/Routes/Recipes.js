@@ -1,6 +1,8 @@
 const {Router} = require('express')
 const router = Router();
-const Recipe = require('../Models/Recipe.js');
+const {
+  getRecipes
+} = require('../Controllers/Recipe')
 
 router.get('/', async(req,res) =>{
     try{
@@ -10,5 +12,6 @@ router.get('/', async(req,res) =>{
         console.log('no hay recetas')
     }
 })
+
 
 module.exports = router;
