@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useAuth } from "../../contex/auth";
+import { useAuth } from "../../context/auth";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import { async } from "@firebase/util";
+
+import {AiFillFire} from "react-icons/ai"
+
 
 function Form({ nameForm }) {
   const [viewPassword, setViewPassword] = useState("password");
@@ -13,13 +15,13 @@ function Form({ nameForm }) {
   const error = auth.error;
   const handlerAuth = (e) => {
     e.preventDefault();
-    if (nameForm === "Login") {
+    if (nameForm === "Iniciar Sesion") {
       try {
         auth.register(email, password);
       } catch (error) {
         console.error(error);
       }
-    } else if (nameForm === "Register") {
+    } else if (nameForm === "Registrarse") {
       try {
         if (password === secondPassword) {
           auth.register(email, password);
@@ -39,7 +41,7 @@ function Form({ nameForm }) {
   };
 
   return (
-    <div className="flex bg-slate-400 w-4/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex bg-gray-900  w-4/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         {error && (
           <div className="text-sm text-center">
@@ -47,22 +49,18 @@ function Form({ nameForm }) {
               href="#"
               className="font-medium  text-red-600 hover:text-indigo-500 "
             >
-              {error && nameForm === "Register" ? (
-                <a>Email already in use</a>
+              {error && nameForm === "Registrarse" ? (
+                <a>Este email ya esta en uso</a>
               ) : (
-                <a>Error credentials</a>
+                <a>Error de credencial</a>
               )}
             </a>
           </div>
         )}
 
         <div>
-          <img
-            className="mx-auto h-12 w-auto animate-pulse"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
-          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+        <AiFillFire className="mx-auto h-12 w-auto animate-pulse text-red-600"/>
+          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
             {nameForm}
           </h2>
         </div>
@@ -76,7 +74,7 @@ function Form({ nameForm }) {
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
               <label htmlFor="email-address" className="sr-only">
-                Email address
+                Correo electronico
               </label>
               <input
                 onChange={(e) => setEmail(e.target.value)}
@@ -86,39 +84,39 @@ function Form({ nameForm }) {
                 autoComplete="email"
                 required
                 className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                placeholder="Email address"
+                placeholder="Correo electronico"
               />
             </div>
 
             <div>
               <label htmlFor="password" className="sr-only">
-                Password
+                Contraseña
               </label>
               <input
                 onChange={(e) => setPassword(e.target.value)}
-                id="password"
+                id="password2"
                 name="password"
                 type={viewPassword}
                 autoComplete="current-password"
                 required
                 className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                placeholder="Password"
+                placeholder="Coontraseña"
               />
             </div>
-            {nameForm === "Register" ? (
+            {nameForm === "Registrarse" ? (
               <div>
                 <label htmlFor="password" className="sr-only">
-                  Repeat you password
+                  Repita su contraseña
                 </label>
                 <input
                   onChange={(e) => setSecondPassword(e.target.value)}
-                  id="password"
+                  id="password3"
                   name="password"
                   type={viewPassword}
                   autoComplete="current-password"
                   required
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                  placeholder="Repeat you password"
+                  placeholder="Repita su contraseña"
                 />
               </div>
             ) : (
@@ -137,39 +135,35 @@ function Form({ nameForm }) {
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-indigo-500"
               />
               <label
                 htmlFor="remember-me"
-                className="ml-2 block text-sm text-gray-900"
+                className="ml-2 block text-sm text-white"
               >
-                View my password
+                Ver contraseña
               </label>
             </div>
 
             <div className="text-sm">
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                <Link to="/reset">Forgot your password?</Link>
-              </a>
+           
+                <Link className="font-medium text-white hover:text-red-600" to="/reset">Se olvido la contraseña?</Link>
             </div>
           </div>
 
           <div>
             <button
               type="submit"
-              className={`group ${password !== secondPassword ? "bg-gray-600" : "bg-indigo-600"
-              } mb-3 relative flex w-full justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
+              className={`group ${password !== secondPassword ? "bg-gray-600" : "bg-red-600"
+              } mb-3 relative flex w-full justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
             >
               {nameForm}
             </button>
             <div
-              className="group relative flex w-full justify-center rounded-md border border-transparent bg-white py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 items-center"
+              className="group relative flex w-full justify-center rounded-md border border-transparent bg-white py-2 px-4 text-sm font-medium text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-grey-400 focus:ring-offset-2 items-center"
               onClick={(e) => google(e)}
             >
-              {nameForm === "Register" ? (
+              {nameForm === "Registrarse" ? (
                 <Link to="/Login">
                   <FcGoogle className="h-5 w-5 animate-bounce" />
                 </Link>
