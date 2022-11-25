@@ -2,15 +2,17 @@ import './App.css'
 // import Register from './page/NavbarPege/Register'
 // import {Route, Routes} from 'react-router-dom'
 
+//import Home from './page/NavbarPege/Home'
+import Home from './component/Home/Home'
+
 function App() {
   console.log('hola')
   return(
     <div>
-        <h1>holaa</h1>
-      {/* <Routes> */}
-        {/* <Route path="/" element={<Home/>} /> */}
-        {/* <Route path="/register" element={<Register/>} /> */}
-      {/* </Routes> */}
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/register" element={<Register/>} /> 
+      </Routes>
     </div>
   )
 
