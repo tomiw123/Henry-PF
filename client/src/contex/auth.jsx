@@ -2,12 +2,11 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, sendPasswordResetEmail } from "firebase/auth"
 import { auth } from "../firebase/firebase.config";
-import {useNavigate} from 'react-router-dom'
 
 
 export const authContext = createContext()
 
-export const useAuth = () => {
+export const useAuth = () => { 
     const context = useContext(authContext)
     if (!context){
         throw new Error ("no pasaste el context")
