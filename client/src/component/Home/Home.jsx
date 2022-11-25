@@ -9,9 +9,7 @@ const Home = () => {
 
   return (
     
-    <div className={style.page}>
-        Home
-
+    <div className={style.page}> 
     {
     Products.map((e)=>{
         return(
