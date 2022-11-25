@@ -9,7 +9,7 @@ function Home() {
     <div >
      <Nav/>
      <div >
-      <h1 >Soy tu hna</h1>
+      <h1 >LA PUTA QUE TE PARIO PROFE</h1>
      </div>
     </div>
   );
