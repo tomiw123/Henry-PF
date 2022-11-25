@@ -9,6 +9,6 @@ router.get('/', async(req,res) =>{
     }catch(err){
         console.log('no hay recetas')
     }
-})
+})//post / delete
 
 module.exports = router;

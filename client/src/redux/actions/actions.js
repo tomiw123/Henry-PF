@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { ADD_PRODUCTS, GET_PRODUCTS } from "./actionsTypes"
+=======
+import axios from 'axios'
+import { GET_PRODUCTS, ADD_PRODUCTS } from "./actionsTypes";
+>>>>>>> de85cdafc74b62165de97a9e0284deb49e7834dc
 
 
 

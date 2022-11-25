@@ -7,10 +7,7 @@ function Home() {
   const auth = useAuth();
   return (
     <div >
-     <Nav/>
-     <div >
-      <h1 >Soy tu hna</h1>
-     </div>
+      <Nav/>
     </div>
   );
 }
