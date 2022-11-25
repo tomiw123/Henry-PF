@@ -1,0 +1,7 @@
+.page{
+    background-color: rgba(43,38,38);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+

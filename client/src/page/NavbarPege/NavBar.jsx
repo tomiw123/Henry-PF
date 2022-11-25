@@ -7,10 +7,9 @@ function Home() {
   const auth = useAuth();
   return (
     <div >
-     <Nav/>
-     <div >
-      <h1 >LA PUTA QUE TE PARIO PROFE</h1>
-     </div>
+
+      <Nav/>
+
     </div>
   );
 }
