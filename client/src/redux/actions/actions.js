@@ -1,4 +1,5 @@
-import { GET_PRODUCTS, ADD_PRODUCTS } from "./actionsTypes"
+import axios from 'axios'
+import { GET_PRODUCTS, ADD_PRODUCTS } from "./actionsTypes";
 
 
 
