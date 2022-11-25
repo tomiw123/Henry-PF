@@ -13,9 +13,9 @@ function Nav() {
             <img className="h-20 w-20" src={img} alt="" />
         </div> */}
         <div className="flex items-center">
-            <AiFillFire className="text-red-500 mr-1 h-10 w-10"/>
+            <AiFillFire className="text-red-500 mr-1 h-10 w-10 animate-bounce"/>
             <Link to="/">
-        <h1 className="text-white font-extralight text-2xl"> 
+        <h1 className="text-white font-extralight text-2xl "> 
           Dos Dagas
         </h1>
         </Link>
