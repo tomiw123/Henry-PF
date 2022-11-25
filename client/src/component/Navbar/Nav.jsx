@@ -8,14 +8,10 @@ function Nav (){
     return (
         <div>
            <img src={img} alt="" />
-            <div>
-                
-                    
-                    <div>
-                    <Link to="/register">Registrarse</Link>
-                    </div>
-                   
-              
+            <div>          
+                <div>
+                <Link to="/register">Registrarse</Link>
+                </div>
             </div>
         </div>
     )
