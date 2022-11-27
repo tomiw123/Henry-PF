@@ -1,6 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getAuth} from "firebase/auth";
+// const {
+  // API_KEY,
+  // AUTH_DOMAIN,
+  // PROJECT_ID,
+  // STORAGE_BUCKET,
+  // MESSAGING_SENDER_ID,
+  // APP_ID,
+  // MEASUREMENT_ID
+// } = process.env 
 
 const firebaseConfig = {
   apiKey: "AIzaSyBccrAhGLG61Dby0iZJyXnG-wCLF_989-I",
