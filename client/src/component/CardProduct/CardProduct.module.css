@@ -1,6 +1,9 @@
 .CardProduct{
  height: 100vh;
-
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
 }
 
 /* .Title{
@@ -12,6 +15,13 @@
     font-size: 25px;
 } */
 
+.Container2 {
+    height: 100vh;
+    width: 100%;
+    padding: 90px 90px 90px 90px;
+    background-color: #292626;
+}
+
 .ImgCont{
  display: flex;
 }
@@ -19,48 +29,47 @@
 .Image{
     width: 50%;
 }
-.Image img{
+/* .Image img{
     padding: 20px;
-}
+} */
 
 .Container{
-    background-color: bisque;
     width: 50%;
-    padding: 20px;
 }
 .Title{
     display: flex;
-    background-color: aqua;
     justify-content: center;
     align-items: center;
     padding: 15px 0;
     font-size: 20px;
+    color: white;
+    font-weight: bold;
 }
 .Starts{
-    background-color: chartreuse;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 15px 0;
 }
+
+.starsIcons {
+    display: flex;
+}
 .Price{
-    background-color: blueviolet;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 30px;
     margin: 15px 0;
-    height: 100px;
+    color: white;
+    font-weight: bold;
 }
 .ContButtom{
-    background-color: chocolate;
     display: flex;
-    height: 50px;
     justify-content: space-around;
 
 }
 .Cont{
-    background-color:deeppink;
     display: flex;
     width: 45%;
     justify-content: space-around;
@@ -70,9 +79,27 @@
 .Compra{
     align-items: center;
     width: 45%;
-    background-color: darkgreen;
+}
+
+.btn {
+    background-color: #29552D;
+    color: white;
+    height: 40px;
+    width: 100px;
 }
 
 .Description{
-    padding:  0 50px;
+    color: white;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.btnmaxmin {
+    color: white;
+}
+
+.Num {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
 }
