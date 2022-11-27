@@ -14,5 +14,4 @@ router.use ('/categories', categories)
 router.use ('/recipes', recipes)
 router.use ('/users', users)
 
-
 module.exports = router;
