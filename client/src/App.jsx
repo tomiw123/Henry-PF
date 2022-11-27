@@ -8,6 +8,7 @@ import Reset from "./page/NavbarPege/Reset"
 import Home from "./component/Home/Home";
 import Nav from './component/Navbar/Nav';
 import SearchBar from './component/SearchBar/SearchBar';
+import Recipes from './component/Recipes/Recipes'
 //import Carrousel from './component/Carrousel/Carrousel';
 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="login" element={<Login />} />
           <Route path="reset" element={<Reset />} />
         <Route path="/create" element={<CreateProduct/>} />
+        <Route path="/recipes" element={<Recipes/>} />
       </Routes>
      
     </div>
