@@ -77,7 +77,7 @@ const CreateProduct = () => {
                         className={style.input}
                     />
                 </div>
-                <button className={style.btn} type='submit'>CREAR</button>
+                <button id={style.btn2} type='submit'>CREAR</button>
             </form>
         </div>
     );
