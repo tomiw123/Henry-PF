@@ -1,0 +1,78 @@
+.CardProduct{
+ height: 100vh;
+
+}
+
+/* .Title{
+    display: flex;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    font-size: 25px;
+} */
+
+.ImgCont{
+ display: flex;
+}
+
+.Image{
+    width: 50%;
+}
+.Image img{
+    padding: 20px;
+}
+
+.Container{
+    background-color: bisque;
+    width: 50%;
+    padding: 20px;
+}
+.Title{
+    display: flex;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    font-size: 20px;
+}
+.Starts{
+    background-color: chartreuse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+.Price{
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 15px 0;
+    height: 100px;
+}
+.ContButtom{
+    background-color: chocolate;
+    display: flex;
+    height: 50px;
+    justify-content: space-around;
+
+}
+.Cont{
+    background-color:deeppink;
+    display: flex;
+    width: 45%;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.Compra{
+    align-items: center;
+    width: 45%;
+    background-color: darkgreen;
+}
+
+.Description{
+    padding:  0 50px;
+}

@@ -7,8 +7,8 @@ import Reset from "./page/NavbarPege/Reset"
 
 import Home from "./component/Home/Home";
 import Nav from './component/Navbar/Nav';
-import Footer from "./component/Footer/Footer"
 import SearchBar from './component/SearchBar/SearchBar';
+
 
 
 
@@ -26,7 +26,7 @@ function App() {
           <Route path="reset" element={<Reset />} />
         <Route path="/create" element={<CreateProduct/>} />
       </Routes>
-      <Footer/>
+      
     </div>
   );
 }
