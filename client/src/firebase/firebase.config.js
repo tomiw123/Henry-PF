@@ -9,7 +9,7 @@ import {getAuth} from "firebase/auth";
   // MESSAGING_SENDER_ID,
   // APP_ID,
   // MEASUREMENT_ID
-// } = process.env
+// } = process.env 
 
 const firebaseConfig = {
   apiKey: "AIzaSyBccrAhGLG61Dby0iZJyXnG-wCLF_989-I",
