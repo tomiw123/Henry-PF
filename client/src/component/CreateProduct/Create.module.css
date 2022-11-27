@@ -9,23 +9,26 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
+    }
 
 .title {
     font-size: 50px;
     color: #292626;
     font-weight: bold;
+
 }
 
 .label {
     color: #292626;
     font-size: 25px;
+
 }
 
 .input {
     border: 2px solid #292626;
     border-radius: 10px;
     height: 30px;
+
 }
 
 .btn {
@@ -36,5 +39,18 @@
     color: white;
     margin-top: 15px;
     cursor: pointer;
+}
+
+#btn2 {
+    background-color: #292626;
+    height: 45px;
+    width: 100px;
+    border-radius: 10px;
+    color: white;
+    margin-top: 15px;
+    cursor: pointer;
+    border: 1px solid black;
+    margin-left: 110px;
+
 }
 
