@@ -1,4 +1,4 @@
-import CreateProduct from './component/CreateProduct/CreateProduct'
+import CreateProduct from "./component/CreateProduct/CreateProduct";
 import "./App.css";
 import Register from "./page/NavbarPege/Register";
 import { Route, Routes } from "react-router-dom";
@@ -10,7 +10,12 @@ import Nav from './component/Navbar/Nav';
 import SearchBar from './component/SearchBar/SearchBar';
 import Recipes from './component/Recipes/Recipes'
 import Products from './component/Products/Products';
+<<<<<<< HEAD
 import RecipeDetail from './component/RecipeDetail/RecipeDetail';
+=======
+import Footer from "./component/Footer/Footer";
+import Contacto from "./component/Contacto/Contacto";
+>>>>>>> 5159c7f59cdd54c3e0f6477a314cc54f2699e977
 
 
 
@@ -19,7 +24,7 @@ import RecipeDetail from './component/RecipeDetail/RecipeDetail';
 function App() {
   return (
     <div className="h-screen">
-      <Nav/>
+      <Nav />
       <SearchBar />
       <Routes>
         <Route path="/" element={<Home/>} />
@@ -30,9 +35,14 @@ function App() {
         <Route path="/create" element={<CreateProduct/>} />
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
+<<<<<<< HEAD
         <Route path="/recipeDetail/:id" element={<RecipeDetail/>} />
 
+=======
+        <Route path="contacto" element={ <Contacto/> }/>
+>>>>>>> 5159c7f59cdd54c3e0f6477a314cc54f2699e977
       </Routes>
+      <Footer/>
     </div>
   );
 }

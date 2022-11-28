@@ -1,0 +1,71 @@
+.footer{
+    min-height: 200px;
+    background-color: #292626;
+}
+
+.logo{
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.logo h1{
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.contact{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 60px;
+    
+}
+
+.rs{
+    background-color: transparent;
+    border: 2px solid white;
+    margin: 20px;
+    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(3px 3px 3px #4444dd);
+    width: 60px;
+    height: 60px;
+
+}
+
+
+.rs:hover{
+    background-color: whitesmoke;
+    border: none;
+}
+
+
+.icon{
+    color: whitesmoke;
+    width: 30px;
+    height: 30px;
+}
+
+.icon:hover{
+    color:  #292626
+}
+
+.teldic{
+    margin-left: 68%;
+    
+    font-size: 30px;
+    color: white;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 300px;
+}
+
+.teldic h2{
+    font-size: 15px;
+    margin-right: 20px;
+}

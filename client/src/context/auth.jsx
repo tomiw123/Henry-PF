@@ -86,6 +86,7 @@ export function AuthProvider ({children}){
         const response = await signOut(auth)
         console.log(response)
         setUser("")
+        navigate("/")
     }
 
     const resetPassword = async (email) =>{
