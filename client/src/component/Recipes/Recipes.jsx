@@ -1,32 +1,32 @@
 import React from 'react'
-import style from './Recipes.module.css'
-//import Recipes from "./Recipes.json"
+import RecipesJson from "./Recipes.json"
+import CardRecipes from "./CardRecipes/CardRecipes"
+import style from './Recipe.module.css'
 
 
 
 
-const Recipes = (props) => {
-    //  console.log('aa')
+const Recipes = () => {
   
     return (
-
-        <div className={style.card}>
-       
-        <img src={props.image} alt={props.name}  />
+            
+        <div className={style.cartita} >
+       {
+        RecipesJson.map((e)=>{
+            return(
+                <CardRecipes 
+                key={e.id}
+                name= {e.name}
+                img= {e.image}
+                />
+            )
+        }
+        )
+       }
            
-        <h1>{props.name}</h1>
-        
-
-            <div className="flex-auto flex space-x-4">
-            <button className={style.button}>Ver Más!</button>
-           
-           
-            </div>
+         </div>
           
-        
-        </div>
-      
-      
+ 
     )
 }
 
