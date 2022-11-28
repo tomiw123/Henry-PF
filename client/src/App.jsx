@@ -1,4 +1,4 @@
-import CreateProduct from './component/CreateProduct/CreateProduct'
+import CreateProduct from "./component/CreateProduct/CreateProduct";
 import "./App.css";
 import Register from "./page/NavbarPege/Register";
 import { Route, Routes } from "react-router-dom";
@@ -10,6 +10,8 @@ import Nav from './component/Navbar/Nav';
 import SearchBar from './component/SearchBar/SearchBar';
 import Recipes from './component/Recipes/Recipes'
 import Products from './component/Products/Products';
+import Footer from "./component/Footer/Footer";
+import Contacto from "./component/Contacto/Contacto";
 
 
 
@@ -18,7 +20,7 @@ import Products from './component/Products/Products';
 function App() {
   return (
     <div className="h-screen">
-      <Nav/>
+      <Nav />
       <SearchBar />
       <Routes>
         <Route path="/" element={<Home/>} />
@@ -29,8 +31,9 @@ function App() {
         <Route path="/create" element={<CreateProduct/>} />
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
-
+        <Route path="contacto" element={ <Contacto/> }/>
       </Routes>
+      <Footer/>
     </div>
   );
 }
