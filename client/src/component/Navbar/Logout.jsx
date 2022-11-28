@@ -14,7 +14,7 @@ function Logout() {
       }
     };
     return (
-      <div className="flex bg-gray-900  w-3/6 rounded-xl shadow-2xl items-center flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="flex w-3/6 rounded-xl shadow-2xl items-center flex-col justify-center py-12 px-4 sm:px-6 lg:px-8" style={{background:"#292626"}}>
         <h1 className="text-xl text-white">Iniciaste sesion correctamente</h1>
         <div
         className="group mt-5 items-center selection:last:relative flex w-full justify-center rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 "

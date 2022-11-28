@@ -2,5 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    
+    background-color: #242121;
+    padding-top: 45px;
+
 }
+

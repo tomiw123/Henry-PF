@@ -1,7 +1,26 @@
-.page{
-    background-color: rgba(43,38,38);
+.container {
+    height: 100vh;
+    background-color: #292626;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
 
+ .cardcontainer {
+    display: flex;
+    margin-top: 20px;
+ }
+
+ .slogan {
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+ }
+
+ .description {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+ }

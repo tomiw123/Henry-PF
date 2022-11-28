@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import Style from './CardProduct.module.css'
+import Style from './CardDetailProduct.module.css'
 import { AiFillStar } from 'react-icons/ai'
 import { IconContext } from "react-icons";
-import productJson from '../Home/Products.json'
+import productJson from '../Products/Products.json'
 import { useParams } from 'react-router-dom';
 
 
-const CardProduct = () => {
+const CardDetailProduct = () => {
 
   const paramsId = useParams()
   let productFiltered;
@@ -17,21 +17,7 @@ const CardProduct = () => {
     }
   })
 
-  console.log(productFiltered.name)
-
-
-  // for (let i = 0; i < productJson.length; i++) {
-  //     if(productJson[i].id === paramsId.id){
-  //     productsId = productJson[i]
-  //     return productsId;
-  //   }
-  //   }
-
-
-
-
-
-
+  // console.log(productFiltered.name)
 
   const [counter, setCounter] = useState(0);
 
@@ -40,7 +26,9 @@ const CardProduct = () => {
   }
 
   function handleMin() {
-    setCounter(counter - 1)
+    if(counter > 0){
+      setCounter(counter - 1)
+    }
   }
   return (
     <div className={Style.CardProduct}>
@@ -86,4 +74,4 @@ const CardProduct = () => {
   )
 }
 
-export default CardProduct
+export default CardDetailProduct

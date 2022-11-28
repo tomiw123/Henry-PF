@@ -4,8 +4,6 @@ const routes = require('./Routes/index.js');
 const cors = require('cors');
 const morgan = require('morgan');
 
-
-
 require('./connection');
 
 app.use(express.json());
