@@ -1,10 +1,37 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import Style from './CardProduct.module.css'
 import { AiFillStar } from 'react-icons/ai'
 import { IconContext } from "react-icons";
+import productJson from '../Home/Products.json'
+import { useParams } from 'react-router-dom';
 
 
 const CardProduct = () => {
+
+  const paramsId = useParams()
+  let productFiltered;
+  let productsId = productJson.map((p) => {
+    if (p.id === paramsId.id) {
+      productFiltered = p;
+      return productFiltered;
+    }
+  })
+
+  console.log(productFiltered.name)
+
+
+  // for (let i = 0; i < productJson.length; i++) {
+  //     if(productJson[i].id === paramsId.id){
+  //     productsId = productJson[i]
+  //     return productsId;
+  //   }
+  //   }
+
+
+
+
+
+
 
   const [counter, setCounter] = useState(0);
 
@@ -20,11 +47,11 @@ const CardProduct = () => {
       <div className={Style.Container2}>
         <div className={Style.ImgCont}>
           <div className={Style.Image}>
-            <img src="https://firebasestorage.googleapis.com/v0/b/henry-pf.appspot.com/o/tablas.jpg?alt=media&token=132524b4-d106-4c37-a888-d771bdc26f75" width="400px" height="350px" alt="" />
+            <img className={Style.img} src={productFiltered.image}  alt="" />
           </div>
           <div className={Style.Container}>{/********** */}
             <div className={Style.Title}>
-              <h1>Tabla1</h1>
+              <h1>{productFiltered.name}</h1>
             </div>
             <div className={Style.Starts}>
               <IconContext.Provider value={{ color: "yellow" }}>
@@ -37,7 +64,7 @@ const CardProduct = () => {
                 </div>
               </IconContext.Provider>
             </div>
-            <div className={Style.Price}>$1000</div>
+            <div className={Style.Price}>${productFiltered.price}</div>
             <div className={Style.ContButtom}>
               <div className={Style.Cont}>
                 <button className={Style.btnmaxmin} onClick={handleMax}>+</button>
@@ -51,7 +78,7 @@ const CardProduct = () => {
           </div>
         </div>
         <div className={Style.Description}>
-          <p className='description'>Lorem ipsum dolor sit amet consectetur adipisicing elit.Veniam quidem minima magni earum illo suscipit,dolorum maxime voluptate necessitatibus ut nemo reiciendis,sint porro ratione. Dolor iusto ipsa accusantium aspernatur.</p>
+          <p className='description'>{productFiltered.description}</p>
         </div>
         {/* dejar un apartado para poner abajo las recetas que se pueden hacer con el producto*/}
       </div>

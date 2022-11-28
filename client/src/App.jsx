@@ -29,8 +29,8 @@ function App() {
         <Route path="/create" element={<CreateProduct/>} />
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/product" element={<CardProduct/>} />
+
       </Routes>
-      
     </div>
   );
 }

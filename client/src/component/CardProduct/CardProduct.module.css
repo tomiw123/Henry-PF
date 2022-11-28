@@ -29,9 +29,10 @@
 .Image{
     width: 50%;
 }
-/* .Image img{
-    padding: 20px;
-} */
+.img{
+    width: 400px;
+     height: 300px
+} 
 
 .Container{
     width: 50%;
