@@ -14,10 +14,6 @@ import RecipeDetail from './component/RecipeDetail/RecipeDetail';
 import Footer from "./component/Footer/Footer";
 import Contacto from "./component/Contacto/Contacto";
 
-
-
-
-
 function App() {
   return (
     <div className="h-screen">
