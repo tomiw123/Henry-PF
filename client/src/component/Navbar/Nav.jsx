@@ -8,7 +8,7 @@ import {AiFillFire} from "react-icons/ai"
 function Nav() {
     const auth = useAuth();
     return (
-      <div className="flex items-center w-full justify-between pr-3 pl-1 bg-black h-10">
+      <div className="flex items-center w-full justify-between pr-3 pl-1 h-10" style={{background:"#292626"}}>
         {/* <div>
             <img className="h-20 w-20" src={img} alt="" />
         </div> */}
@@ -29,7 +29,7 @@ function Nav() {
           ) : (
               <div className="bg-slate-800 text-white text-center rounded-md ml-3 w-auto pr-2 pl-2 flex items-center">
               <Link to="/login" className="flex items-center">
-              <a>{auth.userName}</a>
+              <label>{auth.userName}</label>
               <RiRadioButtonLine className="ml-2 animate-pulse text-green-500"/>
               </Link>
             </div>
