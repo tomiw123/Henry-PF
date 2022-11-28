@@ -15,9 +15,6 @@ const RecipeDetail = () => {
       return recipeFiltered;
     }
   })
-
-
- 
   return (
       <div className={style.card}>
         <div className={style.title}>
