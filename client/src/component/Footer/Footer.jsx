@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div className="footer">
       
-      <hr className="salto" style={{ margin: "5px 25px", color: "#c18e0e" }} /> 
+      <div className="saltooooo"></div>
       
       <div className="contact">
         <a href="https://www.facebook.com/DosDagas" target="_blanc">

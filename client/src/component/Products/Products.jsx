@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 export default function Products(props) {
   return (
     <>
+      {/* <div className={style.salto}></div> */}
       <div className={style.card}>
         <img src={props.img} alt={props.name} />
       </div>
