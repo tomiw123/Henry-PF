@@ -7,7 +7,7 @@ import image from "../../assets/dosdagas-png-transparente.png";
 const Footer = () => {
   return (
     <div className="footer">
-      <hr style={{ margin: "5px 25px", color: "#96da25" }} />
+      <hr style={{ margin: "5px 25px"}} />
       <div className="contact">
         <a href="https://www.facebook.com/DosDagas" target="_blanc">
           <div className="rs">
