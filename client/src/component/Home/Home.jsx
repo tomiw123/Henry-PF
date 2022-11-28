@@ -19,7 +19,7 @@ const Home = () => {
         {
         Products.map((e)=>{
             return(
-              <Link to={`/cartProduct/${e.id}`}>
+              <Link to={`/product/${e.id}`}>
                 <Card 
                   key={e.name}
                   name= {e.name}
