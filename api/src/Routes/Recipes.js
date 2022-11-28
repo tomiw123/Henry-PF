@@ -1,17 +1,15 @@
 const {Router} = require('express')
 const router = Router();
 const {
-  getRecipes
+    getRecipes,
+    createRecipe,
+    deleteRecipe,
 } = require('../Controllers/Recipe')
 
-router.get('/', async(req,res) =>{
-    try{
-      const recipes = await Recipe.find();
-      res.status(200).json(recipes);
-    }catch(err){
-        console.log('no hay recetas')
-    }
-})
+router.get('/', getRecipes);
+router.post('/', createRecipe);
+router.delete('/:_id', deleteRecipe)
+
 
 
 module.exports = router;

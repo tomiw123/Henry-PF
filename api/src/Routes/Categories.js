@@ -3,10 +3,12 @@ const router = Router();
 const {
     getAllCategories,
     createCategory,
-    deleteteCategory
-}= require('../Controllers/Category')
+    deleteCategory
+} = require('../Controllers/Category')
 
 router.get('/', getAllCategories)
+router.post('/', createCategory);
+router.delete('/:_id', deleteCategory);
 
 
 
