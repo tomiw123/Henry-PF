@@ -10,6 +10,7 @@ import Nav from './component/Navbar/Nav';
 import SearchBar from './component/SearchBar/SearchBar';
 import Recipes from './component/Recipes/Recipes'
 import Products from './component/Products/Products';
+import RecipeDetail from './component/RecipeDetail/RecipeDetail';
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/create" element={<CreateProduct/>} />
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
+        <Route path="/recipeDetail/:id" element={<RecipeDetail/>} />
 
       </Routes>
     </div>
