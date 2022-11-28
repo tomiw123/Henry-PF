@@ -17,7 +17,7 @@ const CardDetailProduct = () => {
     }
   })
 
-  console.log(productFiltered.name)
+  // console.log(productFiltered.name)
 
   const [counter, setCounter] = useState(0);
 
@@ -26,7 +26,9 @@ const CardDetailProduct = () => {
   }
 
   function handleMin() {
-    setCounter(counter - 1)
+    if(counter > 0){
+      setCounter(counter - 1)
+    }
   }
   return (
     <div className={Style.CardProduct}>

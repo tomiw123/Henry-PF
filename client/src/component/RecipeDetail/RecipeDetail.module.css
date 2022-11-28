@@ -4,38 +4,82 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-.image{
-    width: 50%;
-    height: 60%;
+    /* justify-content: center; */
+    color: aliceblue;
 }
 
+
 .title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 0;
-    font-size: 50px;
-    color: white;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* padding: 15px 0; */
+    font-size: 2.5rem;
     font-weight: bold;
+    padding: 20px 0;
 }
+
+
 
 .content{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* text-align: center; */
+    /* padding: 15px 0; */
+    /* font-size: 20px; */
+    /* color: white; */
+    /* font-weight: bold; */
     width: 80%;
-    margin-bottom: 10px;
-
+    height: 40%;
+    /* margin-bottom: 10px; */
+    justify-content: space-between;
 }
-
-.contenedor{
+.image{
     display: flex;
-    height: 100%;
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: 50%;
+
 }
+.image img{
+    object-fit:contain;
+
+}
+
+.ingredients{
+    width: 50%;
+    
+    align-items: center;
+    font-size: 1.2em;
+}
+.ingredients h1{
+    padding-left: 200px;
+   
+}
+.ingredient{
+    padding-left: 200px;
+    
+}
+
+.description{
+    width: 80%;
+}
+.description h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.description h3{
+    text-align: center;
+    font-size: 1.2em;
+}
+/*  */
+/* .contenedor{ */
+    /* display: flex; */
+    /* height: 100%; */
+/* } */

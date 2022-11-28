@@ -29,7 +29,7 @@ function Nav() {
           ) : (
               <div className="bg-slate-800 text-white text-center rounded-md ml-3 w-auto pr-2 pl-2 flex items-center">
               <Link to="/login" className="flex items-center">
-              <a>{auth.userName}</a>
+              <label>{auth.userName}</label>
               <RiRadioButtonLine className="ml-2 animate-pulse text-green-500"/>
               </Link>
             </div>
