@@ -1,7 +1,25 @@
-.page{
-    background-color: rgba(43,38,38);
+.container {
+    height: 90vh;
+    background-color: #292626;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+ }
+
+.card {
+    height: 293px;
+    width: 293px;
+    background-color: red;
+    position: absolute;
+    z-index: 50;
 }
 
+.title {
+    background-color: blue;
+    height: 137px;
+    width: 233px;
+    z-index: 100;
+    position: absolute;
+    bottom: -15%;
+    left: 10%;
+}
