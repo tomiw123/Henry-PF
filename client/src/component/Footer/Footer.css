@@ -1,20 +1,14 @@
 .footer{
-    min-height: 200px;
+    min-height: 170px;
     background-color: #292626;
+    width: 100%;
 }
 
 .logo{
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
-}
-
-.logo h1{
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    left: 30%;
 }
 
 .contact{
@@ -56,8 +50,7 @@
 }
 
 .teldic{
-    margin-left: 68%;
-    
+    margin-left: 60%;
     font-size: 30px;
     color: white;
     font-weight: 500;
