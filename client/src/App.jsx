@@ -11,6 +11,7 @@ import SearchBar from './component/SearchBar/SearchBar';
 import Recipes from './component/Recipes/Recipes'
 import Products from './component/Products/Products';
 import Footer from "./component/Footer/Footer";
+import Contacto from "./component/Contacto/Contacto";
 
 
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/create" element={<CreateProduct/>} />
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
+        <Route path="contacto" element={ <Contacto/> }/>
       </Routes>
       <Footer/>
     </div>
