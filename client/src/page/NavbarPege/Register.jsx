@@ -9,7 +9,7 @@ function Register() {
     const auth = useAuth();
     console.log(auth.user)
     return (
-      <div className="h-full flex flex-col justify-center items-center bg-amber-400">
+      <div className="h-full flex flex-col justify-center items-center bg-white">
         
         {auth.user.length > 0
         ?<Logout/>

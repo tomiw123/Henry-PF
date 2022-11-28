@@ -26,7 +26,7 @@ export function AuthProvider ({children}){
 
     const [user, setUser] = useState("")
 
-     const nevigate = useNavigate()
+     const navigate = useNavigate()
 
     const [userName, serUserName] = useState("")
 
