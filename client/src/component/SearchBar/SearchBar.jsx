@@ -17,7 +17,7 @@ function SearchBar() {
 
                 <Link to="/products"><p>Producto</p></Link>
 
-                <Link to="/"><p>Contacto</p></Link>
+                <Link to="/recipes"><p>Recetas</p></Link>
             </div>
 
             <div className={style.input}></div>

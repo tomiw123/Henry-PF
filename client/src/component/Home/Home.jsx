@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <div>
-        <div>
+        <div>   
             <Carrousel />
         </div>
         <div className={style.page}> 
