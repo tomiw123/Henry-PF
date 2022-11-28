@@ -17,10 +17,13 @@
     margin-left: 60px;
     
 }
+.salto{
+    color: #c18e0e;
+}
 
 .rs{
     background-color: transparent;
-    border: 2px solid white;
+    border: 2px solid #c18e0e;
     margin: 20px;
     border-radius: 25%;
     display: flex;

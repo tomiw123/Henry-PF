@@ -19,8 +19,8 @@ const RecipeDetail = () => {
 
  
   return (
-         
-    <div className={style.card}>
+     <div className={style.contenedor}>
+            <div className={style.card}>
                 <h1 className={style.title}>{recipeFiltered.name}</h1>
 
                 <img src={recipeFiltered.image} alt={recipeFiltered.name} className={style.image}/>
@@ -32,6 +32,7 @@ const RecipeDetail = () => {
 
                 <h3 className={style.content}>Descripción: {recipeFiltered.description}</h3>
                 
+            </div>
      </div>
         
   )
