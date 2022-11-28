@@ -18,7 +18,7 @@ const Carrousel = () => {
   return (
     
     <div className={style.contenedor}>
-        <AliceCarousel mouseTracking items={items} autoPlayInterval={4500} autoPlay={true} infinite={true} disableDotsControls={true}/>
+        <AliceCarousel mouseTracking items={items} autoPlayInterval={3000} autoPlay={true} infinite={true} disableDotsControls={true}/>
     </div>
   
   )

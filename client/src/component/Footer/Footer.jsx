@@ -4,10 +4,13 @@ import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import "./Footer.css";
 import image from "../../assets/dosdagas-png-transparente.png";
 
+
 const Footer = () => {
   return (
     <div className="footer">
-      <hr style={{ margin: "5px 25px"}} />
+      
+      <div className="saltooooo"></div>
+      
       <div className="contact">
         <a href="https://www.facebook.com/DosDagas" target="_blanc">
           <div className="rs">

@@ -3,6 +3,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+	padding-top: 45px;
+}
+
+.salto{
+    height: 1px;
+    width: 100vw;
+    background-color: #c18e0e;
+   	margin-bottom: 20px;
 }
 
 /* .card { */

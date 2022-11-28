@@ -8,17 +8,13 @@ import {AiFillFire} from "react-icons/ai"
 function Nav() {
     const auth = useAuth();
     return (
-      <div className="flex items-center w-full justify-between pr-3 pl-1 bg-black h-14">
+      <div className="flex items-center w-full justify-between pr-3 pl-1 h-10" style={{background:"#292626"}}>
         {/* <div>
             <img className="h-20 w-20" src={img} alt="" />
         </div> */}
         <div className="flex items-center">
-            <AiFillFire className="text-red-500 mr-1 h-10 w-10 animate-bounce"/>
-            <Link to="/">
         <h1 className="text-white font-extralight text-2xl "> 
-          Dos Dagas
         </h1>
-        </Link>
         </div>
         <div className="flex">
           {auth.user === "" ? (
