@@ -12,6 +12,7 @@ const deleteteCategory = async (req,res)=> {
 
 }
 
+
 module.exports={
     getAllCategories,
     createCategory,
