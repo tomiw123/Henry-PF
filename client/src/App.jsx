@@ -25,9 +25,8 @@ function App() {
         <Route path="login" element={<Login />} />
           <Route path="reset" element={<Reset />} />
         <Route path="/create" element={<CreateProduct/>} />
-        <Route path="/product" element={<CardProduct/>} />
+        <Route exact path='/product/:id' element={<CardProduct/>}/>
       </Routes>
-      
     </div>
   );
 }
