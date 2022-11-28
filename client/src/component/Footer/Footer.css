@@ -18,10 +18,11 @@
     
 }
 .saltooooo{
-    height: 1px;
-    width: 100vw;
-    background-color: #c18e0e;
+   height: 1px;
+   width: 100%;
+   background-color: #c18e0e;
    margin-bottom: 20px;
+   box-sizing: border-box;
 }
 
 .rs{
@@ -43,7 +44,6 @@
     background-color: whitesmoke;
     border: none;
 }
-
 
 .icon{
     color: whitesmoke;
