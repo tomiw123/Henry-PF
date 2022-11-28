@@ -30,7 +30,7 @@ function Reset() {
         >
           {error || success}
         </a>
-        <h1 className="mb-5 text-xl mt-5">Reset Password</h1>
+        <h1 className="mb-5 text-xl mt-5">Restablecer contraseña</h1>
         <div>
           <input
             onChange={(e) => setEmail(e.target.value)}

@@ -1,0 +1,81 @@
+.page{
+    background-color: rgba(43,38,38);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* .card { */
+    /* width: 400px; */
+    /* background: rgba(255, 255, 255, 0.403); */
+    /* overflow: hidden; */
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+    /* border-radius: 10px; */
+    /* margin: 10px; */
+    /* padding: 5px; */
+    /* transition: all 0.5s; */
+	/* display: flex; */
+	/* flex-direction: column; */
+	/* justify-content: center; */
+	/* align-items: center; */
+/* } */
+/*  */
+/* .card:hover { */
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+/* } */
+/*  */
+/* .card img { */
+    /* border-radius: 10px; */
+    /* height: 200px; */
+    /* width: 300px; */
+/*    */
+/* } */
+/*  */
+/* .link { */
+    /* text-decoration: none; */
+    /* font-weight: bolder; */
+    /* color: black */
+/* } */
+/*  */
+/* .button { */
+    /* text-align: left; */
+	/* background-color:#106304; */
+	/* border-radius:10px; */
+	/* border:1px solid #4e6096; */
+	/* display:inline-block; */
+	/* cursor:pointer; */
+	/* color:#ffffff; */
+	/* font-family:Arial; */
+	/* font-size:14px; */
+	/* padding:6px 10px; */
+	/* text-decoration:none; */
+	/* text-shadow:0px 0px 0px #d75518; */
+/* } */
+/* .button:hover { */
+	/* background-color:#033512; */
+/* } */
+/* .button:active { */
+	/* position:relative; */
+	/* top:1px; */
+/* } */
+/* .button1 { */
+    /* text-align: left; */
+	/* background-color:#60605d; */
+	/* border-radius:10px; */
+	/* border:1px solid #4e6096; */
+	/* display:inline-block; */
+	/* cursor:pointer; */
+	/* color:#ffffff; */
+	/* font-family:Arial; */
+	/* font-size:14px; */
+	/* padding:6px 10px; */
+	/* text-decoration:none; */
+	/* text-shadow:0px 0px 0px #d75518; */
+/* } */
+/* .button1:hover { */
+	/* background-color:#2a2b2b; */
+/* } */
+/* .button1:active { */
+	/* position:relative; */
+	/* top:1px; */
+/* } */

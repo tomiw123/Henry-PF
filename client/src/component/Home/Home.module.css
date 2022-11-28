@@ -1,25 +1,26 @@
 .container {
-    height: 90vh;
+    height: 100vh;
     background-color: #292626;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
  }
 
-.card {
-    height: 293px;
-    width: 293px;
-    background-color: red;
-    position: absolute;
-    z-index: 50;
-}
+ .cardcontainer {
+    display: flex;
+    margin-top: 20px;
+ }
 
-.title {
-    background-color: blue;
-    height: 137px;
-    width: 233px;
-    z-index: 100;
-    position: absolute;
-    bottom: -15%;
-    left: 10%;
-}
+ .slogan {
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+ }
+
+ .description {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+ }

@@ -1,0 +1,7 @@
+.cartita{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #242121;;
+}
+
