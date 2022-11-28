@@ -7,7 +7,8 @@ const {
 }= require('../Controllers/Category')
 
 router.get('/', getAllCategories)
-
+router.get('/', createCategory)
+router.get('/', deleteteCategory)
 
 
 module.exports = router;

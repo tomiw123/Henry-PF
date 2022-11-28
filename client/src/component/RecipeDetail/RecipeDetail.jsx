@@ -15,26 +15,31 @@ const RecipeDetail = () => {
       return recipeFiltered;
     }
   })
-
-
- 
   return (
-     <div className={style.contenedor}>
-            <div className={style.card}>
-                <h1 className={style.title}>{recipeFiltered.name}</h1>
-
-                <img src={recipeFiltered.image} alt={recipeFiltered.name} className={style.image}/>
-
-
-                <h2 className={style.content}>Utensilios: {recipeFiltered.Utensilios}</h2>
-
-                <h2 className={style.content}>Ingredientes: {recipeFiltered.ingredients}</h2>
-
-                <h3 className={style.content}>Descripción: {recipeFiltered.description}</h3>
-                
-            </div>
-     </div>
-        
+      <div className={style.card}>
+        <div className={style.title}>
+          <h1 >{recipeFiltered.name}</h1>
+        </div>
+        <div className={style.content}>
+          <div className={style.image}>
+            <img src={recipeFiltered.image} alt={recipeFiltered.name}/>
+          </div>
+          <div className={style.ingredients}>
+            <h1>Igredientes:</h1>
+            {
+              recipeFiltered.ingredients.map((i)=>{
+                return(
+                  <li className={style.ingredient}>{i}</li>
+                )
+              })
+            }
+          </div>
+        </div>  
+        <div className={style.description}>
+          <h1>Paso a Paso</h1>
+          <h3>{recipeFiltered.description}</h3>
+        </div>             
+      </div>      
   )
  }
 
