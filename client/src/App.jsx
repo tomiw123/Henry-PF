@@ -4,12 +4,16 @@ import Register from "./page/NavbarPege/Register";
 import { Route, Routes } from "react-router-dom";
 import Login from "./page/NavbarPege/Login"
 import Reset from "./page/NavbarPege/Reset"
-import CardProduct from "./component/CardProduct/CardProduct"
+import CardDetailProduct from "./component/ProductDetail/CardDetailProduct"
 import Home from "./component/Home/Home";
 import Nav from './component/Navbar/Nav';
 import SearchBar from './component/SearchBar/SearchBar';
 import Recipes from './component/Recipes/Recipes'
+import Products from './component/Products/Products';
 import Footer from "./component/Footer/Footer";
+
+
+
 
 
 function App() {
@@ -18,13 +22,14 @@ function App() {
       <Nav />
       <SearchBar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/products" element={<Products/>} />
+        <Route path="/register" element={<Register/>} />
         <Route path="login" element={<Login />} />
-          <Route path="reset" element={<Reset />} />
+        <Route path="reset" element={<Reset />} />
         <Route path="/create" element={<CreateProduct/>} />
         <Route path="/recipes" element={<Recipes/>} />
-        <Route path="/product" element={<CardProduct/>} />
+        <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
       </Routes>
       <Footer/>
     </div>
