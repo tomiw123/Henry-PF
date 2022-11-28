@@ -16,16 +16,8 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
-  category: [{ type: Schema.Types.ObjectId, ref: "Category", /* autopopulate: true */ },],
+  category: [{ type: Schema.Types.ObjectId, ref: "Category"},],
 });
-//productSchema.plugin(require('mongoose-autopopulate'));
-/* productSchema.pre(/^find/, function(next) { 
-	this.populate({
-	path: 'category',
-	select: 'name',
-	})
-	next()
-}) */
 
 const Product = model("Product", productSchema);
 module.exports = Product;
