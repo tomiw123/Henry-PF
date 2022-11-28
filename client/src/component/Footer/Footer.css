@@ -1,0 +1,70 @@
+.footer{
+    min-height: 170px;
+    background-color: #292626;
+    width: 100%;
+}
+
+.logo{
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    left: 30%;
+}
+
+.contact{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 60px;
+    
+}
+.saltooooo{
+    height: 1px;
+    width: 100vw;
+    background-color: #c18e0e;
+   margin-bottom: 20px;
+}
+
+.rs{
+    background-color: transparent;
+    border: 2px solid #c18e0e;
+    margin: 20px;
+    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(3px 3px 3px #4444dd);
+    width: 60px;
+    height: 60px;
+
+}
+
+
+.rs:hover{
+    background-color: whitesmoke;
+    border: none;
+}
+
+
+.icon{
+    color: whitesmoke;
+    width: 30px;
+    height: 30px;
+}
+
+.icon:hover{
+    color:  #292626
+}
+
+.teldic{
+    margin-left: 60%;
+    font-size: 30px;
+    color: white;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 300px;
+}
+
+.teldic h2{
+    font-size: 15px;
+    margin-right: 20px;
+}

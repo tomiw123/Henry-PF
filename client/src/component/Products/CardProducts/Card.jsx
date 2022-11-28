@@ -10,8 +10,14 @@ export default function Card(props){
            
         <h1>{props.name}</h1>
         
-        <h3>${props.precio}</h3>
+        <h2>${props.precio}</h2>
+
+            <div className="flex-auto flex space-x-4">
+            <button className={style.button}>Comprar Ahora!</button>
+           
+           
+            </div>
         
-      </div>
+        </div>
     )
 }

@@ -1,17 +1,23 @@
 import React from "react";
 import Form from "../../component/Navbar/Form"
-import { useAuth } from "../../contex/auth";
-import Nav from "../../component/Navbar/Nav";
+import { useAuth } from "../../context/auth";
 
-function Register(){
+import Logout from "../../component/Navbar/Logout"
+
+
+function Register() {
     const auth = useAuth();
     console.log(auth.user)
-    return(
-        <div>  
-            <Nav/>
-            <Form nameForm="Register" />
-        </div>
-    )
-}
-
-export default Register;
+    return (
+      <div className="h-full flex flex-col justify-center items-center bg-white">
+        
+        {auth.user.length > 0
+        ?<Logout/>
+        :<Form nameForm="Registrarse" />
+        }
+        
+      </div>
+    );
+  }
+  
+  export default Register;
