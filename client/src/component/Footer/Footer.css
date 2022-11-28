@@ -1,20 +1,14 @@
 .footer{
-    min-height: 200px;
+    min-height: 170px;
     background-color: #292626;
+    width: 100%;
 }
 
 .logo{
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
-}
-
-.logo h1{
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    left: 30%;
 }
 
 .contact{
@@ -23,10 +17,13 @@
     margin-left: 60px;
     
 }
+.salto{
+    color: #c18e0e;
+}
 
 .rs{
     background-color: transparent;
-    border: 2px solid white;
+    border: 2px solid #c18e0e;
     margin: 20px;
     border-radius: 25%;
     display: flex;
@@ -56,8 +53,7 @@
 }
 
 .teldic{
-    margin-left: 68%;
-    
+    margin-left: 60%;
     font-size: 30px;
     color: white;
     font-weight: 500;
