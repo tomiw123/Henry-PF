@@ -41,7 +41,7 @@ function Form({ nameForm }) {
   };
 
   return (
-    <div className="flex bg-gray-900  w-4/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex  w-4/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{background:"#292626"}}>
       <div className="w-full max-w-md space-y-8">
         {error && (
           <div className="text-sm text-center">

@@ -8,7 +8,7 @@ import {AiFillFire} from "react-icons/ai"
 function Nav() {
     const auth = useAuth();
     return (
-      <div className="flex items-center w-full justify-between pr-3 pl-1 bg-black h-10">
+      <div className="flex items-center w-full justify-between pr-3 pl-1 h-10" style={{background:"#292626"}}>
         {/* <div>
             <img className="h-20 w-20" src={img} alt="" />
         </div> */}

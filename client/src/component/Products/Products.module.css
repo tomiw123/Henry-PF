@@ -6,6 +6,13 @@
 	padding-top: 45px;
 }
 
+.salto{
+    height: 1px;
+    width: 100vw;
+    background-color: #c18e0e;
+   	margin-bottom: 20px;
+}
+
 /* .card { */
     /* width: 400px; */
     /* background: rgba(255, 255, 255, 0.403); */
