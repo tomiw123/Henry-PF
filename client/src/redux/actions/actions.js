@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PRODUCTS, ADD_PRODUCTS } from "./actionsTypes";
+import { GET_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART } from "./actionsTypes";
 
 
 
@@ -21,4 +21,18 @@ export const addProducts = (payload)=>{
       payload: products.data
     })
   } 
+}
+
+export const addToCart = (payload)=> {
+  return {
+    type: ADD_PRODUCTS_CART,
+    payload: payload,
+  }
+}
+
+export const deleteFromCart = (payload)=> {
+  return {
+    type: DELETE_PRODUCTS_CART,
+    payload: payload,
+  }
 }
