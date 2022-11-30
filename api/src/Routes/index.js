@@ -25,6 +25,7 @@ const users = require ('./Users')
 
 const router = Router(); 
 const Products = require('./Products')
+const Payments = require ('./Payments')
 
 router.use('/products', Products)
 
@@ -32,5 +33,6 @@ router.use('/products', product)
 router.use ('/categories', categories)
 router.use ('/recipes', recipes)
 router.use ('/users', users)
+
 
 module.exports = router;
