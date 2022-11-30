@@ -37,7 +37,6 @@ const Footer = () => {
               <img src={image} alt="not-found" width={200} />
           </Link>
         </div>
-
         <div className="teldic">
           <Link to={'/contacto'}>
           <h1>CONTACTO</h1>
