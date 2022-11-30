@@ -22,7 +22,7 @@
    height: 1px;
    width: 100%;
    background-color: #c18e0e;
-   margin-bottom: 20px;
+   margin-bottom: 20px; 
    box-sizing: border-box;
 }
 
@@ -37,8 +37,8 @@
     filter: drop-shadow(3px 3px 3px #4444dd);
     width: 60px;
     height: 60px;
-
 }
+
 
 
 .rs:hover{
@@ -62,7 +62,7 @@
     color: white;
     font-weight: 500;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 300px; 
+    width: 300px;
 }
 
 .teldic h2{

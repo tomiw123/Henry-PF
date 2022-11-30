@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import "./Footer.css";
 import image from "../../assets/dosdagas-png-transparente.png";
 
@@ -26,6 +26,12 @@ const Footer = () => {
           </div>
         </a>
 
+          <div className="rs">
+          <FaWhatsapp className="icon" style={{width: "80px"}}/>
+          </div>
+
+        
+
         <div className="logo">
           <Link to="/">
               <img src={image} alt="not-found" width={200} />
@@ -33,16 +39,14 @@ const Footer = () => {
         </div>
 
         <div className="teldic">
-          {/* <Link to={'/contacto'}> */}
+          <Link to={'/contacto'}>
           <h1>CONTACTO</h1>
-          {/* </Link> */}
+          </Link>
           <h2>Email: aaaaaaaaaa@gmail.com</h2>
           <h2>Telefono: xxxxxxxxxxx</h2>
         </div>
       </div>
-
-     
-    </div>
+      </div>
   );
 };
 

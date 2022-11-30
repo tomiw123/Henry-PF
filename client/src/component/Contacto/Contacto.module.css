@@ -1,0 +1,69 @@
+.principal{
+  min-height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #242121;
+}
+
+.card {
+  width: 700px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.403);
+  overflow: hidden;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: all 0.5s;
+  padding-bottom: 15px;
+}
+
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.principal form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.principal input{
+  margin-bottom: 20px;
+  width: 350px;
+  padding: 7px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.principal textarea{
+  width: 350px;
+  padding: 7px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  resize: none;
+}
+
+.principal h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.principal label{
+  font-size: 25px;
+}
+
+.principal button{
+  font-size: 25px;
+  border: solid 3px black;
+  padding: 5px;
+  width: 180px;
+  border-radius: 15px;
+}
