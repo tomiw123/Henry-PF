@@ -5,7 +5,7 @@ import { AiFillStar } from 'react-icons/ai'
 import { IconContext } from "react-icons";
 import productJson from '../Products/Products.json'
 import { useParams } from 'react-router-dom';
-import { addToCart } from '../../redux/actions/actions';
+import { addToCart, changeFromCart } from '../../redux/actions/actions';
 
 const CardDetailProduct = () => {
 
@@ -37,12 +37,20 @@ const CardDetailProduct = () => {
   // const [cart, setCart] = useState([]);
 
   const addProd = (id, name, image,price, counter)=> {
-    const yaEsta = cart.find(p => p.name === name);
+    let yaEsta = cart.find(p => p.name === name);
     if(!yaEsta){
       const obj = {id, name, image,price, quantity: counter}
       setTimeout(()=> {
         dispatch(addToCart(obj))
       },50)
+    } else {
+      yaEsta={
+        ...yaEsta,
+        quantity: yaEsta.quantity + counter
+      }
+      setTimeout(()=> {
+        dispatch(changeFromCart(yaEsta))
+      }, 50)
     }
   }
   return (
