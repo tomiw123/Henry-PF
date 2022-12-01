@@ -7,6 +7,7 @@ const Payments = require ('./Payments')
 
 const router = Router(); 
 const Products = require('./Products')
+const Payments = require ('./Payments')
 
 router.use('/products', Products)
 
@@ -15,6 +16,7 @@ router.use ('/categories', categories)
 router.use ('/recipes', recipes)
 router.use ('/users', users)
 router.use ('/payments', Payments)
+
 
 
 module.exports = router;

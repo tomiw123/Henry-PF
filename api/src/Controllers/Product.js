@@ -2,6 +2,7 @@ const Product = require("../Models/Product.js");
 
 const getAll = async (req, res) => {
   //search by query
+
   const { search } = req.query;
   const limit = req.query.limit || 10;
   const page = req.query.limit || 1;
@@ -99,6 +100,7 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+
 const getProductsByCategory = async (req, res) => {
   const { category } = req.params;
   try {
@@ -106,15 +108,15 @@ const getProductsByCategory = async (req, res) => {
     res.status(200).send(categoryProd);
   } catch (error) {
     res.status(404).send("No existe la categoria");
-  }
-};
+    
+  module.exports={ 
+    getAll,
+    filterProduct,
+    createProduct,
+    updateCategory,
+    removeCategory,
+    deleteProduct,
+    getProductsByCategory
 
-module.exports = {
-  getAll,
-  filterProduct,
-  createProduct,
-  updateCategory,
-  removeCategory,
-  deleteProduct,
-  getProductsByCategory,
+  }
 };
