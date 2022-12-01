@@ -15,7 +15,7 @@ export default function Products(props) {
         <div className={style.page}>
           {Product.map((e) => {
             return (
-              <Link to={`/productDetail/${e.id}`}>
+              <Link to={`/productDetail/${e.id}`} key={e.id}>
                 <Card
                   key={e.name}
                   name={e.name}

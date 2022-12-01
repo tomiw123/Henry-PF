@@ -8,6 +8,7 @@ const {
   updateCategory,
   removeCategory,
   deleteProduct,
+  getProductsByCategory
 } = require('../Controllers/Product.js');
 
 router.get('/', getAll);

@@ -20,5 +20,6 @@ const productSchema = new Schema({
   category: [{ type: Schema.Types.ObjectId, ref: "Category"},],
 });
 productSchema.plugin(mongoosePaginate)
+
 const Product = model("Product", productSchema);
 module.exports = Product;

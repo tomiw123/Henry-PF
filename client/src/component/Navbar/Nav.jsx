@@ -4,6 +4,7 @@ import { useAuth } from "../../context/auth"
 import {RiRadioButtonLine} from "react-icons/ri"
 // import img from "../../../public/LOGO.jpeg"
 import {AiFillFire} from "react-icons/ai"
+import Carrito from "../Carrito/Carrito";
 
 function Nav() {
     const auth = useAuth();
@@ -32,6 +33,8 @@ function Nav() {
               <label>{auth.userName}</label>
               <RiRadioButtonLine className="ml-2 animate-pulse text-green-500"/>
               </Link>
+              <Carrito/>
+              <h1 color="black">Hola</h1>
             </div>
           )}
         </div>
