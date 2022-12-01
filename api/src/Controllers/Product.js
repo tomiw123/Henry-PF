@@ -1,13 +1,36 @@
 const Product = require("../Models/Product.js");
 
 const getAll = async (req, res) => {
+  //search by query
+  const {search}=req.query;
     try {
-      const products = await Product.find();
-      res.status(200).json(products);
+      if(search){
+        const products = await Product.paginate({name:{$regex:'.*'+search+'.*',$options:"i"}});
+        res.status(200).json(products);
+      }else{
+        //paginate 
+        const products = await Product.paginate({},{limit:2});
+        res.status(200).json(products);
+      }
+     
     } catch (err) {
       console.log(err);
     }
   };
+
+const filterProduct = async (req, res) => {
+  const {filter}=req.query;
+  try {
+    if(filter){
+      const products = await Product.paginate({name:{     }});
+      res.status(200).json(products);
+    }
+   
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 const createProduct = async (req, res) => {
     const { name, price, image, description } = req.body;
     console.log(name);
@@ -81,6 +104,7 @@ const getProductsByCategory = async(req,res) => {
 
   module.exports={ 
     getAll,
+    filterProduct,
     createProduct,
     updateCategory,
     removeCategory,
