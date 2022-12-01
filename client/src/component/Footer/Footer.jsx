@@ -6,6 +6,7 @@ import image from "../../assets/dosdagas-png-transparente.png";
 
 
 const Footer = () => {
+
   return (
     <div className="footer">
       
@@ -25,6 +26,8 @@ const Footer = () => {
             <FaInstagram className="icon" />
           </div>
         </a>
+
+        
 
           <div className="rs">
           <FaWhatsapp className="icon" style={{width: "80px"}}/>

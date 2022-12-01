@@ -3,9 +3,14 @@ import style from "./Products.module.css";
 import Card from "./CardProducts/Card";
 import Product from "./Products.json";
 import { Link } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 export default function Products(props) {
-  return (
+  return Product.length === 0 ? (
+    <div>
+      <Loading />
+    </div>
+  ) : (
     <>
       {/* <div className={style.salto}></div> */}
       <div className={style.card}>
