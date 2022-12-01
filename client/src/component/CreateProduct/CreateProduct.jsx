@@ -8,7 +8,6 @@ const CreateProduct = () => {
 
     const [file, setFile] = useState(null)
 
-
     const dispatch = useDispatch();
 
     const submit = async (values) => {
@@ -26,7 +25,7 @@ const CreateProduct = () => {
 
     const validations = (values) => {
         const errors = {};
-        if (values.name.length > 40) errors.name = 'El nombre no puede ser tan largo';
+        if (values.name.length > 40) errors.name = 'El nombre no puede ser tan largo ';
         return errors;
     }
     return (
