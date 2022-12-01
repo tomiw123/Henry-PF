@@ -99,7 +99,10 @@ const deleteProduct = async (req, res) => {
     console.log(err);
   }
 };
+const getProductsByCategory = async (req, res) => {
 
+
+}
 
 /* Const getProductsByCategory = async (req, res) => {
   const { category } = req.params;
