@@ -3,12 +3,12 @@ import { useAuth } from "../../context/auth";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
-import {AiFillFire} from "react-icons/ai"
-
+import { AiFillFire } from "react-icons/ai";
 
 function Form({ nameForm }) {
   const [viewPassword, setViewPassword] = useState("password");
   const [email, setEmail] = useState("");
+  const [name, setNamee] = useState("");
   const [password, setPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
   const auth = useAuth();
@@ -17,14 +17,14 @@ function Form({ nameForm }) {
     e.preventDefault();
     if (nameForm === "Iniciar Sesion") {
       try {
-        auth.register(email, password);
+        auth.login(email, password);
       } catch (error) {
         console.error(error);
       }
     } else if (nameForm === "Registrarse") {
       try {
         if (password === secondPassword) {
-          auth.register(email, password);
+          auth.register(name, email, password);
         }
       } catch (error) {
         console.error(error);
@@ -41,25 +41,28 @@ function Form({ nameForm }) {
   };
 
   return (
-    <div className="flex  w-4/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{background:"#292626"}}>
+    <div
+      className="flex  w-4/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+      style={{ background: "#292626" }}
+    >
       <div className="w-full max-w-md space-y-8">
         {error && (
           <div className="text-sm text-center">
-            <a
-              href="#"
+            <div
               className="font-medium  text-red-600 hover:text-indigo-500 "
             >
+            
               {error && nameForm === "Registrarse" ? (
                 <a>Este email ya esta en uso</a>
               ) : (
                 <a>Error de credencial</a>
               )}
-            </a>
+            </div>
           </div>
         )}
 
         <div>
-        <AiFillFire className="mx-auto h-12 w-auto animate-pulse text-red-600"/>
+          <AiFillFire className="mx-auto h-12 w-auto animate-pulse text-red-600" />
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
             {nameForm}
           </h2>
@@ -72,6 +75,26 @@ function Form({ nameForm }) {
         >
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="-space-y-px rounded-md shadow-sm">
+            {nameForm === "Registrarse" ? (
+              <div>
+                <label htmlFor="Nombre" className="sr-only">
+                  Nombre
+                </label>
+                <input
+                  onChange={(e) => setNamee(e.target.value)}
+                  id="user"
+                  name="Nombre"
+                  type="text"
+                  autoComplete=""
+                  required
+                  className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Nombre"
+                />
+              </div>
+            ) : (
+              <></>
+            )}
+
             <div>
               <label htmlFor="email-address" className="sr-only">
                 Correo electronico
@@ -146,15 +169,20 @@ function Form({ nameForm }) {
             </div>
 
             <div className="text-sm">
-           
-                <Link className="font-medium text-white hover:text-red-600" to="/reset">Se olvido la contraseña?</Link>
+              <Link
+                className="font-medium text-white hover:text-red-600"
+                to="/reset"
+              >
+                Se olvido la contraseña?
+              </Link>
             </div>
           </div>
 
           <div>
             <button
               type="submit"
-              className={`group ${password !== secondPassword ? "bg-gray-600" : "bg-red-600"
+              className={`group ${
+                password !== secondPassword ? "bg-gray-600" : "bg-red-600"
               } mb-3 relative flex w-full justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
             >
               {nameForm}

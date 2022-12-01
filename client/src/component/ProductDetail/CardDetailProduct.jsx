@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Style from './CardDetailProduct.module.css'
+import { useDispatch, useSelector } from "react-redux";
 import { AiFillStar } from 'react-icons/ai'
 import { IconContext } from "react-icons";
 import productJson from '../Products/Products.json'
 import { useParams } from 'react-router-dom';
-
+import { addToCart } from '../../redux/actions/actions';
 
 const CardDetailProduct = () => {
 
+  const dispatch = useDispatch();
   const paramsId = useParams()
   let productFiltered;
   let productsId = productJson.map((p) => {
@@ -28,6 +30,19 @@ const CardDetailProduct = () => {
   function handleMin() {
     if(counter > 0){
       setCounter(counter - 1)
+    }
+  }
+
+  const cart = useSelector((state)=> state.cart)
+  // const [cart, setCart] = useState([]);
+
+  const addProd = (id, name, image,price, counter)=> {
+    const yaEsta = cart.find(p => p.name === name);
+    if(!yaEsta){
+      const obj = {id, name, image,price, quantity: counter}
+      setTimeout(()=> {
+        dispatch(addToCart(obj))
+      },50)
     }
   }
   return (
@@ -55,12 +70,12 @@ const CardDetailProduct = () => {
             <div className={Style.Price}>${productFiltered.price}</div>
             <div className={Style.ContButtom}>
               <div className={Style.Cont}>
-                <button className={Style.btnmaxmin} onClick={handleMax}>+</button>
-                <div className={Style.Num}>{counter}</div>
                 <button className={Style.btnmaxmin} onClick={handleMin}>-</button>
+                <div className={Style.Num}>{counter}</div>
+                <button className={Style.btnmaxmin} onClick={handleMax}>+</button>
               </div>
               <div className={Style.Compra}>
-                <button className={Style.btn}>Comprar</button>
+                <button className={counter===0 ? Style.btnDis : Style.btn} onClick={()=> {addProd(productFiltered.id ,productFiltered.name, productFiltered.image, productFiltered.price, counter)}}>Comprar</button>
               </div>
             </div>
           </div>

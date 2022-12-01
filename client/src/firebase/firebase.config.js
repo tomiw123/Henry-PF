@@ -1,6 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import {getAuth} from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
+import { v4 } from 'uuid'
+import { getFirestore } from "firebase/firestore";
+
 const {
   VITE_API_KEY,
   VITE_AUTH_DOMAIN,
@@ -26,5 +30,14 @@ const firebaseConfig = {
 
 
 const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app)
 const analytics = getAnalytics(app);
+export const storage = getStorage(app)
 export const auth = getAuth(app)
+
+export async function uploadFile(file) {
+  const storageRef = ref(storage, v4())
+  await uploadBytes(storageRef, file)
+  const url = await getDownloadURL(storageRef)
+  return url;
+}

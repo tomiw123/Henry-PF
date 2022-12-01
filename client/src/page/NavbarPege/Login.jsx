@@ -2,7 +2,6 @@ import React from "react";
 import Form from "../../component/Navbar/Form";
 import {useAuth} from "../../context/auth"
 import Logout from "../../component/Navbar/Logout"
-import Nav from "../../component/Navbar/Nav";
 
 
 function Login() {

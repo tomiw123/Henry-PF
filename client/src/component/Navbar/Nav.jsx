@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../../context/auth"
 import {RiRadioButtonLine} from "react-icons/ri"
 // import img from "../../../public/LOGO.jpeg"
-import {AiFillFire} from "react-icons/ai"
+
 
 function Nav() {
     const auth = useAuth();
@@ -41,4 +41,3 @@ function Nav() {
   
   export default Nav;
   
-
