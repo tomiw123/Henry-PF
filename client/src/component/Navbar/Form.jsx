@@ -17,7 +17,7 @@ function Form({ nameForm }) {
     e.preventDefault();
     if (nameForm === "Iniciar Sesion") {
       try {
-        auth.register(email, password);
+        auth.login(email, password);
       } catch (error) {
         console.error(error);
       }
@@ -48,16 +48,16 @@ function Form({ nameForm }) {
       <div className="w-full max-w-md space-y-8">
         {error && (
           <div className="text-sm text-center">
-            <a
-              href="#"
+            <div
               className="font-medium  text-red-600 hover:text-indigo-500 "
             >
+            
               {error && nameForm === "Registrarse" ? (
                 <a>Este email ya esta en uso</a>
               ) : (
                 <a>Error de credencial</a>
               )}
-            </a>
+            </div>
           </div>
         )}
 
