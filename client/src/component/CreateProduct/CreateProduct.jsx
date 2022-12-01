@@ -30,10 +30,10 @@ const CreateProduct = () => {
         if (values.name.length > 40) errors.name = 'El nombre no puede ser tan largo ';
         return errors;
     }
-    const user = localStorage.getItem("role")
-    if(user !== "admin" ){
-        return <Navigate to="/"/>
-    } 
+    // const user = localStorage.getItem("role")
+    // if(user !== "admin" ){
+    //     return <Navigate to="/"/>
+    // } 
     return (
         <div>
             <Formik initialValues={{
