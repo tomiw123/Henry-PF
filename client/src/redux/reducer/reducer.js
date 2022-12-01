@@ -1,5 +1,7 @@
 import { ADD_PRODUCTS, GET_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, ADD_RECIPES } from "../actions/actionsTypes";
 
+import { CHANGE_FROM_CART } from "../actions/actionsTypes";
+
 const initialState={
 products: [],
 cart: [],
@@ -48,6 +50,12 @@ export function rootReducer(state=initialState, action){
 
 
 
+
+    case CHANGE_FROM_CART: 
+      return {
+        ...state,
+        cart: [...state.cart.filter(p=> p.id !== action.payload.id), action.payload]
+      }
     default:
       return state
   }

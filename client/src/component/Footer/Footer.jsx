@@ -27,7 +27,7 @@ const Footer = () => {
         </a>
 
           <div className="rs">
-          <FaWhatsapp className="icon" style={{width: "80px"}}/>
+            <FaWhatsapp className="icon" style={{width: "80px"}}/>
           </div>
 
         
