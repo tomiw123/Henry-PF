@@ -3,6 +3,7 @@ import {addProducts} from '../../redux/actions/actions'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import style from '../../component/CreateProduct/Create.module.css'
+import { Navigate } from 'react-router-dom';
 
 const CreateProduct = () => {
 
@@ -32,6 +33,10 @@ const CreateProduct = () => {
             description: ''
         })
     }
+    const user = localStorage.getItem("role")
+    if(user !== "admin" ){
+        return <Navigate to="/"/>
+    } 
     return (
         <div className={style.container}>
             <Link to='/'><button className={style.btn}>VOLVER</button></Link>
