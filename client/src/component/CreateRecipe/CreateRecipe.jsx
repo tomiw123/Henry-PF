@@ -1,20 +1,42 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
+import { useDispatch } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+import {addRecipes} from '../../redux/actions/recipesActions'
+import {uploadFile} from '../../firebase/firebase.config'
 
 
 
 function CreateRecipe(){
 
-    const crear = (values) =>{
-        alert(JSON.stringify(values))
+    const [file, setFile] = useState(null)
+    const dispatch = useDispatch();
+
+    const crear = async (values) =>{
+        try {
+            const result = await uploadFile(file);
+            values.image = result;
+            console.log(values)
+            dispatch(addRecipes(values));
+            alert('Receta creado existosamente')
+        } catch (error) {
+            console.log(error)
+            alert('Error interno. Intente mas tarde')
+        }
     }
 
 
     const validar= (values) =>{
         const errors={}
-            if(values.description.length < 5) errors.description = 'Debe ingresar la descripcion de la receta'
+            if(values.description.length < 5) errors.description = 'Debe ingresar la descripcion de la receta' 
+            if (values.name.length > 40) errors.name = 'El nombre no puede ser tan largo ';
             return errors
        }
+
+    // const user = localStorage.getItem("role")
+    //    if(user !== "admin" ){
+    //        return <Navigate to="/"/>
+    //    } 
     
     return(
         <div>
@@ -23,7 +45,7 @@ function CreateRecipe(){
             initialValues={{
                 name:"",
                 image:"",
-                Utensilios:"",
+               // Utensilios:"",
                 ingredients:"",
                 description:"",
             }}
@@ -41,13 +63,22 @@ function CreateRecipe(){
             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
                 placeholder="Ingrese el nombre de la receta" name="name" type="text"/>
 
-            <h1 className="text-s text-white m-2">Nombre de Receta</h1>
-            <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-50 0 sm:text-sm m-2"
-                placeholder="Ingrese la foto de la receta" name="image" type="text"/>
+            <ErrorMessage name= 'name'> 
+                        {msg => <div style={{
+                            color: 'white'
+                        }}>{
+                            msg
+                            }</div>}
+            </ErrorMessage>
 
-            <h1 className="text-s text-white m-2">Utensilios que utiliza</h1>
+            <h1 className="text-s text-white m-2" style={{ color: 'gray' }}>Seleccione la imagen del producto: </h1>
+            <Field className="bg-white relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
+             name="image" type="file" onChange={(e) => setFile(e.target.files[0])} />
+
+
+            {/* <h1 className="text-s text-white m-2">Utensilios que utiliza</h1>
             <select className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-            
+
                 placeholder="Ingrese los utensilios que va a utilizar" name="Utensilios" type="text"> 
 
                 <option selected>Seleccione utensilios que va a utlizar</option>
@@ -55,7 +86,7 @@ function CreateRecipe(){
                 <option value="pa">parrilla</option>
                 <option value="cr">cruz/estaca</option>
                 <option value="ca">cazuela</option>
-                </select>   
+                </select>    */}
 
             <h1 className="text-s text-white m-2">Ingredientes de Receta</h1>
             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
