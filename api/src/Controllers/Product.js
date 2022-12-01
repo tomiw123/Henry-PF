@@ -101,13 +101,13 @@ const deleteProduct = async (req, res) => {
 };
 
 
-const getProductsByCategory = async (req, res) => {
+/* Const getProductsByCategory = async (req, res) => {
   const { category } = req.params;
   try {
     const categoryProd = Product.find({ category: { $ne: [category] } });
     res.status(200).send(categoryProd);
   } catch (error) {
-    res.status(404).send("No existe la categoria");
+    res.status(404).send("No existe la categoria"); */
     
   module.exports={ 
     getAll,
@@ -116,7 +116,7 @@ const getProductsByCategory = async (req, res) => {
     updateCategory,
     removeCategory,
     deleteProduct,
-    getProductsByCategory
+    //getProductsByCategory
 
   }
-};
+
