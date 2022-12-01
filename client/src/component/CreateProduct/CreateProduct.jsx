@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { addProducts } from '../../redux/actions/actions'
 import { useDispatch } from 'react-redux';
 
-import { Link } from 'react-router-dom';
-import style from '../../component/CreateProduct/Create.module.css'
 import { Navigate } from 'react-router-dom';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
