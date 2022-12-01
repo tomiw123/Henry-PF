@@ -100,7 +100,6 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-
 /* Const getProductsByCategory = async (req, res) => {
   const { category } = req.params;
   try {
