@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "axios": "^1.2.0",
     "dotenv": "^16.0.3",
     "firebase": "^9.14.0",
