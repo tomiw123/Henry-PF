@@ -9,7 +9,7 @@ const getAll = async (req, res) => {
         res.status(200).json(products);
       }else{
         //paginate 
-        const products = await Product.paginate({},{limit:2});
+        const products = await Product.paginate({},{limit:10});
         res.status(200).json(products);
       }
      

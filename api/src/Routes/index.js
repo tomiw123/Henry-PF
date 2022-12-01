@@ -26,7 +26,7 @@ const Payments = require ('./Payments')
 
 const router = Router(); 
 const Products = require('./Products')
-const Payments = require ('./Payments')
+
 
 router.use('/products', Products)
 
