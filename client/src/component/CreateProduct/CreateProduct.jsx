@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { addProducts } from '../../redux/actions/actions'
 import { useDispatch } from 'react-redux';
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-import style from '../../component/CreateProduct/Create.module.css'
+
 import { Navigate } from 'react-router-dom';
-=======
+
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { uploadFile } from '../../firebase/firebase.config'
->>>>>>> 5a5c6ce17354263acbb963a6e223e17e6b5297c5
+
 
 const CreateProduct = () => {
 
