@@ -9,7 +9,7 @@ const getAll = async (req, res) => {
 
   try {
     if (search) {
-      const products = await Product.paginate({
+      const products = await Product.paginate({ 
         name: { $regex: ".*" + search + ".*", $options: "i" },
       });
       res.status(200).json(products);
@@ -17,19 +17,36 @@ const getAll = async (req, res) => {
       //paginate
       const products = await Product.paginate({}, { limit, page });
       res.status(200).json(products);
-    }
+    } 
   } catch (err) {
     console.log(err);
   }
 };
+
+const getId = async (req, res) => {
+  const { id } = req.params;
+  console.log(id)
+  try{
+    const products = await Product.findById(id)
+    console.log(products)
+    res.status(200).json(products);
+  }catch(err){
+    console.log(err);
+  }
+}
 
 //filtros
 const filterProduct = async (req, res) => {
   //(cat)categorias, (price)precio, (rec)receta, (punt)puntuacion
   const { filter } = req.query;
   try {
+<<<<<<< HEAD
+    if (filter) {
+      const products = await Product.paginate({ name: {} }); 
+=======
     if (filter == "cat") {
       const products = await Product.paginate({ category: filter });
+>>>>>>> 6f8d57bcc117902eede1dbe8fdb421a085c9528b
       res.status(200).json(products);
     }
      if (filter=="price") {
@@ -124,6 +141,7 @@ const deleteProduct = async (req, res) => {
     
   module.exports={ 
     getAll,
+    getId,
     filterProduct,
     createProduct,
     updateCategory,

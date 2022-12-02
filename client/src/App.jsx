@@ -18,8 +18,6 @@ import HomeAdmin from './component/Admin/HomeAdmin'
 import TotalAdmin from "./component/SetAdmin/TotalAdmin";
 import AdminProducts from './component/Admin/AdminProducts/AdminProducts'
 
-// import Contacto from "./component/Contacto/Contacto";
-import Prueba from './component/Prueba.js/prueba.jsx'
 
 function App() {
   return (
@@ -38,8 +36,8 @@ function App() {
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
         <Route path="/recipeDetail/:id" element={<RecipeDetail/>} />
-        <Route path="/contacto" element={ <Contacto/> }/>
-        <Route path="/prueba" element={ <Prueba/> }/>
+        {/* <Route path="/contacto" element={ <Contacto/> }/> */}
+
         </Routes>
       <Footer/>
       </div>

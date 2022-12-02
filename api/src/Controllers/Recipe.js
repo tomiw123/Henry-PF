@@ -8,6 +8,19 @@ const getRecipes = async(req,res) => {
         res.status(404).send("No hay recetas")
     }
 }
+
+const getIdRecipes = async (req, res) => {
+    const { _id } = req.params;
+    
+    try{
+      const recipes = await Recipe.findById(_id)
+      console.log(recipes)
+      res.status(200).json(recipes);
+    }catch(err){
+      console.log(err);
+    }
+  }
+
 const deleteRecipe = async(req,res) => {
     const {_id} = req.params;
     try {
@@ -42,6 +55,7 @@ const createRecipe = async (req, res) => {
 
 module.exports={
     getRecipes,
+    getIdRecipes,
     deleteRecipe,
     createRecipe
 }
