@@ -40,13 +40,8 @@ const filterProduct = async (req, res) => {
   //(cat)categorias, (price)precio, (rec)receta, (punt)puntuacion
   const { filter } = req.query;
   try {
-<<<<<<< HEAD
-    if (filter) {
-      const products = await Product.paginate({ name: {} }); 
-=======
     if (filter == "cat") {
       const products = await Product.paginate({ category: filter });
->>>>>>> 6f8d57bcc117902eede1dbe8fdb421a085c9528b
       res.status(200).json(products);
     }
      if (filter=="price") {
