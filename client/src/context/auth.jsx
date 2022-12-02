@@ -35,7 +35,7 @@ export function AuthProvider({ children }) {
 
   const [userName, serUserName] = useState("");
 
-  const [role, setRole] = useState("")
+  
 
   useEffect(() => {
     const userSession = onAuthStateChanged(auth, (currentUser) => {
@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
     return () => userSession();
   }, []);
 
-  const register = async (username, email, password, rol="user") => {
+  const register = async (username, email, password, rol = "user") => {
     try {
       const response = await createUserWithEmailAndPassword(
         auth,
@@ -62,7 +62,7 @@ export function AuthProvider({ children }) {
       setDoc(docRef, {
         username: username,
         email: email,
-        rol: rol
+        rol: rol,
       });
       setError("");
       navigate("/");
@@ -70,17 +70,47 @@ export function AuthProvider({ children }) {
       setError(error.message);
     }
   };
-  async function getRole (uid) {
+  //admin
+  // async function setRole (uid, admin) {
+  //   const docRef = doc(db, `users/${uid}`);
+  //   const data = await getDoc(
+  //     docRef,
+  //     {
+  //       rol: admin,
+  //     },
+  //     { merge: true }
+  //   );
+  //   console.log(data);
+  // }
+  async function setAsing(uid, admin) {
+    try {
+      
+      const docRef = doc(db, `users/${uid}`);
+      await setDoc(
+        docRef,
+        {
+          rol: admin,
+        },
+        { merge: true }
+        
+      );
+      navigate("/HAdmin");
+    } catch (error) {
+      console.log(error, "este Id no pertenece a un usuario")
+    }
+    }
+  
+  async function getRole(uid) {
     const docRef = doc(db, `users/${uid}`);
-    const data = await getDoc (docRef)
-    const dataRole = data.data()
-    localStorage.setItem("role", dataRole.rol || "user")
+    const data = await getDoc(docRef);
+    const dataRole = data.data();
+    localStorage.setItem("role", dataRole.rol || "user");
   }
 
   const login = async (email, password) => {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
-      getRole(response.user.uid)
+      getRole(response.user.uid);
       setError("");
       navigate("/");
     } catch (error) {
@@ -101,7 +131,7 @@ export function AuthProvider({ children }) {
   };
 
   const logout = async () => {
-    localStorage.removeItem("role")
+    localStorage.removeItem("role");
     const response = await signOut(auth);
     console.log(response);
     setUser("");
@@ -129,6 +159,7 @@ export function AuthProvider({ children }) {
         googleAuth,
         logout,
         resetPassword,
+        setAsing,
       }}
     >
       {children}

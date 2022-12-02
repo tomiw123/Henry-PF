@@ -10,4 +10,5 @@ router.get('/', getAllCategories)
 router.post('/', createCategory);
 router.delete('/:_id', deleteCategory);
 
+
 module.exports = router;

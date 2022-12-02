@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 import { ADD_PRODUCTS, GET_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, ADD_RECIPES, CHANGE_FROM_CART } from "../actions/actionsTypes";
+=======
+import { ADD_PRODUCTS, GET_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, ADD_RECIPES } from "../actions/actionsTypes";
+
+import { CHANGE_FROM_CART } from "../actions/actionsTypes";
+>>>>>>> 6f8d57bcc117902eede1dbe8fdb421a085c9528b
 
 const initialState={
 products: [],
@@ -31,11 +37,15 @@ export function rootReducer(state=initialState, action){
         ...state,
         cart: [...state.cart.filter(p => p.id !== action.payload)]
       }
+<<<<<<< HEAD
       case CHANGE_FROM_CART: 
         return {
           ...state,
           cart: [...state.cart.filter(p=> p.id !== action.payload.id), action.payload]
         }
+=======
+
+>>>>>>> 6f8d57bcc117902eede1dbe8fdb421a085c9528b
 
 
       case GET_RECIPES:
@@ -50,6 +60,17 @@ export function rootReducer(state=initialState, action){
       }
     
 
+<<<<<<< HEAD
+=======
+
+
+
+    case CHANGE_FROM_CART: 
+      return {
+        ...state,
+        cart: [...state.cart.filter(p=> p.id !== action.payload.id), action.payload]
+      }
+>>>>>>> 6f8d57bcc117902eede1dbe8fdb421a085c9528b
     default:
       return state
   }

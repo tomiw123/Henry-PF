@@ -15,6 +15,8 @@ import Footer from "./component/Footer/Footer";
 //import Contacto from "./component/Contacto/Contacto";
 import CreateRecipe from './component/CreateRecipe/CreateRecipe';
 import HomeAdmin from './component/Admin/HomeAdmin'
+import TotalAdmin from "./component/SetAdmin/TotalAdmin";
+import AdminProducts from './component/Admin/AdminProducts/AdminProducts'
 
 // import Contacto from "./component/Contacto/Contacto";
 import Prueba from './component/Prueba.js/prueba.jsx'
