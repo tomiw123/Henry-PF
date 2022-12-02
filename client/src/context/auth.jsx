@@ -82,6 +82,7 @@ export function AuthProvider({ children }) {
   //   );
   //   console.log(data);
   // }
+  
   async function setAsing(uid, admin) {
     try {
       

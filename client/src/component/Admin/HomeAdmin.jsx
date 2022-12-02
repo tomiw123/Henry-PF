@@ -3,6 +3,7 @@ import CategoryHome from '../CategoryHome/CategoryHome'
 import style from './HomeAdmin.module.css'
 import { Link } from 'react-router-dom'
 import { Navigate } from 'react-router-dom';
+import img from "../../assets/imageAdmin.png"
 
 
 
@@ -49,7 +50,7 @@ const HomeAdmin = () => {
             <Link to="/getAdmin">
               <CategoryHome
                 title='CREAR ADMIN'
-                image={"https://firebasestorage.googleapis.com/v0/b/new-proyect-44e15.appspot.com/o/9dbeb4c8-719f-4de4-9d83-30fa41003d7d?alt=media&token=5b8a2ea2-afc3-47f4-80de-cbf26164340c"}
+                image={img}
                 desc='Crear un nuevo administrador'
               />
             </Link>
