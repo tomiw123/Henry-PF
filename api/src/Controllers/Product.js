@@ -5,11 +5,11 @@ const getAll = async (req, res) => {
 
   const { search } = req.query;
   const limit = req.query.limit || 10;
-  const page = req.query.limit || 1;
+  const page = req.query.page || 1;
 
   try {
     if (search) {
-      const products = await Product.paginate({
+      const products = await Product.paginate({ 
         name: { $regex: ".*" + search + ".*", $options: "i" },
       });
       res.status(200).json(products);
@@ -17,33 +17,46 @@ const getAll = async (req, res) => {
       //paginate
       const products = await Product.paginate({}, { limit, page });
       res.status(200).json(products);
-    }
+    } 
   } catch (err) {
     console.log(err);
   }
 };
 
+const getId = async (req, res) => {
+  const { id } = req.params;
+  console.log(id)
+  try{
+    const products = await Product.findById(id)
+    console.log(products)
+    res.status(200).json(products);
+  }catch(err){
+    console.log(err);
+  }
+}
+
 //filtros
 const filterProduct = async (req, res) => {
-  //(cat)categorias, (price)precio, (rec)receta, (punt)puntuacion
-  const { filter } = req.query;
+ 
+  const { filter, category, price, recipes } = req.query;
+
   try {
     if (filter == "cat") {
-      const products = await Product.paginate({ category: filter });
+      const products = await Product.paginate({ category });
       res.status(200).json(products);
     }
-     if (filter=="price") {
-      const products = await Product.paginate({ sort: { price: 1} });
-      res.status(200).json(products);
-     }
-    if (filter=="rec") {
-      const products = await Product.paginate({ sort: {rec: 'asc'  }});
+    if (filter == "price") {
+      const products = await Product.paginate({}, { sort: { price: 1 } });
       res.status(200).json(products);
     }
-    // if(filter=="punt"){
-    //   const products = await Product.paginate({ name: {} });
-    //   res.status(200).json(products);
-    // } 
+    if (filter == "rec") {
+      const products = await Product.paginate({ recipes });
+      res.status(200).json(products);
+    }
+    /*  if(filter=="punt"){
+      const products = await Product.paginate({ name: {} });
+      res.status(200).json(products);
+    } */
   } catch (err) {
     console.log(err);
   }
@@ -51,7 +64,7 @@ const filterProduct = async (req, res) => {
  
 
 const createProduct = async (req, res) => {
-  const { name, price, image, description } = req.body;
+  const { name, price, image, description, category } = req.body;
   console.log(name);
   try {
     const exist = await Product.findOne({ name });
@@ -61,6 +74,7 @@ const createProduct = async (req, res) => {
         price,
         image,
         description,
+        category,
       });
       res.status(200).send(`Product ${name} created`);
     } else {
@@ -70,14 +84,14 @@ const createProduct = async (req, res) => {
     console.log("no funco");
   }
 };
-const updateCategory = async (req, res) => {
+const updateRecipes = async (req, res) => {
   const { _id } = req.params;
-  const { category } = req.body;
+  const { recipe } = req.body;
   console.log(category);
   try {
     const product = await Product.findByIdAndUpdate(
       _id,
-      { $push: { category } },
+      { $push: { recipe } },
       { useFindAndModify: false }
     );
     res.status(200).send(product);
@@ -85,14 +99,14 @@ const updateCategory = async (req, res) => {
     console.log("no funco");
   }
 };
-const removeCategory = async (req, res) => {
+const removeRecipes = async (req, res) => {
   const { _id } = req.params;
-  const { catego } = req.body;
+  const { recipe } = req.body;
   try {
     const productUpdated = await Product.findByIdAndUpdate(
       _id,
       {
-        $set: { category: [] },
+        $set: { recipe: [] },
       },
       {
         useFindAndModify: false,
@@ -121,15 +135,14 @@ const deleteProduct = async (req, res) => {
     res.status(200).send(categoryProd);
   } catch (error) {
     res.status(404).send("No existe la categoria"); */
-    
-  module.exports={ 
-    getAll,
-    filterProduct,
-    createProduct,
-    updateCategory,
-    removeCategory,
-    deleteProduct,
-    //getProductsByCategory
 
-  }
-
+module.exports = {
+  getAll,
+  getId,
+  filterProduct,
+  createProduct,
+  updateRecipes,
+  removeRecipes,
+  deleteProduct,
+  //getProductsByCategory
+};
