@@ -1,4 +1,5 @@
 import CreateProduct from "./component/CreateProduct/CreateProduct";
+import EditProduct from "./component/EditProduct/EditProduct"
 import "./App.css";
 import Register from "./page/NavbarPege/Register";
 import { Route, Routes } from "react-router-dom";
@@ -34,6 +35,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="reset" element={<Reset />} />
         <Route path="/create" element={<CreateProduct/>} />
+        <Route path="/edit" element={<EditProduct/>} />
         <Route path="/createRecipe" element={<CreateRecipe/>} />
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />

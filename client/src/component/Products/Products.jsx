@@ -12,6 +12,7 @@ export default function Products(props) {
 const dispatch = useDispatch();
   const Product = useSelector(state => state.products.docs);
   useEffect(()=>{dispatch(geTAllProducts())},[dispatch])
+  console.log(Product)
 
  
   // return Product.length === 0 ? (

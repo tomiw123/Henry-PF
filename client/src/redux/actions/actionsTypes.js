@@ -13,6 +13,8 @@ export const CLEAN_PRODUCT = 'CLEAN_PRODUCT'
 export const GET_ID_RECIPES = "GET_ID_RECIPES" 
 export const CLEAN_RECIPE = "CLEAN_RECIPE" 
 
+export const DELETE_PRODUCT_ADMIN = "DELETE_PRODUCT_ADMIN"
+
 
 
 

@@ -1,4 +1,4 @@
-import { ADD_PRODUCTS, GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART } from "../actions/actionsTypes";
+import { ADD_PRODUCTS, GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, DELETE_PRODUCT_ADMIN } from "../actions/actionsTypes";
 
 
 const initialState={
@@ -77,6 +77,12 @@ export function rootReducer(state=initialState, action){
         ...state,
         recipe: []
       }
+
+      case DELETE_PRODUCT_ADMIN:
+        return {
+          ...state,
+          products: [...state.products.filter(p => p.id !== action.payload)]
+        }
 
     default:
       return state

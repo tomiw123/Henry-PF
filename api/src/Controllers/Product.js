@@ -64,7 +64,7 @@ const filterProduct = async (req, res) => {
  
 
 const createProduct = async (req, res) => {
-  const { name, price, image, description, category } = req.body;
+  const { name, price, image, description } = req.body;
   console.log(name);
   try {
     const exist = await Product.findOne({ name });
@@ -74,14 +74,13 @@ const createProduct = async (req, res) => {
         price,
         image,
         description,
-        category,
       });
       res.status(200).send(`Product ${name} created`);
     } else {
       res.status(404).send("El producto ya existe");
     }
   } catch (err) {
-    console.log("no funco");
+    console.log("no funco", err);
   }
 };
 const updateRecipes = async (req, res) => {
@@ -96,7 +95,7 @@ const updateRecipes = async (req, res) => {
     );
     res.status(200).send(product);
   } catch (err) {
-    console.log("no funco");
+    console.log("no funco", err);
   }
 };
 const removeRecipes = async (req, res) => {

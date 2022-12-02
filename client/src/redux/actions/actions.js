@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT} from "./actionsTypes";
+import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, DELETE_PRODUCT_ADMIN} from "./actionsTypes";
 
 
 
@@ -54,5 +54,16 @@ export const changeFromCart = (payload)=> {
     type:  CHANGE_FROM_CART,
     payload
   }
+}
+
+export const adminDeleteProduct = (payload) => {
+  return async (dispatch)=> {
+    const response = await axios.delete(`http://localhost:3001/products/${payload}`)
+    dispatch({
+      type: DELETE_PRODUCT_ADMIN,
+      payload: response.data
+    })
+  }
+
 }
 
