@@ -86,6 +86,7 @@ export function AuthProvider({ children }) {
     try {
       
       const docRef = doc(db, `users/${uid}`);
+      console.log(uid, admin)
       await setDoc(
         docRef,
         {

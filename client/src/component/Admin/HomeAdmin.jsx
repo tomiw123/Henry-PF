@@ -46,7 +46,7 @@ const HomeAdmin = () => {
                 desc='Crear una receta'
               />
             </Link>
-            <Link to="/setAdmin">
+            <Link to="/getAdmin">
               <CategoryHome
                 title='CREAR ADMIN'
                 image={"https://firebasestorage.googleapis.com/v0/b/new-proyect-44e15.appspot.com/o/9dbeb4c8-719f-4de4-9d83-30fa41003d7d?alt=media&token=5b8a2ea2-afc3-47f4-80de-cbf26164340c"}
