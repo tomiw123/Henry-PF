@@ -12,7 +12,7 @@ import Recipes from './component/Recipes/Recipes'
 import Products from './component/Products/Products';
 import RecipeDetail from './component/RecipeDetail/RecipeDetail';
 import Footer from "./component/Footer/Footer";
-//import Contacto from "./component/Contacto/Contacto";
+import Contacto from "./component/Contacto/Contacto";
 import CreateRecipe from './component/CreateRecipe/CreateRecipe';
 import HomeAdmin from './component/Admin/HomeAdmin'
 
@@ -36,7 +36,7 @@ function App() {
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
         <Route path="/recipeDetail/:id" element={<RecipeDetail/>} />
-        {/* <Route path="/contacto" element={ <Contacto/> }/> */}
+        <Route path="/contacto" element={ <Contacto/> }/>
         <Route path="/prueba" element={ <Prueba/> }/>
         </Routes>
       <Footer/>

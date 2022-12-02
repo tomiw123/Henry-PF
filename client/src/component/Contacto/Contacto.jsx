@@ -6,8 +6,8 @@ const { VITE_SERVICE_ID, VITE_TEMPLATE_ID, VITE_PUBLIC_KEY } = import.meta.env;
 
 const Validate = (input)=>{
 let errors = {}
-  if(!input.user_name){
-    errors.user_name = "ingresa el nombre putito"
+if (/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>\d/?~]/.test(input.user_name)){
+    errors.user_name = "El nombre no debe tener caracteres especiales"
   }
   if(!input.user_email){
     errors.user_email = "ingresa el email putito"
@@ -18,7 +18,7 @@ let errors = {}
   return errors
 }
 
-const Contacto = () => {
+ const Contacto = () => {
   const [error, setError] = useState({})
   const [input, setInput] = useState({
     user_name: "",
@@ -83,3 +83,5 @@ const Contacto = () => {
     </div>
   );
 };
+
+export default Contacto
