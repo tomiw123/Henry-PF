@@ -21,14 +21,14 @@ const CardDetailProduct = () => {
 
   // console.log(productFiltered.name)
 
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
 
   function handleMax() {
     setCounter(counter + 1)
   }
 
   function handleMin() {
-    if(counter > 0){
+    if(counter > 1){
       setCounter(counter - 1)
     }
   }
