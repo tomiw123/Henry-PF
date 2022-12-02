@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT} from "./actionsTypes";
+import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD} from "./actionsTypes";
 
 
 
@@ -56,3 +56,9 @@ export const changeFromCart = (payload)=> {
   }
 }
 
+export const addCount = (payload) => {
+  return {
+    type: ADD_COUNT_PROD,
+    payload
+  }
+}

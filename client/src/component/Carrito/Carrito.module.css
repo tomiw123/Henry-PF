@@ -112,6 +112,15 @@
     border: 2px solid black;
     border-radius: 5px;
 }
+.counter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.contador {
+    width: fit-content;
+    margin: 1vw;
+}
 @media screen and (max-width: 768px) {
     .lista {
         font-size: 2.5vh;
