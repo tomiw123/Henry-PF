@@ -4,7 +4,7 @@ import { useState } from "react";
 import * as BsIcons from "react-icons/bs";
 import * as GrIcons from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromCart, addCount } from "../../redux/actions/actions";
+import { deleteFromCart, addCount, payment } from "../../redux/actions/actions";
 import s from './Carrito.module.css';
 
 const Carrito = () => {
@@ -62,6 +62,15 @@ const Carrito = () => {
             dispatch(addCount({cantidad, lugar}))
         },30)
     }
+
+    const finalizarCompra = (newCart)=>{
+        let carritoFinal = [];
+        for (let i = 0; i < newCart.length; i++) {
+            let obj = {name: newCart[i].name, price: newCart[i].price, id: newCart[i].id, cant: newCart[i].quantity}
+            carritoFinal.push(obj)
+        }
+        dispatch(payment(carritoFinal)).then((e)=> alert(e))
+    }
     return (
         <div className={s.cart}>
             <BsIcons.BsCartFill onClick={openCart}/>
@@ -98,7 +107,7 @@ const Carrito = () => {
                 </div>
                 
                 <div className={s.finalizar}>
-                    <button className={s.button}>Finalizar compra</button>
+                    <button className={s.button} onClick={()=> {finalizarCompra(newCart)}}>Finalizar compra</button>
                 </div>
             </div>
         </div>
