@@ -1,6 +1,6 @@
 import React from 'react'
 import CategoryHome from '../CategoryHome/CategoryHome'
-import style from '../Home/Home.module.css'
+import style from './HomeAdmin.module.css'
 import { Link } from 'react-router-dom'
 
 
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 const HomeAdmin = () => {
 
   return (
-    <div>
+    <div className={style.principal}>
       <div>
         
           <div className={style.cardcontainer}>

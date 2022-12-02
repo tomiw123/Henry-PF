@@ -3,7 +3,7 @@ import { GET_RECIPES, ADD_RECIPES} from "./actionsTypes";
 
 
 
-export const geTAllProducts = ()=>{
+export const getAllRecipes = ()=>{
   return async (dispatch)=>{
     const recipes = await axios.get(`http://localhost:3001/recipes`)
     dispatch({
