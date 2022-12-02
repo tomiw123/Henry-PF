@@ -12,7 +12,7 @@ const HomeAdmin = () => {
       <div>
         
           <div className={style.cardcontainer}>
-            <Link to="/products">
+            <Link to="/HAdmin/products">
               <CategoryHome
                 title='PRODUCTOS'
                 image={"https://firebasestorage.googleapis.com/v0/b/henry-pf.appspot.com/o/tablas.jpg?alt=media&token=132524b4-d106-4c37-a888-d771bdc26f75"}
