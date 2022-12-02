@@ -1,11 +1,25 @@
 import React from "react";
 import style from "./Products.module.css";
 import Card from "./CardProducts/Card";
-import Product from "./Products.json";
+//import Product from "./Products.json";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from "react";
+import { geTAllProducts } from "../../redux/actions/actions";
+import Loading from "../Loading/Loading";
 
 export default function Products(props) {
-  return (
+const dispatch = useDispatch();
+  const Product = useSelector(state => state.products.docs);
+  useEffect(()=>{dispatch(geTAllProducts())},[dispatch])
+
+ 
+  // return Product.length === 0 ? (
+    // <div>
+      {/* <Loading /> */}
+    {/* </div> */}
+  // ) : 
+  return(
     <>
       {/* <div className={style.salto}></div> */}
       <div className={style.card}>
@@ -13,16 +27,19 @@ export default function Products(props) {
       </div>
       <div>
         <div className={style.page}>
-          {Product.map((e) => {
+          {Product?.map((e) => {
             return (
-              <Link to={`/productDetail/${e.id}`} key={e.id}>
+            <div key={e._id}>
+              <Link to={`/productDetail/${e._id}`} >
                 <Card
-                  key={e.name}
+                  key={e._id}
                   name={e.name}
                   img={e?.image}
                   precio={e.price}
                 />
               </Link>
+            </div>
+              
             );
           })}
         </div>

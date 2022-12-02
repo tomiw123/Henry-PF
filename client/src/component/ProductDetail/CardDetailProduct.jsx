@@ -3,23 +3,27 @@ import Style from './CardDetailProduct.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { AiFillStar } from 'react-icons/ai'
 import { IconContext } from "react-icons";
-import productJson from '../Products/Products.json'
 import { useParams } from 'react-router-dom';
-import { addToCart, changeFromCart } from '../../redux/actions/actions';
+import { addToCart, changeFromCart, getIdProducts, cleanProduct } from '../../redux/actions/actions';
 
 const CardDetailProduct = () => {
 
   const dispatch = useDispatch();
   const paramsId = useParams()
-  let productFiltered;
-  let productsId = productJson.map((p) => {
-    if (p.id === paramsId.id) {
-      productFiltered = p;
-      return productFiltered;
-    }
-  })
+  const Product = useSelector(state => state.product);
 
-  // console.log(productFiltered.name)
+  useEffect(()=>{if(Product.length === 0){
+                  dispatch(getIdProducts(paramsId.id))
+                  }
+                  else{
+                   if(Product.id !== paramsId.id){
+                    dispatch(cleanProduct())
+                    dispatch(getIdProducts(paramsId.id))
+                   }
+                  } },[dispatch,paramsId.id])
+
+
+  console.log(Product)
 
   const [counter, setCounter] = useState(1);
 
@@ -58,11 +62,11 @@ const CardDetailProduct = () => {
       <div className={Style.Container2}>
         <div className={Style.ImgCont}>
           <div className={Style.Image}>
-            <img className={Style.img} src={productFiltered.image}  alt="" />
+            <img className={Style.img} src={Product.image}  alt="" />
           </div>
           <div className={Style.Container}>{/********** */}
             <div className={Style.Title}>
-              <h1>{productFiltered.name}</h1>
+              <h1>{Product.name}</h1>
             </div>
             <div className={Style.Starts}>
               <IconContext.Provider value={{ color: "yellow" }}>
@@ -75,7 +79,7 @@ const CardDetailProduct = () => {
                 </div>
               </IconContext.Provider>
             </div>
-            <div className={Style.Price}>${productFiltered.price}</div>
+            <div className={Style.Price}>${Product.price}</div>
             <div className={Style.ContButtom}>
               <div className={Style.Cont}>
                 <button className={Style.btnmaxmin} onClick={handleMin}>-</button>
@@ -83,13 +87,13 @@ const CardDetailProduct = () => {
                 <button className={Style.btnmaxmin} onClick={handleMax}>+</button>
               </div>
               <div className={Style.Compra}>
-                <button className={counter===0 ? Style.btnDis : Style.btn} onClick={()=> {addProd(productFiltered.id ,productFiltered.name, productFiltered.image, productFiltered.price, counter)}}>Comprar</button>
+                <button className={counter===0 ? Style.btnDis : Style.btn} onClick={()=> {addProd(Product.id ,Product.name, Product.image, Product.price, counter)}}>Comprar</button>
               </div>
             </div>
           </div>
         </div>
         <div className={Style.Description}>
-          <p className='description'>{productFiltered.description}</p>
+          <p className='description'>{Product.description}</p>
         </div>
         {/* dejar un apartado para poner abajo las recetas que se pueden hacer con el producto*/}
       </div>

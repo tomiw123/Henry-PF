@@ -17,7 +17,7 @@ function Form({ nameForm }) {
     e.preventDefault();
     if (nameForm === "Iniciar Sesion") {
       try {
-        auth.register(email, password);
+        auth.login(email, password);
       } catch (error) {
         console.error(error);
       }
@@ -48,16 +48,16 @@ function Form({ nameForm }) {
       <div className="w-full max-w-md space-y-8">
         {error && (
           <div className="text-sm text-center">
-            <a
-              href="#"
+            <div
               className="font-medium  text-red-600 hover:text-indigo-500 "
             >
+            
               {error && nameForm === "Registrarse" ? (
                 <a>Este email ya esta en uso</a>
               ) : (
                 <a>Error de credencial</a>
               )}
-            </a>
+            </div>
           </div>
         )}
 
@@ -123,7 +123,7 @@ function Form({ nameForm }) {
                 autoComplete="current-password"
                 required
                 className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                placeholder="Coontraseña"
+                placeholder="Contraseña"
               />
             </div>
             {nameForm === "Registrarse" ? (
