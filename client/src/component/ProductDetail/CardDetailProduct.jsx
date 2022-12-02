@@ -11,6 +11,7 @@ const CardDetailProduct = () => {
   const dispatch = useDispatch();
   const paramsId = useParams()
   const Product = useSelector(state => state.product);
+  // console.log(Product)
 
   useEffect(()=>{if(Product.length === 0){
                   dispatch(getIdProducts(paramsId.id))
@@ -23,16 +24,16 @@ const CardDetailProduct = () => {
                   } },[dispatch,paramsId.id])
 
 
-  console.log(Product)
+  // console.log(Product)
 
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
 
   function handleMax() {
     setCounter(counter + 1)
   }
 
   function handleMin() {
-    if(counter > 0){
+    if(counter > 1){
       setCounter(counter - 1)
     }
   }
@@ -47,6 +48,7 @@ const CardDetailProduct = () => {
       setTimeout(()=> {
         dispatch(addToCart(obj))
       },50)
+      // console.log(obj)
     } else {
       yaEsta={
         ...yaEsta,
@@ -87,7 +89,7 @@ const CardDetailProduct = () => {
                 <button className={Style.btnmaxmin} onClick={handleMax}>+</button>
               </div>
               <div className={Style.Compra}>
-                <button className={counter===0 ? Style.btnDis : Style.btn} onClick={()=> {addProd(Product.id ,Product.name, Product.image, Product.price, counter)}}>Comprar</button>
+                <button className={counter===0 ? Style.btnDis : Style.btn} onClick={()=> {addProd(Product._id ,Product.name, Product.image, Product.price, counter)}}>Agregar al Carrito</button>
               </div>
             </div>
           </div>

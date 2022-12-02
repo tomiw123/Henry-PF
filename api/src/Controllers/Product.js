@@ -4,7 +4,7 @@ const getAll = async (req, res) => {
   //search by query
 
   const { search } = req.query;
-  const limit = req.query.limit || 10;
+  const limit = req.query.limit || 8;
   const page = req.query.page || 1;
 
   try {
@@ -83,6 +83,21 @@ const createProduct = async (req, res) => {
     console.log("no funco", err);
   }
 };
+const updateProduct = async (req, res) => {
+  const { _id } = req.params;
+  const { name, price, image, description } = req.body;
+  
+  try {
+    const product = await Product.updateOne(
+      {_id,},
+      { $set: { name, price, image, description,} }
+    );
+    res.status(200).send(product);
+  } catch (err) {
+    console.log("no funco");
+  }
+};
+
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;
   const { recipe } = req.body;
@@ -130,7 +145,7 @@ const deleteProduct = async (req, res) => {
 /* Const getProductsByCategory = async (req, res) => {
   const { category } = req.params;
   try {
-    const categoryProd = Product.find({ category: { $ne: [category] } });
+    const categoryProd = Product.find({ category: { $set: [category] } });
     res.status(200).send(categoryProd);
   } catch (error) {
     res.status(404).send("No existe la categoria"); */
@@ -140,6 +155,7 @@ module.exports = {
   getId,
   filterProduct,
   createProduct,
+  updateProduct,
   updateRecipes,
   removeRecipes,
   deleteProduct,

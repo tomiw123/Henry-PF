@@ -1,11 +1,12 @@
 import axios from 'axios'
-import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, DELETE_PRODUCT_ADMIN} from "./actionsTypes";
+import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, DELETE_PRODUCT_ADMIN, ADD_COUNT_PROD} from "./actionsTypes";
+
 
 
 
 export const geTAllProducts = ()=>{
   return async (dispatch)=>{
-    const products = await axios.get(`http://localhost:3001/products`)
+    const products = await axios.get(`${process.env.URL}/products`)
     dispatch({
       type: GET_PRODUCTS,
       payload: products.data
@@ -16,7 +17,7 @@ export const geTAllProducts = ()=>{
 
 export const getIdProducts = (payload)=>{
   return async (dispatch)=>{
-    const products = await axios.get(`http://localhost:3001/products/id/${payload}`)
+    const products = await axios.get(`${process.env.URL}/products/id/${payload}`)
     dispatch({
       type: GET_ID_PRODUCTS,
       payload: products.data
@@ -27,7 +28,7 @@ export const cleanProduct = () => { return {type: CLEAN_PRODUCT}}
 
 export const addProducts = (payload)=>{
   return async (dispatch)=>{
-    const products = await axios.post(`http://localhost:3001/products`, payload)
+    const products = await axios.post(`${process.env.URL}/products`, payload)
     dispatch({
       type: ADD_PRODUCTS,
       payload: products.data
@@ -67,3 +68,19 @@ export const adminDeleteProduct = (payload) => {
 
 }
 
+export const addCount = (payload) => {
+  return {
+    type: ADD_COUNT_PROD,
+    payload
+  }
+}
+
+export const payment = (payload) => {
+  return async function() {
+    try {
+      const pago = await axios.post('${process.env.URL}/payments', payload)
+      return pago.data
+    } catch (error) {
+      return error.response.data
+    }
+  }}
