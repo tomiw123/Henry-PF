@@ -69,7 +69,7 @@ const Carrito = () => {
             let obj = {name: newCart[i].name, price: newCart[i].price, id: newCart[i].id, cant: newCart[i].quantity}
             carritoFinal.push(obj)
         }
-        dispatch(payment(carritoFinal)).then((e)=> alert(e))
+         dispatch(payment(carritoFinal)).then((e)=> window.location.replace(e))
     }
     return (
         <div className={s.cart}>
