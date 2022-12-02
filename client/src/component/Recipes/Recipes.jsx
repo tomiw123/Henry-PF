@@ -3,26 +3,33 @@ import RecipesJson from "./Recipes.json"
 import CardRecipes from "./CardRecipes/CardRecipes"
 import style from './Recipe.module.css'
 import {Link} from 'react-router-dom'
-
-
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import {getAllRecipes} from '../../redux/actions/recipesActions'
+import { useEffect } from "react";
 
 const Recipes = () => {
-  
+    const dispatch = useDispatch();
+    useEffect(()=>{dispatch(getAllRecipes())},[dispatch])
+    const Recipes = useSelector(state => state.recipes);
+    
+    console.log(Recipes)
+
     return (
             
         <div className={style.cartita} >
        {
-        RecipesJson.map((e)=>{
+        Recipes.map((e)=>{
             return(
-                <Link to={`/recipeDetail/${e.id}`}>
-                <CardRecipes 
-                key={e.id}
-                name= {e.name}
-                img= {e.image}
-                />
+                <div key={e.id}>
+                <Link to={`/recipeDetail/${e._id}`}>
+                    <CardRecipes 
+                    key={e._id}
+                    name= {e.name}
+                    img= {e.image}
+                    />
                 </Link> 
+                </div>
+                
             )
         }
         )

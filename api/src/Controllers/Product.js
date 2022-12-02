@@ -9,7 +9,7 @@ const getAll = async (req, res) => {
 
   try {
     if (search) {
-      const products = await Product.paginate({
+      const products = await Product.paginate({ 
         name: { $regex: ".*" + search + ".*", $options: "i" },
       });
       res.status(200).json(products);
@@ -17,18 +17,30 @@ const getAll = async (req, res) => {
       //paginate
       const products = await Product.paginate({}, { limit, page });
       res.status(200).json(products);
-    }
+    } 
   } catch (err) {
     console.log(err);
   }
 };
+
+const getId = async (req, res) => {
+  const { id } = req.params;
+  console.log(id)
+  try{
+    const products = await Product.findById(id)
+    console.log(products)
+    res.status(200).json(products);
+  }catch(err){
+    console.log(err);
+  }
+}
 
 //filtros
 const filterProduct = async (req, res) => {
   const { filter } = req.query;
   try {
     if (filter) {
-      const products = await Product.paginate({ name: {} });
+      const products = await Product.paginate({ name: {} }); 
       res.status(200).json(products);
     }
   } catch (err) {
@@ -110,6 +122,7 @@ const deleteProduct = async (req, res) => {
     
   module.exports={ 
     getAll,
+    getId,
     filterProduct,
     createProduct,
     updateCategory,

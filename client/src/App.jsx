@@ -16,8 +16,6 @@ import Footer from "./component/Footer/Footer";
 import CreateRecipe from './component/CreateRecipe/CreateRecipe';
 import HomeAdmin from './component/Admin/HomeAdmin'
 
-// import Contacto from "./component/Contacto/Contacto";
-import Prueba from './component/Prueba.js/prueba.jsx'
 
 function App() {
   return (
@@ -37,7 +35,6 @@ function App() {
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
         <Route path="/recipeDetail/:id" element={<RecipeDetail/>} />
         {/* <Route path="/contacto" element={ <Contacto/> }/> */}
-        <Route path="/prueba" element={ <Prueba/> }/>
         </Routes>
       <Footer/>
       </div>

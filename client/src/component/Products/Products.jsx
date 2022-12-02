@@ -9,10 +9,10 @@ import { geTAllProducts } from "../../redux/actions/actions";
 
 export default function Products(props) {
   const dispatch = useDispatch();
-  const Product = useSelector(state => state.products);
+  const Product = useSelector(state => state.products.docs);
   useEffect(()=>{dispatch(geTAllProducts())},[dispatch])
 
-  //console.log(Products)
+  //console.log(Product)
   return (
     <>
       {/* <div className={style.salto}></div> */}
@@ -21,16 +21,19 @@ export default function Products(props) {
       </div>
       <div>
         <div className={style.page}>
-          {Product.map((e) => {
+          {Product?.map((e) => {
             return (
-              <Link to={`/productDetail/${e.id}`} key={e.id}>
+            <div key={e._id}>
+              <Link to={`/productDetail/${e._id}`} >
                 <Card
-                  key={e.name}
+                  key={e._id}
                   name={e.name}
                   img={e?.image}
                   precio={e.price}
                 />
               </Link>
+            </div>
+              
             );
           })}
         </div>

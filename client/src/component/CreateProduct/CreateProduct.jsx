@@ -19,6 +19,7 @@ const CreateProduct = () => {
             console.log(values)
             dispatch(addProducts(values));
             alert('Producto creado existosamente')
+            window.location.reload();
         } catch (error) {
             console.log(error)
             alert('Error interno. Intente mas tarde')
