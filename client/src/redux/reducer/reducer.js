@@ -1,4 +1,3 @@
-
 import { ADD_PRODUCTS, GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART } from "../actions/actionsTypes";
 
 
@@ -71,18 +70,10 @@ export function rootReducer(state=initialState, action){
        recipes: [...state.recipes, action.payload]
       }
 
-    
-
-
-
-
-
-    case CHANGE_FROM_CART: 
-      return {
 
     case CLEAN_RECIPE:
       return{
-    desarrollo
+    
         ...state,
         recipe: []
       }

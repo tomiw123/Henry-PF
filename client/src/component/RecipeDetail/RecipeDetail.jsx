@@ -1,7 +1,5 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import style from './RecipeDetail.module.css'
-
-import RecipesJson from '../Recipes/Recipes.json'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIdRecipes, cleanRecipe } from '../../redux/actions/recipesActions.js' ;

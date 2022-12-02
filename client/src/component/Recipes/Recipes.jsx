@@ -13,16 +13,20 @@ const Recipes = () => {
     useEffect(()=>{dispatch(getAllRecipes())},[dispatch])
     const Recipes = useSelector(state => state.recipes);
 
-  return Recipes.length === 0 ? (
-    <Loading />
-  ) : (
+  // return Recipes.length === 0 ? (
+    // <Loading />
+  // ) : 
+  return (
     <div className={style.cartita}>
       {Recipes.map((e) => {
         return (
-          <Link to={`/recipeDetail/${e.id}`}>
+          <div key={e._id}>
+            <Link to={`/recipeDetail/${e._id}`}>
             <CardRecipes key={e.id} name={e.name} img={e.image} />
-          </Link>
-        );
+            </Link>
+          </div>
+          
+        )
       })}
     </div>
   );

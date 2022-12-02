@@ -8,15 +8,7 @@ export const CHANGE_FROM_CART = 'CHANGE_FROM_CART'
 export const GET_RECIPES = "GET_RECIPES"
 export const ADD_RECIPES = "ADD_RECIPES" 
 
-
-
-
-
-
-
 export const CLEAN_PRODUCT = 'CLEAN_PRODUCT'
-
-
  
 export const GET_ID_RECIPES = "GET_ID_RECIPES" 
 export const CLEAN_RECIPE = "CLEAN_RECIPE" 

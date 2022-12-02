@@ -14,11 +14,12 @@ const dispatch = useDispatch();
   useEffect(()=>{dispatch(geTAllProducts())},[dispatch])
 
  
-  return Product.length === 0 ? (
-    <div>
-      <Loading />
-    </div>
-  ) : (
+  // return Product.length === 0 ? (
+    // <div>
+      {/* <Loading /> */}
+    {/* </div> */}
+  // ) : 
+  return(
     <>
       {/* <div className={style.salto}></div> */}
       <div className={style.card}>

@@ -18,7 +18,7 @@ import HomeAdmin from './component/Admin/HomeAdmin'
 import TotalAdmin from "./component/SetAdmin/TotalAdmin";
 import AdminProducts from './component/Admin/AdminProducts/AdminProducts'
 
-
+//el mati confirma que esta todo bien
 function App() {
   return (
     <div className="h-screen">
@@ -27,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/HAdmin" element={<HomeAdmin/>} />
+        <Route path="/HAdmin/AdminProducts" element={<AdminProducts/>} />
         <Route path="/getAdmin" element={<TotalAdmin/>} />
         <Route path="/products" element={<Products/>} />
         <Route path="/register" element={<Register/>} />
