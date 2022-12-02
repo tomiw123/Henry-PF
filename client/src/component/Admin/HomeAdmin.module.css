@@ -1,5 +1,5 @@
 .container {
-    height: 100vh;
+    height: 100%;
     background-color: #292626;
     display: flex;
     flex-direction: column;
@@ -7,19 +7,29 @@
     align-items: center;
  }
 
+.principal{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   width: 100%;
+   background-color: #292626;
+}
+
+
  .cardcontainer {
     display: flex;
     margin-top: 20px;
  }
 
  .slogan {
-    color: white;
+    color: #292626;
     font-size: 35px;
     font-weight: bold;
  }
 
  .description {
-    color: white;
+    color: #292626;
     font-size: 18px;
     font-weight: bold;
     margin-top: 20px;

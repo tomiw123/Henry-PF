@@ -3,6 +3,7 @@ const { Router } = require("express");
 const router = Router();
 const {
   getAll,
+  getId,
   filterProduct,//
   createProduct,
   updateCategory,
@@ -12,6 +13,7 @@ const {
 } = require('../Controllers/Product.js');
 
 router.get('/', getAll);
+router.get('/id/:id', getId);
 router.get('/filterBy', filterProduct);
 router.post('/', createProduct);
 router.put('/:_id', updateCategory);
