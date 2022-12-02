@@ -37,16 +37,35 @@ const getId = async (req, res) => {
 
 //filtros
 const filterProduct = async (req, res) => {
+  //(cat)categorias, (price)precio, (rec)receta, (punt)puntuacion
   const { filter } = req.query;
   try {
+<<<<<<< HEAD
     if (filter) {
       const products = await Product.paginate({ name: {} }); 
+=======
+    if (filter == "cat") {
+      const products = await Product.paginate({ category: filter });
+>>>>>>> 6f8d57bcc117902eede1dbe8fdb421a085c9528b
       res.status(200).json(products);
     }
+     if (filter=="price") {
+      const products = await Product.paginate({ sort: { price: 1} });
+      res.status(200).json(products);
+     }
+    if (filter=="rec") {
+      const products = await Product.paginate({ sort: {rec: 'asc'  }});
+      res.status(200).json(products);
+    }
+    // if(filter=="punt"){
+    //   const products = await Product.paginate({ name: {} });
+    //   res.status(200).json(products);
+    // } 
   } catch (err) {
     console.log(err);
   }
 };
+ 
 
 const createProduct = async (req, res) => {
   const { name, price, image, description } = req.body;

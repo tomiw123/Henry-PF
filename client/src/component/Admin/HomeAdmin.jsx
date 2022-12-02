@@ -2,17 +2,23 @@ import React from 'react'
 import CategoryHome from '../CategoryHome/CategoryHome'
 import style from '../Home/Home.module.css'
 import { Link } from 'react-router-dom'
+import { Navigate } from 'react-router-dom';
+
 
 
 
 const HomeAdmin = () => {
+   const user = localStorage.getItem("role")
+    if(user !== "admin" ){
+        return <Navigate to="/"/>
+    } 
 
   return (
     <div>
       <div>
         
           <div className={style.cardcontainer}>
-            <Link to="/products">
+            <Link to="/HAdmin/products">
               <CategoryHome
                 title='PRODUCTOS'
                 image={"https://firebasestorage.googleapis.com/v0/b/henry-pf.appspot.com/o/tablas.jpg?alt=media&token=132524b4-d106-4c37-a888-d771bdc26f75"}
@@ -40,6 +46,15 @@ const HomeAdmin = () => {
                 desc='Crear una receta'
               />
             </Link>
+            <Link to="/setAdmin">
+              <CategoryHome
+                title='CREAR ADMIN'
+                image={"https://firebasestorage.googleapis.com/v0/b/new-proyect-44e15.appspot.com/o/9dbeb4c8-719f-4de4-9d83-30fa41003d7d?alt=media&token=5b8a2ea2-afc3-47f4-80de-cbf26164340c"}
+                desc='Crear un nuevo administrador'
+              />
+            </Link>
+
+          
           </div>
         </div>
       </div>
