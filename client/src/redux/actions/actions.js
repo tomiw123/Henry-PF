@@ -10,6 +10,7 @@ export const geTAllProducts = ()=>{
       type: GET_PRODUCTS,
       payload: products.data
     })
+    console.log(products)
   }
 }
 

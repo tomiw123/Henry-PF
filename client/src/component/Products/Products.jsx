@@ -1,10 +1,18 @@
 import React from "react";
 import style from "./Products.module.css";
 import Card from "./CardProducts/Card";
-import Product from "./Products.json";
+//import Product from "./Products.json";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from "react";
+import { geTAllProducts } from "../../redux/actions/actions";
 
 export default function Products(props) {
+  const dispatch = useDispatch();
+  const Product = useSelector(state => state.products);
+  useEffect(()=>{dispatch(geTAllProducts())},[dispatch])
+
+  //console.log(Products)
   return (
     <>
       {/* <div className={style.salto}></div> */}
