@@ -14,6 +14,6 @@ export const CLEAN_PRODUCT = 'CLEAN_PRODUCT'
 export const GET_ID_RECIPES = "GET_ID_RECIPES" 
 export const CLEAN_RECIPE = "CLEAN_RECIPE" 
 
-
+export const PAYMENT = 'PAYMENT'
 
 
