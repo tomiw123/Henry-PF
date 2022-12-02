@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART } from "./actionsTypes";
+import { GET_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART } from "./actionsTypes";
 
 
 
@@ -35,5 +35,12 @@ export const deleteFromCart = (payload)=> {
   return {
     type: DELETE_PRODUCTS_CART,
     payload: payload,
+  }
+}
+
+export const changeFromCart = (payload)=> {
+  return {
+    type:  CHANGE_FROM_CART,
+    payload
   }
 }
