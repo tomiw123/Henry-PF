@@ -16,6 +16,7 @@ import Footer from "./component/Footer/Footer";
 import CreateRecipe from './component/CreateRecipe/CreateRecipe';
 import HomeAdmin from './component/Admin/HomeAdmin'
 import TotalAdmin from "./component/SetAdmin/TotalAdmin";
+import AdminProducts from './component/Admin/AdminProducts/AdminProducts'
 
 // import Contacto from "./component/Contacto/Contacto";
 import Prueba from './component/Prueba.js/prueba.jsx'
@@ -28,7 +29,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/HAdmin" element={<HomeAdmin/>} />
-        <Route path="/setAdmin" element={<TotalAdmin/>} />
         <Route path="/products" element={<Products/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="login" element={<Login />} />
