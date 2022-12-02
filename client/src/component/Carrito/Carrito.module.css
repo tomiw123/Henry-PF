@@ -3,7 +3,6 @@
 }
 .openCart {
     border: 1px solid black;
-    position: absolute;
     background-color: white;
     z-index: 5;
     top: 0;
@@ -13,14 +12,17 @@
     align-items: center;
     position: fixed;
     transition: 850ms;
+    z-index: 5;
 }
 .closeCart {   
-    position: absolute;
+    position: fixed;
     right: -37vw;
     top: 0;
-    height: 100vh;
     transition: 1000ms;
-}
+    z-index: 1;
+    height: 100vw;
+    /* display: none; */
+    }
 .lista {
     display: flex;
     flex-direction: row;
@@ -42,6 +44,7 @@
     top:0;
     width: 62vw;
     height: 100vh;
+    z-index: 2;
 }
 .none {
     display: none;
@@ -108,4 +111,17 @@
     height: 7vh;
     border: 2px solid black;
     border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+    .lista {
+        font-size: 2.5vh;
+    }
+    .button {
+        height: 13vh;
+    }
+}
+@media screen and (max-width: 1060px) {
+    .button {
+        height: 12vh;
+    }
 }
