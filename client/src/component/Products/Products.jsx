@@ -6,14 +6,19 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
 import { geTAllProducts } from "../../redux/actions/actions";
+import Loading from "../Loading/Loading";
 
 export default function Products(props) {
-  const dispatch = useDispatch();
+const dispatch = useDispatch();
   const Product = useSelector(state => state.products.docs);
   useEffect(()=>{dispatch(geTAllProducts())},[dispatch])
 
-  //console.log(Product)
-  return (
+ 
+  return Product.length === 0 ? (
+    <div>
+      <Loading />
+    </div>
+  ) : (
     <>
       {/* <div className={style.salto}></div> */}
       <div className={style.card}>
