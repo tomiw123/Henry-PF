@@ -1,26 +1,47 @@
 import React, { useState } from 'react';
-import { addProducts } from '../../redux/actions/actions'
-import { useDispatch } from 'react-redux';
+import { updateProduct } from '../../redux/actions/actions'
+import { useDispatch, useSelector } from 'react-redux';
 
 // import { Navigate } from 'react-router-dom';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { uploadFile } from '../../firebase/firebase.config'
+import {useParams} from 'react-router-dom'
 
-
+// llamar al producto por id
+// mostrarlo, editarlo y luego enviarlo por Update Product
 const CreateProduct = () => {
 
     const [file, setFile] = useState(null)
 
+    const id = useParams()
+
     const dispatch = useDispatch();
 
+    const [modificar, setModificar] = useState({});
+
+
+    
+
     const submit = async (values) => {
+        if(values.name) {
+            setModificar({...modificar, name: values.name})
+        }
+        if(values.price) {
+            setModificar({...modificar, price: values.price})
+        }
+        if(values.image) {
+            setModificar({...modificar, image: values.image})
+        }
+        if(values.description) {
+            setModificar({...modificar, description: values.description})
+        }
         try {
             const result = await uploadFile(file);
             values.image = result;
             console.log(values)
-            dispatch(addProducts(values));
-            alert('Producto creado existosamente')
+            dispatch(updateProduct(modificar, id.id));
+            alert('Producto editado existosamente')
             window.location.reload();
         } catch (error) {
             console.log(error)

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, DELETE_PRODUCT_ADMIN, ADD_COUNT_PROD} from "./actionsTypes";
+import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, DELETE_PRODUCT_ADMIN, ADD_COUNT_PROD, UPDATE_PRODUCT} from "./actionsTypes";
 
 
 
@@ -66,6 +66,16 @@ export const adminDeleteProduct = (payload) => {
     })
   }
 
+}
+
+export const updateProduct = (payload, id) => {
+  return async (dispatch) => {
+    const response = await axios.put(`http://localhost:3001/update/${id}`, payload)
+    dispatch({
+      type: UPDATE_PRODUCT,
+      payload: response.data
+    })
+  }
 }
 
 export const addCount = (payload) => {

@@ -9,7 +9,7 @@ const getAll = async (req, res) => {
 
   try {
     if (search) {
-      const products = await Product.paginate({ 
+      const products = await Product.paginate({
         name: { $regex: ".*" + search + ".*", $options: "i" },
       });
       res.status(200).json(products);
@@ -17,7 +17,7 @@ const getAll = async (req, res) => {
       //paginate
       const products = await Product.paginate({}, { limit, page });
       res.status(200).json(products);
-    } 
+    }
   } catch (err) {
     console.log(err);
   }
@@ -26,18 +26,18 @@ const getAll = async (req, res) => {
 const getId = async (req, res) => {
   const { id } = req.params;
   console.log(id)
-  try{
+  try {
     const products = await Product.findById(id)
     console.log(products)
     res.status(200).json(products);
-  }catch(err){
+  } catch (err) {
     console.log(err);
   }
 }
 
 //filtros
 const filterProduct = async (req, res) => {
- 
+
   const { filter, category, price, recipes } = req.query;
 
   try {
@@ -61,7 +61,7 @@ const filterProduct = async (req, res) => {
     console.log(err);
   }
 };
- 
+
 
 const createProduct = async (req, res) => {
   const { name, price, image, description } = req.body;
@@ -86,15 +86,33 @@ const createProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
   const { name, price, image, description } = req.body;
-  
+
   try {
-    const product = await Product.updateOne(
-      {_id,},
-      { $set: { name, price, image, description,} }
-    );
+    if (name) {
+
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { name } }
+
+      )
+    }
+    if (price) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { price } }
+      )
+    }
+    if (image) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { image } }
+      )
+    }
+    if (description) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { description } }
+      )
+    }
     res.status(200).send(product);
   } catch (err) {
-    console.log("no funco");
+    console.log("no funco", err);
   }
 };
 
