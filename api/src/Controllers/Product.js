@@ -1,44 +1,57 @@
 const Product = require("../Models/Product.js");
 
 const getAll = async (req, res) => {
-  //search by query
-
-  const { search } = req.query;
+  //search by query, filter and paginate
+  const {search, filter, category, price, alfa, date } = req.query;
   const limit = req.query.limit || 8;
   const page = req.query.page || 1;
-
+ //filter: categorias(cat) precio(price) alfabeticamente(alfa) fecha creado(create)
+ //category: categorias disponibles //price:1 y -1 //alfa:1 y -1 
+ 
   try {
-    if (search) {
+    if (search){
       const products = await Product.paginate({ 
         name: { $regex: ".*" + search + ".*", $options: "i" },
       });
       res.status(200).json(products);
-    } else {
-      //paginate
+    }else if(filter){
+      if (filter == "cat") {
+        const products = await Product.paginate({ category },{limit, page });
+        res.status(200).json(products);
+      }
+      if (filter == "price") {
+        const products = await Product.paginate({}, { sort: { price: 1 }, limit, page });
+        res.status(200).json(products);
+      }
+      if (filter == "alfa") {
+        const products = await Product.paginate({},{sort: { name: 1 }, limit, page });
+        res.status(200).json(products);
+      }
+    }else {
       const products = await Product.paginate({}, { limit, page });
       res.status(200).json(products);
     } 
   } catch (err) {
     console.log(err);
   }
-};
-
+};      
+// producto por id
 const getId = async (req, res) => {
   const { id } = req.params;
   console.log(id)
   try{
     const products = await Product.findById(id)
-    console.log(products)
     res.status(200).json(products);
   }catch(err){
     console.log(err);
   }
 }
 
-//filtros
+/* //filtros
 const filterProduct = async (req, res) => {
- 
-  const { filter, category, price, recipes } = req.query;
+ //filter: categorias(cat) precio(price) alfabeticamente(alfa) fecha creado(create)
+ //category: categorias disponibles //price:1 y -1 //alfa:1 y -1 //date: 1 y -1
+  const { filter, category, price, alfa, date } = req.query;
 
   try {
     if (filter == "cat") {
@@ -49,19 +62,19 @@ const filterProduct = async (req, res) => {
       const products = await Product.paginate({}, { sort: { price: 1 } });
       res.status(200).json(products);
     }
-    if (filter == "rec") {
-      const products = await Product.paginate({ recipes });
+    if (filter == "alfa") {
+      const products = await Product.paginate({},{sort: { name: 1 }});
       res.status(200).json(products);
     }
-    /*  if(filter=="punt"){
-      const products = await Product.paginate({ name: {} });
+     if(filter=="date"){
+      const products = await Product.paginate({},{sort: { createdAt: 1 }});
       res.status(200).json(products);
-    } */
+    }
   } catch (err) {
     console.log(err);
   }
-};
- 
+}; */
+ //dwdwwwd
 
 const createProduct = async (req, res) => {
   const { name, price, image, description, category } = req.body;
@@ -84,6 +97,21 @@ const createProduct = async (req, res) => {
     console.log("no funco");
   }
 };
+const updateProduct = async (req, res) => {
+  const { _id } = req.params;
+  const { name, price, image, description } = req.body;
+  
+  try {
+    const product = await Product.updateOne(
+      {_id,},
+      { $set: { name, price, image, description,} }
+    );
+    res.status(200).send(product);
+  } catch (err) {
+    console.log("no funco");
+  }
+};
+
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;
   const { recipe } = req.body;
@@ -131,7 +159,7 @@ const deleteProduct = async (req, res) => {
 /* Const getProductsByCategory = async (req, res) => {
   const { category } = req.params;
   try {
-    const categoryProd = Product.find({ category: { $ne: [category] } });
+    const categoryProd = Product.find({ category: { $set: [category] } });
     res.status(200).send(categoryProd);
   } catch (error) {
     res.status(404).send("No existe la categoria"); */
@@ -139,8 +167,9 @@ const deleteProduct = async (req, res) => {
 module.exports = {
   getAll,
   getId,
-  filterProduct,
+  //filterProduct,
   createProduct,
+  updateProduct,
   updateRecipes,
   removeRecipes,
   deleteProduct,

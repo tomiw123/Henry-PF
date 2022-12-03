@@ -4,8 +4,9 @@ const router = Router();
 const {
   getAll,
   getId,
-  filterProduct,//
+  //filterProduct,//
   createProduct,
+  updateProduct,
   updateRecipes,
   removeRecipes,
   deleteProduct,
@@ -13,9 +14,10 @@ const {
 } = require('../Controllers/Product.js');
 
 router.get('/', getAll);
-router.get('/id/:id', getId);
-router.get('/filterBy', filterProduct);
+router.get('/:id', getId);
+//Nueva ruta de filtrado, ejemplo: http://localhost:3001/products?filter=price&price=1
 router.post('/', createProduct);
+router.put('/update/:_id', updateProduct);
 router.put('/:_id', updateRecipes);
 router.put('/removeCategory/:_id', removeRecipes);
 router.delete('/:_id', deleteProduct);

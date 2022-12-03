@@ -4,7 +4,7 @@ import { useState } from "react";
 import * as BsIcons from "react-icons/bs";
 import * as GrIcons from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromCart } from "../../redux/actions/actions";
+import { deleteFromCart, addCount, payment } from "../../redux/actions/actions";
 import s from './Carrito.module.css';
 
 const Carrito = () => {
@@ -14,11 +14,21 @@ const Carrito = () => {
     const openCart = ()=> {
         setCart(!openedCart)
     }
-    const cart = useSelector((state)=> state.cart);
+    let cart = useSelector((state)=> state.cart);
+    let newCart = [];
+
+    for (let i = 0; i < cart.length; i++) {
+        if(cart[i].name){
+            newCart.push(cart[i])
+        }
+    }
+
     useEffect(()=>{
         let suma = 0;
         for (let i = 0; i < cart.length; i++) {
-            suma = suma + cart[i].price*cart[i].quantity
+            if(cart[i].quantity){
+                suma = suma + cart[i].price*cart[i].quantity
+            }
         }
         setTotal(suma)
     })
@@ -28,8 +38,39 @@ const Carrito = () => {
             dispatch(deleteFromCart(id))
         }, 50)
     }
-   
+    
+    const sumarCantProd = (id)=> {
+        let obj = cart.find(p => p.id === id)
+        let lugar = cart.indexOf(obj)
+        let cantidad= obj.quantity + 1
+        setTimeout(()=> {
+            dispatch(addCount({cantidad, lugar}))
+        },30)
+        console.log(cart)
+    }
+    const restarCantProd = (id)=> {
+        let obj = cart.find(p => p.id === id)
+        let lugar = cart.indexOf(obj)
+        if(obj.quantity > 1){
+            obj= {
+                    ...obj,
+                    quantity: obj.quantity - 1
+                }
+        }
+        let cantidad= obj.quantity
+        setTimeout(()=> {
+            dispatch(addCount({cantidad, lugar}))
+        },30)
+    }
 
+    const finalizarCompra = (newCart)=>{
+        let carritoFinal = [];
+        for (let i = 0; i < newCart.length; i++) {
+            let obj = {name: newCart[i].name, price: newCart[i].price, id: newCart[i].id, cant: newCart[i].quantity}
+            carritoFinal.push(obj)
+        }
+         dispatch(payment(carritoFinal)).then((e)=> window.location.replace(e))
+    }
     return (
         <div className={s.cart}>
             <BsIcons.BsCartFill onClick={openCart}/>
@@ -44,18 +85,21 @@ const Carrito = () => {
                             <li className={s.listObj}>Precio</li>
                         </ul>
                     {cart?.map(p=> {
-                        // let [counter, setCounter] = useState(p.quantity)
-                        return (
-                            <div className={s.miniProd} key={p.id}>
-                                <img src={p.image} alt="" className={s.image} />
-                                <div className={s.prod}>{p.name}</div>
-                                {/* <button className={Style.btnmaxmin} onClick={handleMin}>-</button> */}
-                                <div className={s.prod}>{p.quantity}u</div>
-                                {/* <button className={Style.btnmaxmin} onClick={handleMax}>+</button> */}
-                                <div className={s.prod}>${p.price*p.quantity},00</div>
-                                <button className={s.boton} onClick={()=> deleteProd(p.id)}>X</button>
-                            </div>
-                        )
+                        if(p.name){
+                            return (
+                                <div className={s.miniProd} key={p.id}>
+                                    <img src={p.image} alt="" className={s.image} />
+                                    <div className={s.prod}>{p.name}</div>
+                                    <div className={s.counter}>
+                                        <button className={s.contador} onClick={()=>restarCantProd(p.id)}>-</button>
+                                        <div className={s.prod}>{p.quantity}u</div>
+                                        <button className={s.contador} onClick={()=> sumarCantProd(p.id)}>+</button>
+                                    </div>
+                                    <div className={s.prod}>${p.price*p.quantity},00</div>
+                                    <button className={s.boton} onClick={()=> deleteProd(p.id)}>X</button>
+                                </div>
+                            )
+                        }
                     })}
                 <div className={s.total}>
                     <h3>Total</h3>
@@ -63,7 +107,7 @@ const Carrito = () => {
                 </div>
                 
                 <div className={s.finalizar}>
-                    <button className={s.button}>Finalizar compra</button>
+                    <button className={s.button} onClick={()=> {finalizarCompra(newCart)}}>Finalizar compra</button>
                 </div>
             </div>
         </div>

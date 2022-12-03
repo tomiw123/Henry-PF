@@ -86,9 +86,9 @@ export function AuthProvider({ children }) {
   async function setAsing(uid, admin) {
     try {
       
-      const docRef = doc(db, `users/${uid}`);
       console.log(uid, admin)
-      await setDoc(
+      const docRef = doc(db, `users/${uid}`);
+       setDoc(
         docRef,
         {
           rol: admin,
