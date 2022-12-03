@@ -1,13 +1,13 @@
 const {Router} = require('express')
 const router = Router();
 const {
-    getRecipes,
+    getAllRecipe,
     getIdRecipes,
     createRecipe,
     deleteRecipe,
 } = require('../Controllers/Recipe')
 
-router.get('/', getRecipes);
+router.get('/', getAllRecipe);
 router.get('/id/:_id', getIdRecipes);
 router.post('/', createRecipe);
 router.delete('/:_id', deleteRecipe)
