@@ -34,7 +34,7 @@ const getAll = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-};
+};      
 // producto por id
 const getId = async (req, res) => {
   const { id } = req.params;
@@ -74,7 +74,7 @@ const filterProduct = async (req, res) => {
     console.log(err);
   }
 }; */
- 
+ //dwdwwwd
 
 const createProduct = async (req, res) => {
   const { name, price, image, description, category } = req.body;
