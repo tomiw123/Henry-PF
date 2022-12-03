@@ -4,7 +4,7 @@ const getAll = async (req, res) => {
   //search by query
 
   const { search } = req.query;
-  const limit = req.query.limit || 10;
+  const limit = req.query.limit || 8;
   const page = req.query.page || 1;
 
   try {

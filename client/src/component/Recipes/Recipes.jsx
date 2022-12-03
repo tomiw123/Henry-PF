@@ -12,6 +12,7 @@ const Recipes = () => {
     const dispatch = useDispatch();
     useEffect(()=>{dispatch(getAllRecipes())},[dispatch])
     const Recipes = useSelector(state => state.recipes);
+    console.log(Recipes);
 
   // return Recipes.length === 0 ? (
     // <Loading />
