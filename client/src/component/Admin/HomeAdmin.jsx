@@ -33,7 +33,7 @@ const HomeAdmin = () => {
                 desc='Crear un producto'
               />
             </Link>
-            <Link to="/recipes">
+            <Link to="/HAdmin/AdminRecipes">
               <CategoryHome
                 title='RECETAS'
                 image={"https://firebasestorage.googleapis.com/v0/b/henry-pf.appspot.com/o/8e6d317e-d194-48dc-aeae-50c3d2d65262.jpg?alt=media&token=249c7c6d-8b58-4598-94de-f20c38ef39e9"}
