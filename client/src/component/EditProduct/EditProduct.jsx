@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { updateProduct } from '../../redux/actions/actions'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 
 // import { Navigate } from 'react-router-dom';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { uploadFile } from '../../firebase/firebase.config'
-import {useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
 // llamar al producto por id
 // mostrarlo, editarlo y luego enviarlo por Update Product
@@ -14,40 +14,56 @@ const CreateProduct = () => {
 
     const [file, setFile] = useState(null)
 
-    const id = useParams()
+    const { id } = useParams()
+
 
     const dispatch = useDispatch();
+
 
     const [modificar, setModificar] = useState({});
 
 
-    
+
 
     const submit = async (values) => {
-        if(values.name) {
-            setModificar({...modificar, name: values.name})
+        if (values.name) {
+            console.log(values.name)
+            setModificar({ ...modificar, name: values.name })
         }
-        if(values.price) {
-            setModificar({...modificar, price: values.price})
+        if (values.price) {
+            setModificar({ ...modificar, price: values.price })
         }
-        if(values.image) {
-            setModificar({...modificar, image: values.image})
+        if (values.image) {
+            setModificar({ ...modificar, image: values.image })
         }
-        if(values.description) {
-            setModificar({...modificar, description: values.description})
+        if (values.description) {
+            setModificar({ ...modificar, description: values.description })
         }
-        try {
-            const result = await uploadFile(file);
-            values.image = result;
-            console.log(values)
-            dispatch(updateProduct(modificar, id.id));
-            alert('Producto editado existosamente')
-            window.location.reload();
-        } catch (error) {
-            console.log(error)
+
+        if (values.name === '') {
             alert('Error interno. Intente mas tarde')
-        }
     }
+        const result = await uploadFile(file);
+        values.image = result;
+        dispatch(updateProduct(modificar, id));
+        console.log(modificar)
+        alert('Producto editado existosamente')
+        //  window.location.reload();
+
+
+
+        // try {
+        //     const result = await uploadFile(file);
+        //     values.image = result;
+        //     dispatch(updateProduct(modificar, id));
+        //     alert('Producto editado existosamente')
+        //      window.location.reload();
+        // } catch (error) {
+        //     console.log(error)
+        //     alert('Error interno. Intente mas tarde')
+        // }
+    }
+
 
     const validations = (values) => {
         const errors = {};
@@ -58,6 +74,7 @@ const CreateProduct = () => {
     // if(user !== "admin" ){
     //     return <Navigate to="/"/>
     // } 
+
     return (
         <div>
             <Formik initialValues={{

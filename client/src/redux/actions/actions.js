@@ -59,7 +59,7 @@ export const changeFromCart = (payload)=> {
 
 export const adminDeleteProduct = (payload) => {
   return async (dispatch)=> {
-    const response = await axios.delete(`http://localhost:3001/products/${payload}`)
+    const response = await axios.delete(`${import.meta.env.VITE_URL}/products/${payload}`)
     dispatch({
       type: DELETE_PRODUCT_ADMIN,
       payload: response.data
@@ -70,7 +70,8 @@ export const adminDeleteProduct = (payload) => {
 
 export const updateProduct = (payload, id) => {
   return async (dispatch) => {
-    const response = await axios.put(`http://localhost:3001/update/${id}`, payload)
+    console.log(payload)
+    const response = await axios.put(`${import.meta.env.VITE_URL}/products/update/${id}`, payload)
     dispatch({
       type: UPDATE_PRODUCT,
       payload: response.data

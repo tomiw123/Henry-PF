@@ -86,7 +86,7 @@ const createProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
   const { name, price, image, description } = req.body;
-
+console.log(name)
   try {
     if (name) {
 
@@ -112,7 +112,7 @@ const updateProduct = async (req, res) => {
     }
     res.status(200).send(product);
   } catch (err) {
-    console.log("no funco", err);
+    console.error(err)
   }
 };
 

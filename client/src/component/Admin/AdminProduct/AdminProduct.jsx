@@ -23,6 +23,7 @@ const AdminProduct = (props) => {
         dispatch(geTAllProducts())
 
     }
+    console.log(props.id)
     return (
         <div className={style.oveflow}>
             <div className={style.container}>
@@ -36,7 +37,7 @@ const AdminProduct = (props) => {
                     <button className={style.counterBtn} onClick={maxCounter}>+</button>
                 </div>
                 <div className={style.btnContainer}>
-                    <Link to='/edit'>
+                    <Link to={`/edit/${props.id}`}>
                         <button className={style.btn}>Editar</button>
                     </Link>
                     <button className={style.btn2} onClick={() => deleteProduct(props.id)}>Borrar</button>
