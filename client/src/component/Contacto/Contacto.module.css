@@ -59,3 +59,11 @@
 .principal label{
   font-size: 25px;
 }
+
+.errors{
+  margin: 0 auto;
+  padding: 0;
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
