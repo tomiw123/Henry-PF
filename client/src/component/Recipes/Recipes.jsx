@@ -28,9 +28,11 @@ const Recipes = () => {
           
         )
       })}
+      <div>
       <Paginado
       recipes={recipes}
       />
+      </div>
     </div>
   );
 };

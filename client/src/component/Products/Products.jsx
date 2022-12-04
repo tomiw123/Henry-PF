@@ -39,10 +39,13 @@ export default function Products(props) {
               </div>
             );
           })}
+           
         </div>
+        <div>
           <Paginado
           product={product}
           />
+          </div>
       </div>
     </>
   );
