@@ -24,7 +24,7 @@ const CardDetailProduct = () => {
                   } },[dispatch,paramsId.id])
 
 
-  // console.log(Product)
+ console.log(Product)
 
   const [counter, setCounter] = useState(1);
 
@@ -41,7 +41,7 @@ const CardDetailProduct = () => {
   const cart = useSelector((state)=> state.cart)
   // const [cart, setCart] = useState([]);
 
-  const addProd = (id, name, image,price, counter)=> {
+  const addProd = (id, name, image, price, counter)=> {
     let yaEsta = cart.find(p => p.name === name);
     if(!yaEsta){
       const obj = {id, name, image,price, quantity: counter}
@@ -81,7 +81,7 @@ const CardDetailProduct = () => {
                 </div>
               </IconContext.Provider>
             </div>
-            <div className={Style.Price}>${Product.price}</div>
+            <div className={Style.Price}>${Product.price},00</div>
             <div className={Style.ContButtom}>
               <div className={Style.Cont}>
                 <button className={Style.btnmaxmin} onClick={handleMin}>-</button>

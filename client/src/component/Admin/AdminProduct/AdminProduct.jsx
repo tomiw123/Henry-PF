@@ -1,17 +1,29 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import style from '../AdminProduct/AdminProduct.module.css'
-import { FiDelete } from 'react-icons/fi'
-import { IconContext } from "react-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { adminDeleteProduct, geTAllProducts } from '../../../redux/actions/actions'
+import { Link } from 'react-router-dom'
 
 const AdminProduct = (props) => {
 
+    const dispatch = useDispatch();
+    const AllProducts = useSelector((state) => state.products.docs)
+
+
     const [counter, setCounter] = useState(0)
-    const maxCounter =() => {
+    const maxCounter = () => {
         setCounter(counter + 1)
     }
-    const minCounter =() => {
+    const minCounter = () => {
         setCounter(counter - 1)
     }
+
+    const deleteProduct = (id) => {
+        dispatch(adminDeleteProduct(id))
+        dispatch(geTAllProducts())
+
+    }
+    console.log(props.id)
     return (
         <div className={style.oveflow}>
             <div className={style.container}>
@@ -23,11 +35,13 @@ const AdminProduct = (props) => {
                     <button className={style.counterBtn} onClick={minCounter}>-</button>
                     <div className={style.counterNumber}>{counter}</div>
                     <button className={style.counterBtn} onClick={maxCounter}>+</button>
-                    </div>
-                    <div className={style.btnContainer}>
+                </div>
+                <div className={style.btnContainer}>
+                    <Link to={`/edit/${props.id}`}>
                         <button className={style.btn}>Editar</button>
-                        <button className={style.btn2}>Borrar</button>
-                    </div>
+                    </Link>
+                    <button className={style.btn2} onClick={() => deleteProduct(props.id)}>Borrar</button>
+                </div>
             </div>
         </div>
     );
