@@ -7,19 +7,18 @@ import Loading from "../Loading/Loading";
 import { useDispatch, useSelector } from 'react-redux';
 import {getAllRecipes} from '../../redux/actions/recipesActions'
 import { useEffect } from "react";
+import Paginado from "../Paginado/Paginado";
 
 const Recipes = () => {
     const dispatch = useDispatch();
     useEffect(()=>{dispatch(getAllRecipes())},[dispatch])
-    const Recipes = useSelector(state => state.recipes);
-    console.log(Recipes);
-
-  // return Recipes.length === 0 ? (
-    // <Loading />
-  // ) : 
+    const Recipes = useSelector(state => state.recipes.docs);
+    const recipes = useSelector(state => state.recipes);
+    console.log(recipes);
+ 
   return (
     <div className={style.cartita}>
-      {Recipes.map((e) => {
+      {Recipes?.map((e) => {
         return (
           <div key={e._id}>
             <Link to={`/recipeDetail/${e._id}`}>
@@ -29,6 +28,9 @@ const Recipes = () => {
           
         )
       })}
+      <Paginado
+      recipes={recipes}
+      />
     </div>
   );
 };

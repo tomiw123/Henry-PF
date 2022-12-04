@@ -28,10 +28,11 @@ const Footer = () => {
         </a>
 
         
-
+          <a href="https://api.whatsapp.com/send?phone=%2B573226455432&text=%C2%BFComo+estas+en+que+podemos+asesorarte+en+el+dia+de+hoy%3F" target="_blanc" >
           <div className="rs">
             <FaWhatsapp className="icon" style={{width: "80px"}}/>
           </div>
+          </a>
 
         
 

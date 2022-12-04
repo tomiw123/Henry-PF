@@ -12,7 +12,8 @@ export default function Products(props) {
 
   const dispatch = useDispatch();
   const Product = useSelector((state) => state.products.docs);
-  // console.log(Product.length);
+  const product = useSelector((state) => state.products);
+  console.log(product);
   // const products = useSelector((state) => state.products.docs);
   useEffect(() => {
       dispatch(geTAllProducts(1))
@@ -39,7 +40,9 @@ export default function Products(props) {
             );
           })}
         </div>
-          <Paginado/>
+          <Paginado
+          product={product}
+          />
       </div>
     </>
   );

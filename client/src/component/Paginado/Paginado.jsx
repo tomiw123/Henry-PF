@@ -1,43 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { geTAllProducts } from "../../redux/actions/actions";
-const Paginado = () => {
-  const product = useSelector((state) => state.products);
+import { getAllRecipes } from "../../redux/actions/recipesActions";
+import { GrLinkNext, GrLinkPrevious } from "react-icons/gr"
+
+const Paginado = ({ product, recipes }) => {
   // console.log(product);
   const dispatch = useDispatch();
-
   const pageNumbers = [];
-  for (let i = 1; i <= product.totalPages; i++) {
+
+  let pepe = null;
+
+  if (product && !recipes) {
+    pepe = product;
+  } else if (recipes && !product) {
+    pepe = recipes;
+  }
+
+  let count = 1;
+
+  for (let i = 1; i <= pepe.totalPages; i++) {
     pageNumbers.push(i);
   }
 
-
-let count = 1;
-
   const handleClickNext = () => {
-    if (product.hasNextPage === true) {
+    if (pepe.hasNextPage === true) {
       count++;
       dispatch(geTAllProducts(count));
+    } else if (pepe.hasNextPage === true) {
+      count++;
+      dispatch(getAllRecipes(count));
     }
   };
 
   const handleClickPrev = () => {
-    if (product.hasPrevPage === true) {
+    if (pepe.hasPrevPage === true) {
       count--;
       dispatch(geTAllProducts(count));
+    } else if (pepe.hasPrevPage === true) {
+      count--;
+      dispatch(getAllRecipes(count));
     }
   };
 
   return (
     <>
-      <button onClick={handleClickPrev}>Prev Page</button>
+      <button onClick={handleClickPrev}> <GrLinkPrevious/></button>
       {pageNumbers.map((el) => (
         <div key={el}>
           <button onClick={() => dispatch(geTAllProducts(el))}> {el}</button>
         </div>
       ))}
-      {/* <h1>{count}</h1> */}
-      <button onClick={handleClickNext}>Next Page</button>
+      <button onClick={handleClickNext}>< GrLinkNext /></button>
     </>
   );
 };

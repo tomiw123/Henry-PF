@@ -3,7 +3,7 @@ import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_
 
 
 
-export const geTAllProducts = ()=>{
+export const geTAllProducts = (page)=>{
   return async (dispatch)=>{
     const products = await axios.get(`${import.meta.env.VITE_URL}/products?page=${page}`)
     dispatch({
