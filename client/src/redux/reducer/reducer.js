@@ -14,31 +14,33 @@ recipe: []
 
 export function rootReducer(state=initialState, action){
   switch (action.type) {
+
     case GET_PRODUCTS:
-      return{
-        ...state,
-        products: action.payload
-      }
-    case GET_ID_PRODUCTS:
-      return{
-        ...state,
-        product: action.payload
-      }
-    case CLEAN_PRODUCT:
-        return{
-          ...state,
-          product: []
-        }
-    case ADD_PRODUCTS:
-      return{
-       ...state,
-      products: [...state.products, action.payload]
-      }
-    case ADD_PRODUCTS_CART: 
       return {
         ...state,
-        cart: [...state.cart, action.payload]
-      }
+        products: action.payload
+      };
+
+    case GET_ID_PRODUCTS:
+      return {
+        ...state,
+        product: action.payload,
+      };
+    case CLEAN_PRODUCT:
+      return {
+        ...state,
+        product: [],
+      };
+    case ADD_PRODUCTS:
+      return {
+        ...state,
+        products: [...state.products, action.payload],
+      };
+    case ADD_PRODUCTS_CART:
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
     case DELETE_PRODUCTS_CART:
       return {
         ...state,
@@ -57,16 +59,15 @@ export function rootReducer(state=initialState, action){
           cart: [...state.cart.filter(p=> p.id !== action.payload.id), action.payload]
         }
     case GET_RECIPES:
-      return{
+      return {
         ...state,
-        recipes: action.payload
-      }
+        recipes: action.payload,
+      };
     case GET_ID_RECIPES:
-        
-        return{
-          ...state,
-          recipe: action.payload
-        }
+      return {
+        ...state,
+        recipe: action.payload,
+      };
     case ADD_RECIPES:
       return{
        ...state,
@@ -74,13 +75,12 @@ export function rootReducer(state=initialState, action){
       }
 
     case CLEAN_RECIPE:
-      return{
-    
+      return {
         ...state,
-        recipe: []
-      }
+        recipe: [],
+      };
 
     default:
-      return state
+      return state;
   }
 }
