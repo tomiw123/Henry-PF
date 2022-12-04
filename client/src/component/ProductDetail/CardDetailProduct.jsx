@@ -24,7 +24,7 @@ const CardDetailProduct = () => {
                   } },[dispatch,paramsId.id])
 
 
-  // console.log(Product)
+ console.log(Product)
 
   const [counter, setCounter] = useState(1);
 
