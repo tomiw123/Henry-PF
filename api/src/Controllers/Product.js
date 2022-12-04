@@ -9,13 +9,8 @@ const getAll = async (req, res) => {
  //category: categorias disponibles //price:1 y -1 //alfa:1 y -1 
  
   try {
-<<<<<<< HEAD
-    if (search) {
-      const products = await Product.paginate({
-=======
     if (search){
       const products = await Product.paginate({ 
->>>>>>> f282bfc9fe24c3ff8741dcdea176cec7918af2b4
         name: { $regex: ".*" + search + ".*", $options: "i" },
       });
       res.status(200).json(products);
@@ -54,14 +49,11 @@ const getId = async (req, res) => {
 
 /* //filtros
 const filterProduct = async (req, res) => {
-<<<<<<< HEAD
 
   const { filter, category, price, recipes } = req.query;
-=======
  //filter: categorias(cat) precio(price) alfabeticamente(alfa) fecha creado(create)
  //category: categorias disponibles //price:1 y -1 //alfa:1 y -1 //date: 1 y -1
   const { filter, category, price, alfa, date } = req.query;
->>>>>>> f282bfc9fe24c3ff8741dcdea176cec7918af2b4
 
   try {
     if (filter == "cat") {
@@ -83,13 +75,10 @@ const filterProduct = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-<<<<<<< HEAD
 };
 
-=======
 }; */
  //dwdwwwd
->>>>>>> f282bfc9fe24c3ff8741dcdea176cec7918af2b4
 
 const createProduct = async (req, res) => {
   const { name, price, image, description } = req.body;
