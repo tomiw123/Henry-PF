@@ -4,53 +4,55 @@ import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_
 
 
 
-export const geTAllProducts = ()=>{
+export const geTAllProducts = (page)=>{
   return async (dispatch)=>{
-    const products = await axios.get(`${import.meta.env.VITE_URL}/products`)
+    const products = await axios.get(`${import.meta.env.VITE_URL}/products?page=${page}`)
     dispatch({
       type: GET_PRODUCTS,
-      payload: products.data
-    })
-    
-  }
-}
+      payload: products.data,
+    });
+    // console.log(products);
+  };
+};
 
 export const getIdProducts = (payload)=>{
   return async (dispatch)=>{
     const products = await axios.get(`${import.meta.env.VITE_URL}/products/id/${payload}`)
     dispatch({
       type: GET_ID_PRODUCTS,
-      payload: products.data
-    })
-  }
-}
-export const cleanProduct = () => { return {type: CLEAN_PRODUCT}}
+      payload: products.data,
+    });
+  };
+};
+export const cleanProduct = () => {
+  return { type: CLEAN_PRODUCT };
+};
 
 export const addProducts = (payload)=>{
   return async (dispatch)=>{
     const products = await axios.post(`${import.meta.env.VITE_URL}/products`, payload)
     dispatch({
       type: ADD_PRODUCTS,
-      payload: products.data
-    })
-  } 
-}
+      payload: products.data,
+    });
+  };
+};
 
-export const addToCart = (payload)=> {
+export const addToCart = (payload) => {
   return {
     type: ADD_PRODUCTS_CART,
     payload: payload,
-  }
-}
+  };
+};
 
-export const deleteFromCart = (payload)=> {
+export const deleteFromCart = (payload) => {
   return {
     type: DELETE_PRODUCTS_CART,
     payload: payload,
-  }
-}
+  };
+};
 
-export const changeFromCart = (payload)=> {
+export const changeFromCart = (payload) => {
   return {
     type:  CHANGE_FROM_CART,
     payload

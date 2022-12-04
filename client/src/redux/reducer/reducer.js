@@ -15,6 +15,7 @@ const initialState = {
 
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
+
     case GET_PRODUCTS:
       return {
         ...state,
@@ -38,8 +39,28 @@ export function rootReducer(state = initialState, action) {
     case ADD_PRODUCTS_CART:
       return {
         ...state,
-        cart: [...state.cart, action.payload]
-      }
+        products: action.payload
+      };
+    case GET_ID_PRODUCTS:
+      return {
+        ...state,
+        product: action.payload,
+      };
+    case CLEAN_PRODUCT:
+      return {
+        ...state,
+        product: [],
+      };
+    case ADD_PRODUCTS:
+      return {
+        ...state,
+        products: [...state.products, action.payload],
+      };
+    case ADD_PRODUCTS_CART:
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
     case DELETE_PRODUCTS_CART:
       return {
         ...state,
@@ -60,14 +81,13 @@ export function rootReducer(state = initialState, action) {
     case GET_RECIPES:
       return {
         ...state,
-        recipes: action.payload
-      }
+        recipes: action.payload,
+      };
     case GET_ID_RECIPES:
-
       return {
         ...state,
         recipe: action.payload
-      }
+     }
     case ADD_RECIPES:
       return {
         ...state,
@@ -76,10 +96,9 @@ export function rootReducer(state = initialState, action) {
 
     case CLEAN_RECIPE:
       return {
-
         ...state,
-        recipe: []
-      }
+        recipe: [],
+      };
 
     case DELETE_PRODUCT_ADMIN:
       return {
@@ -88,6 +107,6 @@ export function rootReducer(state = initialState, action) {
       }
 
     default:
-      return state
+      return state;
   }
 }

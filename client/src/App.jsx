@@ -40,7 +40,7 @@ function App() {
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
         <Route path="/recipeDetail/:id" element={<RecipeDetail/>} />
-        {/* <Route path="/contacto" element={ <Contacto/> }/> */}
+        <Route path="/contacto" element={ <Contacto/> }/>
 
         </Routes>
       <Footer/>
