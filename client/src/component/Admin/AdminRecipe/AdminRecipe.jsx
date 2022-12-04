@@ -17,7 +17,7 @@ const AdminRecipe = (props) => {
                 
             
                     <div className={style.btnContainer}>
-                        <button className={style.btn}>Editar</button>
+                        {/* <button className={style.btn}>Editar</button> */}
                         <button className={style.btn2}>Borrar</button>
                     </div>
             </div>
