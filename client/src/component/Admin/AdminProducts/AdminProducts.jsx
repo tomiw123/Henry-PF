@@ -26,7 +26,9 @@ const AdminProducts = () => {
                         <AdminProduct id={p._id} key={p._id} name={p.name} image={p.image} />
                 ))
             }
+            <div className={style.paginado}>
             <Paginado product={products} />
+            </div>
         </div>
     );
 };
