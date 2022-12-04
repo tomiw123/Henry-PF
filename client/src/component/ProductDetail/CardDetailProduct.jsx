@@ -81,7 +81,7 @@ const CardDetailProduct = () => {
                 </div>
               </IconContext.Provider>
             </div>
-            <div className={Style.Price}>${Product.price}</div>
+            <div className={Style.Price}>${Product.price},00</div>
             <div className={Style.ContButtom}>
               <div className={Style.Cont}>
                 <button className={Style.btnmaxmin} onClick={handleMin}>-</button>

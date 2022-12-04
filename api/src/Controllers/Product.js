@@ -97,20 +97,41 @@ const createProduct = async (req, res) => {
     console.log("no funco", err);
   }
 };
+
+
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
   const { name, price, image, description } = req.body;
-  
+console.log(name)
   try {
-    const product = await Product.updateOne(
-      {_id,},
-      { $set: { name, price, image, description,} }
-    );
+    if (name) {
+
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { name } }
+
+      )
+    }
+    if (price) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { price } }
+      )
+    }
+    if (image) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { image } }
+      )
+    }
+    if (description) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { description } }
+      )
+    }
     res.status(200).send(product);
   } catch (err) {
-    console.log("no funco");
+    console.error(err)
   }
 };
+
 
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;

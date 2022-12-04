@@ -40,9 +40,12 @@ export default function Products(props) {
             );
           })}
         </div>
+        
+        <div className={style.paginado}>
           <Paginado
           product={product}
           />
+          </div>
       </div>
     </>
   );
