@@ -18,6 +18,7 @@ import CreateRecipe from './component/CreateRecipe/CreateRecipe';
 import HomeAdmin from './component/Admin/HomeAdmin'
 import TotalAdmin from "./component/SetAdmin/TotalAdmin";
 import AdminProducts from './component/Admin/AdminProducts/AdminProducts'
+import AdminRecipes from './component/Admin/AdminRecipes/AdminRecipes'
 
 //el mati confirma que esta todo bien
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/HAdmin" element={<HomeAdmin/>} />
         <Route path="/HAdmin/AdminProducts" element={<AdminProducts/>} />
+        <Route path="/HAdmin/AdminRecipes" element={<AdminRecipes/>} />
         <Route path="/getAdmin" element={<TotalAdmin/>} />
         <Route path="/products" element={<Products/>} />
         <Route path="/register" element={<Register/>} />

@@ -100,6 +100,8 @@ const createProduct = async (req, res) => {
     console.log("no funco", err);
   }
 };
+
+
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
   const { name, price, image, description } = req.body;
@@ -132,6 +134,7 @@ console.log(name)
     console.error(err)
   }
 };
+
 
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;
