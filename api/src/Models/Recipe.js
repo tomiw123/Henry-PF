@@ -19,7 +19,7 @@ const recipeSchema = new Schema({
     },
     product: {
         type: String,
-        required: true
+        required: false
     }
 })
 recipeSchema.plugin(mongoosePaginate)

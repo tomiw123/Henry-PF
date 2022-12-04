@@ -20,7 +20,7 @@ const productSchema = new Schema({
 
   category: {
     type: String,
-    required: true,
+    required: false,
   },
   star: {
     type:Number,

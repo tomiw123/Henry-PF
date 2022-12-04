@@ -94,7 +94,7 @@ const createProduct = async (req, res) => {
       res.status(404).send("El producto ya existe");
     }
   } catch (err) {
-    console.log("no funco");
+    console.log("no funco", err);
   }
 };
 const updateProduct = async (req, res) => {

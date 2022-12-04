@@ -41,7 +41,7 @@ const CardDetailProduct = () => {
   const cart = useSelector((state)=> state.cart)
   // const [cart, setCart] = useState([]);
 
-  const addProd = (id, name, image,price, counter)=> {
+  const addProd = (id, name, image, price, counter)=> {
     let yaEsta = cart.find(p => p.name === name);
     if(!yaEsta){
       const obj = {id, name, image,price, quantity: counter}

@@ -18,19 +18,19 @@ function CreateRecipe(){
 
     const [valorIng, setValorIng]= useState("")
 
-    //console.log(valorIng)
+    console.log(valorIng)
 
-    // const agregarIngrediente = (value) =>{
-    //    // e.preventDefault();
-    //   // console.log(e.target.value)
-    //     setIngredientes({
-    //         ...ingredientes,
-    //         //valores : [...ingredientes, valorIng]
-    //        ingredientes: value.Ing
-    //     })
-    //     setValorIng("")
-    // }
-        //console.log(ingredientes)
+    const agregarIngrediente = (value) =>{
+       // e.preventDefault();
+      // console.log(e.target.value)
+        setIngredientes({
+            ...ingredientes,
+            //valores : [...ingredientes, valorIng]
+           ingredientes: value.Ing
+        })
+        setValorIng("")
+    }
+        console.log(ingredientes)
 
     const valorIngrediente = (e) =>{
         e.preventDefault();
@@ -47,6 +47,7 @@ function CreateRecipe(){
             console.log(values)
             dispatch(addRecipes(values));
             alert('Receta creado existosamente')
+            window.location.reload();
         } catch (error) {
             console.log(error)
             alert('Error interno. Intente mas tarde')
@@ -152,7 +153,7 @@ function CreateRecipe(){
             </ErrorMessage>
             
 
-            <button  type='submit'
+            <button  type='crear'
             className="group bg-red-600
          mb-3 relative flex w-full justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2" >Crear Receta</button>
             
