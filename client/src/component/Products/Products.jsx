@@ -12,7 +12,7 @@ export default function Products(props) {
   const dispatch = useDispatch();
   const Product = useSelector((state) => state.products.docs);
   const product = useSelector((state) => state.products);
-  console.log(product);
+  // console.log(product);
   useEffect(() => {
       dispatch(geTAllProducts(1))
   }, [dispatch]);
@@ -37,6 +37,7 @@ export default function Products(props) {
               </div>
             );
           })}
+           
         </div>
         
         <div className={style.paginado}>
