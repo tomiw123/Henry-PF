@@ -34,10 +34,11 @@ function Nav() {
             <Link to="/login" className="flex items-center">
               <label>{auth.userName}</label>
               {admin === "admin" ? (
+                <div>
                 <Link to="HAdmin">
                 <RiAdminFill className="ml-2 animate-pulse text-red-500" />
                 </Link>
-                
+                </div>
               ) : (
                 <></>
               )}
