@@ -31,18 +31,20 @@ function Nav() {
           </>
         ) : (
           <div className="bg-slate-800 text-white text-center rounded-md ml-3 w-auto pr-2 pl-2 flex items-center">
+            
             <Link to="/login" className="flex items-center">
               <label>{auth.userName}</label>
-              {admin === "admin" ? (
+              <RiRadioButtonLine className="ml-2 animate-pulse text-green-500" />
+            </Link>
+            {admin === "admin" ? (
+                <div>
                 <Link to="HAdmin">
-                <RiAdminFill className="ml-2 animate-pulse text-red-500" />
+                  <RiAdminFill className="ml-2 animate-pulse text-red-500" />
                 </Link>
-                
+                </div>
               ) : (
                 <></>
               )}
-              <RiRadioButtonLine className="ml-2 animate-pulse text-green-500" />
-            </Link>
           </div>
         )}
       </div>

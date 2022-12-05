@@ -10,11 +10,10 @@ import BusquedaProducts from "../BarraDeBusqueda/BusquedaProducts";
 // import { useTransition } from "react";
 
 export default function Products(props) {
-
   const dispatch = useDispatch();
   const Product = useSelector((state) => state.products.docs);
   const product = useSelector((state) => state.products);
-  console.log(product);
+  //console.log(product);
   // const products = useSelector((state) => state.products.docs);
   useEffect(() => {
       dispatch(geTAllProducts(1))
@@ -41,10 +40,14 @@ export default function Products(props) {
               </div>
             );
           })}
+           
         </div>
+        
+        <div className={style.paginado}>
           <Paginado
           product={product}
           />
+          </div>
       </div>
     </>
   );

@@ -1,8 +1,28 @@
 
-.margen {
-    display: flex;
+.cartita{
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: #242121;
-    padding-top: 40px;
+    padding-top: 45px;
+    
+   
+
+}
+
+.recetas{
+    min-height: 800px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+
+.paginado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 98vw;
+    height: 50px;
+    background-color: white;
 }

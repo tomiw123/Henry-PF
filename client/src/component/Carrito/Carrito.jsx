@@ -16,12 +16,13 @@ const Carrito = () => {
     }
     let cart = useSelector((state)=> state.cart);
     let newCart = [];
-
+    //console.log(cart);
     for (let i = 0; i < cart.length; i++) {
         if(cart[i].name){
             newCart.push(cart[i])
         }
     }
+    //console.log(cart);
 
     useEffect(()=>{
         let suma = 0;
