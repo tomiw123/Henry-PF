@@ -2,6 +2,7 @@
     min-height: 170px;
     background-color: #292626;
     width: 100%;
+    
 }
 
 
@@ -9,14 +10,12 @@
     position: relative;
     padding: 0;
     margin: 0 auto;
-    left: 30%;
+    left: 28%;
 }
 
 .contact{
     display: flex;
     justify-content: flex-start;
-    margin-left: 60px;
-    
 }
 .saltooooo{
    height: 1px;
