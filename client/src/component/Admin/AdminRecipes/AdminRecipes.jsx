@@ -9,17 +9,21 @@ import Paginado from "../../Paginado/Paginado";
 
 const AdminRecipes = () => {
     const dispatch = useDispatch();
+
     useEffect(()=>{dispatch(getAllRecipes())},[dispatch])
+
     const Recipes = useSelector(state => state.recipes.docs);
     const recipes = useSelector(state => state.recipes);
-    console.log(Recipes);
+   // console.log(Recipes);
     return (
         <div className={style.container}>
             {
-                Recipes?.map((p) => {
-                    return(
                 
-                    <AdminRecipe key={p.id} name ={p.name} image={p.image} />
+                Recipes?.map((p) => {
+                    console.log(p);
+                    return(
+                        
+                    <AdminRecipe id={p._id} key={p._id} name ={p.name} image={p.image} />
                     
                 )
             })
