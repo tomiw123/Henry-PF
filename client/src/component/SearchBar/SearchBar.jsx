@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import style from './SearchBar.module.css'
+import Carrito from "../Carrito/Carrito";
 
 
 function SearchBar() {
@@ -13,14 +14,18 @@ function SearchBar() {
             </div>
 
             <div className={style.link} >
-                <Link to="/"><p>Home</p></Link>
+                    <Link to="/"><p>Home</p></Link>
 
-                <Link to="/products"><p>Producto</p></Link>
+                    <Link to="/products"><p>Productos</p></Link>
 
-                <Link to="/recipes"><p>Recetas</p></Link>
+                    <Link to="/recipes"><p>Recetas</p></Link>
+
+                    <Link to="/contacto"><p>Contacto</p></Link>
             </div>
 
-            <div className={style.input}></div>
+            <div className={style.cart}>
+                    <Carrito />
+            </div>
         </div>
     )
 }

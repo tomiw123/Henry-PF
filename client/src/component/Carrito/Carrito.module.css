@@ -1,0 +1,136 @@
+.cart {
+    cursor: pointer;
+}
+.openCart {
+    border: 1px solid black;
+    background-color: white;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    width: 37vw;
+    height: 100vh;
+    align-items: center;
+    position: fixed;
+    transition: 850ms;
+    z-index: 5;
+}
+.closeCart {   
+    position: fixed;
+    right: -37vw;
+    top: 0;
+    transition: 1000ms;
+    z-index: 1;
+    height: 100vw;
+    display: none;
+    }
+.lista {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 5vh;
+    margin-left: 6vw;
+}
+.listObj {
+    width: 9vw;
+    height: 5vh;
+}
+.listUni {
+    width: 7vw;
+    height: 5vh;
+}
+.backToHome {
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 62vw;
+    height: 100vh;
+    z-index: 2;
+}
+.none {
+    display: none;
+}
+.cross {
+    padding-top: 2vh;
+    padding-bottom: 1vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.close {
+    font-size: 3vh;
+}
+.list {
+    min-height: 10vw;
+    text-align: center;
+}
+.total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0.5vw;
+    padding-top: 1vw;
+    border-top: 1px solid black;
+    font-size: 3.5vh;
+}
+
+.miniProd {
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.image {
+    width: 4vw;
+    height: 4vw;
+}
+.prod {
+    font-size: 2.5vh;
+}
+.boton {
+    display: flex;
+    color: white;
+    background-color: red;
+    font-size: 1.5vw;
+    align-items: center;
+    justify-content: center;
+    height: 1.3vw;
+    width: 1.3vw;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+.finalizar {
+    margin-top: 5vh;
+    width: 37vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button {
+    width: 15vw;
+    height: 7vh;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.counter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.contador {
+    width: fit-content;
+    margin: 1vw;
+}
+@media screen and (max-width: 768px) {
+    .lista {
+        font-size: 2.5vh;
+    }
+    .button {
+        height: 13vh;
+    }
+}
+@media screen and (max-width: 1060px) {
+    .button {
+        height: 12vh;
+    }
+}

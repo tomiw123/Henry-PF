@@ -78,5 +78,21 @@
         "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit.Veniam quidem minima magni earum illo suscipit,dolorum maxime voluptate necessitatibus ut nemo reiciendis,sint porro ratione. Dolor iusto ipsa accusantium aspernatur.",
         "category":"Utensilios",
         "price":20000
+    },
+    {
+        "id":"8",
+        "name":"prueba",
+        "image":"https://firebasestorage.googleapis.com/v0/b/henry-pf.appspot.com/o/8e6d317e-d194-48dc-aeae-50c3d2d65262.jpg?alt=media&token=249c7c6d-8b58-4598-94de-f20c38ef39e9",
+        "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit.Veniam quidem minima magni earum illo suscipit,dolorum maxime voluptate necessitatibus ut nemo reiciendis,sint porro ratione. Dolor iusto ipsa accusantium aspernatur.",
+        "category":"Utensilios",
+        "price":2500
+    },
+    {
+        "id":"9",
+        "name":"prueba2",
+        "image":"https://firebasestorage.googleapis.com/v0/b/henry-pf.appspot.com/o/2.png?alt=media&token=298fe465-0187-4b76-ad65-43b1917ea39b",
+        "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit.Veniam quidem minima magni earum illo suscipit,dolorum maxime voluptate necessitatibus ut nemo reiciendis,sint porro ratione. Dolor iusto ipsa accusantium aspernatur.",
+        "category":"Utensilios",
+        "price":20000
     }
 ]

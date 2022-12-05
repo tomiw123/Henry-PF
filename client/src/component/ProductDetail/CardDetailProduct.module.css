@@ -24,6 +24,7 @@
 
 .ImgCont{
  display: flex;
+ border: 2px solid white;
 }
 
 .Image{
@@ -85,8 +86,15 @@
 .btn {
     background-color: #29552D;
     color: white;
-    height: 40px;
+    height: 50px;
     width: 100px;
+}
+.btnDis {
+    cursor: not-allowed;
+    width: 100px;
+    height: 40px;
+    border: 2px solid white;
+    color: white;
 }
 
 .Description{
