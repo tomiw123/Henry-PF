@@ -50,7 +50,7 @@ const getIdRecipes = async (req, res) => {
     
     try{
       const recipes = await Recipe.findById(_id)
-      console.log(recipes)
+      //console.log(recipes)
       res.status(200).json(recipes);
     }catch(err){
       console.log(err);
@@ -69,7 +69,7 @@ const deleteRecipe = async(req,res) => {
     
 const createRecipe = async (req, res) => {
     const { name, image, ingridients, description } = req.body;
-    console.log(name);
+    //console.log(name);
     try {
         const exist = await Recipe.findOne({ name });
         if (!exist) {
