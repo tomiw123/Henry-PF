@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { geTAllProducts} from "../../redux/actions/actions";
 // import Loading from "../Loading/Loading";
 import Paginado from "../Paginado/Paginado";
+import BusquedaProducts from "../BarraDeBusqueda/BusquedaProducts";
 // import { useTransition } from "react";
 
 export default function Products(props) {
@@ -21,6 +22,7 @@ export default function Products(props) {
   return (
     <>
       <div className={style.card}>
+        <BusquedaProducts />
         <img src={props.img} alt={props.name} />
       </div>
       <div>

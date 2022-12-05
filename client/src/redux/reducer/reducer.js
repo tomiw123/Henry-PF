@@ -1,4 +1,4 @@
-import { ADD_PRODUCTS, GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD } from "../actions/actionsTypes";
+import { ADD_PRODUCTS, GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD } from "../actions/actionsTypes";
 
 
 const initialState={
@@ -20,7 +20,11 @@ export function rootReducer(state=initialState, action){
         ...state,
         products: action.payload
       };
-
+    case GET_ALL_PRODUCTS: 
+      return {
+        ...state, 
+        products: action.payload
+      }
     case GET_ID_PRODUCTS:
       return {
         ...state,
@@ -63,6 +67,11 @@ export function rootReducer(state=initialState, action){
         ...state,
         recipes: action.payload,
       };
+    case GET_RECIPES_NAME:
+      return {
+        ...state,
+        recipes: action.payload,
+      } 
     case GET_ID_RECIPES:
       return {
         ...state,

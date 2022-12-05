@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getAllRecipes} from '../../redux/actions/recipesActions'
 import { useEffect } from "react";
 import Paginado from "../Paginado/Paginado";
+import BusquedaRecetas from "../BarraDeBusqueda/BusquedaRecetas";
 
 const Recipes = () => {
     const dispatch = useDispatch();
@@ -18,6 +19,8 @@ const Recipes = () => {
  
   return (
     <div className={style.cartita}>
+      <BusquedaRecetas />
+      <div className={style.margen}>
       {Recipes?.map((e) => {
         return (
           <div key={e._id}>
@@ -28,6 +31,7 @@ const Recipes = () => {
           
         )
       })}
+      </div>
       <Paginado
       recipes={recipes}
       />

@@ -97,20 +97,20 @@ const createProduct = async (req, res) => {
     console.log("no funco");
   }
 };
-const updateProduct = async (req, res) => {
-  const { _id } = req.params;
-  const { name, price, image, description } = req.body;
+// const updateProduct = async (req, res) => {
+//   const { _id } = req.params;
+//   const { name, price, image, description } = req.body;
   
-  try {
-    const product = await Product.updateOne(
-      {_id,},
-      { $set: { name, price, image, description,} }
-    );
-    res.status(200).send(product);
-  } catch (err) {
-    console.log("no funco");
-  }
-};
+//   try {
+//     const product = await Product.updateOne(
+//       {_id,},
+//       { $set: { name, price, image, description,} }
+//     );
+//     res.status(200).send(product);
+//   } catch (err) {
+//     console.log("no funco");
+//   }
+// };
 
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;
@@ -153,6 +153,39 @@ const deleteProduct = async (req, res) => {
     res.status(200).send(products.name);
   } catch (err) {
     console.log(err);
+  }
+};
+
+const updateProduct = async (req, res) => {
+  const { _id } = req.params;
+  const { name, price, image, description } = req.body;
+console.log(name)
+  try {
+    if (name) {
+
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { name } }
+
+      )
+    }
+    if (price) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { price } }
+      )
+    }
+    if (image) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { image } }
+      )
+    }
+    if (description) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { description } }
+      )
+    }
+    res.status(200).send(product);
+  } catch (err) {
+    console.error(err)
   }
 };
 
