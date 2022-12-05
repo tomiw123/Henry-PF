@@ -87,11 +87,26 @@ const createRecipe = async (req, res) => {
         console.log(err);
         }
 };
+const updateRecipes = async (req, res) => {
+  const { _id } = req.params;
+  const {name, image, ingridients, description, product } = req.body;
+  
+  try {
+    const recipes = await Recipe.updateOne(
+      {_id,},
+      { $set: { name, image, ingridients, description, product,} }
+    );
+    res.status(200).send(recipes);
+  } catch (err) {
+    console.log("no funco");
+  }
+};
 
 
 module.exports={
     getRecipes,
     getIdRecipes,
     deleteRecipe,
-    createRecipe
+    createRecipe,
+    updateRecipes,
 }
