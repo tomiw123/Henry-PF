@@ -4,14 +4,11 @@ import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import "./Footer.css";
 import image from "../../assets/dosdagas-png-transparente.png";
 
-
 const Footer = () => {
-
   return (
     <div className="footer">
-      
       <div className="saltooooo"></div>
-      
+
       <div className="contact">
         <a href="https://www.facebook.com/DosDagas" target="_blanc">
           <div className="rs">
@@ -27,29 +24,29 @@ const Footer = () => {
           </div>
         </a>
 
-        
-          <a href="https://api.whatsapp.com/send?phone=%2B573226455432&text=%C2%BFComo+estas+en+que+podemos+asesorarte+en+el+dia+de+hoy%3F" target="_blanc" >
+        <a
+          href="https://api.whatsapp.com/send?phone=%2B5493874587646&text=%C2%BFComo+estas+en+que+podemos+asesorarte+en+el+dia+de+hoy%3F"
+          target="_blanc"
+        >
           <div className="rs">
-            <FaWhatsapp className="icon" style={{width: "80px"}}/>
+            <FaWhatsapp className="icon" style={{ width: "80px" }} />
           </div>
-          </a>
-
-        
+        </a>
 
         <div className="logo">
           <Link to="/">
-              <img src={image} alt="not-found" width={200} />
+            <img src={image} alt="not-found" width={200} />
           </Link>
         </div>
         <div className="teldic">
-          <Link to={'/contacto'}>
-          <h1>CONTACTO</h1>
+          <Link to={"/contacto"}>
+            <h1>CONTACTO</h1>
           </Link>
           <h2>Email: aaaaaaaaaa@gmail.com</h2>
           <h2>Telefono: xxxxxxxxxxx</h2>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 

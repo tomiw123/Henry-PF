@@ -1,4 +1,5 @@
 import CreateProduct from "./component/CreateProduct/CreateProduct";
+import EditProduct from "./component/EditProduct/EditProduct"
 import "./App.css";
 import Register from "./page/NavbarPege/Register";
 import { Route, Routes } from "react-router-dom";
@@ -17,6 +18,7 @@ import CreateRecipe from './component/CreateRecipe/CreateRecipe';
 import HomeAdmin from './component/Admin/HomeAdmin'
 import TotalAdmin from "./component/SetAdmin/TotalAdmin";
 import AdminProducts from './component/Admin/AdminProducts/AdminProducts'
+import AdminRecipes from './component/Admin/AdminRecipes/AdminRecipes'
 
 //el mati confirma que esta todo bien
 function App() {
@@ -28,12 +30,14 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/HAdmin" element={<HomeAdmin/>} />
         <Route path="/HAdmin/AdminProducts" element={<AdminProducts/>} />
+        <Route path="/HAdmin/AdminRecipes" element={<AdminRecipes/>} />
         <Route path="/getAdmin" element={<TotalAdmin/>} />
         <Route path="/products" element={<Products/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="login" element={<Login />} />
         <Route path="reset" element={<Reset />} />
         <Route path="/create" element={<CreateProduct/>} />
+        <Route path="/edit/:id" element={<EditProduct/>} />
         <Route path="/createRecipe" element={<CreateRecipe/>} />
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
