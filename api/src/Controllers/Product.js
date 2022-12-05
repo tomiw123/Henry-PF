@@ -30,7 +30,7 @@ const getAll = async (req, res) => {
     }else {
       const products = await Product.paginate({}, { limit, page });
       res.status(200).json(products);
-    } 
+    }
   } catch (err) {
     console.log(err);
   }
@@ -39,16 +39,18 @@ const getAll = async (req, res) => {
 const getId = async (req, res) => {
   const { id } = req.params;
   console.log(id)
-  try{
+  try {
     const products = await Product.findById(id)
     res.status(200).json(products);
-  }catch(err){
+  } catch (err) {
     console.log(err);
   }
 }
 
 /* //filtros
 const filterProduct = async (req, res) => {
+
+  const { filter, category, price, recipes } = req.query;
  //filter: categorias(cat) precio(price) alfabeticamente(alfa) fecha creado(create)
  //category: categorias disponibles //price:1 y -1 //alfa:1 y -1 //date: 1 y -1
   const { filter, category, price, alfa, date } = req.query;
@@ -73,11 +75,13 @@ const filterProduct = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+};
+
 }; */
  //dwdwwwd
 
 const createProduct = async (req, res) => {
-  const { name, price, image, description, category } = req.body;
+  const { name, price, image, description } = req.body;
   console.log(name);
   try {
     const exist = await Product.findOne({ name });
@@ -87,30 +91,50 @@ const createProduct = async (req, res) => {
         price,
         image,
         description,
-        category,
       });
       res.status(200).send(`Product ${name} created`);
     } else {
       res.status(404).send("El producto ya existe");
     }
   } catch (err) {
-    console.log("no funco");
+    console.log("no funco", err);
   }
 };
+
+
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
   const { name, price, image, description } = req.body;
-  
+console.log(name)
   try {
-    const product = await Product.updateOne(
-      {_id,},
-      { $set: { name, price, image, description,} }
-    );
+    if (name) {
+
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { name } }
+
+      )
+    }
+    if (price) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { price } }
+      )
+    }
+    if (image) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { image } }
+      )
+    }
+    if (description) {
+      var product = await Product.findByIdAndUpdate(
+        _id, { $set: { description } }
+      )
+    }
     res.status(200).send(product);
   } catch (err) {
-    console.log("no funco");
+    console.error(err)
   }
 };
+
 
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;
@@ -124,7 +148,7 @@ const updateRecipes = async (req, res) => {
     );
     res.status(200).send(product);
   } catch (err) {
-    console.log("no funco");
+    console.log("no funco", err);
   }
 };
 const removeRecipes = async (req, res) => {

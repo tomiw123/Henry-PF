@@ -18,7 +18,9 @@ const Recipes = () => {
  
   return (
     <div className={style.cartita}>
-      {Recipes?.map((e) => {
+
+      <div className={style.recetas}>
+        {Recipes?.map((e) => {
         return (
           <div key={e._id}>
             <Link to={`/recipeDetail/${e._id}`}>
@@ -28,9 +30,13 @@ const Recipes = () => {
           
         )
       })}
+      </div>
+      
+      <div className={style.paginado}>
       <Paginado
       recipes={recipes}
       />
+      </div>
     </div>
   );
 };

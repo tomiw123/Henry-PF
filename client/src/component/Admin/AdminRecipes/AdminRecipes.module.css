@@ -1,5 +1,6 @@
 .container {
     width: 100%;
+    min-height:100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,13 +8,3 @@
     background-color: #292626;
     padding-top: 20px
 }
-
-.paginado{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 30px;
-    background-color: white;
-}
-

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import {addRecipes} from '../../redux/actions/recipesActions'
 import {uploadFile} from '../../firebase/firebase.config'
+import style from './CreateRecipe.module.css'
 
 
 
@@ -12,6 +13,33 @@ function CreateRecipe(){
     const [file, setFile] = useState(null)
     const dispatch = useDispatch();
 
+    const [ingredientes, setIngredientes]= useState([]);
+
+
+    const [valorIng, setValorIng]= useState("")
+
+    console.log(valorIng)
+
+    //const agregarIngrediente = (value) =>{
+    //   // e.preventDefault();
+    //  // console.log(e.target.value)
+    //    setIngredientes({
+    //        ...ingredientes,
+    //        //valores : [...ingredientes, valorIng]
+    //       ingredientes: value.Ing
+    //    })
+    //    setValorIng("")
+    //}
+        console.log(ingredientes)
+
+    const valorIngrediente = (e) =>{
+        e.preventDefault();
+        setValorIng({
+            ...valorIng,
+            [e.target.name]: e.target.value
+        })
+    }
+
     const crear = async (values) =>{
         try {
             const result = await uploadFile(file);
@@ -19,6 +47,7 @@ function CreateRecipe(){
             console.log(values)
             dispatch(addRecipes(values));
             alert('Receta creado existosamente')
+            window.location.reload();
         } catch (error) {
             console.log(error)
             alert('Error interno. Intente mas tarde')
@@ -58,7 +87,7 @@ function CreateRecipe(){
             <Form >
 
                 <h1 className="text-5xl text-white m-2 justify-center items-center ">Crear Receta</h1>
-
+                
                 <h1 className="text-s text-white m-2">Nombre de Receta</h1>
             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
                 placeholder="Ingrese el nombre de la receta" name="name" type="text"/>
@@ -89,8 +118,26 @@ function CreateRecipe(){
                 </select>    */}
 
             <h1 className="text-s text-white m-2">Ingredientes de Receta</h1>
-            <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/>
+             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
+                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/> 
+            {/* <input */}
+             {/* type="text" */}
+             {/* value={valorIng.name} */}
+             {/* placeholder="Ingrese los ingredientes" */}
+             {/* onChange={valorIngrediente} */}
+             {/* name= "Ing" */}
+             {/* > */}
+            {/* </input> */}
+
+            <button className={style.li} 
+            variant="outlined"
+            // value={valorIng.name}
+            // name= "Ing"
+            onClick={(e)=>{agregarIngrediente(e)}}
+            >Agregar</button>
+
+
+
             
             <h1 className="text-s text-white m-2">Descripción de la Receta</h1>
             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 h-24 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
@@ -106,7 +153,7 @@ function CreateRecipe(){
             </ErrorMessage>
             
 
-            <button  type='submit'
+            <button  type='crear'
             className="group bg-red-600
          mb-3 relative flex w-full justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2" >Crear Receta</button>
             

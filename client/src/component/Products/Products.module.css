@@ -1,9 +1,11 @@
 .page{
     background-color: rgba(43,38,38);
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
     flex-wrap: wrap;
     justify-content: space-around;
 	padding-top: 45px;
+    height: 1000px;
 }
 
 .salto{
@@ -11,4 +13,12 @@
     width: 100vw;
     background-color: #c18e0e;
    	margin-bottom: 20px;
+}
+
+.paginado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+
 }
