@@ -9,8 +9,8 @@ import { useEffect } from 'react';
 const AdminRecipes = () => {
     const dispatch = useDispatch();
     useEffect(()=>{dispatch(getAllRecipes())},[dispatch])
-    const Recipes = useSelector(state => state.recipes);
-
+    const Recipes = useSelector(state => state.recipes.docs);
+    console.log(Recipes);
     return (
         <div className={style.container}>
             {

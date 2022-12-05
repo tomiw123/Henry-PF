@@ -21,26 +21,13 @@ export function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload
       }
-    case GET_ID_PRODUCTS:
-      return {
-        ...state,
-        product: action.payload
-      }
-    case CLEAN_PRODUCT:
-      return {
-        ...state,
-        product: []
-      }
+
     case ADD_PRODUCTS:
       return {
         ...state,
         products: [...state.products, action.payload]
       }
-    case ADD_PRODUCTS_CART:
-      return {
-        ...state,
-        products: action.payload
-      };
+
     case GET_ID_PRODUCTS:
       return {
         ...state,
@@ -57,6 +44,7 @@ export function rootReducer(state = initialState, action) {
         products: [...state.products, action.payload],
       };
     case ADD_PRODUCTS_CART:
+      
       return {
         ...state,
         cart: [...state.cart, action.payload],

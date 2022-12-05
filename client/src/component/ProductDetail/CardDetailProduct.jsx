@@ -24,8 +24,6 @@ const CardDetailProduct = () => {
                   } },[dispatch,paramsId.id])
 
 
- console.log(Product)
-
   const [counter, setCounter] = useState(1);
 
   function handleMax() {
@@ -48,7 +46,7 @@ const CardDetailProduct = () => {
       setTimeout(()=> {
         dispatch(addToCart(obj))
       },50)
-      // console.log(obj)
+      console.log(obj)
     } else {
       yaEsta={
         ...yaEsta,

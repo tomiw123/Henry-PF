@@ -20,16 +20,16 @@ function CreateRecipe(){
 
     console.log(valorIng)
 
-    const agregarIngrediente = (value) =>{
-       // e.preventDefault();
-      // console.log(e.target.value)
-        setIngredientes({
-            ...ingredientes,
-            //valores : [...ingredientes, valorIng]
-           ingredientes: value.Ing
-        })
-        setValorIng("")
-    }
+    //const agregarIngrediente = (value) =>{
+    //   // e.preventDefault();
+    //  // console.log(e.target.value)
+    //    setIngredientes({
+    //        ...ingredientes,
+    //        //valores : [...ingredientes, valorIng]
+    //       ingredientes: value.Ing
+    //    })
+    //    setValorIng("")
+    //}
         console.log(ingredientes)
 
     const valorIngrediente = (e) =>{
@@ -118,16 +118,16 @@ function CreateRecipe(){
                 </select>    */}
 
             <h1 className="text-s text-white m-2">Ingredientes de Receta</h1>
-            {/* <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/> */}
-            <input
-            type="text"
-            value={valorIng.name}
-            placeholder="Ingrese los ingredientes"
-            onChange={valorIngrediente}
-            name= "Ing"
-            >
-            </input>
+             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
+                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/> 
+            {/* <input */}
+             {/* type="text" */}
+             {/* value={valorIng.name} */}
+             {/* placeholder="Ingrese los ingredientes" */}
+             {/* onChange={valorIngrediente} */}
+             {/* name= "Ing" */}
+             {/* > */}
+            {/* </input> */}
 
             <button className={style.li} 
             variant="outlined"

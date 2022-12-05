@@ -7,6 +7,7 @@ import { useDispatch} from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { uploadFile } from '../../firebase/firebase.config'
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 // llamar al producto por id
 // mostrarlo, editarlo y luego enviarlo por Update Product
@@ -16,38 +17,58 @@ const CreateProduct = () => {
 
     const { id } = useParams()
 
+    const [modificar, setModificar] = useState({
+        name:''
+    });
 
     const dispatch = useDispatch();
 
 
-    const [modificar, setModificar] = useState({});
+    //const changeValue = ( value)=> {
+    //    setModificar({
+    //        ...modificar,
+    //        name:value
+    //    })
+    //  }
 
+   //useEffect(()=>{
+   //    changeValue('hola22sss') 
+   //},[])
 
+   function handleName(e) {
+    e.preventDefault();
+    setModificar({
+        ...modificar,
+        name: e.target.value
+    })
 
+} 
 
     const submit = async (values) => {
-        if (values.name) {
-            console.log(values.name)
-            setModificar({ ...modificar, name: values.name })
-        }
-        if (values.price) {
-            setModificar({ ...modificar, price: values.price })
-        }
-        if (values.image) {
-            setModificar({ ...modificar, image: values.image })
-        }
-        if (values.description) {
-            setModificar({ ...modificar, description: values.description })
-        }
-
-        if (values.name === '') {
+        if (!modificar.name) {
+            //changeValue( values.name)
+            //console.log(modificar);
             alert('Error interno. Intente mas tarde')
-    }
-        const result = await uploadFile(file);
-        values.image = result;
-        dispatch(updateProduct(modificar, id));
-        console.log(modificar)
-        alert('Producto editado existosamente')
+        }
+        //if (values.price) {
+        //    setModificar({ ...modificar, price: values.price })
+        //}
+        //if (values.image) {
+        //    setModificar({ ...modificar, image: values.image })
+        //}
+        //if (values.description) {
+        //    setModificar({ ...modificar, description: values.description })
+        //}
+
+        if (modificar.name) {
+            //alert('Error interno. Intente mas tarde')
+            //const result = await uploadFile(file);
+            //values.image = result;
+            dispatch(updateProduct(modificar, id));
+            console.log(modificar)
+            alert('Producto editado existosamente')
+        }
+        
         //  window.location.reload();
 
 
@@ -90,7 +111,7 @@ const CreateProduct = () => {
                     <Form className=" flex flex-col justify-center items-center">
                         <h1 className="text-5xl text-white m-2 justify-center items-center ">Editar Producto</h1>
                         <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-                            placeholder="Ingrese el nuevo nombre del producto" name="name" type="text" />
+                            placeholder="Ingrese el nuevo nombre del producto" name="name" type="text" onChange={handleName} value={modificar.name}/>
                         <ErrorMessage name='name'>
                             {msg => <div style={{ color: 'red' }}>{msg}</div>}
                         </ErrorMessage>
