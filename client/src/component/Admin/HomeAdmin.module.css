@@ -11,15 +11,21 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 100vh;
+   height: 120vh;
    width: 100%;
    background-color: #292626;
 }
 
+.card{
+   margin-bottom: 50px;
+}
 
  .cardcontainer {
-    display: flex;
+  margin-bottom: 50px;
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
  }
 
  .slogan {

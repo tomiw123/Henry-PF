@@ -19,11 +19,11 @@ const AdminProduct = (props) => {
     }
 
     const deleteProduct = (id) => {
+        if (window.confirm("Los cambios van a ser eliminados, desea continuar?")) {
         dispatch(adminDeleteProduct(id))
         dispatch(geTAllProducts())
-
     }
-    console.log(props.id)
+}
     return (
         <div className={style.oveflow}>
             <div className={style.container}>
@@ -31,15 +31,15 @@ const AdminProduct = (props) => {
                     <img className={style.img} src={props.image} alt="" />
                     <h1 className={style.name}>{props.name}</h1>
                 </div>
-                <div className={style.counterContainer}>
-                    <button className={style.counterBtn} onClick={minCounter}>-</button>
-                    <div className={style.counterNumber}>{counter}</div>
-                    <button className={style.counterBtn} onClick={maxCounter}>+</button>
-                </div>
+                {/* <div className={style.counterContainer}> */}
+                    {/* <button className={style.counterBtn} onClick={minCounter}>-</button> */}
+                    {/* <div className={style.counterNumber}>{counter}</div> */}
+                    {/* <button className={style.counterBtn} onClick={maxCounter}>+</button> */}
+                {/* </div> */}
                 <div className={style.btnContainer}>
-                    <Link to={`/edit/${props.id}`}>
-                        <button className={style.btn}>Editar</button>
-                    </Link>
+                    <Link to={`/edit/${props.id}`}> 
+                         <button className={style.btn}>Editar</button> 
+                     </Link>
                     <button className={style.btn2} onClick={() => deleteProduct(props.id)}>Borrar</button>
                 </div>
             </div>

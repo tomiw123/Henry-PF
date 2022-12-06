@@ -35,6 +35,8 @@ export function AuthProvider({ children }) {
 
   const [userName, serUserName] = useState("");
 
+  const[id, setId] = useState("")
+
   
 
   useEffect(() => {
@@ -44,6 +46,7 @@ export function AuthProvider({ children }) {
       } else {
         setUser(currentUser.email);
         serUserName(currentUser.displayName);
+        setId(currentUser.uid);
       }
     });
     return () => userSession();
@@ -107,6 +110,7 @@ export function AuthProvider({ children }) {
     const data = await getDoc(docRef);
     const dataRole = data.data();
     localStorage.setItem("role", dataRole.rol || "user");
+    localStorage.setItem("username", dataRole.username);
   }
 
   const login = async (email, password) => {
@@ -162,6 +166,7 @@ export function AuthProvider({ children }) {
         logout,
         resetPassword,
         setAsing,
+        id,
       }}
     >
       {children}
