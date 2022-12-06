@@ -70,7 +70,6 @@ const createProduct = async (req, res) => {
   }
 };
 
-
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
   const { name, price, image, description } = req.body;
@@ -149,6 +148,7 @@ const deleteProduct = async (req, res) => {
     console.log(err);
   }
 };
+
 
 
 module.exports = {
