@@ -101,39 +101,6 @@ const createProduct = async (req, res) => {
   }
 };
 
-const updateProduct = async (req, res) => {
-  const { _id } = req.params;
-  const { name, price, image, description } = req.body;
-console.log(name)
-  try {
-    if (name) {
-
-      var product = await Product.findByIdAndUpdate(
-        _id, { $set: { name } }
-
-      )
-    }
-    if (price) {
-      var product = await Product.findByIdAndUpdate(
-        _id, { $set: { price } }
-      )
-    }
-    if (image) {
-      var product = await Product.findByIdAndUpdate(
-        _id, { $set: { image } }
-      )
-    }
-    if (description) {
-      var product = await Product.findByIdAndUpdate(
-        _id, { $set: { description } }
-      )
-    }
-    res.status(200).send(product);
-  } catch (err) {
-    console.error(err)
-  }
-};
-
 
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;
