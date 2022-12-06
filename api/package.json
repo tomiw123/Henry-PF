@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "react-scripts build",
     "test": "mocha -w ./tests/*/.spec.js"
   },
   "dependencies": {
