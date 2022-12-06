@@ -37,7 +37,6 @@ const Recipes = () => {
       recipes={recipes}
       />
       </div>
-    </div>
   );
 };
 
