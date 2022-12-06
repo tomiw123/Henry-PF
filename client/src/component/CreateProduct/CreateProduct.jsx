@@ -8,6 +8,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { uploadFile } from '../../firebase/firebase.config'
 
 
+
 const CreateProduct = () => {
 
     const [file, setFile] = useState(null)
@@ -16,12 +17,14 @@ const CreateProduct = () => {
 
     const submit = async (values) => {
         try {
+            if (window.confirm("Desea agregar los cambios?")) {
             const result = await uploadFile(file);
             values.image = result;
             console.log(values)
             dispatch(addProducts(values));
             alert('Producto creado existosamente')
-            window.location.reload();
+            window.location.reload()
+         }
         } catch (error) {
             console.log(error)
             alert('Error interno. Intente mas tarde')

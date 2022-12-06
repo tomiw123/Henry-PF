@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, DELETE_PRODUCT_ADMIN, ADD_COUNT_PROD, UPDATE_PRODUCT} from "./actionsTypes";
+
+import { GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD} from "./actionsTypes";
 
 
 
@@ -14,6 +14,17 @@ export const geTAllProducts = (page)=>{
     // console.log(products);
   };
 };
+
+export const getAll = (name)=> {
+  return async (dispatch)=>{
+    const products = await axios.get(`${import.meta.env.VITE_URL}/products?search=${name}`)
+    dispatch({
+      type: GET_ALL_PRODUCTS,
+      payload: products.data,
+    });
+    // console.log(products);
+  };
+}
 
 export const getIdProducts = (payload)=>{
   return async (dispatch)=>{
