@@ -1,21 +1,12 @@
 const Recipe = require('../Models/Recipe.js');
 
-// const getRecipes = async(req,res) => {
-//     try{
-//       const recipes = await Recipe.find();
-//       res.status(200).json(recipes);
-//     }catch(err){
-//         res.status(404).send("No hay recetas")
-//     }
-// }
 
 const getRecipes = async (req, res) => {
   //search by query, filter and paginate
-  const {search, filter, category, date } = req.query;//price, alfa,
+  const {search, filter} = req.query;
   const limit = req.query.limit || 8;
   const page = req.query.page || 1;
- //filter: categorias(cat) precio(price) alfabeticamente(alfa) fecha creado(create)
- //category: categorias disponibles //price:1 y -1 //alfa:1 y -1 
+
  
   try {
     if (search){
@@ -24,14 +15,6 @@ const getRecipes = async (req, res) => {
       });
       res.status(200).json(recipes);
     }else if(filter){
-      // if (filter == "cat") {
-      //   const recipes = await Recipe.paginate({ category },{limit, page });
-      //   res.status(200).json(recipes);
-      // }
-      // if (filter == "price") {
-      //   const recipes = await Recipe.paginate({}, { sort: { price: 1 }, limit, page });
-      //   res.status(200).json(recipes);
-      // }
       if (filter == "alfa") {
         const recipes = await Recipe.paginate({},{sort: { name: 1 }, limit, page });
         res.status(200).json(recipes);

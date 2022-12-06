@@ -8,7 +8,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { uploadFile } from '../../firebase/firebase.config'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
-import swal from 'sweetalert'
+// import swal from 'sweetalert'
 
 // llamar al producto por id
 // mostrarlo, editarlo y luego enviarlo por Update Product

@@ -5,40 +5,17 @@ import { Navigate } from 'react-router-dom';
 import {addRecipes} from '../../redux/actions/recipesActions'
 import {uploadFile} from '../../firebase/firebase.config'
 import style from './CreateRecipe.module.css'
+//import { error } from 'console';
 
+{
 
+}
 
 function CreateRecipe(){
 
     const [file, setFile] = useState(null)
     const dispatch = useDispatch();
-
-    const [ingredientes, setIngredientes]= useState([]);
-
-
-    const [valorIng, setValorIng]= useState("")
-
-    console.log(valorIng)
-
-    //const agregarIngrediente = (value) =>{
-    //   // e.preventDefault();
-    //  // console.log(e.target.value)
-    //    setIngredientes({
-    //        ...ingredientes,
-    //        //valores : [...ingredientes, valorIng]
-    //       ingredientes: value.Ing
-    //    })
-    //    setValorIng("")
-    //}
-        console.log(ingredientes)
-
-    const valorIngrediente = (e) =>{
-        e.preventDefault();
-        setValorIng({
-            ...valorIng,
-            [e.target.name]: e.target.value
-        })
-    }
+  
 
     const crear = async (values) =>{
         try {
@@ -54,6 +31,13 @@ function CreateRecipe(){
         }
     }
 
+    const handlerIngredients = (value)=>{
+        let yaEsta = ingredients.find(i=> i=== value)
+        if(!yaEsta){
+            ingredients.push(value)
+            console.log(ingredients);
+        }
+    }
 
     const validar= (values) =>{
         const errors={}
@@ -74,8 +58,8 @@ function CreateRecipe(){
             initialValues={{
                 name:"",
                 image:"",
-               // Utensilios:"",
-                ingredients:"",
+                //Utensilios:"",
+                //ingredients:"",
                 description:"",
             }}
             onSubmit={crear}
@@ -120,21 +104,16 @@ function CreateRecipe(){
             <h1 className="text-s text-white m-2">Ingredientes de Receta</h1>
              <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
                 placeholder="Ingrese los ingredientes" name="ingredients" type="text"/> 
-            {/* <input */}
-             {/* type="text" */}
-             {/* value={valorIng.name} */}
-             {/* placeholder="Ingrese los ingredientes" */}
-             {/* onChange={valorIngrediente} */}
-             {/* name= "Ing" */}
-             {/* > */}
-            {/* </input> */}
+            <input
+                type="text"
+                placeholder="Ingrese los ingredientes"
+                // onChange={handlerIngredients()}
+            />
+            
 
-            <button className={style.li} 
-            variant="outlined"
-            // value={valorIng.name}
-            // name= "Ing"
-            onClick={(e)=>{agregarIngrediente(e)}}
-            >Agregar</button>
+            {/* <button className={style.li}  */}
+            {/* // variant="outlined" */}
+            {/* // >Agregar</button> */}
 
 
 
