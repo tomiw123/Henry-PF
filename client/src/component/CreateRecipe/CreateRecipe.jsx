@@ -5,13 +5,17 @@ import { Navigate } from 'react-router-dom';
 import {addRecipes} from '../../redux/actions/recipesActions'
 import {uploadFile} from '../../firebase/firebase.config'
 import style from './CreateRecipe.module.css'
+//import { error } from 'console';
 
+{
 
+}
 
 function CreateRecipe(){
 
     const [file, setFile] = useState(null)
     const dispatch = useDispatch();
+
 
    // const [ingredientes, setIngredientes]= useState([]);
 
@@ -44,6 +48,7 @@ function CreateRecipe(){
         })
     }
 
+
     const crear = async (values) =>{
         try {
             const result = await uploadFile(file);
@@ -58,6 +63,13 @@ function CreateRecipe(){
         }
     }
 
+    const handlerIngredients = (value)=>{
+        let yaEsta = ingredients.find(i=> i=== value)
+        if(!yaEsta){
+            ingredients.push(value)
+            console.log(ingredients);
+        }
+    }
 
     const validar= (values) =>{
         const errors={}
@@ -78,10 +90,15 @@ function CreateRecipe(){
             initialValues={{
                 name:"",
                 image:"",
+
                // Utensilios:"",
                 ingredients:[{
                     ing: ""
                 }],
+
+                //Utensilios:"",
+                //ingredients:"",
+
                 description:"",
             }}
             onSubmit={crear}
@@ -125,6 +142,7 @@ function CreateRecipe(){
                 </select>    */}
 
             <h1 className="text-s text-white m-2">Ingredientes de Receta</h1>
+
              {/* <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
                 placeholder="Ingrese los ingredientes" name="ingredients" type="text"/>  */}
             <input 
@@ -146,6 +164,19 @@ function CreateRecipe(){
             //}
             onClick={() => push([ingredientes])}
             >Agregar</button>
+
+             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
+                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/> 
+            <input
+                type="text"
+                placeholder="Ingrese los ingredientes"
+                // onChange={handlerIngredients()}
+            />
+            
+
+            {/* <button className={style.li}  */}
+            {/* // variant="outlined" */}
+            {/* // >Agregar</button> */}
 
 
 
