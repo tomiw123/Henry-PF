@@ -5,13 +5,13 @@
     flex-wrap: wrap;
     justify-content: space-around;
 	padding-top: 45px;
-    height: 800px;
+    height: 1200px;
 }
 
 .salto{
     height: 1px;
     width: 100vw;
-    background-color: #c18e0e;
+    background-color: rgb(194, 143, 13);
    	margin-bottom: 20px;
 }
 
