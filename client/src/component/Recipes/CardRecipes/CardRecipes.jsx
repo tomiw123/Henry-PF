@@ -21,22 +21,22 @@ export default function CardRecipes(props){
         // </div>
 
 
-<div classNameName="flex justify-center text-center w-80  min-h-max my-4"> 
+<div className="flex justify-center text-center w-80  min-h-max my-4"> 
    <div className="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400 h-96 ">
     <a href="">
     <Link to ={`/recipeDetail/${props.id}`}> 
    <img className="rounded-t-lg w-80 h-52 " src={props.img} alt=""/>
    </Link>
     </a>
-    <div classNameName="p-6 h-60">
+    <div className="p-6 h-60">
 
-      <h5 classNameName="text-gray-900 text-3xl font-medium mb-2 h-20 ">{props.name}</h5>
+      <h5 className="text-gray-900 text-3xl font-medium mb-2 h-20 ">{props.name}</h5>
 
       
-      <div classNameName="flex justify-center ">
+      <div className="flex justify-center ">
       
       <Link to ={`/recipeDetail/${props.id}`}>
-      <button type="button" classNameName=" mx-3 inline-block px-5 h-11  py-1 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" >Ver Más</button></Link>
+      <button type="button" className=" mx-3 inline-block px-5 h-11  py-1 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" >Ver Más</button></Link>
 
       </div>
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { geTAllProducts } from "../../redux/actions/actions";
 import { getAllRecipes } from "../../redux/actions/recipesActions";
-import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 
 const Paginado = ({ product, recipes }) => {
   // console.log(product);

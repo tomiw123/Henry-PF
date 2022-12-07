@@ -42,7 +42,7 @@ const Footer = () => {
           <Link to={"/contacto"}>
             <h1>CONTACTO</h1>
           </Link>
-          <h2>Email: aaaaaaaaaa@gmail.com</h2>
+          <h2>Email: dosdagashenry@gmail.com</h2>
           <h2>Telefono: xxxxxxxxxxx</h2>
         </div>
       </div>
