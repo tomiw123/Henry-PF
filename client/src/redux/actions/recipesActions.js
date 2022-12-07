@@ -4,9 +4,9 @@ import { GET_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, GET_ID_RECIPES, CLEAN_RECIPE
 
 
 
-export const getAllRecipes = ()=>{
+export const getAllRecipes = (page)=>{
   return async (dispatch)=>{
-    const recipes = await axios.get(`${import.meta.env.VITE_URL}/recipes`)
+    const recipes = await axios.get(`${import.meta.env.VITE_URL}/recipes?page=${page}`)
     dispatch({
       type: GET_RECIPES,
       payload: recipes.data

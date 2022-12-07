@@ -34,7 +34,8 @@ const [counter, setCounter] = useState(1);
       setTimeout(()=> {
         dispatch(addToCart(obj))
       },50)
-      console.log(obj)
+      alert(`${name} agregada al carrito`)
+      
     } else {
       yaEsta={
         ...yaEsta,
@@ -59,7 +60,6 @@ const [counter, setCounter] = useState(1);
     //     <button className={style.button}>Ver Más!</button>
     //   </div>
     // </div>
-
 
   <div class="flex justify-center text-center w-80  min-h-max"> 
    <div class="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400">
@@ -98,7 +98,5 @@ const [counter, setCounter] = useState(1);
     </div>
   </div>
 </div>
-
-
   );
 }

@@ -8,37 +8,47 @@ const Paginado = ({ product, recipes }) => {
   const dispatch = useDispatch();
   const pageNumbers = [];
   let [cur, setCur] = useState();
+  let [count, setCount] = useState(1);
+  
 
   // console.log(pageNumbers);
   let pepe = null;
 
   if (product && !recipes) {
     pepe = product;
+<<<<<<< HEAD
   } else if (!product && recipes) {
+=======
+
+  } else if (recipes && !product) {
+>>>>>>> 9a1188c081f601bddab20c2cfb927ac794f998b9
     pepe = recipes;
   }
-
-  let count = 1;
+  
 
   for (let i = 1; i <= pepe.totalPages; i++) {
     pageNumbers.push(i);
   }
 
   const handleClickNext = () => {
+<<<<<<< HEAD
    if (pepe.hasNextPage === true) {
+=======
+    if ((product && !recipes) && pepe.hasNextPage === true) {
+>>>>>>> 9a1188c081f601bddab20c2cfb927ac794f998b9
       count++;
       dispatch(geTAllProducts(count));
-    } else if (pepe.hasNextPage === true) {
+    } else if ((!product && recipes) && pepe.hasNextPage === true) {
       count++;
       dispatch(getAllRecipes(count));
     }
   };
 
   const handleClickPrev = () => {
-    if (pepe.hasPrevPage === true) {
+    if ((product && !recipes) && pepe.hasPrevPage === true) {
       count--;
       dispatch(geTAllProducts(count));
-    } else if (pepe.hasPrevPage === true) {
+    } else if ((!product && recipes) && pepe.hasPrevPage === true) {
       count--;
       dispatch(getAllRecipes(count));
     }
@@ -62,13 +72,25 @@ const Paginado = ({ product, recipes }) => {
       </button>
       {pageNumbers.map((el) => (
         <div key={el}>
-          <button
-            onClick={() => dispatch(geTAllProducts(el))}
+
+          {!product && recipes ?(
+            <button
+            onClick={() => dispatch(getAllRecipes(el))}
             className={`h-12 border-2 border-r-0 border-indigo-600
             w-12 ${cur === el && "bg-indigo-600 text-white"} `}
           >
             {el}
-          </button>
+            </button>
+             ):
+          (<button
+            onClick= {() => dispatch(geTAllProducts(el))}
+            className={`h-12 border-2 border-r-0 border-indigo-600
+            w-12 ${cur === el && "bg-indigo-600 text-white"} `}
+          >
+            {el}
+          </button>)
+          }
+          
         </div>
       ))}
       <button
