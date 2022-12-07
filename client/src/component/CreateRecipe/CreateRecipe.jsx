@@ -7,8 +7,8 @@ import { uploadFile } from "../../firebase/firebase.config";
 import style from "./CreateRecipe.module.css";
 //import { error } from 'console';
 
-{
-}
+
+
 
 function CreateRecipe() {
   const [file, setFile] = useState(null);
@@ -22,24 +22,24 @@ function CreateRecipe() {
 
   const [valorIng, setValorIng] = useState("");
 
-  console.log(valorIng);
+  //console.log(valorIng);
 
-  const agregarIngrediente = (value) => {
-    setReceta({
-      ...receta,
-      ingrediente: [...receta.ingrediente, value.target.value],
-    });
-    // setValorIng("")
-  };
-  console.log(receta);
+  // const agregarIngrediente = (value) => {
+  //   setReceta({
+  //     ...receta,
+  //     ingrediente: [...receta.ingrediente, value.target.value],
+  //   });
+  //   // setValorIng("")
+  // };
+  // console.log(receta);
 
-  const valorIngrediente = (e) => {
-    e.preventDefault();
-    setValorIng({
-      ...valorIng,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const valorIngrediente = (e) => {
+  //   e.preventDefault();
+  //   setValorIng({
+  //     ...valorIng,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
   const crear = async (values) => {
     try {
@@ -55,13 +55,13 @@ function CreateRecipe() {
     }
   };
 
-  const handlerIngredients = (value) => {
-    let yaEsta = ingredients.find((i) => i === value);
-    if (!yaEsta) {
-      ingredients.push(value);
-      console.log(ingredients);
-    }
-  };
+  // const handlerIngredients = (value) => {
+  //   let yaEsta = ingredients.find((i) => i === value);
+  //   if (!yaEsta) {
+  //     ingredients.push(value);
+  //     console.log(ingredients);
+  //   }
+  // };
 
   const validar = (values) => {
     const errors = {};
@@ -77,46 +77,43 @@ function CreateRecipe() {
   //        return <Navigate to="/"/>
   //    }
 
-  return (
-    <div>
-      <Formik
-        initialValues={{
-          name: "",
-          image: "",
+  
 
-          // Utensilios:"",
-          ingredients: [
-            {
-              ing: "",
-            },
-          ],
+    return(
+        <div>
+            <Formik
 
-          //Utensilios:"",
-          //ingredients:"",
+            initialValues={{
+                name:"",
+                image:"",
 
-          description: "",
-        }}
-        onSubmit={crear}
-        validate={validar}
-        onClick={agregarIngrediente}
-      >
-        <div
-          className="flex h-screen w-6/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8 m-10 "
-          style={{ background: "#292626" }}
-        >
-          <Form>
-            <h1 className="text-5xl text-white m-2 justify-center items-center ">
-              Crear Receta
-            </h1>
+               // Utensilios:"",
+                // ingredients:[{
+                //     ing: ""
+                // }],
+                ingredients:"",
+                // ingredients:[{
+                //     ing: ""
+                // }],
 
-            <h1 className="text-s text-white m-2">Nombre de Receta</h1>
-            <Field
-              className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-              placeholder="Ingrese el nombre de la receta"
-              name="name"
-              type="text"
-            />
+                description:"",
+            }}
+            onSubmit={crear}
+            validate={validar}
+            //onClick={agregarIngrediente}
+              >
 
+            <div className="flex h-screen w-6/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8 m-10 " style={{background:"#292626"}}>
+
+            <Form >
+
+                <h1 className="text-5xl text-white m-2 justify-center items-center ">Crear Receta</h1>
+                
+                <h1 className="text-s text-white m-2">Nombre de Receta</h1>
+            <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
+                placeholder="Ingrese el nombre de la receta" name="name" type="text"/>
+
+            
             <ErrorMessage name="name">
               {(msg) => (
                 <div
@@ -152,16 +149,41 @@ function CreateRecipe() {
                 </select>    */}
 
             <h1 className="text-s text-white m-2">Ingredientes de Receta</h1>
+             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
+                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/> 
+            {/* 
 
-            {/* <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/>  */}
-            <input
+             
+            <input 
+              type="text" 
+              value={ingredients.ing} 
+              placeholder="Ingrese los ingredientes" 
+              onChange={valorIngrediente} 
+              name= "ingredients" 
+             > 
+             </input> */}
+
+            {/* <button className={style.li} 
+            type='agregarIngrediente'
+            variant="outlined"
+            // value={valorIng.name}
+            // name= "Ing"
+            // onClick={
+            //  ()=>{agregarIngrediente(ingredients)}
+            //}
+            onClick={() => push([ingredientes])}
+            >Agregar</button> */}
+
+             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
+                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/> 
+            
+            {/* <input
               type="text"
               value={ingredients.ing}
               placeholder="Ingrese los ingredientes"
               onChange={valorIngrediente}
               name="ingredients"
-            ></input>
+            ></input> */}
 
             <button
               className={style.li}
