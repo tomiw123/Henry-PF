@@ -10,39 +10,39 @@ import style from './CreateRecipe.module.css'
 
 function CreateRecipe(){
 
-    const [file, setFile] = useState(null)
-    const dispatch = useDispatch();
+   const [file, setFile] = useState(null)
+   const dispatch = useDispatch();
 
-   // const [ingredientes, setIngredientes]= useState([]);
+//    // const [ingredientes, setIngredientes]= useState([]);
 
-    const [receta, setReceta] = useState({
+//     const [receta, setReceta] = useState({
        
-      ingrediente: []
-    })
+//       ingrediente: []
+//     })
 
-    const [valorIng, setValorIng]= useState("")
+//     const [valorIng, setValorIng]= useState("")
 
-    console.log(valorIng)
+//     console.log(valorIng)
 
-    const agregarIngrediente = (value) =>{
+//     const agregarIngrediente = (value) =>{
       
-     setReceta({
-           ...receta,
-           ingrediente: [...receta.ingrediente, value.target.value]
+//      setReceta({
+//            ...receta,
+//            ingrediente: [...receta.ingrediente, value.target.value]
            
-       })
-      // setValorIng("")
-    }
-        console.log(receta)
+//        })
+//       // setValorIng("")
+//     }
+//         console.log(receta)
 
 
-    const valorIngrediente = (e) =>{
-        e.preventDefault();
-        setValorIng({
-            ...valorIng,
-            [e.target.name]: e.target.value
-        })
-    }
+//     const valorIngrediente = (e) =>{
+//         e.preventDefault();
+//         setValorIng({
+//             ...valorIng,
+//             [e.target.name]: e.target.value
+//         })
+//     }
 
     const crear = async (values) =>{
         try {
@@ -79,14 +79,15 @@ function CreateRecipe(){
                 name:"",
                 image:"",
                // Utensilios:"",
-                ingredients:[{
-                    ing: ""
-                }],
+                // ingredients:[{
+                //     ing: ""
+                // }],
+                ingredients:"",
                 description:"",
             }}
             onSubmit={crear}
             validate={validar}
-            onClick={agregarIngrediente}
+            //onClick={agregarIngrediente}
               >
 
             <div className="flex h-screen w-6/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8 m-10 " style={{background:"#292626"}}>
@@ -125,18 +126,18 @@ function CreateRecipe(){
                 </select>    */}
 
             <h1 className="text-s text-white m-2">Ingredientes de Receta</h1>
-             {/* <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/>  */}
-            <input 
+             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
+                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/> 
+            {/* <input 
               type="text" 
               value={ingredients.ing} 
               placeholder="Ingrese los ingredientes" 
               onChange={valorIngrediente} 
               name= "ingredients" 
              > 
-             </input>
+             </input> */}
 
-            <button className={style.li} 
+            {/* <button className={style.li} 
             type='agregarIngrediente'
             variant="outlined"
             // value={valorIng.name}
@@ -145,7 +146,7 @@ function CreateRecipe(){
             //  ()=>{agregarIngrediente(ingredients)}
             //}
             onClick={() => push([ingredientes])}
-            >Agregar</button>
+            >Agregar</button> */}
 
 
 

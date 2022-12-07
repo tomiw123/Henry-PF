@@ -30,8 +30,8 @@ const Paginado = ({ product, recipes }) => {
       count++;
       dispatch(geTAllProducts(count));
     } else if (pepe.hasNextPage === true) {
-      count++;
       dispatch(getAllRecipes(count));
+      count++;
     }
   };
 
