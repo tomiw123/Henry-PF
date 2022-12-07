@@ -5,6 +5,8 @@ const { VITE_SERVICE_ID, VITE_TEMPLATE_ID, VITE_PUBLIC_KEY } = import.meta.env;
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { RiMailSendFill } from "react-icons/ri";
+import swal from 'sweetalert';
+
 
 const Contacto = () => {
   const form = useRef();
@@ -40,7 +42,7 @@ const Contacto = () => {
         .required("Este campo es requerido"),
     }),
     onSubmit: (values,{resetForm}) => {
-      alert(JSON.stringify(values, null, 2));
+      swal("Correo enviado exitosamente!!!");
       sendEmail(values);
       resetForm({values:""})
     },
@@ -85,7 +87,10 @@ const Contacto = () => {
             {formik.touched.user_comments && formik.errors.user_comments ? (
             <div className={style.errors}>{formik.errors.user_comments}</div>
           ) : null}
-          <button type="submit"><RiMailSendFill/> Enviar</button>
+          <button type="submit"
+          className="group bg-gray-600
+          mb-3 relative flex w-48 h-12 text-2xl justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2"
+          >Enviar <RiMailSendFill className={style.icon}/></button>
         </form>
       </div>
     </div>
