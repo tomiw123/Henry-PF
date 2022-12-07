@@ -5,38 +5,38 @@ import { Link } from 'react-router-dom'
 
 
 export default function CardRecipes(props){
-    console.log(props);
-    return (
-        // <div className={style.card}>
+ 
+   return (
+        // <div classNameName={style.card}>
        
         // <img src={props.img} alt={props.name}  />
            
         // <h1>{props.name}</h1>
         
-        //     <div className="flex-auto flex space-x-4">
-        //     <button className={style.button}>Ver Más!</button>
+        //     <div classNameName="flex-auto flex space-x-4">
+        //     <button classNameName={style.button}>Ver Más!</button>
    
         //     </div>
         
         // </div>
 
 
-<div class="flex justify-center text-center w-80  min-h-max my-4"> 
-   <div class="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400 h-96 ">
+<div classNameName="flex justify-center text-center w-80  min-h-max my-4"> 
+   <div className="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400 h-96 ">
     <a href="">
     <Link to ={`/recipeDetail/${props.id}`}> 
-   <img class="rounded-t-lg w-80 h-52 " src={props.img} alt=""/>
+   <img className="rounded-t-lg w-80 h-52 " src={props.img} alt=""/>
    </Link>
     </a>
-    <div className="p-6 h-60">
+    <div classNameName="p-6 h-60">
 
-      <h5 className="text-gray-900 text-3xl font-medium mb-2 h-20 ">{props.name}</h5>
+      <h5 classNameName="text-gray-900 text-3xl font-medium mb-2 h-20 ">{props.name}</h5>
 
       
-      <div className="flex justify-center ">
+      <div classNameName="flex justify-center ">
       
       <Link to ={`/recipeDetail/${props.id}`}>
-      <button type="button" className=" mx-3 inline-block px-5 h-11  py-1 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" >Ver Más</button></Link>
+      <button type="button" classNameName=" mx-3 inline-block px-5 h-11  py-1 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" >Ver Más</button></Link>
 
       </div>
 
