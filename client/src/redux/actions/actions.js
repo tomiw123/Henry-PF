@@ -100,6 +100,7 @@ export const addCount = (payload) => {
 }
 
 export const payment = (payload) => {
+  console.log(payload)
   return async function() {
     try {
       const pago = await axios.post(`${import.meta.env.VITE_URL}/payments`, payload)
