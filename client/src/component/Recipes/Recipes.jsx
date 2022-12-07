@@ -35,10 +35,7 @@ const Recipes = () => {
       <div className={style.paginado}>
       <Paginado recipes={recipes} />
       </div>
-<<<<<<< HEAD
-=======
     </div>
->>>>>>> c58f52f9f7e1d110545621dd9f9be8f392ec172d
   );
 };
 

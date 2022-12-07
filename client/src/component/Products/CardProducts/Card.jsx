@@ -34,7 +34,8 @@ const [counter, setCounter] = useState(1);
       setTimeout(()=> {
         dispatch(addToCart(obj))
       },50)
-      console.log(obj)
+      alert(`${name} agregada al carrito`)
+      
     } else {
       yaEsta={
         ...yaEsta,
