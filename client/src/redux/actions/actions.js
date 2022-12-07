@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import axios from 'axios';
+=======
+import axios from "axios";
+
+>>>>>>> c58f52f9f7e1d110545621dd9f9be8f392ec172d
 import { GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD} from "./actionsTypes";
 
 
