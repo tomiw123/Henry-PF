@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 
 export default function CardRecipes(props){
-    console.log(props);
+    // console.log(props);
     return (
         // <div className={style.card}>
        
@@ -21,13 +21,11 @@ export default function CardRecipes(props){
         // </div>
 
 
-<div class="flex justify-center text-center w-80  min-h-max my-4"> 
-   <div class="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400 h-96 ">
-    <a href="">
+<div className="flex justify-center text-center w-80  min-h-max my-4"> 
+   <div className="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400 h-96 ">
     <Link to ={`/recipeDetail/${props.id}`}> 
-   <img class="rounded-t-lg w-80 h-52 " src={props.img} alt=""/>
+   <img className="rounded-t-lg w-80 h-52 " src={props.img} alt=""/>
    </Link>
-    </a>
     <div className="p-6 h-60">
 
       <h5 className="text-gray-900 text-3xl font-medium mb-2 h-20 ">{props.name}</h5>

@@ -14,7 +14,7 @@ const Paginado = ({ product, recipes }) => {
 
   if (product && !recipes) {
     pepe = product;
-  } else if (recipes && !product) {
+  } else if (!product && recipes) {
     pepe = recipes;
   }
 
@@ -25,7 +25,7 @@ const Paginado = ({ product, recipes }) => {
   }
 
   const handleClickNext = () => {
-    if (pepe.hasNextPage === true) {
+   if (pepe.hasNextPage === true) {
       count++;
       dispatch(geTAllProducts(count));
     } else if (pepe.hasNextPage === true) {
