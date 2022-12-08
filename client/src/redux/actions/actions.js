@@ -1,4 +1,6 @@
-import axios from 'axios'
+
+import axios from 'axios';
+
 import { GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD} from "./actionsTypes";
 
 
@@ -100,6 +102,7 @@ export const addCount = (payload) => {
 }
 
 export const payment = (payload) => {
+  console.log(payload)
   return async function() {
     try {
       const pago = await axios.post(`${import.meta.env.VITE_URL}/payments`, payload)
