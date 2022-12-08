@@ -4,6 +4,7 @@ import Carrousel from "./Carrousel/Carrousel";
 import style from "../Home/Home.module.css";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import Videos from "./Videos/Videos";
 
 const Home = () => {
   return !CategoryHome || !Carrousel ? (
@@ -15,7 +16,7 @@ const Home = () => {
       <div>
         <Carrousel />
       </div>
-      <div>
+      <div className={style.video}>
         <div className={style.container}>
           <h1 className={style.slogan}>
             PRIMERO LO PROBAMOS, DESPUES TE LO OFRECEMOS
@@ -45,6 +46,7 @@ const Home = () => {
             </Link>
           </div>
         </div>
+        <Videos />
       </div>
     </div>
   );

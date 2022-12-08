@@ -26,7 +26,7 @@ export default function CardRecipes(props){
         // </div>
 
 
-<div className="flex justify-center text-center w-80  min-h-max my-4"> 
+<div className="flex justify-center text-center w-80  min-h-max my-4 hover:scale-110 transition duration-300 ease-in-out"> 
    <div className="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400 h-96 ">
     <div>
    {loader? (
