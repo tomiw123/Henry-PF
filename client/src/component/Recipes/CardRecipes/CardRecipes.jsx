@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 //import style from './Recipes.module.css'
+import { Oval } from 'react-loader-spinner'
+
 
 
 
 export default function CardRecipes(props){
  
+  const [loader, setLoader] = useState(true)
+  setTimeout(function () {setLoader(false)}, 1500)
+  
    return (
         // <div classNameName={style.card}>
        
@@ -23,11 +28,28 @@ export default function CardRecipes(props){
 
 <div className="flex justify-center text-center w-80  min-h-max my-4"> 
    <div className="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400 h-96 ">
-    <a href="">
-    <Link to ={`/recipeDetail/${props.id}`}> 
-   <img className="rounded-t-lg w-80 h-52 " src={props.img} alt=""/>
-   </Link>
-    </a>
+    <div>
+   {loader? (
+      <Oval
+      height={100}
+      width={300}
+      color="black"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+      ariaLabel='oval-loading'
+      secondaryColor="black"
+      strokeWidth={2}
+      strokeWidthSecondary={2}
+    />
+    ): (
+      <Link to ={`/recipeDetail/${props.id}`}> 
+        <img className="rounded-t-lg w-80 h-52 " src={props.img} alt=""/>
+      </Link>
+    )}
+
+    </div>
+    
     <div className="p-6 h-60">
 
       <h5 className="text-gray-900 text-3xl font-medium mb-2 h-20 ">{props.name}</h5>

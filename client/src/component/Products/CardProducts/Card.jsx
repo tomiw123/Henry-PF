@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, changeFromCart, getIdProducts, cleanProduct } from '../../../redux/actions/actions';
 //import style from "./Card.module.css";
-import { Oval } from 'react-loader-spinner'
+import { Oval  } from 'react-loader-spinner'
 
 
 export default function Card(props) {
@@ -29,7 +29,7 @@ const [counter, setCounter] = useState(1);
   // const [cart, setCart] = useState([]);
 
   const [loader, setLoader] = useState(true)
-  setTimeout(function () {setLoader(false)}, 500)
+  setTimeout(function () {setLoader(false)}, 800)
   const addProd = (id, name, img, precio, counter)=> {
     let yaEsta = cart.find(p => p.name === name);
     if(!yaEsta){
@@ -67,18 +67,18 @@ const [counter, setCounter] = useState(1);
   <div class="flex justify-center text-center w-80  min-h-max"> 
    <div class="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400">
     {loader? (
-      <Oval
-      height={100}
-      width={300}
-      color="blue"
-      wrapperStyle={{}}
-      wrapperClass=""
-      visible={true}
-      ariaLabel='oval-loading'
-      secondaryColor="blue"
-      strokeWidth={2}
-      strokeWidthSecondary={2}
-    />
+       <Oval
+       height={100}
+       width={300}
+       color="black"
+       wrapperStyle={{}}
+       wrapperClass=""
+       visible={true}
+       ariaLabel='oval-loading'
+       secondaryColor="black"
+       strokeWidth={2}
+       strokeWidthSecondary={2}
+     />
     ): (
       <Link to ={`/productDetail/${props.id}`}> 
       <img class="rounded-t-lg w-full h-52 " src={props.img} alt=""/>
