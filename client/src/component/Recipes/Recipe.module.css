@@ -3,17 +3,14 @@
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: #242121;
-    
-   
-
 }
 
 .recetas{
     min-height: 800px;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
     padding-top: 45px;
 }
 
