@@ -46,7 +46,7 @@ const CardDetailProduct = () => {
       setTimeout(()=> {
         dispatch(addToCart(obj))
       },50)
-      console.log(obj)
+      alert(`${name} agregado al carrito`)
     } else {
       yaEsta={
         ...yaEsta,

@@ -36,11 +36,11 @@ class PaymentService {
         // 
        ],
       back_urls: {
-        success: "https://henry-pf-iota.vercel.app",
-        failure: "https://www.failure.com",
-        pending: "https://henry-pf-iota.vercel.app",
+        success: "http://localhost:3000/",
+        failure: "http://localhost:3000/products",
+        pending: "http://localhost:3000/recipes",
       },
-      notification_url: "http://localhost:3001",
+     // notification_url: "http://localhost:3001",
     };
     cosas.map((i)=>{
       body.items.push({id:i.id, title:i.name, quantity:Number(i.cant), unit_price:Number(i.price)})
