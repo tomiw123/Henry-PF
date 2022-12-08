@@ -47,29 +47,6 @@ const getId = async (req, res) => {
     console.log(err);
   }
 }
-
-
-const createProduct = async (req, res) => {
-  const { name, price, image, description } = req.body;
-  console.log(name);
-  try {
-    const exist = await Product.findOne({ name });
-    if (!exist) {
-      const addProduct = await Product.create({
-        name,
-        price,
-        image,
-        description,
-      });
-      res.status(200).send(`Product ${name} created`);
-    } else {
-      res.status(404).send("El producto ya existe");
-    }
-  } catch (err) {
-    console.log("no funco", err);
-  }
-};
-
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
   const { name, price, image, description } = req.body;
@@ -100,6 +77,28 @@ console.log(name)
     res.status(200).send(product);
   } catch (err) {
     console.error(err)
+  }
+};
+
+
+const createProduct = async (req, res) => {
+  const { name, price, image, description } = req.body;
+  console.log(name);
+  try {
+    const exist = await Product.findOne({ name });
+    if (!exist) {
+      const addProduct = await Product.create({
+        name,
+        price,
+        image,
+        description,
+      });
+      res.status(200).send(`Product ${name} created`);
+    } else {
+      res.status(404).send("El producto ya existe");
+    }
+  } catch (err) {
+    console.log("no funco", err);
   }
 };
 

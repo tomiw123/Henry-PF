@@ -14,14 +14,29 @@ function CreateRecipe() {
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
 
-  // const [ingredientes, setIngredientes]= useState([]);
+  const [ingrediente, setIngrediente] = useState("");
+  const [lista, setLista] = useState([]);
 
-  const [receta, setReceta] = useState({
-    ingrediente: [],
-  });
+  //console.log(ingrediente);
 
-  const [valorIng, setValorIng] = useState("");
+  function actualizarIngrediente(event){
+    setIngrediente(event.target.value)
+  }
 
+  function agregarIngrediente(){
+    if(ingrediente.length > 0){
+      setLista([...lista, ingrediente]);
+      setIngrediente("");
+    }
+  }
+
+  function deleteIngrediente(e){
+    setLista(lista.filter(ing=>ing!==e))
+  }
+
+   
+
+  //const [valorIng, setValorIng] = useState("");
   //console.log(valorIng);
 
   // const agregarIngrediente = (value) => {
@@ -35,16 +50,20 @@ function CreateRecipe() {
 
   // const valorIngrediente = (e) => {
   //   e.preventDefault();
-  //   setValorIng({
+  //   setIngredientes({
   //     ...valorIng,
   //     [e.target.name]: e.target.value,
   //   });
   // };
 
+
+
   const crear = async (values) => {
+    //console.log(crear);
     try {
       const result = await uploadFile(file);
       values.image = result;
+      values.ingredients = lista;
       console.log(values);
       dispatch(addRecipes(values));
       alert("Receta creado existosamente");
@@ -77,43 +96,39 @@ function CreateRecipe() {
   //        return <Navigate to="/"/>
   //    }
 
-  
 
-    return(
-        <div>
-            <Formik
 
-            initialValues={{
-                name:"",
-                image:"",
+  return (
+    <div>
+      <Formik
 
-               // Utensilios:"",
-                // ingredients:[{
-                //     ing: ""
-                // }],
-                ingredients:"",
-                // ingredients:[{
-                //     ing: ""
-                // }],
+        initialValues={{
+          name: "",
+          image: "",
 
-                description:"",
-            }}
-            onSubmit={crear}
-            validate={validar}
-            //onClick={agregarIngrediente}
-              >
+          // Utensilios:"",
 
-            <div className="flex h-screen w-6/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8 m-10 " style={{background:"#292626"}}>
+          ingredients: "",
+          description: "",
+        }}
+        
+        
+        onSubmit={crear}
+        validate={validar}
+      //onClick={agregarIngrediente}
+      >
 
-            <Form >
+        <div className="flex h-screen w-6/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8 m-10 " style={{ background: "#292626" }}>
 
-                <h1 className="text-5xl text-white m-2 justify-center items-center ">Crear Receta</h1>
-                
-                <h1 className="text-s text-white m-2">Nombre de Receta</h1>
+          <Form >
+
+            <h1 className="text-5xl text-white m-2 justify-center items-center ">Crear Receta</h1>
+
+            <h1 className="text-s text-white m-2">Nombre de Receta</h1>
             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-                placeholder="Ingrese el nombre de la receta" name="name" type="text"/>
+              placeholder="Ingrese el nombre de la receta" name="name" type="text" />
 
-            
+
             <ErrorMessage name="name">
               {(msg) => (
                 <div
@@ -149,43 +164,35 @@ function CreateRecipe() {
                 </select>    */}
 
             <h1 className="text-s text-white m-2">Ingredientes de Receta</h1>
-             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/> 
-            {/* 
+            {/* <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
+                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/>  */}
 
-             
-            <input 
-              type="text" 
-              value={ingredients.ing} 
-              placeholder="Ingrese los ingredientes" 
-              onChange={valorIngrediente} 
-              name= "ingredients" 
-             > 
-             </input> */}
 
-            {/* <button className={style.li} 
-            type='agregarIngrediente'
-            variant="outlined"
-            // value={valorIng.name}
-            // name= "Ing"
-            // onClick={
-            //  ()=>{agregarIngrediente(ingredients)}
-            //}
-            onClick={() => push([ingredientes])}
-            >Agregar</button> */}
 
-             <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-                placeholder="Ingrese los ingredientes" name="ingredients" type="text"/> 
-            
-            {/* <input
+            <input
               type="text"
-              value={ingredients.ing}
+              value={ingrediente}
               placeholder="Ingrese los ingredientes"
-              onChange={valorIngrediente}
-              name="ingredients"
-            ></input> */}
+              onChange={actualizarIngrediente}
+             // name="ingredients"
+            ></input>
 
-            <button
+            <button onClick={agregarIngrediente}>Agregar</button>
+
+            <ul>
+              {lista.length == 0?(
+                <li>Agrega tus ingredientes</li>
+              ):(
+                lista.map((e)=>(
+                  <li key={e}>
+                    {e}
+                    <button onClick={()=>deleteIngrediente(e)}>X</button>
+                  </li>
+                ))
+              )}
+            </ul>
+
+            {/* <button
               className={style.li}
               type="agregarIngrediente"
               variant="outlined"
@@ -197,19 +204,9 @@ function CreateRecipe() {
               onClick={() => push([ingredientes])}
             >
               Agregar
-            </button>
+            </button> */}
 
-            <Field
-              className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-              placeholder="Ingrese los ingredientes"
-              name="ingredients"
-              type="text"
-            />
-            <input
-              type="text"
-              placeholder="Ingrese los ingredientes"
-              // onChange={handlerIngredients()}
-            />
+
 
             {/* <button className={style.li}  */}
             {/* // variant="outlined" */}

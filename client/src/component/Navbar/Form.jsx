@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import { AiFillFire } from "react-icons/ai";
 
+
+
 function Form({ nameForm }) {
   const [viewPassword, setViewPassword] = useState("password");
   const [email, setEmail] = useState("");
