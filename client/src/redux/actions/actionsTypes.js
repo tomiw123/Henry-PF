@@ -20,7 +20,8 @@ export const UPDATE_RECIPE = "UPDATE_RECIPERECIPE"
 
 export const DELETE_PRODUCT_ADMIN = "DELETE_PRODUCT_ADMIN"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
-
+//filtros
+export const GET_ALL_FILTERS = "GET_ALL_FILTERS"
 
 
 

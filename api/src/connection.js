@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 require ('dotenv').config();
+const mercadopago = require('mercadopago')
 const {
   MONGO_USER,
   MONGO_PASS,  
-  MONGO_PROJECT 
+  MONGO_PROJECT,
+  ACCESS_TOKEN
 } = process.env;  
 
 (async ()=> {
@@ -17,6 +19,15 @@ const {
   }
 })() 
 
-mongoose.connection.on('error', err => {
-    console.log(err)
-  })
+//mongoose.connection.on('error', err => {
+//    console.log(err)
+//  })
+
+try{
+  mercadopago.configure({
+    access_token:`${ACCESS_TOKEN}`
+  });
+  console.log('MercadoPago Activo') 
+}catch(err){
+  console.log(err);
+}

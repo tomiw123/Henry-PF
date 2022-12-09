@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, changeFromCart, getIdProducts, cleanProduct } from '../../../redux/actions/actions';
 //import style from "./Card.module.css";
+import { Oval  } from 'react-loader-spinner'
+
 
 export default function Card(props) {
 
-  // console.log(props);
 
   const dispatch = useDispatch();
 
@@ -27,6 +28,8 @@ const [counter, setCounter] = useState(1);
   const cart = useSelector((state)=> state.cart)
   // const [cart, setCart] = useState([]);
 
+  const [loader, setLoader] = useState(true)
+  setTimeout(function () {setLoader(false)}, 800)
   const addProd = (id, name, img, precio, counter)=> {
     let yaEsta = cart.find(p => p.name === name);
     if(!yaEsta){
@@ -61,17 +64,31 @@ const [counter, setCounter] = useState(1);
     //   </div>
     // </div>
 
-  <div class="flex justify-center text-center w-80  min-h-max"> 
+  <div class="flex justify-center text-center w-80  min-h-max hover:scale-110 transition duration-300 ease-in-out"> 
+
    <div class="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400">
-    <a href="">
-    <Link to ={`/productDetail/${props.id}`}> 
-   <img class="rounded-t-lg w-full h-52 " src={props.img} alt=""/>
-   </Link>
-    </a>
+    {loader? (
+       <Oval
+       height={100}
+       width={300}
+       color="black"
+       wrapperStyle={{}}
+       wrapperClass=""
+       visible={true}
+       ariaLabel='oval-loading'
+       secondaryColor="black"
+       strokeWidth={2}
+       strokeWidthSecondary={2}
+     />
+    ): (
+      <Link to ={`/productDetail/${props.id}`}> 
+      <img class="rounded-t-lg w-full h-52 " src={props.img} alt=""/>
+      </Link>
+    )}
+    
     <div className="p-6 h-60">
 
       <h5 className="text-gray-900 text-xl font-medium mb-2 h-12 ">{props.name}</h5>
-
 
       <h3 className="text-gray-900 text-2xl mb-4 font-medium">
       ${props.precio} </h3>
