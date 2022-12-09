@@ -51,7 +51,7 @@ const deleteRecipe = async(req,res) => {
     }
     
 const createRecipe = async (req, res) => {
-    const { name, image, ingridients, description } = req.body;
+    const { name, image, ingredients, description } = req.body;
     //console.log(name);
     try {
         const exist = await Recipe.findOne({ name });
@@ -59,7 +59,7 @@ const createRecipe = async (req, res) => {
         const addRecipe = await Recipe.create({
             name,
             image,
-            ingridients,
+            ingredients,
             description,
         });
         res.status(200).send(`Receta ${name} creada.`);
@@ -72,12 +72,12 @@ const createRecipe = async (req, res) => {
 };
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;
-  const {name, image, ingridients, description, product } = req.body;
+  const {name, image, ingredients, description, product } = req.body;
   
   try {
     const recipes = await Recipe.updateOne(
       {_id,},
-      { $set: { name, image, ingridients, description, product,} }
+      { $set: { name, image, ingredients, description, product,} }
     );
     res.status(200).send(recipes);
   } catch (err) {

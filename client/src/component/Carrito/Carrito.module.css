@@ -23,6 +23,31 @@
     height: 100vw;
     display: none;
     }
+.carritoNum {
+    height: 5vh;
+    position: relative;
+    bottom: 0.8vw;
+}
+.carrito {
+    position: relative;
+    top: 2vh;
+    right: 0.5vw;
+}
+.sinNum {
+    display: none;
+}
+.numCarrito {
+    color: white;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    right: 0;
+    font-size: 1vw;
+    font-weight: bold;
+    background-color: red;
+    width: 0.95vw;
+    border-radius: 10px;
+}
 .lista {
     display: flex;
     flex-direction: row;

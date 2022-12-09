@@ -17,7 +17,6 @@ const Recipes = () => {
   }, [dispatch]);
   const Recipes = useSelector((state) => state.recipes.docs);
   const recipes = useSelector((state) => state.recipes);
-  console.log(recipes);
 
   return (
     <div className={style.cartita}>
@@ -33,7 +32,9 @@ const Recipes = () => {
           );
         })}
       </div>
+      <div className={style.paginado}>
       <Paginado recipes={recipes} />
+      </div>
     </div>
   );
 };

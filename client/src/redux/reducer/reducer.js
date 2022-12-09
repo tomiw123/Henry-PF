@@ -11,7 +11,8 @@ const initialState = {
   cart: [],
   //payment: [],
   recipes: [],
-  recipe: []
+  recipe: [],
+  loaderProducts: true
 }
 
 
@@ -22,8 +23,8 @@ export function rootReducer(state = initialState, action) {
     case GET_PRODUCTS:
       return {
         ...state,
-        products: action.payload
-
+        products: action.payload,
+        loaderProducts: false
       };
     case GET_ALL_PRODUCTS: 
       return {
