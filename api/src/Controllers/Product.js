@@ -1,53 +1,64 @@
 const Product = require("../Models/Product.js");
 
 const getAll = async (req, res) => {
-  //search, filter and paginate
-  const {search, filter, category, price, alfa } = req.query;
+  //search and paginate
+  const { search } = req.query;
   const limit = req.query.limit || 8;
   const page = req.query.page || 1;
- //filter: categorias(cat) precio(price) alfabeticamente(alfa) fecha creado(create)
- //category: categorias disponibles //price:1 y -1 //alfa:1 y -1 
- 
+
   try {
-    if (search){
-      const products = await Product.paginate({ 
+    if (search) {
+      const products = await Product.paginate({
         name: { $regex: ".*" + search + ".*", $options: "i" },
       });
       res.status(200).json(products);
-    }else if(filter){
-      if (filter == "cat") {
-        const products = await Product.paginate({ category },{limit, page });
-        res.status(200).json(products);
-      }
-      if (filter == "price") {
-        const products = await Product.paginate({}, { sort: { price: 1 }, limit, page });
-        res.status(200).json(products);
-      }
-      if (filter == "alfa") {
-        const products = await Product.paginate({},{sort: { name: 1 }, limit, page });
-        res.status(200).json(products);
-      }
-    }else {
+    } else {
       const products = await Product.paginate({}, { limit, page });
       res.status(200).json(products);
     }
   } catch (err) {
     console.log(err);
   }
-};    
-  
+};
+const getAllFilter = async (req, res) => {
+  //filter: categorias(category) precio(price) alfabeticamente(alfa) fecha creado(create)
+  //category: categorias disponibles //price:1 y -1 //alfa:1 y -1
+  const { filter, category, price, alfa } = req.query;
+  const limit = req.query.limit || 8;
+  const page = req.query.page || 1;
+
+  try {
+    if (filter) {
+      if (filter == "category") {
+        const products = await Product.paginate({ category }, { limit, page });
+        res.status(200).json(products);
+      }
+      if (filter == "price") {
+        const products = await Product.paginate({}, { limit, page, sort: { price } });
+        res.status(200).json(products);
+      }
+      if (filter == "alfa") {
+        const products = await Product.paginate({},{ limit, page, sort: { name: alfa } });
+        res.status(200).json(products);
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(404).send("No hay productos para mostrar")
+  }
+};
+
 // producto por id
 const getId = async (req, res) => {
   const { id } = req.params;
-  console.log(id)
+  console.log(id);
   try {
-    const products = await Product.findById(id)
+    const products = await Product.findById(id);
     res.status(200).json(products);
   } catch (err) {
     console.log(err);
   }
-}
-
+};
 
 const createProduct = async (req, res) => {
   const { name, price, image, description } = req.body;
@@ -73,36 +84,27 @@ const createProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
   const { name, price, image, description } = req.body;
-console.log(name)
+  console.log(name);
   try {
     if (name) {
-
-      var product = await Product.findByIdAndUpdate(
-        _id, { $set: { name } }
-
-      )
+      var product = await Product.findByIdAndUpdate(_id, { $set: { name } });
     }
     if (price) {
-      var product = await Product.findByIdAndUpdate(
-        _id, { $set: { price } }
-      )
+      var product = await Product.findByIdAndUpdate(_id, { $set: { price } });
     }
     if (image) {
-      var product = await Product.findByIdAndUpdate(
-        _id, { $set: { image } }
-      )
+      var product = await Product.findByIdAndUpdate(_id, { $set: { image } });
     }
     if (description) {
-      var product = await Product.findByIdAndUpdate(
-        _id, { $set: { description } }
-      )
+      var product = await Product.findByIdAndUpdate(_id, {
+        $set: { description },
+      });
     }
     res.status(200).send(product);
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
 };
-
 
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;
@@ -149,8 +151,6 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-
-
 module.exports = {
   getAll,
   getId,
@@ -159,4 +159,5 @@ module.exports = {
   updateRecipes,
   removeRecipes,
   deleteProduct,
+  getAllFilter,
 };
