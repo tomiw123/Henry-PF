@@ -7,7 +7,7 @@ import { addToCart, changeFromCart, getIdProducts, cleanProduct } from '../../..
 
 export default function Card(props) {
 
-  console.log(props);
+  // console.log(props);
 
   const dispatch = useDispatch();
 

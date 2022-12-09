@@ -16,26 +16,21 @@ const Paginado = ({ product, recipes }) => {
 
   if (product && !recipes) {
     pepe = product;
-<<<<<<< HEAD
-  } else if (!product && recipes) {
-=======
-
-  } else if (recipes && !product) {
->>>>>>> 9a1188c081f601bddab20c2cfb927ac794f998b9
+    // console.log(pepe);
+  } 
+  if (recipes && !product) {
     pepe = recipes;
+    // console.log(pepe);
   }
   
+  console.log(pepe);
 
   for (let i = 1; i <= pepe.totalPages; i++) {
     pageNumbers.push(i);
   }
 
   const handleClickNext = () => {
-<<<<<<< HEAD
-   if (pepe.hasNextPage === true) {
-=======
     if ((product && !recipes) && pepe.hasNextPage === true) {
->>>>>>> 9a1188c081f601bddab20c2cfb927ac794f998b9
       count++;
       dispatch(geTAllProducts(count));
     } else if ((!product && recipes) && pepe.hasNextPage === true) {
@@ -57,7 +52,7 @@ const Paginado = ({ product, recipes }) => {
   return (
     <div className="flex bg-white rounded-lg font-[Poppins]">
       <button
-        onClick={handleClickPrev}
+        onClick={()=> handleClickPrev()}
         className="h-12 border-2 border-r-0 border-indigo-600
         px-4 rounded-l-lg hover:bg-indigo-600 hover:text-white"
       >
@@ -94,7 +89,7 @@ const Paginado = ({ product, recipes }) => {
         </div>
       ))}
       <button
-        onClick={handleClickNext}
+        onClick={()=>handleClickNext()}
         className="h-12 border-2  border-indigo-600
                px-4 rounded-r-lg hover:bg-indigo-600 hover:text-white"
       >

@@ -5,15 +5,9 @@ import { Link } from 'react-router-dom'
 
 
 export default function CardRecipes(props){
-<<<<<<< HEAD
-    // console.log(props);
-    return (
-        // <div className={style.card}>
-=======
  
    return (
         // <div classNameName={style.card}>
->>>>>>> 9a1188c081f601bddab20c2cfb927ac794f998b9
        
         // <img src={props.img} alt={props.name}  />
            
@@ -29,10 +23,6 @@ export default function CardRecipes(props){
 
 <div className="flex justify-center text-center w-80  min-h-max my-4"> 
    <div className="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400 h-96 ">
-<<<<<<< HEAD
-=======
-    <a href="">
->>>>>>> 9a1188c081f601bddab20c2cfb927ac794f998b9
     <Link to ={`/recipeDetail/${props.id}`}> 
    <img className="rounded-t-lg w-80 h-52 " src={props.img} alt=""/>
    </Link>
