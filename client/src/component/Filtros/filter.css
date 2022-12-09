@@ -1,0 +1,10 @@
+.filtrado{
+  display: flex;
+  flex-direction:row;
+  justify-content: flex-start;
+  margin-left: 5vh;
+  margin-top: 2vh;
+}
+.selector{
+  border-radius: 4px;
+}

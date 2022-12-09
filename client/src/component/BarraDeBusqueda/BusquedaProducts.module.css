@@ -1,4 +1,5 @@
 .search {
+    position: static;
     width: 98.7vw;
     height: 10vh;
     display: flex;
@@ -7,7 +8,7 @@
 }
 .input {
     position: relative;
-    height: 4.5vh;
+    height: 4vh;
     margin-right: 1vw;
     padding-left: 0.5vw;
     border: 2px solid black;
