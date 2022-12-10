@@ -1,0 +1,26 @@
+.block {
+    margin-top: 10vh;
+    border: 1px solid black;
+}
+.grid {
+    display: grid;
+    height: 7vh;
+    align-items: center;
+    grid-template-columns: 5vw 5vw 16vw 16vw 16vw 10vw 16vw 16vw ;
+    border: 1px solid black;
+    columns: 12vw;
+}
+
+.boton {
+    font-size: 1.5vw;
+    margin-top: 0.3vh;
+    margin-left: 0.5vh;
+    color: red;
+}
+.miniGrid {
+    display: grid;
+    grid-template-columns: auto 20vw auto auto auto ;
+}
+.closed {
+    display: none;
+}
