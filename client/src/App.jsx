@@ -19,11 +19,8 @@ import HomeAdmin from './component/Admin/HomeAdmin'
 import TotalAdmin from "./component/Admin/SetAdmin/TotalAdmin"
 import AdminProducts from './component/Admin/AdminProducts/AdminProducts'
 import AdminRecipes from './component/Admin/AdminRecipes/AdminRecipes'
-<<<<<<< HEAD
 import CartForm from "./component/CartForm/CartForm";
-=======
 import ControlDeVentas from "./component/Admin/AdminControl/AdminContronVentas";
->>>>>>> 71398e8283f8c2600ec378e069c1e96540511b19
 
 //el mati confirma que esta todo bien
 function App() {
