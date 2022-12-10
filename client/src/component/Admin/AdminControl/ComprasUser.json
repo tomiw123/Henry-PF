@@ -1,0 +1,208 @@
+[
+    {
+        "id":1,
+        "name":"Marito Torres",
+        "direccion":"Av. Siempre Viva 123",
+        "contacto":"marito@marito.com",
+        "fecha":"10/12/2022",
+        "products":[
+            {
+                "name":"Cuchillo",
+                "cantidad":2,
+                "precioUnitario":3000
+            }
+        ]
+    },
+    {
+        "id":2,
+        "name":"Jorge Perez",
+        "direccion":"Calle Falsa 444",
+        "contacto":"Jorge@jorge.com",
+        "fecha":"11/12/2022",
+        "products":[
+            {
+                "name":"Cuchillo",
+                "cantidad":1,
+                "precioUnitario":3000
+            },
+            {
+                "name":"Tabla de Cortar",
+                "cantidad":2,
+                "precioUnitario":5000
+            }
+        ]
+    },
+    {
+        "id":3,
+        "name":"Steve Reichman",
+        "direccion":"Av. Brasil 7878",
+        "contacto":"Steve@Steve.com",
+        "fecha":"10/12/2022",
+        "products":[
+            {
+                "name":"Fogonero1",
+                "cantidad":1,
+                "precioUnitario":50000
+            },
+            {
+                "name":"Tabla de Cortar",
+                "cantidad":1,
+                "precioUnitario":5000
+            },
+            {
+                "name":"Cuchillo",
+                "cantidad":3,
+                "precioUnitario":3000
+            }
+        ]
+    },
+    {
+        "id":4,
+        "name":"Tony Stark",
+        "direccion":"Calle Segui Adelante 568",
+        "contacto":"ironman@elmaskapo.com",
+        "fecha":"10/12/2022",
+        "products":[
+            {
+                "name":"Disco 3",
+                "cantidad":2,
+                "precioUnitario":15000
+            }
+        ]
+    },
+    {
+        "id":5,
+        "name":"Dwayne Johnson",
+        "direccion":"Av. Boedo 3432",
+        "contacto":"laroca@laroca.com",
+        "fecha":"10/12/2022",
+        "products":[
+            {
+                "name":"Disco 3",
+                "cantidad":4,
+                "precioUnitario":15000
+            },
+            {
+                "name":"Tabla de Cortar",
+                "cantidad":3,
+                "precioUnitario":5000
+            }
+        ]
+    },
+    {
+        "id":6,
+        "name":"Paul Walker",
+        "direccion":"Av. Esperanza 4943",
+        "contacto":"runrun@plaf.com",
+        "fecha":"10/12/2022",
+        "products":[
+            {
+                "name":"Fogonero1",
+                "cantidad":1,
+                "precioUnitario":50000
+            },
+            {
+                "name":"Tabla de Cortar",
+                "cantidad":6,
+                "precioUnitario":5000
+            },
+            {
+                "name":"Disco 3",
+                "cantidad":3,
+                "precioUnitario":15000
+            }
+        ]
+    },
+    {
+        "id":7,
+        "name":"William Omar Landrón Rivera",
+        "direccion":"Cara Bobo 777",
+        "contacto":"danza@kuduro.com",
+        "fecha":"10/12/2022",
+        "products":[
+            {
+                "name":"Fogonero1",
+                "cantidad":1,
+                "precioUnitario":50000
+            },
+            {
+                "name":"Tabla de Cortar",
+                "cantidad":6,
+                "precioUnitario":5000
+            },
+            {
+                "name":"Disco 3",
+                "cantidad":3,
+                "precioUnitario":15000
+            },
+            {
+                "name":"Cuchillo",
+                "cantidad":3,
+                "precioUnitario":3000
+            }
+        ]
+    },
+    {
+        "id":8,
+        "name":"Elmer Figueroa Arce",
+        "direccion":"Av. Calle Larga 548",
+        "contacto":"torero@chayanne.com",
+        "fecha":"10/12/2022",
+        "products":[
+            {
+                "name":"Fogonero1",
+                "cantidad":1,
+                "precioUnitario":50000
+            },
+            {
+                "name":"Tabla de Cortar",
+                "cantidad":1,
+                "precioUnitario":5000
+            },
+            {
+                "name":"Disco 3",
+                "cantidad":1,
+                "precioUnitario":15000
+            },
+            {
+                "name":"Cuchillo",
+                "cantidad":1,
+                "precioUnitario":3000
+            }
+        ]
+    },
+    {
+        "id":9,
+        "name":"Walter Bruce Willis",
+        "direccion":"Av. Bruklin 2222",
+        "contacto":"liberen@aWillis.com",
+        "fecha":"10/12/2022",
+        "products":[
+            {
+                "name":"Fogonero1",
+                "cantidad":1,
+                "precioUnitario":50000
+            },
+            {
+                "name":"Disco 3",
+                "cantidad":3,
+                "precioUnitario":15000
+            }
+        ]
+    },
+    {
+        "id":10,
+        "name":"Jason Statham",
+        "direccion":"Calle Toro Viejo 666",
+        "contacto":"transportador@forever.com",
+        "fecha":"10/12/2022",
+        "products":[
+            {
+                "name":"Cuchillo",
+                "cantidad":10,
+                "precioUnitario":3000
+            }
+        ]
+    }
+    
+]
