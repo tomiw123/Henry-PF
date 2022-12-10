@@ -122,6 +122,7 @@ const Contacto = () => {
               value={formik.values.user_name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              placeholder="Ingresa tu nombre"
             />
             {formik.touched.user_name && formik.errors.user_name ? (
               <div className={style.errors}>{formik.errors.user_name}</div>
@@ -133,6 +134,7 @@ const Contacto = () => {
               value={formik.values.user_email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              placeholder= "Ingresa tu em@il"
             />
             {formik.touched.user_email && formik.errors.user_email ? (
               <div className={style.errors}>{formik.errors.user_email}</div>
@@ -145,6 +147,7 @@ const Contacto = () => {
               value={formik.values.user_comments}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              placeholder="Ingresa tus comentarios"
             />
             {formik.touched.user_comments && formik.errors.user_comments ? (
               <div className={style.errors}>{formik.errors.user_comments}</div>

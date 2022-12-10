@@ -23,7 +23,7 @@ const Paginado = ({ product, recipes }) => {
     // console.log(pepe);
   }
   
-  console.log(pepe);
+  // console.log(pepe);
 
   for (let i = 1; i <= pepe.totalPages; i++) {
     pageNumbers.push(i);
