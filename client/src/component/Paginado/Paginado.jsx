@@ -21,6 +21,7 @@ const Paginado = ({ product, recipes }) => {
     pepe = recipes;
   }
   
+  console.log(pepe);
 
   for (let i = 1; i <= pepe.totalPages; i++) {
     pageNumbers.push(i);
