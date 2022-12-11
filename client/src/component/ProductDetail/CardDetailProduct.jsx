@@ -57,6 +57,7 @@ const CardDetailProduct = () => {
       }, 50)
     }
   }
+
   return (
     <div className={Style.CardProduct}>
       <div className={Style.Container2}>

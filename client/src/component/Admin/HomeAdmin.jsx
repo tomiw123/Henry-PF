@@ -3,7 +3,8 @@ import CategoryHome from '../CategoryHome/CategoryHome'
 import style from './HomeAdmin.module.css'
 import { Link } from 'react-router-dom'
 import { Navigate } from 'react-router-dom';
-import img from "../../assets/imageAdmin.png"
+import img from "../../assets/usr.png"
+
 
 
 
@@ -50,7 +51,7 @@ const HomeAdmin = () => {
             <Link to="/getAdmin" className={style.card}>
               <CategoryHome
                 title='CREAR ADMIN'
-                image={img}
+                image={img} id ={style.img}
                 desc='Crear un nuevo administrador'
               />
             </Link>
