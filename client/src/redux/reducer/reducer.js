@@ -8,7 +8,8 @@ const initialState = {
   //payment: [],
   recipes: [],
   recipe: [],
-  loaderProducts: true
+  loaderProducts: true,
+  prueba: window.localStorage.getItem('prueba')
 }
 
 export function rootReducer(state = initialState, action) {
