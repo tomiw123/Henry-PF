@@ -16,11 +16,14 @@ const Paginado = ({ product, recipes }) => {
 
   if (product && !recipes) {
     pepe = product;
-
-  } else if (recipes && !product) {
+    // console.log(pepe);
+  } 
+  if (recipes && !product) {
     pepe = recipes;
+    // console.log(pepe);
   }
   
+  // console.log(pepe);
 
   for (let i = 1; i <= pepe.totalPages; i++) {
     pageNumbers.push(i);
@@ -49,7 +52,7 @@ const Paginado = ({ product, recipes }) => {
   return (
     <div className="flex bg-white rounded-lg font-[Poppins]">
       <button
-        onClick={handleClickPrev}
+        onClick={()=> handleClickPrev()}
         className="h-12 border-2 border-r-0 border-indigo-600
         px-4 rounded-l-lg hover:bg-indigo-600 hover:text-white"
       >
@@ -86,7 +89,7 @@ const Paginado = ({ product, recipes }) => {
         </div>
       ))}
       <button
-        onClick={handleClickNext}
+        onClick={()=>handleClickNext()}
         className="h-12 border-2  border-indigo-600
                px-4 rounded-r-lg hover:bg-indigo-600 hover:text-white"
       >

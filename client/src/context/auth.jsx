@@ -69,6 +69,7 @@ export function AuthProvider({ children }) {
       });
       setError("");
       navigate("/");
+      swal("Te has registrado exitosamente")
     } catch (error) {
       setError(error.message);
     }
@@ -119,6 +120,7 @@ export function AuthProvider({ children }) {
       getRole(response.user.uid);
       setError("");
       navigate("/");
+      swal("Inciaste sesion correctamente")
     } catch (error) {
       setError(error.message);
     }
