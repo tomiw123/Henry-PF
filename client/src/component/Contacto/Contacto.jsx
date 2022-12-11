@@ -154,7 +154,7 @@ const Contacto = () => {
             ) : null}
             <button type="submit"
               className="group bg-blue-600
-          mb-3 relative flex w-48 h-12 text-2xl justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2"
+          mb-3 relative flex w-48 h-12 text-2xl justify-center rounded-md border border-transparent  py-2 px-4 font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2"
             >Enviar <RiMailSendFill className={style.icon} /></button>
           </form>
         </div>
