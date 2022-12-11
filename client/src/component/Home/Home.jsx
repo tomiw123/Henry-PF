@@ -4,6 +4,8 @@ import Carrousel from "./Carrousel/Carrousel";
 import style from "../Home/Home.module.css";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import Error from "../Error/Error";
+import NotFound from "../NotFound/NotFound"
 
 const Home = () => {
   return !CategoryHome || !Carrousel ? (
