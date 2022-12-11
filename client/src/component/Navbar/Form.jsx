@@ -22,7 +22,7 @@ function Form({ nameForm }) {
     if (nameForm === "Iniciar Sesion") {
       try {
         auth.login(email, password);
-        swal("Inciaste sesion correctamente")
+        
       } catch (error) {
         console.error(error);
       }
@@ -30,7 +30,7 @@ function Form({ nameForm }) {
       try {
         if (password === secondPassword) {
           auth.register(name, email, password);
-
+          
         }
       } catch (error) {
         console.error(error);
