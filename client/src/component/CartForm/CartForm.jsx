@@ -7,13 +7,25 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const CartForm = () => {
-  let cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
   const deleteProd = (id) => {
     setTimeout(() => {
       dispatch(deleteFromCart(id));
     }, 50);
   };
+let carritoStorageArray
+  let carritoStorage = window.localStorage.getItem("carrito");
+  if (carritoStorage !== "hola") {
+    carritoStorageArray = JSON.parse(
+      window.localStorage.getItem("carrito")
+    );
+    if (carritoStorageArray.length) {
+      for (let i = 0; i < carritoStorageArray.length; i++) {
+        dispatch(addToCart(carritoStorageArray[i]));
+      }
+    }
+  }
 
   const sumarCantProd = (id) => {
     let obj = cart.find((p) => p.id === id);
@@ -39,19 +51,23 @@ const CartForm = () => {
     }, 30);
   };
 
-  // const finalizarCompra = (newCart) => {
-  //   let carritoFinal = [];
-  //   for (let i = 0; i < newCart.length; i++) {
-  //     let obj = {
-  //       name: newCart[i].name,
-  //       price: newCart[i].price,
-  //       id: newCart[i].id,
-  //       cant: newCart[i].quantity,
-  //     };
-  //     carritoFinal.push(obj);
-  //   }
-  //   dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
-  // };
+   const finalizarCompra = (newCart) => {
+     let carritoFinal = [];
+     for (let i = 0; i < newCart.length; i++) {
+       let obj = {
+         name: newCart[i].name,
+         price: newCart[i].price,
+         id: newCart[i].id,
+         cant: newCart[i].quantity,
+       };
+       carritoFinal.push(obj);
+     }
+     dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
+   };
+
+
+
+  
 
   const Formik = useFormik({
     initialValues: {
@@ -74,6 +90,13 @@ const CartForm = () => {
       .required("Este campo es requerido")
     }),
   });
+
+  const userProduct = {
+    name:Formik.values.user_name,
+    direccion: Formik.values.user_address,
+    contacto:Formik.values.user_email,
+  }
+  console.log(userProduct);
 
   return (
     <div className={style.principal}>
@@ -135,7 +158,7 @@ const CartForm = () => {
           </div>
         </form>
         <div>
-          {cart?.map((p) => {
+          {carritoStorageArray?.map((p) => {
             if (p.name) {
               return (
                 <div className={s.miniProd} key={p.id}>
