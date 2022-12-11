@@ -13,7 +13,7 @@ import BusquedaRecetas from "../BarraDeBusqueda/BusquedaRecetas";
 const Recipes = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllRecipes());
+    dispatch(getAllRecipes(1));
   }, [dispatch]);
   const Recipes = useSelector((state) => state.recipes.docs);
   const recipes = useSelector((state) => state.recipes);

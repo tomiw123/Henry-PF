@@ -1,0 +1,33 @@
+.principal{
+  display: flex;
+  
+  justify-content: center;
+  width: 60%;
+  min-height: 800px;
+  border: 3px solid black;
+  margin-left: 20%;
+}
+
+.form form{
+  display: flex;
+  align-content: stretch;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 70%;
+  min-height: 600px;
+}
+
+.principal label{
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.principal input{
+  padding: 6px 6px ;
+  width: 290px;
+  border: solid 2px black;
+  border-radius: 10px;
+  font-size: 20px;
+}
