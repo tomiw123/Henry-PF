@@ -8,7 +8,7 @@ const initialState = {
   product: [],
   products: [],
   productsFilter: [],
-  cart: [],
+  cart: [window.localStorage.getItem('cart')],
   //payment: [],
   recipes: [],
   recipe: [],

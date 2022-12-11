@@ -95,6 +95,9 @@ const CardDetailProduct = () => {
         <div className={Style.Description}>
           <p className='description'>{Product.description}</p>
         </div>
+        <div>
+          <textarea name="prueba" id="" cols="30" rows="10"></textarea>
+        </div>
         {/* dejar un apartado para poner abajo las recetas que se pueden hacer con el producto*/}
       </div>
     </div>
