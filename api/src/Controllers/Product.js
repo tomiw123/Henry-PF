@@ -21,7 +21,7 @@ const getAll = async (req, res) => {
   }
 };
 const getAllFilter = async (req, res) => {
-  //filter: categorias(category) precio(price) alfabeticamente(alfa) fecha creado(create)
+  //filter: categorias(category) precio(price) alfabeticamente(alfa) 
   //category: categorias disponibles //price:1 y -1 //alfa:1 y -1
   const { filter, category, price, alfa } = req.query;
   const limit = req.query.limit || 8;

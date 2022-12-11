@@ -8,7 +8,7 @@ const Filter = () => {
 const dispatch = useDispatch();
 
 /*   useEffect(() => {
-    dispatch(getAllFilters())
+    dispatch(geTAllProducts(1))
 }, [dispatch]); */
   //
   const handleOrders = (e) => {
