@@ -53,7 +53,6 @@ export function rootReducer(state = initialState, action) {
         products: [...state.products, action.payload],
       };
     case ADD_PRODUCTS_CART:
-      
       return {
         ...state,
         cart: [...state.cart, action.payload],

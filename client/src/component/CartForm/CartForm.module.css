@@ -1,16 +1,18 @@
 .principal{
   display: flex;
-  align-items: center;
+  
   justify-content: center;
-  width: 100%;
+  width: 60%;
   min-height: 800px;
+  border: 3px solid black;
+  margin-left: 20%;
 }
 
-.principal form{
+.form form{
   display: flex;
+  align-content: stretch;
   align-items: center;
   flex-direction: column;
-  border: 3px solid black;
   border-radius: 10px;
   width: 70%;
   min-height: 600px;
