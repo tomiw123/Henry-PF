@@ -12,7 +12,8 @@ const CardDetailProduct = () => {
   const paramsId = useParams()
   const Product = useSelector(state => state.product);
   // console.log(Product)
-
+  const [loader, setLoader] = useState(true)
+  setTimeout( ()=> {setLoader(false)}, 800)
   useEffect(()=>{if(Product.length === 0){
                   dispatch(getIdProducts(paramsId.id))
                   }
@@ -63,7 +64,22 @@ const CardDetailProduct = () => {
       <div className={Style.Container2}>
         <div className={Style.ImgCont}>
           <div className={Style.Image}>
-            <img className={Style.img} src={Product.image}  alt="" />
+          {loader? (
+              <Oval
+                height={100}
+                width={300}
+                color="black"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel='oval-loading'
+                secondaryColor="black"
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+              />
+              ): (
+                <img className={Style.img} src={Product.image}  alt="" />
+              )}
           </div>
           <div className={Style.Container}>{/********** */}
             <div className={Style.Title}>

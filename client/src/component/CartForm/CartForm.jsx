@@ -2,48 +2,58 @@ import React from "react";
 import style from "./CartForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import s from "../../component/Carrito/Carrito.module.css";
-import { deleteFromCart, addCount, payment } from "../../redux/actions/actions";
+import { deleteFromCart, addCount, payment, addToCart } from "../../redux/actions/actions";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const CartForm = () => {
   const dispatch = useDispatch();
 
-  const deleteProd = (id) => {
-    setTimeout(() => {
-      dispatch(deleteFromCart(id));
-    }, 50);
-  };
-  let carritoStorageArray
-  let carritoStorage = window.localStorage.getItem("carrito");
-  if (carritoStorage !== "vacio") {
-    carritoStorageArray = JSON.parse(window.localStorage.getItem("carrito"));
-    //console.log(carritoStorageArray[0])
+
+  let cart = useSelector((state)=> state.cart);
+  // let carritoStorageArray
+  // let carritoStorage = window.localStorage.getItem("carrito");
+    // if (carritoStorage !== "vacio") {
+      //   carritoStorageArray = JSON.parse(window.localStorage.getItem("carrito"));
+    //   if(carritoStorageArray.length){
+    //     for (let i = 0; i < carritoStorageArray.length; i++) {
+    //             dispatch(addToCart(carritoStorageArray[i]))
+    //         }
+    //     }
+    // }
+    const deleteProd = (id) => {
+      setTimeout(() => {
+        dispatch(deleteFromCart(id));
+      }, 50);
+      if(cart.length === 1){
+        window.localStorage.setItem('carrito', 'vacio')
+        }
+    };
+
+    const sumarCantProd = (id)=> {
+      let obj = cart.find(p => p.id === id)
+      let lugar = cart.indexOf(obj)
+      let cantidad= obj.quantity + 1
+      setTimeout(()=> {
+          dispatch(addCount({cantidad, lugar}))
+      },30)
+      console.log(cart)
+  }
+  const restarCantProd = (id)=> {
+      let obj = cart.find(p => p.id === id)
+      let lugar = cart.indexOf(obj)
+      if(obj.quantity > 1){
+          obj= {
+                  ...obj,
+                  quantity: obj.quantity - 1
+              }
+      }
+      let cantidad= obj.quantity
+      setTimeout(()=> {
+          dispatch(addCount({cantidad, lugar}))
+      },30)
   }
 
-  const sumarCantProd = (id) => {
-    let obj = cart.find((p) => p.id === id);
-    let lugar = cart.indexOf(obj);
-    let cantidad = obj.quantity + 1;
-    setTimeout(() => {
-      dispatch(addCount({ cantidad, lugar }));
-    }, 30);
-    // console.log(cart);
-  };
-  const restarCantProd = (id) => {
-    let obj = cart.find((p) => p.id === id);
-    let lugar = cart.indexOf(obj);
-    if (obj.quantity > 1) {
-      obj = {
-        ...obj,
-        quantity: obj.quantity - 1,
-      };
-    }
-    let cantidad = obj.quantity;
-    setTimeout(() => {
-      dispatch(addCount({ cantidad, lugar }));
-    }, 30);
-  };
 
    const finalizar = (newCart) => {
       let carritoFinal = [];
@@ -143,7 +153,7 @@ const CartForm = () => {
             <button
               className={s.button}
                 onClick={() => {
-                  finalizar(carritoStorageArray);
+                  finalizar(cart);
                 }}>
               Finalizar compra
             </button>
@@ -153,31 +163,31 @@ const CartForm = () => {
           <div>
             <h2 className={style.title}>Productos en carrito</h2>
           </div>
-          {carritoStorageArray?.map((p) => {
+          {cart?.map((p) => {
             if (p.name) {
               return (
                 <div className={s.miniProd} key={p.id}>
                   <img src={p.image} alt="" className={s.image} />
                   <div className={s.prod}>{p.name}</div>
                   <div className={s.counter}>
-                    {/* <button
+                    <button
                       className={s.contador}
                       onClick={() => restarCantProd(p.id)}
                     >
                       -
-                    </button> */}
+                    </button>
                     <div className={s.prod}>{p.quantity}u</div>
-                    {/* <button
+                    <button
                       className={s.contador}
                       onClick={() => sumarCantProd(p.id)}
                     >
                       +
-                    </button> */}
+                    </button>
                   </div>
                   <div className={s.prod}>${p.price * p.quantity},00</div>
-                  {/* <button className={s.boton} onClick={() => deleteProd(p.id)}>
+                  <button className={s.boton} onClick={() => deleteProd(p.id)}>
                     X
-                  </button> */}
+                  </button>
                 </div>
               );
             }
