@@ -38,7 +38,7 @@ const getAllFilter = async (req, res) => {
         res.status(200).json(products);
       }
       if (filter == "alfa") {
-        const products = await Product.paginate({},{ limit, page, sort: { name: alfa } });
+        const products = await Product.paginate({}, { limit, page, sort: { name: alfa } });
         res.status(200).json(products);
       }
     }
@@ -80,6 +80,40 @@ const createProduct = async (req, res) => {
     console.log("no funco", err);
   }
 };
+
+const reviewProduct = async (req, res) => {
+  const { rating, comment, reviewname, user } = req.body;
+  const product = await Product.findById(req.params.id)
+  if (product) {
+    const alreadyReviewed = product.reviews.find(
+      (r) => r.user === user
+    )
+    if (alreadyReviewed) {
+      res.status(404);
+      throw new Error('Product already reviewed')
+    }
+
+    const review = {
+      reviewname,
+      rating: Number(rating),
+      comment,
+      user
+    }
+
+    product.reviews.push(review);
+    product.numReviews = product.reviews.length;
+    product.rating =
+      product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      product.reviews.length;
+
+      await product.save()
+      res.status(201).json({message: 'Reviewed Added'})
+  } else {
+    res.status(404);
+    throw new Error('Product not found')
+  }
+
+}
 
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
@@ -160,4 +194,5 @@ module.exports = {
   removeRecipes,
   deleteProduct,
   getAllFilter,
+  reviewProduct
 };

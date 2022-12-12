@@ -1,13 +1,13 @@
 
 import axios from 'axios';
 
-import { GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD, GET_ALL_FILTERS} from "./actionsTypes";
+import { GET_PRODUCTS, GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD, GET_ALL_FILTERS, UPDATE_PRODUCT, DELETE_PRODUCT_ADMIN, CREATE_REVIEW } from "./actionsTypes";
 
 
 
 
-export const geTAllProducts = (page)=>{
-  return async (dispatch)=>{
+export const geTAllProducts = (page) => {
+  return async (dispatch) => {
     const products = await axios.get(`${import.meta.env.VITE_URL}/products?page=${page}`)
     dispatch({
       type: GET_PRODUCTS,
@@ -17,8 +17,8 @@ export const geTAllProducts = (page)=>{
   };
 };
 //&filter=${filter}&${filter}=${valor}
-export const getAll = (name)=> {
-  return async (dispatch)=>{
+export const getAll = (name) => {
+  return async (dispatch) => {
     const products = await axios.get(`${import.meta.env.VITE_URL}/products?search=${name}`)
     dispatch({
       type: GET_ALL_PRODUCTS,
@@ -27,8 +27,8 @@ export const getAll = (name)=> {
     // console.log(products);
   };
 }
-export const getAllFilters = (filter,valor)=> {
-  return async (dispatch)=>{
+export const getAllFilters = (filter, valor) => {
+  return async (dispatch) => {
     const products = await axios.get(`${import.meta.env.VITE_URL}/products/filter?filter=${filter}&${filter}=${valor}`)
     dispatch({
       type: GET_ALL_FILTERS,
@@ -37,8 +37,8 @@ export const getAllFilters = (filter,valor)=> {
     // console.log(products);
   };
 }
-export const getIdProducts = (payload)=>{
-  return async (dispatch)=>{
+export const getIdProducts = (payload) => {
+  return async (dispatch) => {
     const products = await axios.get(`${import.meta.env.VITE_URL}/products/id/${payload}`)
     dispatch({
       type: GET_ID_PRODUCTS,
@@ -50,8 +50,8 @@ export const cleanProduct = () => {
   return { type: CLEAN_PRODUCT };
 };
 
-export const addProducts = (payload)=>{
-  return async (dispatch)=>{
+export const addProducts = (payload) => {
+  return async (dispatch) => {
     const products = await axios.post(`${import.meta.env.VITE_URL}/products`, payload)
     dispatch({
       type: ADD_PRODUCTS,
@@ -76,13 +76,13 @@ export const deleteFromCart = (payload) => {
 
 export const changeFromCart = (payload) => {
   return {
-    type:  CHANGE_FROM_CART,
+    type: CHANGE_FROM_CART,
     payload
   }
 }
 
 export const adminDeleteProduct = (payload) => {
-  return async (dispatch)=> {
+  return async (dispatch) => {
     const response = await axios.delete(`${import.meta.env.VITE_URL}/products/${payload}`)
     dispatch({
       type: DELETE_PRODUCT_ADMIN,
@@ -112,11 +112,22 @@ export const addCount = (payload) => {
 
 export const payment = (payload) => {
   console.log(payload)
-  return async function() {
+  return async function () {
     try {
       const pago = await axios.post(`${import.meta.env.VITE_URL}/payments`, payload)
       return pago.data
     } catch (error) {
       return error.response.data
     }
-  }}
+  }
+}
+
+export const createProductReview =
+  (productId, review) => async (dispatch) => {
+    try {
+      const product = await axios.post(`${import.meta.env.VITE_URL}/products/${productId}/review`, review)
+      dispatch({ type: CREATE_REVIEW, payload: product.data})
+    } catch (err) {
+      console.log(err);
+    }
+  }
