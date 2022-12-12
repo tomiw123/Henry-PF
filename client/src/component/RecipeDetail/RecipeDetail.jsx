@@ -23,7 +23,7 @@ const RecipeDetail = () => {
                    }
                   } },[dispatch,paramsId.id])
 
-  console.log(Recipes)
+  // console.log(Recipes)
 
   return (
       <div className={style.card}>

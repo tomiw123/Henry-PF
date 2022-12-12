@@ -122,6 +122,7 @@ const Contacto = () => {
               value={formik.values.user_name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              placeholder="Ingresa tu nombre"
             />
             {formik.touched.user_name && formik.errors.user_name ? (
               <div className={style.errors}>{formik.errors.user_name}</div>
@@ -133,6 +134,7 @@ const Contacto = () => {
               value={formik.values.user_email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              placeholder= "Ingresa tu em@il"
             />
             {formik.touched.user_email && formik.errors.user_email ? (
               <div className={style.errors}>{formik.errors.user_email}</div>
@@ -145,13 +147,14 @@ const Contacto = () => {
               value={formik.values.user_comments}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              placeholder="Ingresa tus comentarios"
             />
             {formik.touched.user_comments && formik.errors.user_comments ? (
               <div className={style.errors}>{formik.errors.user_comments}</div>
             ) : null}
             <button type="submit"
               className="group bg-blue-600
-          mb-3 relative flex w-48 h-12 text-2xl justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2"
+          mb-3 relative flex w-48 h-12 text-2xl justify-center rounded-md border border-transparent  py-2 px-4 -font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2"
             >Enviar <RiMailSendFill className={style.icon} /></button>
           </form>
         </div>

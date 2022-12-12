@@ -9,9 +9,11 @@ const {
   updateRecipes,
   removeRecipes,
   deleteProduct,
+  getAllFilter
 } = require('../Controllers/Product.js');
 
 router.get('/', getAll);
+router.get('/filter', getAllFilter);
 router.get('/id/:id', getId);
 router.post('/', createProduct);
 router.put('/update/:_id', updateProduct);

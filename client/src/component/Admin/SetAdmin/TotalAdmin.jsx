@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useAuth } from "../../context/auth";
-import { Navigate } from "react-router-dom";
+
+import React, {useState} from "react";
+import {useAuth} from "../../../context/auth"
+import {Navigate} from "react-router-dom"
 
 function TotalAdmin() {
   const auth = useAuth();
@@ -20,21 +21,24 @@ function TotalAdmin() {
     <>
       {" "}
       {auth.user === "admingeneral@gmail.com" ? (
-        <div className="bg-gray-100 my-2 w-1/5 h-3/5 flex  flex-col items-center ml-28 rounded-lg shadow-2xl justify-center">
-          <form className="flex flex-col bg-gray-300 p-5 w-4/5 h-4/5  text-blck justify-evenly  ">
-            <h1>Asigna rol</h1>
-            <div className="flex flex-col">
-              <label>userID</label>
-              <input
+        
+        <div className="flex h-screen w-6/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8 m-10 " style={{ background: "#292626"}}>
+          <form className="flex flex-col bg-gray-300 p-5 w-3/5 h-3/5  text-black justify-center   items-center rounded-md shadow hover:shadow-2xl">
+            <h1 className="text-5xl text-black m-2 justify-center items-center ">Asigna rol</h1>
+            <div className="flex flex-col bg-gray-300 p-5 w-4/5 h-4/5  text-black justify-center   items-center">
+              <h3 className="text-lg">userID</h3> 
+              <input 
+  
                 onChange={(e) => {
                   setUserId(e.target.value);
                 }}
                 type="text"
+                className="rounded-md w-72"
                 placeholder="userID"
-              ></input>
+                />
             </div>
-            <div className="flex flex-col flex-start">
-              <label>Admin</label>
+            <div className="flex flex-col flex-start fond-medium text-sm">
+              <label className="text-black text.sm" >Admin</label>
               <input
                 onChange={(e) => {
                   setAdmin(e.target.value);
@@ -48,7 +52,7 @@ function TotalAdmin() {
                 controlador(e);
               }}
               type="button"
-              className="bg-white rounded-2xl"
+              className="group bg-red-600mb-3 relative flex w-1/5 justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-black hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2" 
             >
               Validar
             </button>
