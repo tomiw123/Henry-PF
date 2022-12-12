@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import style from '../AdminRecipe/AdminRecipe.module.css'
 import { adminDeleteRecipe, getAllRecipes } from '../../../redux/actions/recipesActions'
+import { Link } from 'react-router-dom'
 
 
 
@@ -28,7 +29,12 @@ const AdminRecipe = (props) => {
                 
             
                     <div className={style.btnContainer}>
-                        {/* <button className={style.btn}>Editar</button> */}
+                    <Link to={`/recipeDetail/${props.id}`}> 
+                         <button className={style.btn1}>Detalle</button> 
+                     </Link>
+                    <Link to={`/editRecipe/${props.id}`}> 
+                         <button className={style.btn}>Editar</button> 
+                     </Link>
                         <button className={style.btn2} onClick={() => deleteRecipe(props.id)}>Borrar</button>
                     </div>
             </div>

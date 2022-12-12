@@ -9,7 +9,8 @@ const RecipeDetail = () => {
   const dispatch = useDispatch();
   const paramsId = useParams()
   const Recipes = useSelector(state => state.recipe);
-
+  const [loader, setLoader] = useState(true)
+  setTimeout( ()=> {setLoader(false)}, 800)
 
 
 
@@ -32,7 +33,22 @@ const RecipeDetail = () => {
         </div>
         <div className={style.content}>
           <div className={style.image}>
-            <img src={Recipes.image} alt={Recipes.name}/>
+            {loader? (
+                <Oval
+                  height={100}
+                  width={300}
+                  color="black"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                  ariaLabel='oval-loading'
+                  secondaryColor="black"
+                  strokeWidth={2}
+                  strokeWidthSecondary={2}
+                />
+                ): (
+                <img className={style.image} src={Recipes.image} alt={Recipes.name}/>
+              )}
           </div>
           <div className={style.ingredients}>
             <h1>Igredientes:</h1>

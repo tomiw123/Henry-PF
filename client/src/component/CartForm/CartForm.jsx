@@ -2,56 +2,75 @@ import React from "react";
 import style from "./CartForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import s from "../../component/Carrito/Carrito.module.css";
-import { deleteFromCart, addCount, payment } from "../../redux/actions/actions";
+import { deleteFromCart, addCount, payment, addToCart } from "../../redux/actions/actions";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const CartForm = () => {
-  let cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const deleteProd = (id) => {
-    setTimeout(() => {
-      dispatch(deleteFromCart(id));
-    }, 50);
-  };
 
-  const sumarCantProd = (id) => {
-    let obj = cart.find((p) => p.id === id);
-    let lugar = cart.indexOf(obj);
-    let cantidad = obj.quantity + 1;
-    setTimeout(() => {
-      dispatch(addCount({ cantidad, lugar }));
-    }, 30);
-    // console.log(cart);
-  };
-  const restarCantProd = (id) => {
-    let obj = cart.find((p) => p.id === id);
-    let lugar = cart.indexOf(obj);
-    if (obj.quantity > 1) {
-      obj = {
-        ...obj,
-        quantity: obj.quantity - 1,
-      };
-    }
-    let cantidad = obj.quantity;
-    setTimeout(() => {
-      dispatch(addCount({ cantidad, lugar }));
-    }, 30);
-  };
+  let cart = useSelector((state)=> state.cart);
+  // let carritoStorageArray
+  // let carritoStorage = window.localStorage.getItem("carrito");
+    // if (carritoStorage !== "vacio") {
+      //   carritoStorageArray = JSON.parse(window.localStorage.getItem("carrito"));
+    //   if(carritoStorageArray.length){
+    //     for (let i = 0; i < carritoStorageArray.length; i++) {
+    //             dispatch(addToCart(carritoStorageArray[i]))
+    //         }
+    //     }
+    // }
+    const deleteProd = (id) => {
+      setTimeout(() => {
+        dispatch(deleteFromCart(id));
+      }, 50);
+      if(cart.length === 1){
+        window.localStorage.setItem('carrito', 'vacio')
+        }
+    };
 
-  // const finalizarCompra = (newCart) => {
-  //   let carritoFinal = [];
-  //   for (let i = 0; i < newCart.length; i++) {
-  //     let obj = {
-  //       name: newCart[i].name,
-  //       price: newCart[i].price,
-  //       id: newCart[i].id,
-  //       cant: newCart[i].quantity,
-  //     };
-  //     carritoFinal.push(obj);
-  //   }
-  //   dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
-  // };
+    const sumarCantProd = (id)=> {
+      let obj = cart.find(p => p.id === id)
+      let lugar = cart.indexOf(obj)
+      let cantidad= obj.quantity + 1
+      setTimeout(()=> {
+          dispatch(addCount({cantidad, lugar}))
+      },30)
+      console.log(cart)
+  }
+  const restarCantProd = (id)=> {
+      let obj = cart.find(p => p.id === id)
+      let lugar = cart.indexOf(obj)
+      if(obj.quantity > 1){
+          obj= {
+                  ...obj,
+                  quantity: obj.quantity - 1
+              }
+      }
+      let cantidad= obj.quantity
+      setTimeout(()=> {
+          dispatch(addCount({cantidad, lugar}))
+      },30)
+  }
+
+
+   const finalizarCompra = (newCart) => {
+     let carritoFinal = [];
+     for (let i = 0; i < newCart.length; i++) {
+       let obj = {
+         name: newCart[i].name,
+         price: newCart[i].price,
+         id: newCart[i].id,
+         cant: newCart[i].quantity,
+       };
+       carritoFinal.push(obj);
+     }
+     dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
+   };
+
+
+
+  
 
   const Formik = useFormik({
     initialValues: {
@@ -74,6 +93,13 @@ const CartForm = () => {
       .required("Este campo es requerido")
     }),
   });
+
+  const userProduct = {
+    name:Formik.values.user_name,
+    direccion: Formik.values.user_address,
+    contacto:Formik.values.user_email,
+  }
+  console.log(userProduct);
 
   return (
     <div className={style.principal}>
@@ -134,7 +160,11 @@ const CartForm = () => {
             </button>
           </div>
         </form>
-        <div>
+        </div>
+        <div className={style.products}>
+          <div>
+            <h2 className={style.title}>Productos en carrito</h2>
+          </div>
           {cart?.map((p) => {
             if (p.name) {
               return (
@@ -166,7 +196,6 @@ const CartForm = () => {
           })}
          
         </div>
-      </div>
     </div>
   );
 };

@@ -31,7 +31,7 @@ export default function Products(props) {
           {Product?.map((e) => {
           //  console.log(e._id);
             return (
-              <div>
+              <div key={e._id}>
                 {/* <Link to={`/productDetail/${e._id}`}> */}
                   <Card
                     id={e._id}

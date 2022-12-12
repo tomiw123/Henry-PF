@@ -1,20 +1,20 @@
 .principal{
   display: flex;
-  
-  justify-content: center;
-  width: 60%;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 70%;
   min-height: 800px;
-  border: 3px solid black;
   margin-left: 20%;
 }
 
 .form form{
+  border: 3px solid black;
   display: flex;
   align-content: stretch;
   align-items: center;
   flex-direction: column;
   border-radius: 10px;
-  width: 70%;
+  width: 30vw;
   min-height: 600px;
 }
 
@@ -30,4 +30,12 @@
   border: solid 2px black;
   border-radius: 10px;
   font-size: 20px;
+}
+.products {
+  width: 30vw;
+
+}
+.title {
+  text-align: center;
+  font-size: 5vh
 }
