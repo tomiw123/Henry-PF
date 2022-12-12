@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { geTAllProducts } from "../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { geTAllProducts, getAllFilters } from "../../redux/actions/actions";
 import { getAllRecipes } from "../../redux/actions/recipesActions";
 
 const Paginado = ({ product, recipes }) => {
@@ -9,9 +9,8 @@ const Paginado = ({ product, recipes }) => {
   const pageNumbers = [];
   let [cur, setCur] = useState();
   let [count, setCount] = useState(1);
-  
+  const filtros = useSelector((state) => state.aplyFilter);
 
-  // console.log(pageNumbers);
   let pepe = null;
 
   if (product && !recipes) {
@@ -30,9 +29,15 @@ const Paginado = ({ product, recipes }) => {
   }
 
   const handleClickNext = () => {
+    
     if ((product && !recipes) && pepe.hasNextPage === true) {
       count++;
+     
+      if (filtros.page) {
+        dispatch(getAllFilters(filtros.filter, filtros.valor, count))
+      }else{
       dispatch(geTAllProducts(count));
+    }
     } else if ((!product && recipes) && pepe.hasNextPage === true) {
       count++;
       dispatch(getAllRecipes(count));
@@ -40,9 +45,14 @@ const Paginado = ({ product, recipes }) => {
   };
 
   const handleClickPrev = () => {
+   
     if ((product && !recipes) && pepe.hasPrevPage === true) {
       count--;
+      if (filtros.page) {
+        dispatch(getAllFilters(filtros.filter, filtros.valor, count))
+      }else{
       dispatch(geTAllProducts(count));
+      }
     } else if ((!product && recipes) && pepe.hasPrevPage === true) {
       count--;
       dispatch(getAllRecipes(count));
@@ -76,14 +86,20 @@ const Paginado = ({ product, recipes }) => {
           >
             {el}
             </button>
-             ):
-          (<button
+             ):(filtros.page?(<button
+            onClick= {() => dispatch(getAllFilters(filtros.filter,filtros.valor,el))}
+            className={`h-12 border-2 border-r-0 border-indigo-600
+            w-12 ${cur === el && "bg-indigo-600 text-white"} `}
+          >
+            {el}
+          </button>):(<button
             onClick= {() => dispatch(geTAllProducts(el))}
             className={`h-12 border-2 border-r-0 border-indigo-600
             w-12 ${cur === el && "bg-indigo-600 text-white"} `}
           >
             {el}
-          </button>)
+          </button>))
+          
           }
           
         </div>
