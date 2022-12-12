@@ -21,6 +21,7 @@ import AdminProducts from './component/Admin/AdminProducts/AdminProducts'
 import AdminRecipes from './component/Admin/AdminRecipes/AdminRecipes'
 import CartForm from "./component/CartForm/CartForm";
 import ControlDeVentas from "./component/Admin/AdminControl/AdminContronVentas";
+import Felicidades from "./component/Felicidades/Felicidades";
 
 //el mati confirma que esta todo bien
 function App() {
@@ -47,6 +48,8 @@ function App() {
         <Route path="/contacto" element={ <Contacto/> }/>
         <Route path="/cartform" element={ <CartForm/> }/>
         <Route path="/controlDeVentas" element={<ControlDeVentas/>} />
+        <Route path="/felicidades" element={<Felicidades/>} />
+
         </Routes>
       <Footer/>
       </div>
