@@ -11,8 +11,10 @@ import {
   addToCart,
 } from "../../redux/actions/actions";
 import s from "./Carrito.module.css";
+import { useAuth } from "../../context/auth";
 
 const Carrito = () => {
+  const auth = useAuth();
   const [openedCart, setCart] = useState(false);
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
@@ -20,56 +22,99 @@ const Carrito = () => {
   const openCart = () => {
     setCart(!openedCart);
   };
-  let cart = useSelector((state) => state.cart);
-  let newCart = [];
-  const [carritoVacio, setCarritoVacio] = useState(false);
-  useEffect(() => {
-    if (!newCart.length) {
-      setCarritoVacio(false);
-    } else {
-      setCarritoVacio(true);
-    }
-  });
-  //window.localStorage.setItem('carrito', 'vacio')
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].name) {
-      newCart.push(cart[i]);
-    }
+
+//window.localStorage.setItem('carrito', 'vacio')
+for (let i = 0; i < cart.length; i++) {
+  if (cart[i].name) {
+    newCart.push(cart[i]);
   }
-  if (newCart.length) {
-    window.localStorage.setItem("carrito", JSON.stringify(newCart));
-  } else {
-    let carritoStorage = window.localStorage.getItem("carrito");
-    if (carritoStorage !== "vacio") {
-      let carritoStorageArray = JSON.parse(
-        window.localStorage.getItem("carrito")
-      );
-      if (carritoStorageArray) {
-        for (let i = 0; i < carritoStorageArray.length; i++) {
-          dispatch(addToCart(carritoStorageArray[i]));
-        }
+}
+if (newCart.length) {
+  window.localStorage.setItem("carrito", JSON.stringify(newCart));
+} else {
+  let carritoStorage = window.localStorage.getItem("carrito");
+  if (carritoStorage !== "vacio") {
+    let carritoStorageArray = JSON.parse(
+      window.localStorage.getItem("carrito")
+    );
+    if (carritoStorageArray) {
+      for (let i = 0; i < carritoStorageArray.length; i++) {
+        dispatch(addToCart(carritoStorageArray[i]));
       }
     }
-  }
 
-  useEffect(() => {
-    let suma = 0;
+    // console.log(auth.user);
+
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].quantity) {
         suma = suma + cart[i].price * cart[i].quantity;
       }
     }
-    setTotal(suma);
-  });
 
-  const deleteProd = (id) => {
-    setTimeout(() => {
-      dispatch(deleteFromCart(id));
-    }, 50);
-    if (newCart.length === 1) {
+    let carritoStorage = window.localStorage.getItem("carrito");
+    if (carritoStorage === null) {
       window.localStorage.setItem("carrito", "vacio");
     }
-  };
+    if (newCart.length) {
+      window.localStorage.setItem("carrito", JSON.stringify(newCart));
+    } else {
+      let carritoStorage = window.localStorage.getItem("carrito");
+
+      if (carritoStorage !== "vacio") {
+        let carritoStorageArray = JSON.parse(
+          window.localStorage.getItem("carrito")
+        );
+        if (carritoStorageArray.length) {
+          for (let i = 0; i < carritoStorageArray.length; i++) {
+            dispatch(addToCart(carritoStorageArray[i]));
+          }
+        }
+      }
+    }
+
+    useEffect(() => {
+      let suma = 0;
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].quantity) {
+          suma = suma + cart[i].price * cart[i].quantity;
+        }
+      }
+      setTotal(suma);
+    });
+
+    const deleteProd = (id) => {
+      setTimeout(() => {
+        dispatch(deleteFromCart(id));
+      }, 50);
+      if (newCart.length === 1) {
+        window.localStorage.setItem("carrito", "vacio");
+      }
+    };
+
+    const sumarCantProd = (id) => {
+      let obj = cart.find((p) => p.id === id);
+      let lugar = cart.indexOf(obj);
+      let cantidad = obj.quantity + 1;
+      setTimeout(() => {
+        dispatch(addCount({ cantidad, lugar }));
+      }, 30);
+      console.log(cart);
+    };
+    const restarCantProd = (id) => {
+      let obj = cart.find((p) => p.id === id);
+      let lugar = cart.indexOf(obj);
+      if (obj.quantity > 1) {
+        obj = {
+          ...obj,
+          quantity: obj.quantity - 1,
+        };
+      }
+      let cantidad = obj.quantity;
+      setTimeout(() => {
+        dispatch(addCount({ cantidad, lugar }));
+      }, 30);
+    };
+  }
 
   const sumarCantProd = (id) => {
     let obj = cart.find((p) => p.id === id);
@@ -176,6 +221,6 @@ const Carrito = () => {
       </div>
     </div>
   );
-};
+}}
 
 export default Carrito;
