@@ -6,8 +6,11 @@ import * as GrIcons from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFromCart, addCount, payment, addToCart } from "../../redux/actions/actions";
 import s from './Carrito.module.css';
+import {useAuth} from "../../context/auth"
+
 
 const Carrito = () => {
+    const auth = useAuth();
     const [openedCart, setCart] = useState(false);
     const dispatch = useDispatch();
     const [total, setTotal] = useState(0);
@@ -25,17 +28,22 @@ const Carrito = () => {
             setCarritoVacio(true)
         }
     })
-
+    // console.log(auth.user);
     for (let i = 0; i < cart.length; i++) {
         if(cart[i].name){
             newCart.push(cart[i])
         }
     }
+
+    let carritoStorage = window.localStorage.getItem('carrito');
+    if(carritoStorage === null){
+        window.localStorage.setItem('carrito', 'vacio')
+    }
     if(newCart.length){
         window.localStorage.setItem('carrito', JSON.stringify(newCart))
     }else {
         let carritoStorage = window.localStorage.getItem('carrito');
-        if(carritoStorage !== "vacio" || carritoStorage !== "hola"){
+        if(carritoStorage !== "vacio"){
             let carritoStorageArray = JSON.parse(window.localStorage.getItem('carrito'));
             if(carritoStorageArray.length){
                     for (let i = 0; i < carritoStorageArray.length; i++) {
@@ -61,7 +69,6 @@ const Carrito = () => {
         }, 50)
         if(newCart.length === 1){
         window.localStorage.setItem('carrito', 'vacio')
-
         }
     }
     
