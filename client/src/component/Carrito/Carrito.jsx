@@ -36,7 +36,6 @@ const Carrito = () => {
         window.localStorage.setItem('carrito', JSON.stringify(newCart))
     }else {
         let carritoStorage = window.localStorage.getItem('carrito');
-        console.log(carritoStorage)
         if(carritoStorage !== "hola"){
             let carritoStorageArray = JSON.parse(window.localStorage.getItem('carrito'));
             if(carritoStorageArray.length){
