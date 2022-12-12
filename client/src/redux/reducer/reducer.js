@@ -3,7 +3,11 @@ import { ADD_PRODUCTS, GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODU
 const initialState = {
   product: [],
   products: [],
-  productsFilter: [],
+  aplyFilter: {
+    filter:"",
+    valor:"",
+    page:1
+  },
   cart: [],
   //payment: [],
   recipes: [],
@@ -19,7 +23,13 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: action.payload,
-        loaderProducts: false
+        loaderProducts: false,
+        aplyFilter:{
+          // ...state.aplyFilter,
+             filter: "",
+             valor: "",
+             page:""
+           }
       };
     case GET_ALL_PRODUCTS: 
       return {
@@ -29,7 +39,13 @@ export function rootReducer(state = initialState, action) {
       case GET_ALL_FILTERS: 
       return {
         ...state, 
-        products: action.payload
+        products: action.payload[0],
+        aplyFilter:{
+         // ...state.aplyFilter,
+            filter: action.payload[1],
+            valor: action.payload[2],
+            page: action.payload[3] +1
+          }
       };
 
     case GET_ID_PRODUCTS:

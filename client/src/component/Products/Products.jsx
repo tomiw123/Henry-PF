@@ -3,7 +3,7 @@ import style from "./Products.module.css";
 import Card from "./CardProducts/Card";
 //import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { geTAllProducts } from "../../redux/actions/actions";
+import { geTAllProducts} from "../../redux/actions/actions";
 // import Loading from "../Loading/Loading";
 import Paginado from "../Paginado/Paginado";
 import BusquedaProducts from "../BarraDeBusqueda/BusquedaProducts";
@@ -17,37 +17,40 @@ export default function Products(props) {
   //console.log(product);
   // const products = useSelector((state) => state.products.docs);
   useEffect(() => {
-    dispatch(geTAllProducts(1));
+      dispatch(geTAllProducts(1))
   }, [dispatch]);
   return (
     <>
-      <Filter />
+      <Filter /> 
       <BusquedaProducts />
-      {/* <div className={style.card}>
+        {/* <div className={style.card}>
         <img src={props.img} alt={props.name} />
       </div> */}
       <div>
         <div className={style.page}>
           {Product?.map((e) => {
-            //  console.log(e._id);
+          //  console.log(e._id);
             return (
               <div>
                 {/* <Link to={`/productDetail/${e._id}`}> */}
-                <Card
-                  id={e._id}
-                  name={e.name}
-                  img={e?.image}
-                  precio={e.price}
-                />
+                  <Card
+                    id={e._id}
+                    name={e.name}
+                    img={e?.image}
+                    precio={e.price}
+                  />
                 {/* </Link> */}
               </div>
             );
           })}
+           
         </div>
-
+        
         <div className={style.paginado}>
-          <Paginado product={product} />
-        </div>
+          <Paginado
+          product={product}
+          />
+          </div>
       </div>
     </>
   );

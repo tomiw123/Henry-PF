@@ -27,10 +27,11 @@ export const getAll = (name)=> {
 }
 export const getAllFilters = (filter,valor,page)=> {
   return async (dispatch)=>{
+    console.log();
     const products = await axios.get(`${import.meta.env.VITE_URL}/products/filter?filter=${filter}&${filter}=${valor}&page=${page}`);
     dispatch({
       type: GET_ALL_FILTERS,
-      payload: products.data,
+      payload:[products.data, filter, valor, page]
     });
     // console.log(products);
   };

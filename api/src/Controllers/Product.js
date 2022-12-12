@@ -35,6 +35,7 @@ const getAllFilter = async (req, res) => {
       }
       if (filter == "price") {
         const products = await Product.paginate({}, { limit, page, sort: { price } });
+        
         res.status(200).json(products);
       }
       if (filter == "alfa") {

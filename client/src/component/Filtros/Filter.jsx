@@ -7,43 +7,39 @@ const Filter = () => {
  
 const dispatch = useDispatch();
 
-/*   useEffect(() => {
-    dispatch(geTAllProducts(1))
-}, [dispatch]); */
-  //
   const handleOrders = (e) => {
-    /* if (e.target.value === "todo") {
-      dispatch(getAllFilters(1));
-    } */
+    if (e.target.value === "todo") {
+      dispatch(geTAllProducts(1));
+    }
     if (e.target.value === "asc") {
-      dispatch(getAllFilters("alfa",1));
+      dispatch(getAllFilters("alfa",1,1));
     }
     if (e.target.value === "dsc") {
-      dispatch(getAllFilters("alfa",-1));
+      dispatch(getAllFilters("alfa",-1,1));
     }
      if (e.target.value === "precioMenor") {
-      dispatch(getAllFilters("price",1));
+      dispatch(getAllFilters("price",1,1));
     }
      if (e.target.value === "precioMayor") {
-      dispatch(getAllFilters("price",-1));
+      dispatch(getAllFilters("price",-1,1));
     }
   };
 
   const handleFilterCategory = (e) => {
-    /* if (e.target.value === "todo") {
-      dispatch(geTAllProducts());
-    } */
+    if (e.target.value === "todo") {
+      dispatch(geTAllProducts(1));
+    }
     if (e.target.value === "parrillas") {
-      dispatch(getAllFilters("category", "parrillas"));
+      dispatch(getAllFilters("category", "parrillas",1));
     }
     if (e.target.value === "fogoneros") {
-      dispatch(getAllFilters("category", "fogoneros"));
+      dispatch(getAllFilters("category", "fogoneros",1));
     }
      if (e.target.value === "accesorios") {
-      dispatch(getAllFilters("category", "accesorios"));
+      dispatch(getAllFilters("category", "accesorios",1));
     }
     if (e.target.value === "articulos") {
-      dispatch(getAllFilters("category", "articulos"));
+      dispatch(getAllFilters("category", "articulos",1));
     }
   };
   return (
@@ -52,7 +48,7 @@ const dispatch = useDispatch();
       <div>
         Ordenar por:
         <select className="selector" defaultValue="todo" onChange={(e) => handleOrders(e)}>
-          <option value="todo">Ordenar por...</option>
+          <option value="todo">Sin orden...</option>
           <option value="asc">Nombre A-Z</option>
           <option value="dsc">Nombre Z-A</option>
           <option value="precioMenor">Precio Min/max</option>
