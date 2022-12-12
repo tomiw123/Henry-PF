@@ -1,10 +1,11 @@
 import axios from 'axios'
-import { GET_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, GET_ID_RECIPES, CLEAN_RECIPE} from "./actionsTypes";
+import { GET_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, GET_ID_RECIPES, CLEAN_RECIPE, UPDATE_RECIPE} from "./actionsTypes";
 
 
 
 
 export const getAllRecipes = (page)=>{
+  
   return async (dispatch)=>{
     const recipes = await axios.get(`${import.meta.env.VITE_URL}/recipes?page=${page}`)
     dispatch({
@@ -20,7 +21,6 @@ export const getByName = (name)=> {
         type: GET_RECIPES_NAME,
         payload: products.data,
       });
-      // console.log(products);
     };
 }
 export const getIdRecipes = (payload)=>{
@@ -59,7 +59,7 @@ export const adminDeleteRecipe = (payload) => {
 export const updateRecipe = (payload, id) => {
   return async (dispatch) => {
     console.log(payload)
-    const response = await axios.put(`${import.meta.env.VITE_URL}/recipes/update/${id}`, payload)
+    const response = await axios.put(`${import.meta.env.VITE_URL}/recipes/${id}`, payload)
     dispatch({
       type: UPDATE_RECIPE,
       payload: response.data

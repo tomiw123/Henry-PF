@@ -7,13 +7,19 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const CartForm = () => {
-  let cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
   const deleteProd = (id) => {
     setTimeout(() => {
       dispatch(deleteFromCart(id));
     }, 50);
   };
+  let carritoStorageArray
+  let carritoStorage = window.localStorage.getItem("carrito");
+  if (carritoStorage !== "vacio") {
+    carritoStorageArray = JSON.parse(window.localStorage.getItem("carrito"));
+    console.log(carritoStorageArray[0])
+  }
 
   const sumarCantProd = (id) => {
     let obj = cart.find((p) => p.id === id);
@@ -39,19 +45,23 @@ const CartForm = () => {
     }, 30);
   };
 
-  // const finalizarCompra = (newCart) => {
-  //   let carritoFinal = [];
-  //   for (let i = 0; i < newCart.length; i++) {
-  //     let obj = {
-  //       name: newCart[i].name,
-  //       price: newCart[i].price,
-  //       id: newCart[i].id,
-  //       cant: newCart[i].quantity,
-  //     };
-  //     carritoFinal.push(obj);
-  //   }
-  //   dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
-  // };
+   const finalizarCompra = (newCart) => {
+     let carritoFinal = [];
+     for (let i = 0; i < newCart.length; i++) {
+       let obj = {
+         name: newCart[i].name,
+         price: newCart[i].price,
+         id: newCart[i].id,
+         cant: newCart[i].quantity,
+       };
+       carritoFinal.push(obj);
+     }
+     dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
+   };
+
+
+
+  
 
   const Formik = useFormik({
     initialValues: {
@@ -74,6 +84,13 @@ const CartForm = () => {
       .required("Este campo es requerido")
     }),
   });
+
+  const userProduct = {
+    name:Formik.values.user_name,
+    direccion: Formik.values.user_address,
+    contacto:Formik.values.user_email,
+  }
+  console.log(userProduct);
 
   return (
     <div className={style.principal}>
@@ -134,39 +151,42 @@ const CartForm = () => {
             </button>
           </div>
         </form>
-        <div>
-          {cart?.map((p) => {
+        </div>
+        <div className={style.products}>
+          <div>
+            <h2 className={style.title}>Productos en carrito</h2>
+          </div>
+          {carritoStorageArray?.map((p) => {
             if (p.name) {
               return (
                 <div className={s.miniProd} key={p.id}>
                   <img src={p.image} alt="" className={s.image} />
                   <div className={s.prod}>{p.name}</div>
                   <div className={s.counter}>
-                    <button
+                    {/* <button
                       className={s.contador}
                       onClick={() => restarCantProd(p.id)}
                     >
                       -
-                    </button>
+                    </button> */}
                     <div className={s.prod}>{p.quantity}u</div>
-                    <button
+                    {/* <button
                       className={s.contador}
                       onClick={() => sumarCantProd(p.id)}
                     >
                       +
-                    </button>
+                    </button> */}
                   </div>
                   <div className={s.prod}>${p.price * p.quantity},00</div>
-                  <button className={s.boton} onClick={() => deleteProd(p.id)}>
+                  {/* <button className={s.boton} onClick={() => deleteProd(p.id)}>
                     X
-                  </button>
+                  </button> */}
                 </div>
               );
             }
           })}
          
         </div>
-      </div>
     </div>
   );
 };

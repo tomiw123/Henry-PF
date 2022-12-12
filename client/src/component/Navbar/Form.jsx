@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../../context/auth";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import swal from "sweetalert"
+
 
 import { AiFillFire } from "react-icons/ai";
 
