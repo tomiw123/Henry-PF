@@ -64,9 +64,9 @@ const [counter, setCounter] = useState(1);
     //   </div>
     // </div>
 
-  <div class="flex justify-center text-center w-80  min-h-max hover:scale-110 transition duration-300 ease-in-out"> 
+  <div className="flex justify-center text-center w-80  min-h-max hover:scale-110 transition duration-300 ease-in-out"> 
 
-   <div class="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400">
+   <div className="rounded-lg shadow-lg bg-white max-w-sm m-2 items-center content-center bg-zinc-400">
     {loader? (
        <Oval
        height={100}
@@ -82,7 +82,7 @@ const [counter, setCounter] = useState(1);
      />
     ): (
       <Link to ={`/productDetail/${props.id}`}> 
-      <img class="rounded-t-lg w-full h-52 " src={props.img} alt=""/>
+      <img className="rounded-t-lg w-full h-52 " src={props.img} alt=""/>
       </Link>
     )}
     

@@ -3,6 +3,7 @@ import { useAuth } from "../../context/auth";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
+
 import { AiFillFire } from "react-icons/ai";
 
 
@@ -12,6 +13,7 @@ function Form({ nameForm }) {
   const [email, setEmail] = useState("");
   const [name, setNamee] = useState("");
   const [password, setPassword] = useState("");
+  const [validacion, setValidation] = useState("")
   const [secondPassword, setSecondPassword] = useState("");
   const auth = useAuth();
   const error = auth.error;
@@ -20,6 +22,7 @@ function Form({ nameForm }) {
     if (nameForm === "Iniciar Sesion") {
       try {
         auth.login(email, password);
+        
       } catch (error) {
         console.error(error);
       }
@@ -27,6 +30,7 @@ function Form({ nameForm }) {
       try {
         if (password === secondPassword) {
           auth.register(name, email, password);
+          
         }
       } catch (error) {
         console.error(error);
@@ -41,6 +45,22 @@ function Form({ nameForm }) {
       console.error(error);
     }
   };
+
+  const validete = (password)=> {
+    var ExpRegPassFuerte=/(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
+    if(password.match(ExpRegPassFuerte)!== null ){
+      console.log("Registro existoso")
+      setValidation("")
+    }else{
+     setValidation("La contraseña debe contener un minimo de 8 caracteres entre los cuales uno debe ser una letra Mayuscula otra minuscula y un caracter especial(@!$%&/=)")
+    }
+  }
+
+  const handlerPass= (e)=> {
+    setPassword(e.target.value)
+    validete(password)
+  }
+
 
   return (
     <div
@@ -118,7 +138,7 @@ function Form({ nameForm }) {
                 Contraseña
               </label>
               <input
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => handlerPass(e)}
                 id="password2"
                 name="password"
                 type={viewPassword}
@@ -147,6 +167,7 @@ function Form({ nameForm }) {
             ) : (
               <></>
             )}
+            <p className="text-red-600">{validacion}</p>
           </div>
 
           <div className="flex items-center justify-between flex-col">

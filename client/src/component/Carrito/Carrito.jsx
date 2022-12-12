@@ -4,7 +4,7 @@ import { useState } from "react";
 import * as BsIcons from "react-icons/bs";
 import * as GrIcons from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromCart, addCount, payment ,addToCart} from "../../redux/actions/actions";
+import { deleteFromCart, addCount, payment } from "../../redux/actions/actions";
 import s from './Carrito.module.css';
 
 const Carrito = () => {
@@ -16,7 +16,6 @@ const Carrito = () => {
         setCart(!openedCart)
     }
     let cart = useSelector((state)=> state.cart);
-
     let newCart = [];
     const [carritoVacio, setCarritoVacio] = useState(false)
     useEffect(()=> {
@@ -60,9 +59,6 @@ const Carrito = () => {
         setTimeout(()=>{
             dispatch(deleteFromCart(id))
         }, 50)
-        if(newCart.length === 1 ){
-        window.localStorage.setItem('carrito', "hola")
-        }
     }
     
     const sumarCantProd = (id)=> {
@@ -72,6 +68,7 @@ const Carrito = () => {
         setTimeout(()=> {
             dispatch(addCount({cantidad, lugar}))
         },30)
+        console.log(cart)
     }
     const restarCantProd = (id)=> {
         let obj = cart.find(p => p.id === id)
@@ -96,8 +93,6 @@ const Carrito = () => {
         }
          dispatch(payment(carritoFinal)).then((e)=> window.location.replace(e))
     }
-
-
     return (
         <div className={s.cart}>
             <div className={s.carritoNum}>
@@ -139,7 +134,6 @@ const Carrito = () => {
                 <div className={s.finalizar}>
                     <button className={s.button} onClick={()=> {finalizarCompra(newCart)}}>Finalizar compra</button>
                 </div>
-                
             </div>
         </div>
     )
