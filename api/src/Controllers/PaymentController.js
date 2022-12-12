@@ -12,7 +12,7 @@ const Payment = (req, res)=>{
         failure: "https://www.failure.com",
         pending: "https://henry-pf-iota.vercel.app",
     },
-    //notification_url:'http://localhost:3001/pago/valido'
+    //notification_url:'http://localhost:3000/felicidades'
   }
 cosas.map((i)=>{
   preferences.items.push({id:i.id, title:i.name, quantity:Number(i.cant), unit_price:Number(i.price)})
