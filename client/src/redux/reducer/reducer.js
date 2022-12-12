@@ -1,5 +1,5 @@
 
-import { ADD_PRODUCTS, GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD, DELETE_PRODUCT_ADMIN, DELETE_RECIPE_ADMIN } from "../actions/actionsTypes";
+import { ADD_PRODUCTS, GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD, DELETE_PRODUCT_ADMIN, DELETE_RECIPE_ADMIN, UPDATE_RECIPE } from "../actions/actionsTypes";
 
 
 
@@ -94,6 +94,12 @@ export function rootReducer(state = initialState, action) {
         ...state,
         recipe: [],
       };
+
+      case UPDATE_RECIPE:
+        return {
+          ...state,
+        recipes: [...state.recipes, action.payload]
+        };
 
     case DELETE_PRODUCT_ADMIN:
       return {

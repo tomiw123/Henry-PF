@@ -70,15 +70,34 @@ const createRecipe = async (req, res) => {
         console.log(err);
         }
 };
+
+
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;
-  const {name, image, ingredients, description, product } = req.body;
+  const {name, image, ingredients, description } = req.body;
   
   try {
-    const recipes = await Recipe.updateOne(
-      {_id,},
-      { $set: { name, image, ingredients, description, product,} }
-    );
+    if (name){
+      var recipes = await Recipe.findByIdAndUpdate(_id,{
+        $set: {name}
+      })
+    }
+    if (image){
+      var recipes = await Recipe.findByIdAndUpdate(_id,{
+        $set: {image}
+      })
+    }
+    if (ingredients){
+      var recipes = await Recipe.findByIdAndUpdate(_id,{
+        $set: {ingredients}
+      })
+    }
+    if (description){
+      var recipes = await Recipe.findByIdAndUpdate(_id,{
+        $set: {description}
+      })
+    }
+
     res.status(200).send(recipes);
   } catch (err) {
     console.log("no funco");
