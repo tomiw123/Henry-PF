@@ -91,12 +91,14 @@ const Carrito = () => {
     }
 
     const finalizarCompra = (newCart)=>{
-        let carritoFinal = [];
-        for (let i = 0; i < newCart.length; i++) {
-            let obj = {name: newCart[i].name, price: newCart[i].price, id: newCart[i].id, cant: newCart[i].quantity}
-            carritoFinal.push(obj)
-        }
-         dispatch(payment(carritoFinal)).then((e)=> window.location.replace(e))
+       //let carritoFinal = [];
+       //for (let i = 0; i < newCart.length; i++) {
+       //    let obj = {name: newCart[i].name, price: newCart[i].price, id: newCart[i].id, cant: newCart[i].quantity}
+       //    carritoFinal.push(obj)
+       //}
+       // dispatch(payment(carritoFinal)).then((e)=> window.location.replace(e))
+        //console.log("carritoioooooooooooooooooooooo")
+        window.location.replace('/cartform')
     }
     return (
         <div className={s.cart}>

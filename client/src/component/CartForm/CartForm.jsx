@@ -18,7 +18,7 @@ const CartForm = () => {
   let carritoStorage = window.localStorage.getItem("carrito");
   if (carritoStorage !== "vacio") {
     carritoStorageArray = JSON.parse(window.localStorage.getItem("carrito"));
-    console.log(carritoStorageArray[0])
+    //console.log(carritoStorageArray[0])
   }
 
   const sumarCantProd = (id) => {
@@ -45,23 +45,20 @@ const CartForm = () => {
     }, 30);
   };
 
-   const finalizarCompra = (newCart) => {
-     let carritoFinal = [];
-     for (let i = 0; i < newCart.length; i++) {
-       let obj = {
-         name: newCart[i].name,
-         price: newCart[i].price,
-         id: newCart[i].id,
-         cant: newCart[i].quantity,
+   const finalizar = (newCart) => {
+      let carritoFinal = [];
+      for (let i = 0; i < newCart.length; i++) {
+        let obj = {
+          name: newCart[i].name,
+          price: newCart[i].price,
+          id: newCart[i].id,
+          cant: newCart[i].quantity,
        };
        carritoFinal.push(obj);
      }
+     //console.log(carritoFinal);
      dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
    };
-
-
-
-  
 
   const Formik = useFormik({
     initialValues: {
@@ -90,7 +87,7 @@ const CartForm = () => {
     direccion: Formik.values.user_address,
     contacto:Formik.values.user_email,
   }
-  console.log(userProduct);
+  //console.log(userProduct);
 
   return (
     <div className={style.principal}>
@@ -140,17 +137,17 @@ const CartForm = () => {
            {Formik.touched.user_address && Formik.errors.user_address ? (
               <div>{Formik.errors.user_address}</div>
             ) : null}
-             <div>
+             
+        </form>
+        <div>
             <button
               className={s.button}
-              // onClick={() => {
-              //   finalizarCompra();
-              // }}
-            >
+                onClick={() => {
+                  finalizar(carritoStorageArray);
+                }}>
               Finalizar compra
             </button>
           </div>
-        </form>
         </div>
         <div className={style.products}>
           <div>
