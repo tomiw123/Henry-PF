@@ -2,13 +2,14 @@
 import { ADD_PRODUCTS, GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD, DELETE_PRODUCT_ADMIN, DELETE_RECIPE_ADMIN, GET_ALL_FILTERS, UPDATE_RECIPE } from "../actions/actionsTypes";
 
 
-
-
-
 const initialState = {
   product: [],
   products: [],
-  productsFilter: [],
+  aplyFilter: {
+    filter:"",
+    valor:"",
+    page:1
+  },
   cart: [],
   //payment: [],
   recipes: [],
@@ -17,8 +18,6 @@ const initialState = {
   prueba: window.localStorage.getItem('prueba')
 }
 
-
-
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
 
@@ -26,7 +25,13 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: action.payload,
-        loaderProducts: false
+        loaderProducts: false,
+        aplyFilter:{
+          // ...state.aplyFilter,
+             filter: "",
+             valor: "",
+             page:""
+           }
       };
     case GET_ALL_PRODUCTS: 
       return {
@@ -36,7 +41,13 @@ export function rootReducer(state = initialState, action) {
       case GET_ALL_FILTERS: 
       return {
         ...state, 
-        products: action.payload
+        products: action.payload[0],
+        aplyFilter:{
+         // ...state.aplyFilter,
+            filter: action.payload[1],
+            valor: action.payload[2],
+            page: action.payload[3] +1
+          }
       };
 
     case GET_ID_PRODUCTS:
