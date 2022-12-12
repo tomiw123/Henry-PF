@@ -87,30 +87,31 @@ const reviewProduct = async (req, res) => {
   if (product) {
     const alreadyReviewed = product.reviews.find(
       (r) => r.user === user
-    )
+      )
+    // console.log(alreadyReviewed);
     if (alreadyReviewed) {
-      res.status(404);
-      throw new Error('Product already reviewed')
+      res.status(404).send('User already review the product');
+      // throw Error('Product already reviewed')
+    } else {
+      const review = {
+        reviewname,
+        rating: Number(rating),
+        comment,
+        user
+      }
+  
+      product.reviews.push(review);
+      product.numReviews = product.reviews.length;
+      product.rating =
+        product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+        product.reviews.length;
+  
+        await product.save()
+        res.status(201).json({message: 'Reviewed Added'})
     }
 
-    const review = {
-      reviewname,
-      rating: Number(rating),
-      comment,
-      user
-    }
-
-    product.reviews.push(review);
-    product.numReviews = product.reviews.length;
-    product.rating =
-      product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-      product.reviews.length;
-
-      await product.save()
-      res.status(201).json({message: 'Reviewed Added'})
   } else {
-    res.status(404);
-    throw new Error('Product not found')
+    res.status(404).send('Product not found');
   }
 
 }
