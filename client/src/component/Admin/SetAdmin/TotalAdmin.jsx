@@ -25,8 +25,8 @@ function TotalAdmin() {
         <div className="flex h-screen w-6/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8 m-10 " style={{ background: "#292626"}}>
           <form className="flex flex-col bg-gray-300 p-5 w-3/5 h-3/5  text-black justify-center   items-center rounded-md shadow hover:shadow-2xl">
             <h1 className="text-5xl text-black m-2 justify-center items-center ">Asigna rol</h1>
-            <div className="flex flex-col bg-gray-300 p-5 w-4/5 h-4/5  text-black justify-center   items-center">
-              <h3 className="text-lg">userID</h3> 
+            <div className="flex flex-col bg-gray-300 p-5 w-4/5 h-4/5  text-black  justify-center   items-center">
+              <h3 className="text-lg  font-semibold ">Correo electronico</h3> 
               <input 
   
                 onChange={(e) => {
@@ -34,11 +34,11 @@ function TotalAdmin() {
                 }}
                 type="text"
                 className="rounded-md w-72"
-                placeholder="userID"
+                placeholder="Correo electronico"
                 />
             </div>
             <div className="flex flex-col flex-start fond-medium text-sm">
-              <label className="text-black text.sm" >Admin</label>
+              <label className="text-black text.sm font-semibold" >Admin</label>
               <input
                 onChange={(e) => {
                   setAdmin(e.target.value);

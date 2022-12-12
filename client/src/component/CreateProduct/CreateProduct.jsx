@@ -54,7 +54,7 @@ const CreateProduct = () => {
           className="flex h-screen w-6/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8 m-10 "
           style={{ background: "#292626" }}
         >
-          <Form className="flex flex-col bg-gray-300 p-5 w-4/5 h-4/5  text-black justify-center   items-center">
+          <Form className=" flex flex-col justify-center items-center">
             <h1 className="text-5xl text-white m-2 justify-center items-center ">
               Crear Producto
             </h1>
