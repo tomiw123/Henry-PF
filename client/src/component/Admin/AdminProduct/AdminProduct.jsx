@@ -37,6 +37,9 @@ const AdminProduct = (props) => {
                     {/* <button className={style.counterBtn} onClick={maxCounter}>+</button> */}
                 {/* </div> */}
                 <div className={style.btnContainer}>
+                <Link to={`/productDetail/${props.id}`}> 
+                         <button className={style.btn1}>Detalle</button> 
+                     </Link>
                     <Link to={`/edit/${props.id}`}> 
                          <button className={style.btn}>Editar</button> 
                      </Link>

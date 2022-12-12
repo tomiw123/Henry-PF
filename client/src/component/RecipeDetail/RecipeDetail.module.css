@@ -22,7 +22,9 @@
 }
 .image{
     display: flex;
-    width: 50%;
+    width: 80vw;
+    height: 45vh;
+   
 }
 .image img{
     object-fit:contain;
