@@ -89,11 +89,11 @@ export function AuthProvider({ children }) {
   //   console.log(data);
   // }
   
-  async function setAsing(uid, admin) {
+  async function setAsing(email, admin) {
     try {
       
-      console.log(uid, admin)
-      const docRef = doc(db, `users/${uid}`);
+
+      const docRef = doc(db, `users/${email}`);
        setDoc(
         docRef,
         {
@@ -102,9 +102,9 @@ export function AuthProvider({ children }) {
         { merge: true }
         
       );
-      navigate("/HAdmin");
+      // navigate("/HAdmin");
     } catch (error) {
-      console.log(error, "este Id no pertenece a un usuario")
+      console.log(error, "este correo no pertenece a un usuario")
     }
     }
   
@@ -112,6 +112,7 @@ export function AuthProvider({ children }) {
     const docRef = doc(db, `users/${email}`);
     const data = await getDoc(docRef);
     const dataRole = data.data();
+    console.log(dataRole)
     localStorage.setItem("role", dataRole.rol || "user");
     localStorage.setItem("username", dataRole.username);
   }
@@ -119,7 +120,7 @@ export function AuthProvider({ children }) {
   const login = async (email, password) => {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
-      getRole(response.user.uid);
+      getRole(email);
       setError("");
       navigate("/");
       swal("Inciaste sesion correctamente")
@@ -142,6 +143,7 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     localStorage.removeItem("role");
+    localStorage.removeItem("username");
     const response = await signOut(auth);
     console.log(response);
     setUser("");
