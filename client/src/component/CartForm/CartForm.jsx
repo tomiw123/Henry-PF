@@ -14,17 +14,11 @@ const CartForm = () => {
       dispatch(deleteFromCart(id));
     }, 50);
   };
-let carritoStorageArray
+  let carritoStorageArray
   let carritoStorage = window.localStorage.getItem("carrito");
-  if (carritoStorage !== "hola") {
-    carritoStorageArray = JSON.parse(
-      window.localStorage.getItem("carrito")
-    );
-    if (carritoStorageArray.length) {
-      for (let i = 0; i < carritoStorageArray.length; i++) {
-        dispatch(addToCart(carritoStorageArray[i]));
-      }
-    }
+  if (carritoStorage !== "vacio") {
+    carritoStorageArray = JSON.parse(window.localStorage.getItem("carrito"));
+    console.log(carritoStorageArray[0])
   }
 
   const sumarCantProd = (id) => {
@@ -157,7 +151,11 @@ let carritoStorageArray
             </button>
           </div>
         </form>
-        <div>
+        </div>
+        <div className={style.products}>
+          <div>
+            <h2 className={style.title}>Productos en carrito</h2>
+          </div>
           {carritoStorageArray?.map((p) => {
             if (p.name) {
               return (
@@ -165,31 +163,30 @@ let carritoStorageArray
                   <img src={p.image} alt="" className={s.image} />
                   <div className={s.prod}>{p.name}</div>
                   <div className={s.counter}>
-                    <button
+                    {/* <button
                       className={s.contador}
                       onClick={() => restarCantProd(p.id)}
                     >
                       -
-                    </button>
+                    </button> */}
                     <div className={s.prod}>{p.quantity}u</div>
-                    <button
+                    {/* <button
                       className={s.contador}
                       onClick={() => sumarCantProd(p.id)}
                     >
                       +
-                    </button>
+                    </button> */}
                   </div>
                   <div className={s.prod}>${p.price * p.quantity},00</div>
-                  <button className={s.boton} onClick={() => deleteProd(p.id)}>
+                  {/* <button className={s.boton} onClick={() => deleteProd(p.id)}>
                     X
-                  </button>
+                  </button> */}
                 </div>
               );
             }
           })}
          
         </div>
-      </div>
     </div>
   );
 };

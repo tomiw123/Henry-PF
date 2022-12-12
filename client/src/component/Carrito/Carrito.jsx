@@ -4,7 +4,7 @@ import { useState } from "react";
 import * as BsIcons from "react-icons/bs";
 import * as GrIcons from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromCart, addCount, payment } from "../../redux/actions/actions";
+import { deleteFromCart, addCount, payment, addToCart } from "../../redux/actions/actions";
 import s from './Carrito.module.css';
 
 const Carrito = () => {
@@ -31,7 +31,20 @@ const Carrito = () => {
             newCart.push(cart[i])
         }
     }
-
+    if(newCart.length){
+        window.localStorage.setItem('carrito', JSON.stringify(newCart))
+    }else {
+        let carritoStorage = window.localStorage.getItem('carrito');
+        if(carritoStorage !== "vacio"){
+            let carritoStorageArray = JSON.parse(window.localStorage.getItem('carrito'));
+            if(carritoStorageArray.length){
+                    for (let i = 0; i < carritoStorageArray.length; i++) {
+                            dispatch(addToCart(carritoStorageArray[i]))
+                        }
+                    }
+        }
+            }
+            
     useEffect(()=>{
         let suma = 0;
         for (let i = 0; i < cart.length; i++) {
@@ -46,6 +59,10 @@ const Carrito = () => {
         setTimeout(()=>{
             dispatch(deleteFromCart(id))
         }, 50)
+        if(newCart.length === 1){
+        window.localStorage.setItem('carrito', 'vacio')
+
+        }
     }
     
     const sumarCantProd = (id)=> {
