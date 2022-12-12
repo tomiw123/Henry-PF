@@ -25,7 +25,7 @@ const Carrito = () => {
             setCarritoVacio(true)
         }
     })
-    window.localStorage.setItem('carrito', 'vacio')
+    //window.localStorage.setItem('carrito', 'vacio')
     for (let i = 0; i < cart.length; i++) {
         if(cart[i].name){
             newCart.push(cart[i])
