@@ -28,7 +28,9 @@ const Carrito = () => {
             setCarritoVacio(true)
         }
     })
+
     // console.log(auth.user);
+
     for (let i = 0; i < cart.length; i++) {
         if(cart[i].name){
             newCart.push(cart[i])
@@ -41,15 +43,18 @@ const Carrito = () => {
     }
     if(newCart.length){
         window.localStorage.setItem('carrito', JSON.stringify(newCart))
+        
     }else {
         let carritoStorage = window.localStorage.getItem('carrito');
-        if(carritoStorage !== "vacio"){
+
+        if(carritoStorage !== "vacio" ){
+
             let carritoStorageArray = JSON.parse(window.localStorage.getItem('carrito'));
             if(carritoStorageArray.length){
                     for (let i = 0; i < carritoStorageArray.length; i++) {
                             dispatch(addToCart(carritoStorageArray[i]))
                         }
-                    }
+                   }
         }
             }
             

@@ -55,7 +55,7 @@
     align-content: flex-end;
 }
 
-.contacto{
+/* .contacto{
 }
 .contactoConUsted{
     display: flex;
@@ -63,14 +63,14 @@
     font-size: 1.25rem;
     padding: 15px 0;
     padding-left: 50px;
-}
-.contactoAgradesco{
+} */
+/* .contactoAgradesco{
     display: flex;
-    justify-content: start;
+    justify-content: start; 
     font-size: 1.25rem;
     padding-left: 50px;
     padding-bottom: 100px;
-}
+} */
 .check{
     position: absolute;
     height: 200px;
