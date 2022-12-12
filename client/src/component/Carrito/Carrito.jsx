@@ -33,15 +33,16 @@ const Carrito = () => {
     }
     if(newCart.length){
         window.localStorage.setItem('carrito', JSON.stringify(newCart))
+        
     }else {
         let carritoStorage = window.localStorage.getItem('carrito');
-        if(carritoStorage !== "vacio" || carritoStorage !== "hola"){
+        if(carritoStorage !== "vacio" ){
             let carritoStorageArray = JSON.parse(window.localStorage.getItem('carrito'));
             if(carritoStorageArray.length){
                     for (let i = 0; i < carritoStorageArray.length; i++) {
                             dispatch(addToCart(carritoStorageArray[i]))
                         }
-                    }
+                   }
         }
             }
             
