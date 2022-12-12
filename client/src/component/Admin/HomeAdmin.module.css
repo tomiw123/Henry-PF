@@ -18,6 +18,11 @@
 
 .card{
    margin-bottom: 50px;
+  
+}
+
+#img{
+   background-color: red;
 }
 
  .cardcontainer {

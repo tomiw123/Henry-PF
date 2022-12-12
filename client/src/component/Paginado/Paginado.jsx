@@ -2,44 +2,48 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { geTAllProducts } from "../../redux/actions/actions";
 import { getAllRecipes } from "../../redux/actions/recipesActions";
-import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 
 const Paginado = ({ product, recipes }) => {
   // console.log(product);
   const dispatch = useDispatch();
   const pageNumbers = [];
   let [cur, setCur] = useState();
+  let [count, setCount] = useState(1);
+  
 
   // console.log(pageNumbers);
   let pepe = null;
 
   if (product && !recipes) {
     pepe = product;
-  } else if (recipes && !product) {
+    // console.log(pepe);
+  } 
+  if (recipes && !product) {
     pepe = recipes;
+    // console.log(pepe);
   }
-
-  let count = 1;
+  
+  // console.log(pepe);
 
   for (let i = 1; i <= pepe.totalPages; i++) {
     pageNumbers.push(i);
   }
 
   const handleClickNext = () => {
-    if (pepe.hasNextPage === true) {
+    if ((product && !recipes) && pepe.hasNextPage === true) {
       count++;
       dispatch(geTAllProducts(count));
-    } else if (pepe.hasNextPage === true) {
+    } else if ((!product && recipes) && pepe.hasNextPage === true) {
       count++;
       dispatch(getAllRecipes(count));
     }
   };
 
   const handleClickPrev = () => {
-    if (pepe.hasPrevPage === true) {
+    if ((product && !recipes) && pepe.hasPrevPage === true) {
       count--;
       dispatch(geTAllProducts(count));
-    } else if (pepe.hasPrevPage === true) {
+    } else if ((!product && recipes) && pepe.hasPrevPage === true) {
       count--;
       dispatch(getAllRecipes(count));
     }
@@ -48,7 +52,7 @@ const Paginado = ({ product, recipes }) => {
   return (
     <div className="flex bg-white rounded-lg font-[Poppins]">
       <button
-        onClick={handleClickPrev}
+        onClick={()=> handleClickPrev()}
         className="h-12 border-2 border-r-0 border-indigo-600
         px-4 rounded-l-lg hover:bg-indigo-600 hover:text-white"
       >
@@ -63,17 +67,29 @@ const Paginado = ({ product, recipes }) => {
       </button>
       {pageNumbers.map((el) => (
         <div key={el}>
-          <button
-            onClick={() => dispatch(geTAllProducts(el))}
+
+          {!product && recipes ?(
+            <button
+            onClick={() => dispatch(getAllRecipes(el))}
             className={`h-12 border-2 border-r-0 border-indigo-600
             w-12 ${cur === el && "bg-indigo-600 text-white"} `}
           >
             {el}
-          </button>
+            </button>
+             ):
+          (<button
+            onClick= {() => dispatch(geTAllProducts(el))}
+            className={`h-12 border-2 border-r-0 border-indigo-600
+            w-12 ${cur === el && "bg-indigo-600 text-white"} `}
+          >
+            {el}
+          </button>)
+          }
+          
         </div>
       ))}
       <button
-        onClick={handleClickNext}
+        onClick={()=>handleClickNext()}
         className="h-12 border-2  border-indigo-600
                px-4 rounded-r-lg hover:bg-indigo-600 hover:text-white"
       >

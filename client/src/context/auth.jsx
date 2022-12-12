@@ -8,7 +8,7 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { setDoc, doc, getDoc } from "firebase/firestore";
+import { setDoc, doc, getDoc, getDocs } from "firebase/firestore";
 import { auth, db } from "../firebase/firebase.config";
 import { useNavigate } from "react-router-dom";
 
@@ -35,6 +35,9 @@ export function AuthProvider({ children }) {
 
   const [userName, serUserName] = useState("");
 
+  const[id, setId] = useState("")
+
+ 
   
 
   useEffect(() => {
@@ -44,6 +47,7 @@ export function AuthProvider({ children }) {
       } else {
         setUser(currentUser.email);
         serUserName(currentUser.displayName);
+        setId(currentUser.uid);
       }
     });
     return () => userSession();
@@ -58,14 +62,16 @@ export function AuthProvider({ children }) {
       );
       const user = response.user.email;
       console.log(user);
-      const docRef = doc(db, `users/${response.user.uid}`);
+      const docRef = doc(db, `users/${response.user.email}`);
       setDoc(docRef, {
         username: username,
         email: email,
         rol: rol,
+        id: response.user.uid
       });
       setError("");
       navigate("/");
+      swal("Te has registrado exitosamente")
     } catch (error) {
       setError(error.message);
     }
@@ -102,11 +108,12 @@ export function AuthProvider({ children }) {
     }
     }
   
-  async function getRole(uid) {
-    const docRef = doc(db, `users/${uid}`);
+  async function getRole(email) {
+    const docRef = doc(db, `users/${email}`);
     const data = await getDoc(docRef);
     const dataRole = data.data();
     localStorage.setItem("role", dataRole.rol || "user");
+    localStorage.setItem("username", dataRole.username);
   }
 
   const login = async (email, password) => {
@@ -115,6 +122,7 @@ export function AuthProvider({ children }) {
       getRole(response.user.uid);
       setError("");
       navigate("/");
+      swal("Inciaste sesion correctamente")
     } catch (error) {
       setError(error.message);
     }
@@ -150,6 +158,8 @@ export function AuthProvider({ children }) {
     }
   };
 
+ 
+
   return (
     <authContext.Provider
       value={{
@@ -162,6 +172,8 @@ export function AuthProvider({ children }) {
         logout,
         resetPassword,
         setAsing,
+        id,
+      
       }}
     >
       {children}

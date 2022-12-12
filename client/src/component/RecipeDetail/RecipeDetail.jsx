@@ -23,7 +23,7 @@ const RecipeDetail = () => {
                    }
                   } },[dispatch,paramsId.id])
 
-  console.log(Recipes)
+  // console.log(Recipes)
 
   return (
       <div className={style.card}>
@@ -32,7 +32,7 @@ const RecipeDetail = () => {
         </div>
         <div className={style.content}>
           <div className={style.image}>
-            <img src={Recipes.image} alt={Recipes.name}/>
+            <img className={style.image} src={Recipes.image} alt={Recipes.name}/>
           </div>
           <div className={style.ingredients}>
             <h1>Igredientes:</h1>

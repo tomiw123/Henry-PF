@@ -4,26 +4,48 @@ import { useState } from "react";
 import * as BsIcons from "react-icons/bs";
 import * as GrIcons from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromCart, addCount, payment } from "../../redux/actions/actions";
+import { deleteFromCart, addCount, payment, addToCart } from "../../redux/actions/actions";
 import s from './Carrito.module.css';
 
 const Carrito = () => {
     const [openedCart, setCart] = useState(false);
     const dispatch = useDispatch();
-    const [total, setTotal] = useState(0)
+    const [total, setTotal] = useState(0);
+    const [count, setCount] = useState(0)
     const openCart = ()=> {
         setCart(!openedCart)
     }
     let cart = useSelector((state)=> state.cart);
     let newCart = [];
-    //console.log(cart);
+    const [carritoVacio, setCarritoVacio] = useState(false)
+    useEffect(()=> {
+        if(!newCart.length){
+            setCarritoVacio(false);
+        }else {
+            setCarritoVacio(true)
+        }
+    })
+    //window.localStorage.setItem('carrito', 'vacio')
     for (let i = 0; i < cart.length; i++) {
         if(cart[i].name){
             newCart.push(cart[i])
         }
     }
-    //console.log(cart);
-
+    if(newCart.length){
+        window.localStorage.setItem('carrito', JSON.stringify(newCart))
+        
+    }else {
+        let carritoStorage = window.localStorage.getItem('carrito');
+        if(carritoStorage !== "vacio" ){
+            let carritoStorageArray = JSON.parse(window.localStorage.getItem('carrito'));
+            if(carritoStorageArray.length){
+                    for (let i = 0; i < carritoStorageArray.length; i++) {
+                            dispatch(addToCart(carritoStorageArray[i]))
+                        }
+                   }
+        }
+            }
+            
     useEffect(()=>{
         let suma = 0;
         for (let i = 0; i < cart.length; i++) {
@@ -38,6 +60,10 @@ const Carrito = () => {
         setTimeout(()=>{
             dispatch(deleteFromCart(id))
         }, 50)
+        if(newCart.length === 1){
+        window.localStorage.setItem('carrito', 'vacio')
+
+        }
     }
     
     const sumarCantProd = (id)=> {
@@ -74,7 +100,10 @@ const Carrito = () => {
     }
     return (
         <div className={s.cart}>
-            <BsIcons.BsCartFill onClick={openCart}/>
+            <div className={s.carritoNum}>
+                <BsIcons.BsCartFill onClick={openCart} className={s.carrito}/>
+                <p className={carritoVacio? s.numCarrito : s.sinNum}>{newCart.length}</p>
+            </div>
             <div onClick={openCart} className={openedCart? s.backToHome : s.none}></div>
             <div className={openedCart? s.openCart: s.closeCart}>
                 <div className={s.cross}>

@@ -1,0 +1,80 @@
+.Felicidades{
+    display: flex;
+    justify-content: center;
+    background: rgb(133, 133, 133);
+    padding: 20px 0;
+}
+.Conteiner{
+    height: 100vh;
+    width: 70%;
+    border-radius: 20px;
+    background-color: #fff;
+    
+}
+.logo{
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo img{
+    height: 100%;
+}
+
+.agradecimiento{
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    padding-left: 50px;
+}
+.recibo{
+    
+}
+.title{
+    justify-content: start;
+    font-size: 1.5rem;
+    padding: 15px 0;
+    padding-left: 50px;
+}
+.grilla{
+    padding: 20px 0;
+    margin: 0 10%;
+}
+.grid{
+    padding: 0 10px;
+    display: grid;
+    height: 7vh;
+    align-items: center;
+    grid-template-columns: 16vw 16vw 16vw 16vw ;
+    border: 1px solid black;
+    columns: 12vw;
+}
+.elemento{
+    display: flex;
+    align-content: flex-end;
+}
+
+/* .contacto{
+}
+.contactoConUsted{
+    display: flex;
+    justify-content: start;
+    font-size: 1.25rem;
+    padding: 15px 0;
+    padding-left: 50px;
+} */
+/* .contactoAgradesco{
+    display: flex;
+    justify-content: start; 
+    font-size: 1.25rem;
+    padding-left: 50px;
+    padding-bottom: 100px;
+} */
+.check{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    bottom: -80px;
+    right: 250px;
+}

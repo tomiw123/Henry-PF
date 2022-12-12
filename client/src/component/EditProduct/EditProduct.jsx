@@ -1,13 +1,14 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { updateProduct } from '../../redux/actions/actions'
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // import { Navigate } from 'react-router-dom';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { uploadFile } from '../../firebase/firebase.config'
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+// import swal from 'sweetalert'
 
 // llamar al producto por id
 // mostrarlo, editarlo y luego enviarlo por Update Product
@@ -18,10 +19,15 @@ const CreateProduct = () => {
     const { id } = useParams()
 
     const [modificar, setModificar] = useState({
-        name:''
+        name: '',
+        price: '',
+        image: '',
+        description: ''
     });
 
+
     const dispatch = useDispatch();
+    const history = useNavigate()
 
 
     //const changeValue = ( value)=> {
@@ -31,59 +37,58 @@ const CreateProduct = () => {
     //    })
     //  }
 
-   //useEffect(()=>{
-   //    changeValue('hola22sss') 
-   //},[])
+    //useEffect(()=>{
+    //    changeValue('hola22sss') 
+    //},[])
 
-   function handleName(e) {
-    e.preventDefault();
-    setModificar({
-        ...modificar,
-        name: e.target.value
-    })
-
-} 
-
-    const submit = async (values) => {
-        if (!modificar.name) {
-            //changeValue( values.name)
-            //console.log(modificar);
-            alert('Error interno. Intente mas tarde')
-        }
-        //if (values.price) {
-        //    setModificar({ ...modificar, price: values.price })
-        //}
-        //if (values.image) {
-        //    setModificar({ ...modificar, image: values.image })
-        //}
-        //if (values.description) {
-        //    setModificar({ ...modificar, description: values.description })
-        //}
-
-        if (modificar.name) {
-            //alert('Error interno. Intente mas tarde')
-            //const result = await uploadFile(file);
-            //values.image = result;
-            dispatch(updateProduct(modificar, id));
-            console.log(modificar)
-            alert('Producto editado existosamente')
-        }
-        
-        //  window.location.reload();
-
-
-
-        // try {
-        //     const result = await uploadFile(file);
-        //     values.image = result;
-        //     dispatch(updateProduct(modificar, id));
-        //     alert('Producto editado existosamente')
-        //      window.location.reload();
-        // } catch (error) {
-        //     console.log(error)
-        //     alert('Error interno. Intente mas tarde')
-        // }
+    function handleName(e) {
+        e.preventDefault();
+        setModificar({
+            ...modificar,
+            name: e.target.value
+        })
+        console.log(e.target.value);
     }
+
+    function handlePrice(e) {
+        e.preventDefault();
+        setModificar({
+            ...modificar,
+            price: e.target.value
+        })
+        console.log(e.target.value);
+    }
+
+    function handleDesc(e) {
+        e.preventDefault();
+        setModificar({
+            ...modificar,
+            description: e.target.value
+        })
+    }
+
+
+
+
+    const submit = async () => {
+        if (!modificar.name) {
+            alert('No hay nada que modificar')
+        }
+        try {
+            if (window.confirm("Los cambios van a ser modificados, desea continuar?")) {
+                if (modificar) {
+                    const result = await uploadFile(file);
+                    modificar.image = result
+                    dispatch(updateProduct(modificar, id));
+                    history('/HAdmin/AdminProducts')
+                }
+              }
+    
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
 
 
     const validations = (values) => {
@@ -111,14 +116,14 @@ const CreateProduct = () => {
                     <Form className=" flex flex-col justify-center items-center">
                         <h1 className="text-5xl text-white m-2 justify-center items-center ">Editar Producto</h1>
                         <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-                            placeholder="Ingrese el nuevo nombre del producto" name="name" type="text" onChange={handleName} value={modificar.name}/>
+                            placeholder="Ingrese el nuevo nombre del producto" name="name" type="text" onChange={handleName} value={modificar.name} />
                         <ErrorMessage name='name'>
                             {msg => <div style={{ color: 'red' }}>{msg}</div>}
                         </ErrorMessage>
                         <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-50 0 sm:text-sm m-2"
-                            placeholder="Ingrese el nuevo precio del producto" name="price" type="number" />
+                            placeholder="Ingrese el nuevo precio del producto" name="price" type="number" onChange={handlePrice} value={modificar.price} />
                         <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 h-24 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
-                            placeholder="Ingrese la nueva descripcion" name="description" type="text" />
+                            placeholder="Ingrese la nueva descripcion" name="description" type="text" onChange={handleDesc} value={modificar.description} />
                         <h1 style={{ color: 'gray' }}>Seleccione la nueva imagen del producto: </h1>
                         <Field className="bg-white relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
                             name="image" type="file" onChange={(e) => setFile(e.target.files[0])} />

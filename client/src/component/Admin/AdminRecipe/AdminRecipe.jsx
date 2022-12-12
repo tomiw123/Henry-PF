@@ -1,11 +1,23 @@
 import React, {useState} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import style from '../AdminRecipe/AdminRecipe.module.css'
-//import { FiDelete } from 'react-icons/fi'
-//import { IconContext } from "react-icons";
+import { adminDeleteRecipe, getAllRecipes } from '../../../redux/actions/recipesActions'
+import { Link } from 'react-router-dom'
+
+
 
 const AdminRecipe = (props) => {
 
-    
+    const dispatch = useDispatch();
+    const AllRecipes = useSelector((state) => state.recipes.docs)
+
+
+     const deleteRecipe = (id) => {
+           // console.log(id);
+        dispatch(adminDeleteRecipe(id))
+        dispatch(getAllRecipes())
+
+    }
 
     return (
         <div className={style.oveflow}>
@@ -17,8 +29,13 @@ const AdminRecipe = (props) => {
                 
             
                     <div className={style.btnContainer}>
-                        {/* <button className={style.btn}>Editar</button> */}
-                        <button className={style.btn2}>Borrar</button>
+                    <Link to={`/recipeDetail/${props.id}`}> 
+                         <button className={style.btn1}>Detalle</button> 
+                     </Link>
+                    <Link to={`/editRecipe/${props.id}`}> 
+                         <button className={style.btn}>Editar</button> 
+                     </Link>
+                        <button className={style.btn2} onClick={() => deleteRecipe(props.id)}>Borrar</button>
                     </div>
             </div>
         </div>
