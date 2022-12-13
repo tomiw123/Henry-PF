@@ -23,5 +23,6 @@ export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 //filtros
 export const GET_ALL_FILTERS = "GET_ALL_FILTERS"
 
-
+//review
+export const CREATE_REVIEW = "CREATE_REVIEW"
 
