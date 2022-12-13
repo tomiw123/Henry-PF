@@ -22,99 +22,64 @@ const Carrito = () => {
   const openCart = () => {
     setCart(!openedCart);
   };
+  let cart = useSelector((state) => state.cart);
+  let newCart = [];
+  const [carritoVacio, setCarritoVacio] = useState(false);
+  useEffect(() => {
+    if (!newCart.length) {
+      setCarritoVacio(false);
+    } else {
+      setCarritoVacio(true);
+    }
+  });
 
-//window.localStorage.setItem('carrito', 'vacio')
-for (let i = 0; i < cart.length; i++) {
-  if (cart[i].name) {
-    newCart.push(cart[i]);
+  // console.log(auth.user);
+
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].name) {
+      newCart.push(cart[i]);
+    }
   }
-}
-if (newCart.length) {
-  window.localStorage.setItem("carrito", JSON.stringify(newCart));
-} else {
+
   let carritoStorage = window.localStorage.getItem("carrito");
-  if (carritoStorage !== "vacio") {
-    let carritoStorageArray = JSON.parse(
-      window.localStorage.getItem("carrito")
-    );
-    if (carritoStorageArray) {
-      for (let i = 0; i < carritoStorageArray.length; i++) {
-        dispatch(addToCart(carritoStorageArray[i]));
+  if (carritoStorage === null) {
+    window.localStorage.setItem("carrito", "vacio");
+  }
+  if (newCart.length) {
+    window.localStorage.setItem("carrito", JSON.stringify(newCart));
+  } else {
+    let carritoStorage = window.localStorage.getItem("carrito");
+
+    if (carritoStorage !== "vacio") {
+      let carritoStorageArray = JSON.parse(
+        window.localStorage.getItem("carrito")
+      );
+      if (carritoStorageArray.length) {
+        for (let i = 0; i < carritoStorageArray.length; i++) {
+          dispatch(addToCart(carritoStorageArray[i]));
+        }
       }
     }
+  }
 
-    // console.log(auth.user);
-
+  useEffect(() => {
+    let suma = 0;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].quantity) {
         suma = suma + cart[i].price * cart[i].quantity;
       }
     }
+    setTotal(suma);
+  });
 
-    let carritoStorage = window.localStorage.getItem("carrito");
-    if (carritoStorage === null) {
+  const deleteProd = (id) => {
+    setTimeout(() => {
+      dispatch(deleteFromCart(id));
+    }, 50);
+    if (newCart.length === 1) {
       window.localStorage.setItem("carrito", "vacio");
     }
-    if (newCart.length) {
-      window.localStorage.setItem("carrito", JSON.stringify(newCart));
-    } else {
-      let carritoStorage = window.localStorage.getItem("carrito");
-
-      if (carritoStorage !== "vacio") {
-        let carritoStorageArray = JSON.parse(
-          window.localStorage.getItem("carrito")
-        );
-        if (carritoStorageArray.length) {
-          for (let i = 0; i < carritoStorageArray.length; i++) {
-            dispatch(addToCart(carritoStorageArray[i]));
-          }
-        }
-      }
-    }
-
-    useEffect(() => {
-      let suma = 0;
-      for (let i = 0; i < cart.length; i++) {
-        if (cart[i].quantity) {
-          suma = suma + cart[i].price * cart[i].quantity;
-        }
-      }
-      setTotal(suma);
-    });
-
-    const deleteProd = (id) => {
-      setTimeout(() => {
-        dispatch(deleteFromCart(id));
-      }, 50);
-      if (newCart.length === 1) {
-        window.localStorage.setItem("carrito", "vacio");
-      }
-    };
-
-    const sumarCantProd = (id) => {
-      let obj = cart.find((p) => p.id === id);
-      let lugar = cart.indexOf(obj);
-      let cantidad = obj.quantity + 1;
-      setTimeout(() => {
-        dispatch(addCount({ cantidad, lugar }));
-      }, 30);
-      console.log(cart);
-    };
-    const restarCantProd = (id) => {
-      let obj = cart.find((p) => p.id === id);
-      let lugar = cart.indexOf(obj);
-      if (obj.quantity > 1) {
-        obj = {
-          ...obj,
-          quantity: obj.quantity - 1,
-        };
-      }
-      let cantidad = obj.quantity;
-      setTimeout(() => {
-        dispatch(addCount({ cantidad, lugar }));
-      }, 30);
-    };
-  }
+  };
 
   const sumarCantProd = (id) => {
     let obj = cart.find((p) => p.id === id);
@@ -221,6 +186,6 @@ if (newCart.length) {
       </div>
     </div>
   );
-}}
+};
 
 export default Carrito;
