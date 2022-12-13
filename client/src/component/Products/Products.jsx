@@ -21,10 +21,9 @@ export default function Products(props) {
   }, [dispatch]);
   return (
     <>
-    <div>
-      <Filter /> <BusquedaProducts />
-    </div>
-      {/* <div className={style.card}>
+      <Filter /> 
+      <BusquedaProducts />
+        {/* <div className={style.card}>
         <img src={props.img} alt={props.name} />
       </div> */}
       <div>

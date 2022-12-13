@@ -29,7 +29,7 @@ const [counter, setCounter] = useState(1);
   // const [cart, setCart] = useState([]);
 
   const [loader, setLoader] = useState(true)
-  setTimeout(function () {setLoader(false)}, 800)
+  setTimeout( ()=> {setLoader(false)}, 800)
   const addProd = (id, name, img, precio, counter)=> {
     let yaEsta = cart.find(p => p.name === name);
     if(!yaEsta){
