@@ -1,0 +1,35 @@
+.search {
+    position: static;
+    width: 98.7vw;
+    height: 10vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.input {
+    position: relative;
+    height: 4vh;
+    margin-right: 1vw;
+    padding-left: 0.5vw;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+.button {
+    position: absolute;
+    right: 14vw;
+}
+.submit {
+    margin-right: 5vw;
+    border: 2px solid black;
+    border-radius: 4px;
+    width: 7vw;
+    transition: 350ms;
+}
+
+.submit:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+    transition: 350ms;
+}

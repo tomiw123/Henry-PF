@@ -16,11 +16,15 @@ import Footer from "./component/Footer/Footer";
 import Contacto from "./component/Contacto/Contacto";
 import CreateRecipe from './component/CreateRecipe/CreateRecipe';
 import HomeAdmin from './component/Admin/HomeAdmin'
-import TotalAdmin from "./component/SetAdmin/TotalAdmin";
+import TotalAdmin from "./component/Admin/SetAdmin/TotalAdmin"
 import AdminProducts from './component/Admin/AdminProducts/AdminProducts'
 import AdminRecipes from './component/Admin/AdminRecipes/AdminRecipes'
+import EditRecipe from "./component/EditRecipe/EditRecipe";
+import CartForm from "./component/CartForm/CartForm";
+import ControlDeVentas from "./component/Admin/AdminControl/AdminContronVentas";
+import Reviews from "./component/Reviews/Reviews";
+import Felicidades from "./component/Felicidades/Felicidades";
 
-//el mati confirma que esta todo bien
 function App() {
   return (
     <div className="h-screen">
@@ -38,11 +42,17 @@ function App() {
         <Route path="reset" element={<Reset />} />
         <Route path="/create" element={<CreateProduct/>} />
         <Route path="/edit/:id" element={<EditProduct/>} />
+        <Route path="/editRecipe/:id" element={<EditRecipe/>} />
         <Route path="/createRecipe" element={<CreateRecipe/>} />
         <Route path="/recipes" element={<Recipes/>} />
         <Route path="/productDetail/:id" element={<CardDetailProduct/>} />
         <Route path="/recipeDetail/:id" element={<RecipeDetail/>} />
         <Route path="/contacto" element={ <Contacto/> }/>
+        <Route path="/cartform" element={ <CartForm/> }/>
+        <Route path="/controlDeVentas" element={<ControlDeVentas/>} />
+        <Route path="/reviews/:id" element={<Reviews/>} />
+
+        <Route path="/felicidades" element={<Felicidades/>} />
 
         </Routes>
       <Footer/>

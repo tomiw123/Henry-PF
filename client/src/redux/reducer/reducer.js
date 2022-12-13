@@ -1,17 +1,22 @@
-import { ADD_PRODUCTS, GET_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD, DELETE_PRODUCT_ADMIN, DELETE_RECIPE_ADMIN} from "../actions/actionsTypes";
 
+import { ADD_PRODUCTS, GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES, GET_RECIPES_NAME, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD, DELETE_PRODUCT_ADMIN, DELETE_RECIPE_ADMIN, GET_ALL_FILTERS, CREATE_REVIEW, UPDATE_RECIPE} from "../actions/actionsTypes";
 
 
 const initialState = {
   product: [],
   products: [],
+  aplyFilter: {
+    filter:"",
+    valor:"",
+    page:1
+  },
   cart: [],
   //payment: [],
   recipes: [],
-  recipe: []
+  recipe: [],
+  loaderProducts: true,
+  prueba: window.localStorage.getItem('prueba')
 }
-
-
 
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -19,14 +24,31 @@ export function rootReducer(state = initialState, action) {
     case GET_PRODUCTS:
       return {
         ...state,
-        products: action.payload
-      }
-
-    case ADD_PRODUCTS:
+        products: action.payload,
+        loaderProducts: false,
+        aplyFilter:{
+          // ...state.aplyFilter,
+             filter: "",
+             valor: "",
+             page:""
+           }
+      };
+    case GET_ALL_PRODUCTS: 
       return {
-        ...state,
-        products: [...state.products, action.payload]
-      }
+        ...state, 
+        products: action.payload
+      };
+      case GET_ALL_FILTERS: 
+      return {
+        ...state, 
+        products: action.payload[0],
+        aplyFilter:{
+         // ...state.aplyFilter,
+            filter: action.payload[1],
+            valor: action.payload[2],
+            page: action.payload[3] +1
+          }
+      };
 
     case GET_ID_PRODUCTS:
       return {
@@ -44,7 +66,6 @@ export function rootReducer(state = initialState, action) {
         products: [...state.products, action.payload],
       };
     case ADD_PRODUCTS_CART:
-      
       return {
         ...state,
         cart: [...state.cart, action.payload],
@@ -71,6 +92,11 @@ export function rootReducer(state = initialState, action) {
         ...state,
         recipes: action.payload,
       };
+    case GET_RECIPES_NAME:
+      return {
+        ...state,
+        recipes: action.payload,
+      } 
     case GET_ID_RECIPES:
       return {
         ...state,
@@ -88,6 +114,12 @@ export function rootReducer(state = initialState, action) {
         recipe: [],
       };
 
+      case UPDATE_RECIPE:
+        return {
+          ...state,
+        recipes: [...state.recipes, action.payload]
+        };
+
     case DELETE_PRODUCT_ADMIN:
       return {
         ...state,
@@ -98,6 +130,11 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         recipes: [...state.recipes.filter(p => p.id !== action.payload)]
+      }
+      case CREATE_REVIEW: 
+      return {
+        ...state,
+        product: action.payload
       }
 
     default:

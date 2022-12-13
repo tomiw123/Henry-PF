@@ -55,6 +55,16 @@
     font-weight: bold;
 }
 
+.btn1 {
+    background-color: #0c3ab8;
+    height: 30px;
+    width: 60px;
+    border-radius: 20px;
+    margin-right: 5px;
+    color: white;
+    font-weight: bold;
+}
+
 .btn2 {
     background-color: red;
     height: 30px;

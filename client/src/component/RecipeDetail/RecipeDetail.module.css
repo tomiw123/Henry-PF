@@ -22,7 +22,10 @@
 }
 .image{
     display: flex;
-    width: 50%;
+    width: 40vw;
+    height: 35vh;
+    /* background-color: aqua; */
+   
 }
 .image img{
     object-fit:contain;

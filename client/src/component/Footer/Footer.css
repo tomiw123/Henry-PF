@@ -10,7 +10,7 @@
     position: relative;
     padding: 0;
     margin: 0 auto;
-    left: 28%;
+    left: 22%;
 }
 
 .contact{
@@ -57,7 +57,7 @@
 }
 
 .teldic{
-    margin-left: 60%;
+    margin-left: 50%;
     font-size: 30px;
     color: white;
     font-weight: 500;
@@ -69,3 +69,4 @@
     font-size: 15px;
     margin-right: 20px;
 }
+

@@ -1,21 +1,12 @@
 const Recipe = require('../Models/Recipe.js');
 
-// const getRecipes = async(req,res) => {
-//     try{
-//       const recipes = await Recipe.find();
-//       res.status(200).json(recipes);
-//     }catch(err){
-//         res.status(404).send("No hay recetas")
-//     }
-// }
 
 const getRecipes = async (req, res) => {
   //search by query, filter and paginate
-  const {search, filter, category, date } = req.query;//price, alfa,
+  const {search, filter} = req.query;
   const limit = req.query.limit || 8;
   const page = req.query.page || 1;
- //filter: categorias(cat) precio(price) alfabeticamente(alfa) fecha creado(create)
- //category: categorias disponibles //price:1 y -1 //alfa:1 y -1 
+
  
   try {
     if (search){
@@ -24,14 +15,6 @@ const getRecipes = async (req, res) => {
       });
       res.status(200).json(recipes);
     }else if(filter){
-      // if (filter == "cat") {
-      //   const recipes = await Recipe.paginate({ category },{limit, page });
-      //   res.status(200).json(recipes);
-      // }
-      // if (filter == "price") {
-      //   const recipes = await Recipe.paginate({}, { sort: { price: 1 }, limit, page });
-      //   res.status(200).json(recipes);
-      // }
       if (filter == "alfa") {
         const recipes = await Recipe.paginate({},{sort: { name: 1 }, limit, page });
         res.status(200).json(recipes);
@@ -68,7 +51,7 @@ const deleteRecipe = async(req,res) => {
     }
     
 const createRecipe = async (req, res) => {
-    const { name, image, ingridients, description } = req.body;
+    const { name, image, ingredients, description } = req.body;
     //console.log(name);
     try {
         const exist = await Recipe.findOne({ name });
@@ -76,7 +59,7 @@ const createRecipe = async (req, res) => {
         const addRecipe = await Recipe.create({
             name,
             image,
-            ingridients,
+            ingredients,
             description,
         });
         res.status(200).send(`Receta ${name} creada.`);
@@ -87,15 +70,34 @@ const createRecipe = async (req, res) => {
         console.log(err);
         }
 };
+
+
 const updateRecipes = async (req, res) => {
   const { _id } = req.params;
-  const {name, image, ingridients, description, product } = req.body;
+  const {name, image, ingredients, description } = req.body;
   
   try {
-    const recipes = await Recipe.updateOne(
-      {_id,},
-      { $set: { name, image, ingridients, description, product,} }
-    );
+    if (name){
+      var recipes = await Recipe.findByIdAndUpdate(_id,{
+        $set: {name}
+      })
+    }
+    if (image){
+      var recipes = await Recipe.findByIdAndUpdate(_id,{
+        $set: {image}
+      })
+    }
+    if (ingredients){
+      var recipes = await Recipe.findByIdAndUpdate(_id,{
+        $set: {ingredients}
+      })
+    }
+    if (description){
+      var recipes = await Recipe.findByIdAndUpdate(_id,{
+        $set: {description}
+      })
+    }
+
     res.status(200).send(recipes);
   } catch (err) {
     console.log("no funco");
