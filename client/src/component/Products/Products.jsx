@@ -21,10 +21,9 @@ export default function Products(props) {
   }, [dispatch]);
   return (
     <>
-    <div>
-      <Filter /> <BusquedaProducts />
-    </div>
-      {/* <div className={style.card}>
+      <Filter /> 
+      <BusquedaProducts />
+        {/* <div className={style.card}>
         <img src={props.img} alt={props.name} />
       </div> */}
       <div>
@@ -32,7 +31,7 @@ export default function Products(props) {
           {Product?.map((e) => {
           //  console.log(e._id);
             return (
-              <div>
+              <div key={e._id}>
                 {/* <Link to={`/productDetail/${e._id}`}> */}
                   <Card
                     id={e._id}

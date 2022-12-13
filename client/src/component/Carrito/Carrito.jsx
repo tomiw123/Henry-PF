@@ -4,11 +4,17 @@ import { useState } from "react";
 import * as BsIcons from "react-icons/bs";
 import * as GrIcons from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { deleteFromCart, addCount, payment } from "../../redux/actions/actions";
+import {
+  deleteFromCart,
+  addCount,
+  payment,
+  addToCart,
+} from "../../redux/actions/actions";
 import s from "./Carrito.module.css";
+import { useAuth } from "../../context/auth";
 
 const Carrito = () => {
+  const auth = useAuth();
   const [openedCart, setCart] = useState(false);
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
@@ -27,9 +33,32 @@ const Carrito = () => {
     }
   });
 
+  // console.log(auth.user);
+
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].name) {
       newCart.push(cart[i]);
+    }
+  }
+
+  let carritoStorage = window.localStorage.getItem("carrito");
+  if (carritoStorage === null) {
+    window.localStorage.setItem("carrito", "vacio");
+  }
+  if (newCart.length) {
+    window.localStorage.setItem("carrito", JSON.stringify(newCart));
+  } else {
+    let carritoStorage = window.localStorage.getItem("carrito");
+
+    if (carritoStorage !== "vacio") {
+      let carritoStorageArray = JSON.parse(
+        window.localStorage.getItem("carrito")
+      );
+      if (carritoStorageArray.length) {
+        for (let i = 0; i < carritoStorageArray.length; i++) {
+          dispatch(addToCart(carritoStorageArray[i]));
+        }
+      }
     }
   }
 
@@ -47,6 +76,9 @@ const Carrito = () => {
     setTimeout(() => {
       dispatch(deleteFromCart(id));
     }, 50);
+    if (newCart.length === 1) {
+      window.localStorage.setItem("carrito", "vacio");
+    }
   };
 
   const sumarCantProd = (id) => {
@@ -56,7 +88,7 @@ const Carrito = () => {
     setTimeout(() => {
       dispatch(addCount({ cantidad, lugar }));
     }, 30);
-    // console.log(cart);
+    console.log(cart);
   };
   const restarCantProd = (id) => {
     let obj = cart.find((p) => p.id === id);
@@ -142,7 +174,6 @@ const Carrito = () => {
         </div>
 
         <div className={s.finalizar}>
-          <Link to={"/cartform"}>
           <button
             className={s.button}
             onClick={() => {
@@ -151,7 +182,6 @@ const Carrito = () => {
           >
             Finalizar compra
           </button>
-          </Link>
         </div>
       </div>
     </div>

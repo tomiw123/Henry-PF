@@ -21,7 +21,7 @@ const getAll = async (req, res) => {
   }
 };
 const getAllFilter = async (req, res) => {
-  //filter: categorias(category) precio(price) alfabeticamente(alfa) fecha creado(create)
+  //filter: categorias(category) precio(price) alfabeticamente(alfa) 
   //category: categorias disponibles //price:1 y -1 //alfa:1 y -1
   const { filter, category, price, alfa } = req.query;
   const limit = req.query.limit || 8;
@@ -35,6 +35,7 @@ const getAllFilter = async (req, res) => {
       }
       if (filter == "price") {
         const products = await Product.paginate({}, { limit, page, sort: { price } });
+        
         res.status(200).json(products);
       }
       if (filter == "alfa") {

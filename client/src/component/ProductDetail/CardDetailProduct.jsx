@@ -19,18 +19,19 @@ const CardDetailProduct = () => {
   // console.log(Product)
 
   const [userOn, setUserOn] = useState(false)
+  const [loader, setLoader] = useState(true)
+  setTimeout( ()=> {setLoader(false)}, 800)
+  useEffect(()=>{if(Product.length === 0){
+                  dispatch(getIdProducts(paramsId.id))
+                  }
+                  else{
+                   if(Product.id !== paramsId.id){
+                    dispatch(cleanProduct())
+                    dispatch(getIdProducts(paramsId.id))
+                   }
+                  } },[dispatch,paramsId.id])
 
-  useEffect(() => {
-    if (Product.length === 0) {
-      dispatch(getIdProducts(paramsId.id))
-    }
-    else {
-      if (Product.id !== paramsId.id) {
-        dispatch(cleanProduct())
-        dispatch(getIdProducts(paramsId.id))
-      }
-    }
-  }, [dispatch, paramsId.id])
+
 
   useEffect(()=> {
     if(auth.user) {
@@ -87,12 +88,29 @@ const CardDetailProduct = () => {
     }))
     navigate('/products')
   }
+
+
   return (
     <div className={Style.CardProduct}>
       <div className={Style.Container2}>
         <div className={Style.ImgCont}>
           <div className={Style.Image}>
-            <img className={Style.img} src={Product.image} alt="" />
+          {loader? (
+              <Oval
+                height={100}
+                width={300}
+                color="black"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel='oval-loading'
+                secondaryColor="black"
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+              />
+              ): (
+                <img className={Style.img} src={Product.image}  alt="" />
+              )}
           </div>
           <div className={Style.Container}>{/********** */}
             <div className={Style.Title}>

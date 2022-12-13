@@ -8,7 +8,7 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { setDoc, doc, getDoc } from "firebase/firestore";
+import { setDoc, doc, getDoc, getDocs } from "firebase/firestore";
 import { auth, db } from "../firebase/firebase.config";
 import { useNavigate } from "react-router-dom";
 
@@ -37,6 +37,7 @@ export function AuthProvider({ children }) {
 
   const[id, setId] = useState("")
 
+ 
   
 
   useEffect(() => {
@@ -61,14 +62,16 @@ export function AuthProvider({ children }) {
       );
       const user = response.user.email;
       console.log(user);
-      const docRef = doc(db, `users/${response.user.uid}`);
+      const docRef = doc(db, `users/${response.user.email}`);
       setDoc(docRef, {
         username: username,
         email: email,
         rol: rol,
+        id: response.user.uid
       });
       setError("");
       navigate("/");
+      swal("Te has registrado exitosamente")
     } catch (error) {
       setError(error.message);
     }
@@ -86,11 +89,11 @@ export function AuthProvider({ children }) {
   //   console.log(data);
   // }
   
-  async function setAsing(uid, admin) {
+  async function setAsing(email, admin) {
     try {
       
-      console.log(uid, admin)
-      const docRef = doc(db, `users/${uid}`);
+
+      const docRef = doc(db, `users/${email}`);
        setDoc(
         docRef,
         {
@@ -99,16 +102,17 @@ export function AuthProvider({ children }) {
         { merge: true }
         
       );
-      navigate("/HAdmin");
+      // navigate("/HAdmin");
     } catch (error) {
-      console.log(error, "este Id no pertenece a un usuario")
+      console.log(error, "este correo no pertenece a un usuario")
     }
     }
   
-  async function getRole(uid) {
-    const docRef = doc(db, `users/${uid}`);
+  async function getRole(email) {
+    const docRef = doc(db, `users/${email}`);
     const data = await getDoc(docRef);
     const dataRole = data.data();
+    console.log(dataRole)
     localStorage.setItem("role", dataRole.rol || "user");
     localStorage.setItem("username", dataRole.username);
   }
@@ -116,9 +120,10 @@ export function AuthProvider({ children }) {
   const login = async (email, password) => {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
-      getRole(response.user.uid);
+      getRole(email);
       setError("");
       navigate("/");
+      swal("Inciaste sesion correctamente")
     } catch (error) {
       setError(error.message);
     }
@@ -138,6 +143,7 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     localStorage.removeItem("role");
+    localStorage.removeItem("username");
     const response = await signOut(auth);
     console.log(response);
     setUser("");
@@ -154,6 +160,8 @@ export function AuthProvider({ children }) {
     }
   };
 
+ 
+
   return (
     <authContext.Provider
       value={{
@@ -167,6 +175,7 @@ export function AuthProvider({ children }) {
         resetPassword,
         setAsing,
         id,
+      
       }}
     >
       {children}
