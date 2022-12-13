@@ -26,8 +26,10 @@ const Carrito = () => {
             setCarritoVacio(false);
         }else {
             setCarritoVacio(true)
+
         }
     })
+    //window.localStorage.setItem('carrito', 'vacio')
 
     // console.log(auth.user);
 
