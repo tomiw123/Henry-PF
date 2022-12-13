@@ -19,10 +19,13 @@ export const CLEAN_RECIPE = "CLEAN_RECIPE"
 export const DELETE_RECIPE_ADMIN = "DELETE_RECIPE_ADMIN"
 export const UPDATE_RECIPE = "UPDATE_RECIPE"
 
+
 export const DELETE_PRODUCT_ADMIN = "DELETE_PRODUCT_ADMIN"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 //filtros
 export const GET_ALL_FILTERS = "GET_ALL_FILTERS"
 
+//review
+export const CREATE_REVIEW = "CREATE_REVIEW"
 
 

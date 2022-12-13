@@ -38,7 +38,7 @@ function TotalAdmin() {
                 />
             </div>
             <div className="flex flex-col flex-start fond-medium text-sm">
-              <label className="text-black text.sm font-semibold" >Admin</label>
+              <label className="text-black text-sm font-semibold" >Admin</label>
               <input
                 onChange={(e) => {
                   setAdmin(e.target.value);
@@ -52,7 +52,7 @@ function TotalAdmin() {
                 controlador(e);
               }}
               type="button"
-              className="group bg-red-600mb-3 relative flex w-1/5 justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-black hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2" 
+              className="group bg-red-600 mb-3 relative flex w-1/5 justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-black hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 mr- focus:ring-offset-2 m-2" 
             >
               Validar
             </button>
