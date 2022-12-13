@@ -90,7 +90,7 @@ const reviewProduct = async (req, res) => {
       )
     // console.log(alreadyReviewed);
     if (alreadyReviewed) {
-      res.status(404).send('User already review the product');
+      res.status(500).send({message: 'User already review the product'});
       // throw Error('Product already reviewed')
     } else {
       const review = {

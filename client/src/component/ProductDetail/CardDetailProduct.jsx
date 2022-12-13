@@ -12,7 +12,6 @@ import { useAuth } from "../../context/auth"
 
 const CardDetailProduct = () => {
   const auth = useAuth()
-  console.log(auth.user);
   const dispatch = useDispatch();
   const paramsId = useParams()
   const Product = useSelector(state => state.product);
@@ -38,9 +37,6 @@ const CardDetailProduct = () => {
       setUserOn(true)
     }
   })
-
-  console.log(userOn);
-
 
   const [counter, setCounter] = useState(1);
   const [rating, setRating] = useState(5);
@@ -79,15 +75,16 @@ const CardDetailProduct = () => {
     }
   }
 
+  const userAuth = auth.user;
+
   function handleSubmit(e) {
     e.preventDefault()
     dispatch(createProductReview(paramsId.id, {
       reviewname,
       rating,
       comment,
-      user: auth.user
+      user: userAuth
     }))
-    .then((e)=> alert(e))
     navigate('/products')
   }
   return (

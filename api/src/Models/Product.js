@@ -1,7 +1,7 @@
 const { Schema, model, default: mongoose } = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
 
-const reviewSchema = mongoose.Schema({
+const reviewSchema = new Schema({
   reviewname: {
     type: String,
     require: true,
@@ -14,11 +14,11 @@ const reviewSchema = mongoose.Schema({
     type: String,
     require: true
   },
-   user: {
+  user: {
     type: String,
     require: true
-   }
- })
+  }
+})
 
 const productSchema = new Schema({
   name: {
@@ -34,7 +34,7 @@ const productSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
+    require: true,
   },
   category: {
     type: String,
@@ -52,7 +52,8 @@ const productSchema = new Schema({
     default: 0
   },
   recipe: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
-});
+}
+);
 productSchema.plugin(mongoosePaginate);
 
 const Product = model("Product", productSchema);
