@@ -11,7 +11,7 @@ const ControlVentasSchema = new Schema({
     },
     contacto:{
         type: String,
-        required: true
+        required: true 
     },
     fecha:{
         type: String,

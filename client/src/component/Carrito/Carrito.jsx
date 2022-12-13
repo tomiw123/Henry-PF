@@ -36,7 +36,7 @@ const Carrito = () => {
             newCart.push(cart[i])
         }
     }
-
+    //window.localStorage.setItem('carrito', 'vacio')
     let carritoStorage = window.localStorage.getItem('carrito');
     if(carritoStorage === null){
         window.localStorage.setItem('carrito', 'vacio')
@@ -98,7 +98,7 @@ const Carrito = () => {
         let cantidad= obj.quantity
         setTimeout(()=> {
             dispatch(addCount({cantidad, lugar}))
-        },30)
+        },30) 
     }
 
     const finalizarCompra = (newCart)=>{

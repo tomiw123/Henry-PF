@@ -1,5 +1,5 @@
 
-import { ADD_PRODUCTS, GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD, DELETE_PRODUCT_ADMIN, DELETE_RECIPE_ADMIN, GET_ALL_FILTERS, UPDATE_RECIPE } from "../actions/actionsTypes";
+import { ADD_PRODUCTS, GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD, DELETE_PRODUCT_ADMIN, DELETE_RECIPE_ADMIN, GET_ALL_FILTERS, UPDATE_RECIPE, USER_PAYMENTS } from "../actions/actionsTypes";
 
 
 const initialState = {
@@ -11,11 +11,10 @@ const initialState = {
     page:1
   },
   cart: [],
-  //payment: [],
+  totalVentas: [],
   recipes: [],
   recipe: [],
-  loaderProducts: true,
-  prueba: window.localStorage.getItem('prueba')
+  loaderProducts: true
 }
 
 export function rootReducer(state = initialState, action) {
@@ -87,6 +86,13 @@ export function rootReducer(state = initialState, action) {
         ...state,
         cart: [...state.cart.filter(p => p.id !== action.payload.id), action.payload]
       }
+      
+    case USER_PAYMENTS:
+      return {
+        ...state,
+        totalVentas: action.payload
+      };
+
     case GET_RECIPES:
       return {
         ...state,

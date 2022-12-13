@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD, GET_ALL_FILTERS, UPDATE_PRODUCT} from "./actionsTypes";
+import { GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD, GET_ALL_FILTERS, UPDATE_PRODUCT, USER_PAYMENTS, DELETE_PRODUCT_ADMIN} from "./actionsTypes";
 
 
 
@@ -110,12 +110,35 @@ export const addCount = (payload) => {
 }
 
 export const payment = (payload) => {
-  console.log(payload)
   return async function() {
     try {
       const pago = await axios.post(`${import.meta.env.VITE_URL}/payments`, payload)
       return pago.data
-    } catch (error) {
+    } 
+    catch (error) {
       return error.response.data
     }
   }}
+
+  export const userPayments = (payload) => {
+    return async function() {
+      try {
+        const payment = await axios.post(`${import.meta.env.VITE_URL}/payments/pagoExitoso`, payload)
+        return payment.data
+      } 
+      catch (error) {
+        return error.response.data
+      }
+  }
+}
+
+  
+export const totalPayment = () => {
+  return async (dispatch)=>{
+    const total = await axios.get(`${import.meta.env.VITE_URL}/payments/totalVentas`)
+      dispatch({
+        type: USER_PAYMENTS,
+        payload: total.data,
+      });
+  };
+};
