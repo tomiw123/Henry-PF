@@ -8,7 +8,33 @@ import { useEffect } from "react";
 import Paginado from "../../Paginado/Paginado";
 
 const AdminRecipes = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+
+    useEffect(()=>{dispatch(getAllRecipes())},[dispatch])
+
+    const Recipes = useSelector(state => state.recipes.docs);
+    const recipes = useSelector(state => state.recipes);
+   // console.log(Recipes);
+    return (
+        <div className={style.container}>
+            {
+                
+                Recipes?.map((p) => {
+                    console.log(p);
+                    return(
+                        
+                    <AdminRecipe id={p._id} key={p._id} name ={p.name} image={p.image} />
+                    
+                )
+            })
+            }
+            <div className={style.paginado}>
+            <Paginado recipes={recipes} />
+            </div>
+        </div>
+    );
+};
+
 
   useEffect(() => {
     dispatch(getAllRecipes());
