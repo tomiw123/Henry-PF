@@ -40,7 +40,7 @@ function Nav() {
             {admin === "admin" ? (
                 <div>
                 <Link to="HAdmin"className=" flex items-center" >
-                  <p className="ml-7">Admin</p>
+                  <p className="ml-7">admin</p>
                   <RiAdminFill className="ml-2 animate-pulse text-red-500" />
                 </Link>
                 </div>

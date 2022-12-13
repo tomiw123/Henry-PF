@@ -31,7 +31,21 @@ const Carrito = () => {
     } else {
       setCarritoVacio(true);
     }
-  });
+
+    let cart = useSelector((state)=> state.cart);
+    let newCart = [];
+    const [carritoVacio, setCarritoVacio] = useState(false)
+    useEffect(()=> {
+        if(!newCart.length){
+            setCarritoVacio(false);
+        }else {
+            setCarritoVacio(true)
+
+        }
+    })
+    //window.localStorage.setItem('carrito', 'vacio')
+
+    // console.log(auth.user);
 
   // console.log(auth.user);
 
