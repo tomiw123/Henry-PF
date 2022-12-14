@@ -1,9 +1,10 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect, Fragment, useState } from 'react'
 import style from './RecipeDetail.module.css'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIdRecipes, cleanRecipe } from '../../redux/actions/recipesActions.js' ;
 import Carrousel from './Carrousel/CarrouselRecipe';
+import { Oval  } from 'react-loader-spinner'
 
 
 const RecipeDetail = () => {
@@ -36,9 +37,7 @@ const RecipeDetail = () => {
           <div className={style.image}>
 
             {/* <img className={style.image} src={Recipes.image} alt={Recipes.name}/> */}
-          <Carrousel 
-          image = {Recipes.image}
-          />
+          
 
             {loader? (
                 <Oval
@@ -54,7 +53,10 @@ const RecipeDetail = () => {
                   strokeWidthSecondary={2}
                 />
                 ): (
-                <img className={style.image} src={Recipes.image} alt={Recipes.name}/>
+              //  <img className={style.image} src={Recipes.image} alt={Recipes.name}/>
+              <Carrousel 
+          image = {Recipes.image}
+          />
               )}
 
           </div>

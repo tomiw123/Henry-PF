@@ -15,6 +15,7 @@ const Felicidades = () => {
     useEffect(() => {
         dispatch(userPayments(userProduct))
     }, [dispatch]);
+    window.localStorage.setItem("carrito", "vacio");
 
     let suma = 0;
         for (let i = 0; i < products.length; i++) {

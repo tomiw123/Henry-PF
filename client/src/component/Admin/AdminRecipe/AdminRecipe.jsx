@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import style from '../AdminRecipe/AdminRecipe.module.css'
 import { adminDeleteRecipe, getAllRecipes } from '../../../redux/actions/recipesActions'
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
 
 
 const AdminRecipe = (props) => {
@@ -19,8 +18,12 @@ const AdminRecipe = (props) => {
 
     }
 
-    return (
+    return ( 
+        
+
         <div className={style.oveflow}>
+            
+            
             <div className={style.container}>
                 <div className={style.imgContainer}>
                     <img className={style.img} src={props.image} alt="" />
@@ -38,6 +41,7 @@ const AdminRecipe = (props) => {
                 </div>
             </div>
         </div>
+    
     );
 };
 

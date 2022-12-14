@@ -10,6 +10,7 @@ import { AiFillStar } from 'react-icons/ai'
 import { addToCart, changeFromCart, getIdProducts, cleanProduct, createProductReview } from '../../redux/actions/actions';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../../context/auth"
+import { Oval  } from 'react-loader-spinner'
 
 
 const CardDetailProduct = () => {
@@ -98,9 +99,7 @@ const CardDetailProduct = () => {
         <div className={Style.ImgCont}>
           <div className={Style.Image}>
             {/* <img className={Style.img} src={Product.image}  alt="" /> */}
-            <CarrouselProduct 
-          image = {Product.image}
-          />
+           
           {loader? (
               <Oval
                 height={100}
@@ -115,7 +114,10 @@ const CardDetailProduct = () => {
                 strokeWidthSecondary={2}
               />
               ): (
-                <img className={Style.img} src={Product.image}  alt="" />
+                <CarrouselProduct 
+                image = {Product.image}
+                />
+               // <img className={Style.img} src={Product.image}  alt="" />
               )}
           </div>
           <div className={Style.Container}>{/********** */}
@@ -203,7 +205,7 @@ const CardDetailProduct = () => {
             </div>
             <p className={Style.titleReview}>Dejanos un comentario: </p>
             <textarea className={Style.textarea} value={comment} onChange={(e) => setComment(e.target.value)} type="text" placeholder='tu comentario aca' />
-            <button style={{ background: 'green' }} className={Style.btn1} type='submit'>enviar</button>
+            <button style={{ background: 'green' }} className={Style.btn1} type='submit'>Enviar</button>
           </form>
         </div>
         {/* dejar un apartado para poner abajo las recetas que se pueden hacer con el producto*/}
