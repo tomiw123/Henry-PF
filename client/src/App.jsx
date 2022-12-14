@@ -31,6 +31,7 @@ function App() {
       <Nav />
       <SearchBar />
       <Routes>
+        
         <Route path="/" element={<Home/>} />
         <Route path="/HAdmin" element={<HomeAdmin/>} />
         <Route path="/HAdmin/AdminProducts" element={<AdminProducts/>} />
@@ -51,8 +52,9 @@ function App() {
         <Route path="/cartform" element={ <CartForm/> }/>
         <Route path="/controlDeVentas" element={<ControlDeVentas/>} />
         <Route path="/reviews/:id" element={<Reviews/>} />
-
         <Route path="/felicidades" element={<Felicidades/>} />
+
+        
 
         </Routes>
         
