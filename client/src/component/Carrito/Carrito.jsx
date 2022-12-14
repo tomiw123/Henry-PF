@@ -9,6 +9,7 @@ import {
   addCount,
   payment,
   addToCart,
+  cleanCart,
 } from "../../redux/actions/actions";
 import s from "./Carrito.module.css";
 import { useAuth } from "../../context/auth";
@@ -49,7 +50,9 @@ const Carrito = () => {
     window.localStorage.setItem("carrito", "vacio");
   }
   if (newCart.length) {
-    window.localStorage.setItem("carrito", JSON.stringify(newCart));
+    if(carritoStorage !== "vacio"){
+      window.localStorage.setItem("carrito", JSON.stringify(newCart));
+    }
   } else {
     let carritoStorage = window.localStorage.getItem("carrito");
 
@@ -62,9 +65,9 @@ const Carrito = () => {
           dispatch(addToCart(carritoStorageArray[i]));
         }
       }
-    }
+    } 
   }
-
+  console.log(newCart)
   useEffect(() => {
     let suma = 0;
     for (let i = 0; i < cart.length; i++) {
@@ -142,7 +145,7 @@ const Carrito = () => {
           <li className={s.listUni}>Unid.</li>
           <li className={s.listObj}>Precio</li>
         </ul>
-        {cart?.map((p) => {
+        {newCart?.map((p) => {
           if (p.name) {
             return (
               <div className={s.miniProd} key={p.id}>

@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD, GET_ALL_FILTERS, UPDATE_PRODUCT, USER_PAYMENTS, DELETE_PRODUCT_ADMIN, CREATE_REVIEW, MESSAGE_1} from "./actionsTypes";
+
+import { GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD, GET_ALL_FILTERS, UPDATE_PRODUCT, USER_PAYMENTS, DELETE_PRODUCT_ADMIN, CREATE_REVIEW, CLEAN_CART} from "./actionsTypes";
+
 
 export const geTAllProducts = (page) => {
   return async (dispatch) => {
@@ -77,7 +79,11 @@ export const changeFromCart = (payload) => {
     payload
   }
 }
-
+export const cleanCart = ()=> {
+  return {
+    type: CLEAN_CART
+  }
+}
 export const adminDeleteProduct = (payload) => {
   return async (dispatch) => {
     const response = await axios.delete(`${import.meta.env.VITE_URL}/products/${payload}`)
