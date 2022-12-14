@@ -39,9 +39,9 @@ const RecipeDetail = () => {
       </div>
       <div className={style.content}>
         <div className={style.image}>
-            <Carrousel 
+        {/* <Carrousel 
           image = {Recipes.image}
-          />
+          /> */}
           {loader ? (
             <Oval
               height={100}
@@ -62,7 +62,9 @@ const RecipeDetail = () => {
               alt={Recipes.name}
             />
           )}
+          
         </div> 
+        
         <div className={style.description}>
           <h1>Paso a Paso</h1>
           <h3>{Recipes.description}</h3>

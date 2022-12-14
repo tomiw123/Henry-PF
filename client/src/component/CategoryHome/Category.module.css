@@ -63,6 +63,39 @@
   }
 
   .description{
-    font-size: 10px;
+    font-size: 13px;
+  }
+}
+
+@media only screen and (min-width: 668px) and (max-width: 1000px){
+  .card{
+    height: 99px;
+    width: 190px;
+    margin-left: 10px;
+  }
+  
+  .img{
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  margin-left: 4.5%;
+  }
+
+  .titlecontainer{
+    width: 160px;
+    height: 110px;
+    top: 170%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title{
+    font-size: 19px;
+    font-weight: normal;
+  }
+
+  .description{
+    font-size: 13px;
   }
 }

@@ -16,7 +16,6 @@ import { Oval } from "react-loader-spinner";
 import CarrouselProduct from './Carrousel/CarrouselProduct'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../../context/auth"
-import { Link } from 'react-router-dom'
 
 
 const CardDetailProduct = () => {
@@ -105,9 +104,7 @@ const CardDetailProduct = () => {
       <div className={Style.Container2}>
         <div className={Style.ImgCont}>
           <div className={Style.Image}>
-            
-            {/* <img className={Style.img} src={Product.image}  alt="" /> */}
-            <CarrouselProduct 
+          <CarrouselProduct 
           image = {Product.image}
           />
           {loader? (
@@ -127,6 +124,7 @@ const CardDetailProduct = () => {
               <img className={Style.img} src={Product.image} alt="" />
             )}
           </div>
+          
           <div className={Style.Container}>
             {/********** */}
             <div className={Style.Title}>
