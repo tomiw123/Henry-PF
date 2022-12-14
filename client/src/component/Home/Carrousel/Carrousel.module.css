@@ -1,8 +1,24 @@
-.contenedor{
-    height: 100%;
+.contenedor {
+  height: 100%;
 }
 
+.image {
+  height: 70vh;
+  width: 100%;
+}
+
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+  .image{
+    height: 40vh;
+  }
+
+  
+}
+
+<<<<<<< HEAD
 .image{
     height: 75vh;
     width: 100%;
 }
+=======
+>>>>>>> ef76696682d6a2fffc1e7c8349891051f78801ee

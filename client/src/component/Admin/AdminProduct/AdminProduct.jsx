@@ -25,7 +25,10 @@ const AdminProduct = (props) => {
     }
 }
     return (
+        <div>
+            
         <div className={style.oveflow}>
+            
             <div className={style.container}>
                 <div className={style.imgContainer}>
                     <img className={style.img} src={props.image} alt="" />
@@ -46,6 +49,7 @@ const AdminProduct = (props) => {
                     <button className={style.btn2} onClick={() => deleteProduct(props.id)}>Borrar</button>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

@@ -26,17 +26,16 @@ const AdminRecipe = (props) => {
                     <img className={style.img} src={props.image} alt="" />
                     <h1 className={style.name}>{props.name}</h1>
                 </div>
-                
-            
-                    <div className={style.btnContainer}>
-                    <Link to={`/recipeDetail/${props.id}`}> 
-                         <button className={style.btn1}>Detalle</button> 
-                     </Link>
-                    <Link to={`/editRecipe/${props.id}`}> 
-                         <button className={style.btn}>Editar</button> 
-                     </Link>
-                        <button className={style.btn2} onClick={() => deleteRecipe(props.id)}>Borrar</button>
-                    </div>
+
+                <div className={style.btnContainer}>
+                <Link to={`/recipeDetail/${props.id}`}> 
+                     <button className={style.btn1}>Detalle</button> 
+                 </Link>
+                <Link to={`/editRecipe/${props.id}`}> 
+                     <button className={style.btn}>Editar</button> 
+                 </Link>
+                    <button className={style.btn2} onClick={() => deleteRecipe(props.id)}>Borrar</button>
+                </div>
             </div>
         </div>
     );
