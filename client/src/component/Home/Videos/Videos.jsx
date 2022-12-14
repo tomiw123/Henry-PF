@@ -12,7 +12,8 @@ const Video = () => {
         <ReactPlayer
           url='https://www.youtube.com/watch?v=A2Ni1WhwnW8&ab_channel=DosDagasFogoneros'
         //   className='react-player'
-          className=" my-10 w-full h-80   min-h-max hover:scale-110 transition duration-300 ease-in-out"
+          className=" my-10 min-h-max hover:scale-110 transition duration-300 ease-in-out"
+          // my-10 w-full h-80 
           //playing
         //   width='100%'
         //   height='100%'
@@ -20,7 +21,8 @@ const Video = () => {
         <ReactPlayer
           url='https://www.youtube.com/shorts/J9KS_yKMI-A'
         //   className='react-player'
-          className=" my-10 w-full h-80  min-h-max hover:scale-110 transition duration-300 ease-in-out"
+          className=" my-10  min-h-max hover:scale-110 transition duration-300 ease-in-out"
+          //my-10 w-full h-80
          // playing
         //   width='100%'
         //   height='100%'

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Style from './CardDetailProduct.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
+ 
+import CarrouselProduct from './Carrousel/CarrouselProduct'
 import { Link } from 'react-router-dom'
 import { IconContext } from 'react-icons'
 import { AiFillStar } from 'react-icons/ai'
@@ -95,6 +97,10 @@ const CardDetailProduct = () => {
       <div className={Style.Container2}>
         <div className={Style.ImgCont}>
           <div className={Style.Image}>
+            {/* <img className={Style.img} src={Product.image}  alt="" /> */}
+            <CarrouselProduct 
+          image = {Product.image}
+          />
           {loader? (
               <Oval
                 height={100}
