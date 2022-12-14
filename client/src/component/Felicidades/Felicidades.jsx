@@ -16,6 +16,7 @@ const Felicidades = () => {
         dispatch(userPayments(userProduct));
         dispatch(messege_1(userProduct))
     }, [dispatch]);
+    window.localStorage.setItem("carrito", "vacio");
 
     let suma = 0;
         for (let i = 0; i < products.length; i++) {
