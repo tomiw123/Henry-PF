@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Style from "./CardDetailProduct.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { AiFillStar } from "react-icons/ai";
-import { IconContext } from "react-icons";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { IconContext } from "react-icons";
+import { AiFillStar } from "react-icons/ai";
 import {
   addToCart,
   changeFromCart,
   getIdProducts,
   cleanProduct,
+  createProductReview,
 } from "../../redux/actions/actions";
 import { Oval } from "react-loader-spinner";
 import CarrouselProduct from './Carrousel/CarrouselProduct'
@@ -26,7 +28,8 @@ const CardDetailProduct = () => {
   const auth = useAuth()
   const Product = useSelector((state) => state.product);
   // console.log(Product)
-   const [userOn, setUserOn] = useState(false)
+
+  const [userOn, setUserOn] = useState(false);
   const [loader, setLoader] = useState(true);
   setTimeout(() => {
     setLoader(false);
@@ -42,16 +45,16 @@ const CardDetailProduct = () => {
     }
   }, [dispatch, paramsId.id]);
 
-  useEffect(()=> {
-    if(auth.user) {
-      setUserOn(true)
+  useEffect(() => {
+    if (auth.user) {
+      setUserOn(true);
     }
-  })
+  });
 
   const [counter, setCounter] = useState(1);
   const [rating, setRating] = useState(5);
-  const [comment, setComment] = useState('');
-  const [reviewname, setReviewname] = useState('')
+  const [comment, setComment] = useState("");
+  const [reviewname, setReviewname] = useState("");
 
   function handleMax() {
     setCounter(counter + 1);
@@ -87,16 +90,17 @@ const CardDetailProduct = () => {
   const userAuth = auth.user;
 
   function handleSubmit(e) {
-    e.preventDefault()
-    dispatch(createProductReview(paramsId.id, {
-      reviewname,
-      rating,
-      comment,
-      user: userAuth
-    }))
-    navigate('/products')
+    e.preventDefault();
+    dispatch(
+      createProductReview(paramsId.id, {
+        reviewname,
+        rating,
+        comment,
+        user: userAuth,
+      })
+    );
+    navigate("/products");
   }
-
 
   return (
     <div className={Style.CardProduct}>
@@ -128,6 +132,7 @@ const CardDetailProduct = () => {
               )}
 
           </div>
+          
           <div className={Style.Container}>
             {/********** */}
             <div className={Style.Title}>
@@ -136,28 +141,20 @@ const CardDetailProduct = () => {
             <div className={Style.Starts}>
               <IconContext.Provider value={{ color: "yellow" }}>
                 <div className={Style.starsIcons}>
-                  {
-                    Product.rating >= 1 ? <AiFillStar /> : null
-                  }
-                  {
-                    Product.rating > 1 ? <AiFillStar /> : null
-                  }
-                  {
-                    Product.rating > 2 ? <AiFillStar /> : null
-                  }
-                  {
-                    Product.rating > 3 ? <AiFillStar /> : null
-                  }
-                  {
-                    Product.rating > 4 ? <AiFillStar /> : null
-                  }
-                  {
-                    Product.rating > 5 ? <AiFillStar /> : null
-                  }
+                  {Product.rating >= 1 ? <AiFillStar /> : null}
+                  {Product.rating > 1 ? <AiFillStar /> : null}
+                  {Product.rating > 2 ? <AiFillStar /> : null}
+                  {Product.rating > 3 ? <AiFillStar /> : null}
+                  {Product.rating > 4 ? <AiFillStar /> : null}
+                  {Product.rating > 5 ? <AiFillStar /> : null}
                 </div>
               </IconContext.Provider>
             </div>
-            <Link to={`/reviews/${paramsId.id}`}><div className={Style.numReview}>Opiniones de nuestros clientes: {Product.numReviews}</div></Link>
+            <Link to={`/reviews/${paramsId.id}`}>
+              <div className={Style.numReview}>
+                Opiniones de nuestros clientes: {Product.numReviews}
+              </div>
+            </Link>
             <div className={Style.Price}>${Product.price},00</div>
             <div className={Style.ContButtom}>
               <div className={Style.Cont}>

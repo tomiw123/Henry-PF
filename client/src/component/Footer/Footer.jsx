@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import "./Footer.css";
 import image from "../../assets/dosdagas-png-transparente.png";
+import './Footer.css'
 
 const Footer = () => {
   return (
