@@ -102,6 +102,7 @@ const CartForm = () => {
   console.log(userProduct);
 
   return (
+    <div className={style.inicial}>
     <div className={style.principal}>
       <div className={style.form}>
         <form>
@@ -151,7 +152,8 @@ const CartForm = () => {
             ) : null}
              <div>
             <button
-              className={s.button}
+              className="group bg-green-600
+              mb-3 relative flex w-full justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2border-style: solid border-2  m-2"
               // onClick={() => {
               //   finalizarCompra();
               // }}
@@ -196,6 +198,7 @@ const CartForm = () => {
           })}
          
         </div>
+    </div>
     </div>
   );
 };
