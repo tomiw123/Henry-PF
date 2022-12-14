@@ -12,17 +12,19 @@ import {
   cleanProduct,
   createProductReview,
 } from "../../redux/actions/actions";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/auth";
-
+import { Oval } from "react-loader-spinner";
+import CarrouselProduct from './Carrousel/CarrouselProduct'
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../../context/auth"
+import { Link } from 'react-router-dom'
 
 
 const CardDetailProduct = () => {
-  const auth = useAuth();
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const paramsId = useParams();
+  const auth = useAuth()
   const Product = useSelector((state) => state.product);
-  const navigate = useNavigate();
   // console.log(Product)
 
   const [userOn, setUserOn] = useState(false);
@@ -61,7 +63,6 @@ const CardDetailProduct = () => {
       setCounter(counter - 1);
     }
   }
-
   const cart = useSelector((state) => state.cart);
   // const [cart, setCart] = useState([]);
 
@@ -104,7 +105,12 @@ const CardDetailProduct = () => {
       <div className={Style.Container2}>
         <div className={Style.ImgCont}>
           <div className={Style.Image}>
-            {loader ? (
+            
+            {/* <img className={Style.img} src={Product.image}  alt="" /> */}
+            <CarrouselProduct 
+          image = {Product.image}
+          />
+          {loader? (
               <Oval
                 height={100}
                 width={300}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./CartForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import s from "../../component/Carrito/Carrito.module.css";
@@ -8,6 +8,7 @@ import * as Yup from "yup";
 
 const CartForm = () => {
   const dispatch = useDispatch();
+  const [total, setTotal] = useState(0);
 
 
   let cart = useSelector((state)=> state.cart);
@@ -21,6 +22,17 @@ const CartForm = () => {
     //         }
     //     }
     // }
+    useEffect(() => {
+      let suma = 0;
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].quantity) {
+          suma = suma + cart[i].price * cart[i].quantity;
+        }
+      }
+      setTotal(suma);
+    });
+
+
     const deleteProd = (id) => {
       setTimeout(() => {
         dispatch(deleteFromCart(id));
@@ -99,15 +111,16 @@ const CartForm = () => {
   console.log(userProduct);
 
    const finalizar = (newCart) => {
-    if(userProduct.name.length < 1){
-      console.log('falta nombre');
-    }
-    if(userProduct.contacto.length < 1){
-      console.log('falta contacto');
-    }
-    if(userProduct.direccion.length < 1){
-      console.log('falta direccion');
-    }
+    if(userProduct.name.length < 1 || userProduct.contacto.length < 1 || userProduct.direccion.length < 5){
+     // console.log('falta nombre');
+   // }
+   // if(userProduct.contacto.length < 1){
+     // console.log('falta contacto');
+   // }
+    //if(userProduct.direccion.length < 5){
+     // console.log('falta direccion');
+    
+    return alert('Completar todos los campos por favor')}
     else{
       let carritoFinal = [];
       for (let i = 0; i < newCart.length; i++) {
@@ -123,6 +136,8 @@ const CartForm = () => {
      dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
     }};
   return (
+    
+    <div className={style.inicial}>
     <div className={style.principal}>
       <div className={style.form}>
         <form onSubmit={Formik.onSubmit}>
@@ -135,7 +150,7 @@ const CartForm = () => {
             onBlur={Formik.handleBlur}
           />
           {Formik.touched.user_name && Formik.errors.user_name ? (
-              <div>{Formik.errors.user_name}</div>
+              <div style={{ color: 'red' }}>{Formik.errors.user_name}</div>
             ) : null}
           <label htmlFor="">Ingresa tu Email</label>
           <input
@@ -146,19 +161,19 @@ const CartForm = () => {
             onBlur={Formik.handleBlur}
           />
            {Formik.touched.user_email && Formik.errors.user_email ? (
-              <div>{Formik.errors.user_email}</div>
+              <div style={{ color: 'red' }}>{Formik.errors.user_email}</div>
             ) : null}
-          <label htmlFor="">Numero de telefono</label>
+          {/* <label htmlFor="">Numero de telefono</label>
           <input
             type="text"
             name="user_phone"
             value={Formik.values.user_phone}
             onChange={Formik.handleChange}
             onBlur={Formik.handleBlur}
-          />
-          {Formik.touched.user_phone && Formik.errors.user_phone ? (
+          /> */}
+          {/* {Formik.touched.user_phone && Formik.errors.user_phone ? (
               <div>{Formik.errors.user_phone}</div>
-            ) : null}
+            ) : null} */}
           <label htmlFor="">Direccion</label>
           <input
             type="text"
@@ -168,17 +183,23 @@ const CartForm = () => {
             onBlur={Formik.handleBlur}
           />
            {Formik.touched.user_address && Formik.errors.user_address ? (
-              <div>{Formik.errors.user_address}</div>
+              <div style={{ color: 'red' }}>{Formik.errors.user_address}</div>
             ) : null}
              
            
         </form>
           <div>
             <button
-              className={s.button}
-                onClick={() => {
-                  finalizar(cart);
-                }}>
+              className="group bg-green-600
+              mb-3 relative flex w-full items-center justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2border-style: solid border-2 mt-2 "
+              // onClick={() => {
+              //   finalizarCompra();
+              // }}
+              onClick={() => {
+                finalizar(cart);
+              }}
+            >
+              
               Finalizar compra
             </button>
           </div>
@@ -187,28 +208,29 @@ const CartForm = () => {
           <div>
             <h2 className={style.title}>Productos en carrito</h2>
           </div>
+          <hr/>
           {cart?.map((p) => {
             if (p.name) {
               return (
                 <div className={s.miniProd} key={p.id}>
                   <img src={p.image} alt="" className={s.image} />
-                  <div className={s.prod}>{p.name}</div>
+                  <div className="text-xl text-white m-2 justify-center items-center">{p.name}</div>
                   <div className={s.counter}>
                     <button
-                      className={s.contador}
+                      className="text-red-600 text-3xl"
                       onClick={() => restarCantProd(p.id)}
                     >
                       -
                     </button>
-                    <div className={s.prod}>{p.quantity}u</div>
+                    <div className="text-white m-2">{p.quantity}u</div>
                     <button
-                      className={s.contador}
+                      className="text-lime-600 text-2xl"
                       onClick={() => sumarCantProd(p.id)}
                     >
                       +
                     </button>
                   </div>
-                  <div className={s.prod}>${p.price * p.quantity},00</div>
+                  <div className="text-xl text-white">${p.price * p.quantity},00</div>
                   <button className={s.boton} onClick={() => deleteProd(p.id)}>
                     X
                   </button>
@@ -216,8 +238,15 @@ const CartForm = () => {
               );
             }
           })}
+        <hr className="mt-3"/>
+        <div className="text-4xl text-white flex justify-center items-center">
+          <h3 className="m-3">Total:</h3>
+          <h3> $ {total},00 </h3>
+        </div>
+
          
         </div>
+    </div>
     </div>
   );
 };
