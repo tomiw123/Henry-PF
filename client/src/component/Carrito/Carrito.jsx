@@ -23,6 +23,8 @@ const Carrito = () => {
   const openCart = () => {
     setCart(!openedCart);
   };
+  //window.localStorage.setItem('carrito', 'vacio')
+  //window.localStorage.setItem('userProduct', 'vacio')
   let cart = useSelector((state) => state.cart);
   let newCart = [];
   const [carritoVacio, setCarritoVacio] = useState(false);
@@ -46,28 +48,34 @@ const Carrito = () => {
   }
 
   let carritoStorage = window.localStorage.getItem("carrito");
-  if (carritoStorage === null) {
-    window.localStorage.setItem("carrito", "vacio");
-  }
-  if (newCart.length) {
-    if(carritoStorage !== "vacio"){
-      window.localStorage.setItem("carrito", JSON.stringify(newCart));
-    }
-  } else {
-    let carritoStorage = window.localStorage.getItem("carrito");
-
-    if (carritoStorage !== "vacio") {
-      let carritoStorageArray = JSON.parse(
-        window.localStorage.getItem("carrito")
-      );
-      if (carritoStorageArray.length) {
-        for (let i = 0; i < carritoStorageArray.length; i++) {
-          dispatch(addToCart(carritoStorageArray[i]));
+  let borrador = window.localStorage.getItem("borrador");
+  console.log(borrador)
+  if(borrador){
+    dispatch(cleanCart())
+    console.log(cart);
+    window.localStorage.removeItem('carrito')
+    window.localStorage.removeItem('borrador')
+  }else {
+    if (newCart.length) {
+        window.localStorage.setItem("carrito", JSON.stringify(newCart));
+    } else {
+      let carritoStorage = window.localStorage.getItem("carrito");
+  
+      if (carritoStorage !== null && carritoStorage !== 'cambiar') {
+        let carritoStorageArray = JSON.parse(
+          window.localStorage.getItem("carrito")
+        );
+        if (carritoStorageArray.length) {
+          for (let i = 0; i < carritoStorageArray.length; i++) {
+            dispatch(addToCart(carritoStorageArray[i]));
+          }
         }
       }
-    } 
   }
-  console.log(newCart)
+    
+  }
+  console.log(cart, 'Hola');
+  console.log(carritoStorage);
   useEffect(() => {
     let suma = 0;
     for (let i = 0; i < cart.length; i++) {
@@ -145,7 +153,7 @@ const Carrito = () => {
           <li className={s.listUni}>Unid.</li>
           <li className={s.listObj}>Precio</li>
         </ul>
-        {newCart?.map((p) => {
+        {cart?.map((p) => {
           if (p.name) {
             return (
               <div className={s.miniProd} key={p.id}>

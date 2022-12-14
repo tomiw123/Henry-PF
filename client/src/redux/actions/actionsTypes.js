@@ -32,4 +32,5 @@ export const CREATE_REVIEW = "CREATE_REVIEW"
 export const MESSAGE_1 = "MESSAGE_1"
 
 
-
+export const BORRADOR = 'BORRADOR'
+export const BORRADOR_VUELTA = 'BORRADOR_VUELTA'
