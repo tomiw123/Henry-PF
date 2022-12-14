@@ -54,7 +54,7 @@ const HomeAdmin = () => {
               <CategoryHome
                 title='CONTROL DE VENTAS'
                 image={control} id ={style.img}
-                desc='Crear un nuevo administrador'
+                desc='Comprobantes de ventas'
               />
             </Link>
 
