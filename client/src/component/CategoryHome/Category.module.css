@@ -1,39 +1,68 @@
 .card {
-    height: 293px;
-    width: 293px;
-    position: relative;
-    z-index: 50;
-    margin: 10px;
+  height: 293px;
+  width: 293px;
+  position: relative;
+  z-index: 50;
+  /* margin: 10px; */
 }
 
 .titlecontainer {
-    background-color: #242121;
-    height: 137px;
-    width: 233px;
-    z-index: 100;
-    position: absolute;
-    bottom: -15%;
-    left: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 14.5px;
+  background-color: #242121;
+  height: 137px;
+  width: 233px;
+  z-index: 100;
+  position: absolute;
+  bottom: -15%;
+  left: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 14.5px;
 }
 
 .title {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .description {
-    color: white;
-    font-size: 15px;
-    
+  color: white;
+  font-size: 15px;
 }
 
 .img {
-    width: 280px;
-    height: 280px;
+  width: 280px;
+  height: 280px;
+}
+
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+  .card{
+    height: 93px;
+    width: 180px;
+    margin-left: 10px;
+  }
+  
+  .img{
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  }
+
+  .titlecontainer{
+    width: 150px;
+    height: 100px;
+    top: 170%;
+    right: 50%;
+  }
+
+  .title{
+    font-size: 15px;
+    font-weight: normal;
+  }
+
+  .description{
+    font-size: 10px;
+  }
 }
