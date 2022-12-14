@@ -13,7 +13,7 @@ const Felicidades = () => {
     const products = userProduct.products
 
     useEffect(() => {
-        //dispatch(userPayments(userProduct))
+        dispatch(userPayments(userProduct))
     }, [dispatch]);
 
     let suma = 0;
