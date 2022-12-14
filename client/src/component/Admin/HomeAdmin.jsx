@@ -4,6 +4,7 @@ import style from './HomeAdmin.module.css'
 import { Link } from 'react-router-dom'
 import { Navigate } from 'react-router-dom';
 import img from "../../assets/usr.png"
+import control from "../../assets/control.png"
 
 
 
@@ -48,6 +49,15 @@ const HomeAdmin = () => {
                 desc='Crear una receta'
               />
             </Link>
+
+            <Link to="/controlDeVentas" className={style.card}>
+              <CategoryHome
+                title='CONTROL DE VENTAS'
+                image={control} id ={style.img}
+                desc='Crear un nuevo administrador'
+              />
+            </Link>
+
             <Link to="/getAdmin" className={style.card}>
               <CategoryHome
                 title='CREAR ADMIN'

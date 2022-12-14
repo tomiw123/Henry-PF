@@ -1,5 +1,5 @@
 .CardProduct{
- height: 100vh;
+ height: 160vh;
  display: flex;
  flex-direction: column;
  align-items: center;
@@ -16,7 +16,7 @@
 } */
 
 .Container2 {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     padding: 90px 90px 90px 90px;
     background-color: #292626;
@@ -25,14 +25,17 @@
 .ImgCont{
  display: flex;
  border: 2px solid white;
+ height: 350px;
 }
 
 .Image{
-    width: 50%;
+    display: flex;
+    width: 40vw;
+    height: 35vh;
 }
 .img{
-    width: 400px;
-     height: 300px
+    width: 100%;
+    height: 100%;
 } 
 
 .Container{
@@ -50,8 +53,15 @@
 .Starts{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    margin: 15px 0;
+    margin-top: 15px;
+}
+
+.numReview {
+    display: flex;
+    justify-content: center;
+    color: white;
 }
 
 .starsIcons {
@@ -111,4 +121,49 @@
     color: white;
     font-size: 20px;
     font-weight: bold;
+}
+
+.reviewContainer {
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.line {
+    margin-top: 60px;
+    background-color: #c18e0e;
+    height: 1px;
+}
+
+.titleReview {
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.select {
+    width: 300px;
+}
+
+.textarea {
+    margin-top: 10px;
+    width: 300px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn1 {
+    margin-top: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.nodisplay {
+    display: none;
 }

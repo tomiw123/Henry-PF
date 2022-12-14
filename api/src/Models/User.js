@@ -17,7 +17,7 @@ const userSchema = new Schema({
         type: String,
         default:0,
 
-    }
+    },
 });
 
 const User = model('User', userSchema);

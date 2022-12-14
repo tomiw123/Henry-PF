@@ -7,6 +7,7 @@ import {
   cleanRecipe,
 } from "../../redux/actions/recipesActions.js";
 import { Oval } from "react-loader-spinner";
+import Carrousel from './Carrousel/CarrouselRecipe';
 
 
 const RecipeDetail = () => {
@@ -29,7 +30,7 @@ const RecipeDetail = () => {
     }
   }, [dispatch, paramsId.id]);
 
-  // console.log(Recipes)
+   //console.log(Recipes)
 
   return (
     <div className={style.card}>
@@ -38,6 +39,9 @@ const RecipeDetail = () => {
       </div>
       <div className={style.content}>
         <div className={style.image}>
+            <Carrousel 
+          image = {Recipes.image}
+          />
           {loader ? (
             <Oval
               height={100}
@@ -73,5 +77,6 @@ const RecipeDetail = () => {
     </div>
   );
 };
+
 
 export default RecipeDetail;

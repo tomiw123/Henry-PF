@@ -5,8 +5,12 @@ import loading from '../../assets/loadingFlame.gif'
 
 export default function Loading() {
   return (
-    <div className="box_loading">
-      <img src={loading} alt="Loading" />
-    </div>
-  );
+    // <div className="box_loading">
+    //   <img src={loading} alt="Loading" />
+    // </div>
+
+<div className="loading_container">
+            <img className="img_loading" src={loading} alt="gif" />
+        </div>
+    );
 }

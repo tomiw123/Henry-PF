@@ -1,16 +1,24 @@
-import React from "react";
-import { useState } from "react";
+import React,{ useEffect, useState } from "react";
 import s from "./AdminContronVentas.module.css";
 import * as BsReactIcons from 'react-icons/bs';
-import recibos from './ComprasUser.json'
+//import recibos from './ComprasUser.json'
+import {totalPayment} from '../../../redux/actions/actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const ControlDeVentas = () => {
-    // let recibos = [{id:1}]
-    
+    const dispatch = useDispatch();
+    let [open, setOpen] = useState(false);
+    useEffect(() => {
+        dispatch(totalPayment())
+    }, [dispatch]);
+    const recibos = useSelector((state) => state.totalVentas);
+    console.log(recibos);
+
+
     return (
         <div className={s.block}>
             <div className={s.grid}>
-                <div className={s.elemento}></div>
+                <div className={s.elemento}></div> 
                 <div className={s.elemento}>ID</div>
                 <div className={s.elements}>Fecha de Pedido</div>
                 <div className={s.elements}>Nombre de Usuario</div>
@@ -19,8 +27,8 @@ const ControlDeVentas = () => {
                 <div className={s.elements}>Precio Final</div>
                 <div className={s.elements}>Estado de envio</div>
             </div>
-            {recibos?.map((r)=> {
-                let [open, setOpen] = useState(false);
+            {recibos?.map((r,index)=> {
+                
                 let arrSuma = [];
                 r.products.map(r => arrSuma.push(r.precioUnitario))
                 let suma = 0;
@@ -32,10 +40,10 @@ const ControlDeVentas = () => {
                     
                 }
                 for (let i = 0; i < arrSuma.length; i++) {
-                    suma = suma + arrSuma[i]*arrCant[i]   
+                    suma = suma + arrSuma[i]*arrCant[i] 
                 }
                 return(
-                    <div>
+                    <div key={index}>
                         <div className={s.grid}>
                             <BsReactIcons.BsArrowDownCircle className={s.boton} onClick={()=> setOpen(!open)} />
                             <div className={s.elements}>{r.id}</div>
@@ -59,27 +67,27 @@ const ControlDeVentas = () => {
                                 <div className={s.miniElements}>{r.contacto}</div>
                                 <div className={s.miniElements}>
                                     <ul className={s.list}> 
-                                        {r.products.map(p=> {
+                                        {r.products.map((p,index)=> {
                                             return (
-                                                <li>{p.name}</li>
+                                                <li key={index}>{p.name}</li>
                                             )
                                         })}
                                     </ul>
                                 </div>
                                 <div className={s.miniElements}>
                                     <ul className={s.list}> 
-                                    {r.products.map(p=> {
+                                    {r.products.map((p,index)=> {
                                             return (
-                                                <li>{p.cantidad}</li>
+                                                <li key={index}>{p.cantidad}</li>
                                             )
                                         })}
                                     </ul>
                                 </div>
                                 <div className={s.miniElements}>
                                     <ul className={s.list}> 
-                                    {r.products.map(p=> {
+                                    {r.products.map((p,index)=> {
                                             return (
-                                                <li>{p.precioUnitario}</li>
+                                                <li key={index}>{p.precioUnitario}</li>
                                             )
                                         })}
                                     </ul>
