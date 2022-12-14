@@ -164,3 +164,14 @@ export const messege_1 = (payload) => {
       });
   };
 };
+
+export const messege_2 = (payload) => {
+  return async (dispatch)=>{
+    const messege = await axios.get(`${import.meta.env.VITE_URL}/notificaciones/envio`, payload)
+      dispatch({
+        type: MESSAGE_1,
+        payload: messege.data,
+      });
+  };
+};
+
