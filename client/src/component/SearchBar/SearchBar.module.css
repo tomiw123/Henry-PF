@@ -109,3 +109,14 @@
     margin-right: -55%;
   }
 }
+.separacion{
+    width: 100%;
+    height: 3px;
+    background-color: #c18e0e;
+
+}
+.separacion1{
+    width: 100%;
+    height: 2px;
+    background-color: rgb(255, 255, 255);
+}

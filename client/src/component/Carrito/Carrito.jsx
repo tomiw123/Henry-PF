@@ -25,13 +25,16 @@ const Carrito = () => {
   let cart = useSelector((state) => state.cart);
   let newCart = [];
   const [carritoVacio, setCarritoVacio] = useState(false);
-  useEffect(() => {
-    if (!newCart.length) {
-      setCarritoVacio(false);
-    } else {
-      setCarritoVacio(true);
+  useEffect(()=> {
+    if(!newCart.length){
+        setCarritoVacio(false);
+    }else {
+        setCarritoVacio(true)
     }
-  });
+})
+    //window.localStorage.setItem('carrito', 'vacio')
+
+    // console.log(auth.user);
 
   // console.log(auth.user);
 
@@ -106,17 +109,17 @@ const Carrito = () => {
   };
 
   const finalizarCompra = (newCart) => {
-    let carritoFinal = [];
-    for (let i = 0; i < newCart.length; i++) {
-      let obj = {
-        name: newCart[i].name,
-        price: newCart[i].price,
-        id: newCart[i].id,
-        cant: newCart[i].quantity,
-      };
-      carritoFinal.push(obj);
-    }
-    dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
+    //let carritoFinal = [];
+    //for (let i = 0; i < newCart.length; i++) {
+    //  let obj = {
+    //    name: newCart[i].name,
+    //    price: newCart[i].price,
+    //    id: newCart[i].id,
+    //    cant: newCart[i].quantity,
+    //  };
+    //  carritoFinal.push(obj);
+    //}dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
+    window.location.replace('/cartform')
   };
   return (
     <div className={s.cart}>

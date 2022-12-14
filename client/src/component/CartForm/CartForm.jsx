@@ -2,12 +2,13 @@ import React from "react";
 import style from "./CartForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import s from "../../component/Carrito/Carrito.module.css";
-import { deleteFromCart, addCount, payment, addToCart } from "../../redux/actions/actions";
+import { deleteFromCart, addCount, payment, addToCart, userPayments } from "../../redux/actions/actions";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const CartForm = () => {
   const dispatch = useDispatch();
+
 
   let cart = useSelector((state)=> state.cart);
   // let carritoStorageArray
@@ -52,24 +53,6 @@ const CartForm = () => {
           dispatch(addCount({cantidad, lugar}))
       },30)
   }
-
-
-   const finalizarCompra = (newCart) => {
-     let carritoFinal = [];
-     for (let i = 0; i < newCart.length; i++) {
-       let obj = {
-         name: newCart[i].name,
-         price: newCart[i].price,
-         id: newCart[i].id,
-         cant: newCart[i].quantity,
-       };
-       carritoFinal.push(obj);
-     }
-     dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
-   };
-
-
-
   
 
   const Formik = useFormik({
@@ -91,20 +74,58 @@ const CartForm = () => {
       ,
       user_address: Yup.string()
       .required("Este campo es requerido")
-    }),
+    }), 
+    onSubmit: (values, { resetForm }) => {
+      resetForm({ values: "" })
+      alert(JSON.stringify(values, null, 2));
+    },
   });
+ 
+  let compra =[]
+  cart.map((c)=>{
+    compra.push({ name:c.name, 
+                  cantidad:c.quantity, 
+                  precioUnitario:c.price
+    })
+  })
 
   const userProduct = {
     name:Formik.values.user_name,
     direccion: Formik.values.user_address,
     contacto:Formik.values.user_email,
+    products: compra
   }
+  
   console.log(userProduct);
 
+   const finalizar = (newCart) => {
+    if(userProduct.name.length < 1){
+      console.log('falta nombre');
+    }
+    if(userProduct.contacto.length < 1){
+      console.log('falta contacto');
+    }
+    if(userProduct.direccion.length < 1){
+      console.log('falta direccion');
+    }
+    else{
+      let carritoFinal = [];
+      for (let i = 0; i < newCart.length; i++) {
+        let obj = {
+          name: newCart[i].name,
+          precioUnitario: newCart[i].price,
+          id: newCart[i].id, 
+          cantidad: newCart[i].quantity,
+       };
+       carritoFinal.push(obj);
+     }
+     window.localStorage.setItem('userProduct', JSON.stringify(userProduct))
+     dispatch(payment(carritoFinal)).then((e) => window.location.replace(e));
+    }};
   return (
     <div className={style.principal}>
       <div className={style.form}>
-        <form>
+        <form onSubmit={Formik.onSubmit}>
           <label htmlFor="">Ingresa tu nombre</label>
           <input
             type="text"
@@ -149,17 +170,18 @@ const CartForm = () => {
            {Formik.touched.user_address && Formik.errors.user_address ? (
               <div>{Formik.errors.user_address}</div>
             ) : null}
-             <div>
+             
+           
+        </form>
+          <div>
             <button
               className={s.button}
-              // onClick={() => {
-              //   finalizarCompra();
-              // }}
-            >
+                onClick={() => {
+                  finalizar(cart);
+                }}>
               Finalizar compra
             </button>
           </div>
-        </form>
         </div>
         <div className={style.products}>
           <div>

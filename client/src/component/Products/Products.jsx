@@ -21,6 +21,7 @@ export default function Products(props) {
   }, [dispatch]);
   return (
     <>
+
       <Filter /> 
       <BusquedaProducts />
         {/* <div className={style.card}>
