@@ -23,6 +23,8 @@ const Carrito = () => {
   const openCart = () => {
     setCart(!openedCart);
   };
+  //window.localStorage.setItem('carrito', 'vacio')
+  //window.localStorage.setItem('userProduct', 'vacio')
   let cart = useSelector((state) => state.cart);
   let newCart = [];
   const [carritoVacio, setCarritoVacio] = useState(false);
@@ -50,9 +52,9 @@ const Carrito = () => {
     window.localStorage.setItem("carrito", "vacio");
   }
   if (newCart.length) {
-    if(carritoStorage !== "vacio"){
+    
       window.localStorage.setItem("carrito", JSON.stringify(newCart));
-    }
+  
   } else {
     let carritoStorage = window.localStorage.getItem("carrito");
 
@@ -67,7 +69,7 @@ const Carrito = () => {
       }
     } 
   }
-  console.log(newCart)
+  console.log(cart)
   useEffect(() => {
     let suma = 0;
     for (let i = 0; i < cart.length; i++) {
@@ -145,7 +147,7 @@ const Carrito = () => {
           <li className={s.listUni}>Unid.</li>
           <li className={s.listObj}>Precio</li>
         </ul>
-        {newCart?.map((p) => {
+        {cart?.map((p) => {
           if (p.name) {
             return (
               <div className={s.miniProd} key={p.id}>
