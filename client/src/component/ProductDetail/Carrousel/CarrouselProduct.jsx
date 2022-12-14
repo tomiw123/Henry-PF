@@ -11,7 +11,7 @@ const CarrouselProduct = ({image}) => {
     const handleDragStart = (e) => e.preventDefault();
 
     const items = [ ];
-    console.log(image);
+    // console.log(image);
 
     image?.map((e)=>{ items.push(
         <img src={e} onDragStart={handleDragStart} role="presentation"/>

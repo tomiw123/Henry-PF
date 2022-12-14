@@ -16,8 +16,10 @@ const Felicidades = () => {
         dispatch(userPayments(userProduct));
         dispatch(messege_1(userProduct))
     }, [dispatch]);
+
     // dispatch(borrador())
     console.log(borrador2)
+
     
 
     let suma = 0;

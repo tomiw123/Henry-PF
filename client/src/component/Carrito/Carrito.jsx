@@ -46,8 +46,9 @@ const Carrito = () => {
       newCart.push(cart[i]);
     }
   }
-
+//revome items props 
   let carritoStorage = window.localStorage.getItem("carrito");
+
   let borrador = window.localStorage.getItem("borrador");
   console.log(borrador)
   if(borrador){
@@ -69,13 +70,16 @@ const Carrito = () => {
           for (let i = 0; i < carritoStorageArray.length; i++) {
             dispatch(addToCart(carritoStorageArray[i]));
           }
+
         }
       }
   }
+
     
   }
   console.log(cart, 'Hola');
   console.log(carritoStorage);
+
   useEffect(() => {
     let suma = 0;
     for (let i = 0; i < cart.length; i++) {
@@ -102,7 +106,7 @@ const Carrito = () => {
     setTimeout(() => {
       dispatch(addCount({ cantidad, lugar }));
     }, 30);
-    console.log(cart);
+    // console.log(cart);
   };
   const restarCantProd = (id) => {
     let obj = cart.find((p) => p.id === id);
@@ -161,20 +165,20 @@ const Carrito = () => {
                 <div className={s.prod}>{p.name}</div>
                 <div className={s.counter}>
                   <button
-                    className={s.contador}
+                    className={s.contadorLess}
                     onClick={() => restarCantProd(p.id)}
                   >
                     -
                   </button>
                   <div className={s.prod}>{p.quantity}u</div>
                   <button
-                    className={s.contador}
+                    className={s.contadorPlus}
                     onClick={() => sumarCantProd(p.id)}
                   >
                     +
                   </button>
                 </div>
-                <div className={s.prod}>${p.price * p.quantity},00</div>
+                <div className={s.prods}>${p.price * p.quantity},00</div>
                 <button className={s.boton} onClick={() => deleteProd(p.id)}>
                   X
                 </button>
@@ -183,8 +187,8 @@ const Carrito = () => {
           }
         })}
         <div className={s.total}>
-          <h3>Total</h3>
-          <h3>$ {total},00 </h3>
+          <h3 className={s.totalLet}>Total</h3>
+          <h3 className={s.totalNum}>$ {total},00 </h3>
         </div>
 
         <div className={s.finalizar}>
