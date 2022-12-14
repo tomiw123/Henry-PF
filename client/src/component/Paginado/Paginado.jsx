@@ -108,7 +108,7 @@ const Paginado = ({ product, recipes }) => {
       <button
         onClick={() => handleClickNext()}
         className="h-12 border-2  border-indigo-600
-               px-4 rounded-r-lg hover:bg-indigo-600 hover:text-white"
+              px-4 rounded-r-lg hover:bg-indigo-600 hover:text-white"
       >
         {/* <GrLinkNext /> */}
         <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
