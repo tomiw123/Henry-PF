@@ -7,7 +7,7 @@ const Paginado = ({ product, recipes }) => {
   // console.log(product);
   const dispatch = useDispatch();
   const pageNumbers = [];
-  let [cur, setCur] = useState();
+  let [cur, setCur] = useState(pageNumbers);
   let [count, setCount] = useState(1);
   const filtros = useSelector((state) => state.aplyFilter);
 
@@ -16,44 +16,43 @@ const Paginado = ({ product, recipes }) => {
   if (product && !recipes) {
     pepe = product;
     // console.log(pepe);
-  } 
+  }
   if (recipes && !product) {
     pepe = recipes;
     // console.log(pepe);
   }
-  
+
   // console.log(pepe);
 
   for (let i = 1; i <= pepe.totalPages; i++) {
     pageNumbers.push(i);
   }
+  // console.log(pageNumbers);
 
   const handleClickNext = () => {
-    
-    if ((product && !recipes) && pepe.hasNextPage === true) {
+    if (product && !recipes && pepe.hasNextPage === true) {
       count++;
-     
+
       if (filtros.page) {
-        dispatch(getAllFilters(filtros.filter, filtros.valor, count))
-      }else{
-      dispatch(geTAllProducts(count));
-    }
-    } else if ((!product && recipes) && pepe.hasNextPage === true) {
+        dispatch(getAllFilters(filtros.filter, filtros.valor, count));
+      } else {
+        dispatch(geTAllProducts(count));
+      }
+    } else if (!product && recipes && pepe.hasNextPage === true) {
       count++;
       dispatch(getAllRecipes(count));
     }
   };
 
   const handleClickPrev = () => {
-   
-    if ((product && !recipes) && pepe.hasPrevPage === true) {
+    if (product && !recipes && pepe.hasPrevPage === true) {
       count--;
       if (filtros.page) {
-        dispatch(getAllFilters(filtros.filter, filtros.valor, count))
-      }else{
-      dispatch(geTAllProducts(count));
+        dispatch(getAllFilters(filtros.filter, filtros.valor, count));
+      } else {
+        dispatch(geTAllProducts(count));
       }
-    } else if ((!product && recipes) && pepe.hasPrevPage === true) {
+    } else if (!product && recipes && pepe.hasPrevPage === true) {
       count--;
       dispatch(getAllRecipes(count));
     }
@@ -62,7 +61,7 @@ const Paginado = ({ product, recipes }) => {
   return (
     <div className="flex bg-white rounded-lg font-[Poppins]">
       <button
-        onClick={()=> handleClickPrev()}
+        onClick={() => handleClickPrev()}
         className="h-12 border-2 border-r-0 border-indigo-600
         px-4 rounded-l-lg hover:bg-indigo-600 hover:text-white"
       >
@@ -75,39 +74,41 @@ const Paginado = ({ product, recipes }) => {
         </svg>
         {/* <GrLinkPrevious /> */}
       </button>
-      {pageNumbers.map((el) => (
+      {pageNumbers?.map((el) => (
         <div key={el}>
-
-          {!product && recipes ?(
+          {!product && recipes ? (
             <button
-            onClick={() => dispatch(getAllRecipes(el))}
-            className={`h-12 border-2 border-r-0 border-indigo-600
-            w-12 ${cur === el && "bg-indigo-600 text-white"} `}
-          >
-            {el}
+              onClick={() => dispatch(getAllRecipes(el))}
+              className={`h-12 border-2 border-r-0 border-indigo-600
+            w-12  hover:bg-indigo-600 hover:text-white`}
+            >
+              {el}
             </button>
-             ):(filtros.page?(<button
-            onClick= {() => dispatch(getAllFilters(filtros.filter,filtros.valor,el))}
-            className={`h-12 border-2 border-r-0 border-indigo-600
-            w-12 ${cur === el && "bg-indigo-600 text-white"} `}
-          >
-            {el}
-          </button>):(<button
-            onClick= {() => dispatch(geTAllProducts(el))}
-            className={`h-12 border-2 border-r-0 border-indigo-600
-            w-12 ${cur === el && "bg-indigo-600 text-white"} `}
-          >
-            {el}
-          </button>))
-          
-          }
-          
+          ) : filtros.page ? (
+            <button
+              onClick={() =>
+                dispatch(getAllFilters(filtros.filter, filtros.valor, el))
+              }
+              className={`h-12 border-2 border-r-0 border-indigo-600
+            w-12`}
+            >
+              {el}
+            </button>
+          ) : (
+            <button
+              onClick={() => dispatch(geTAllProducts(el))}
+              className={`h-12 border-2 border-r-0 border-indigo-600
+            w-12 hover:bg-indigo-600 hover:text-white`}
+            >
+              {el}
+            </button>
+          )}
         </div>
       ))}
       <button
-        onClick={()=>handleClickNext()}
+        onClick={() => handleClickNext()}
         className="h-12 border-2  border-indigo-600
-               px-4 rounded-r-lg hover:bg-indigo-600 hover:text-white"
+              px-4 rounded-r-lg hover:bg-indigo-600 hover:text-white"
       >
         {/* <GrLinkNext /> */}
         <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
