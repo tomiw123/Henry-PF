@@ -36,7 +36,7 @@ const Carrito = () => {
             newCart.push(cart[i])
         }
     }
-
+   
     let carritoStorage = window.localStorage.getItem('carrito');
     if(carritoStorage === null){
         window.localStorage.setItem('carrito', 'vacio')
