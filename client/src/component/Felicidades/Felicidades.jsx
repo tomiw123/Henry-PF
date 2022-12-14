@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import style from './Felicidades.module.css'
 import img from '../../assets/dosdagas-png-transparente.png'
 import check from '../../assets/pngegg.png'
-import {userPayments} from '../../redux/actions/actions'
+import {messege_1, userPayments} from '../../redux/actions/actions'
 import { useDispatch } from 'react-redux'
  
 const Felicidades = () => {
@@ -13,8 +13,10 @@ const Felicidades = () => {
     const products = userProduct.products
 
     useEffect(() => {
-        dispatch(userPayments(userProduct))
+        dispatch(userPayments(userProduct));
+        dispatch(messege_1(userProduct))
     }, [dispatch]);
+    window.localStorage.setItem("carrito", "vacio");
 
     let suma = 0;
         for (let i = 0; i < products.length; i++) {

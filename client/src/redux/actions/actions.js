@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD, GET_ALL_FILTERS, UPDATE_PRODUCT, USER_PAYMENTS, DELETE_PRODUCT_ADMIN, CREATE_REVIEW} from "./actionsTypes";
+import { GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, CHANGE_FROM_CART, CLEAN_PRODUCT, ADD_COUNT_PROD, GET_ALL_FILTERS, UPDATE_PRODUCT, USER_PAYMENTS, DELETE_PRODUCT_ADMIN, CREATE_REVIEW, MESSAGE_1} from "./actionsTypes";
 
 export const geTAllProducts = (page) => {
   return async (dispatch) => {
@@ -153,4 +153,25 @@ export const createProductReview =
       console.log(err);
     }
   }
+
+
+export const messege_1 = (payload) => {
+  return async (dispatch)=>{
+    const messege = await axios.get(`${import.meta.env.VITE_URL}/notificaciones`, payload)
+      dispatch({
+        type: MESSAGE_1,
+        payload: messege.data,
+      });
+  };
+};
+
+export const messege_2 = (payload) => {
+  return async (dispatch)=>{
+    const messege = await axios.get(`${import.meta.env.VITE_URL}/notificaciones/envio`, payload)
+      dispatch({
+        type: MESSAGE_1,
+        payload: messege.data,
+      });
+  };
+};
 

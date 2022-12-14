@@ -28,4 +28,7 @@ export const GET_ALL_FILTERS = "GET_ALL_FILTERS"
 //review
 export const CREATE_REVIEW = "CREATE_REVIEW"
 
+export const MESSAGE_1 = "MESSAGE_1"
+
+
 
