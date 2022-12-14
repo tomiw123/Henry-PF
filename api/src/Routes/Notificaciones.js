@@ -3,6 +3,9 @@ const {Router} = require('express');
 const router = Router();
 
 router.post('/', async (req, res) => {
+    const user = req.body
+    console.log(user);
+
 
     const config = {
         host: "smtp.gmail.com",
@@ -14,14 +17,14 @@ router.post('/', async (req, res) => {
     }
     const mensaje ={
         from: "dosdagasgrill@gmail.com",
-        to: "matiascarballo03@hotmail.com",
+        to: `${user.contacto}`,
         subject: "Correo de prueba",
         text: "Correo de prueba-Correo de prueba"
     }
-
-    const transport = nodemailer.createTransport(config);
-    const info = await transport.sendMail(mensaje)
-    console.log(info);
+//
+    //const transport = nodemailer.createTransport(config);
+    //const info = await transport.sendMail(mensaje)
+    console.log(mensaje);
     res.status(200)
 })
 
