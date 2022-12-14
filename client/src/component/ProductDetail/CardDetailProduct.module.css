@@ -28,7 +28,9 @@
 }
 
 .Image{
-    width: 50%;
+    display: flex;
+    width: 40vw;
+    height: 35vh;
 }
 .img{
     width: 400px;

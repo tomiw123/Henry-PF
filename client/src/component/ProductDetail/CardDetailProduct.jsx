@@ -5,6 +5,7 @@ import { AiFillStar } from 'react-icons/ai'
 import { IconContext } from "react-icons";
 import { useParams } from 'react-router-dom';
 import { addToCart, changeFromCart, getIdProducts, cleanProduct } from '../../redux/actions/actions';
+import CarrouselProduct from './Carrousel/CarrouselProduct'
 
 const CardDetailProduct = () => {
 
@@ -63,7 +64,10 @@ const CardDetailProduct = () => {
       <div className={Style.Container2}>
         <div className={Style.ImgCont}>
           <div className={Style.Image}>
-            <img className={Style.img} src={Product.image}  alt="" />
+            {/* <img className={Style.img} src={Product.image}  alt="" /> */}
+            <CarrouselProduct 
+          image = {Product.image}
+          />
           </div>
           <div className={Style.Container}>{/********** */}
             <div className={Style.Title}>
