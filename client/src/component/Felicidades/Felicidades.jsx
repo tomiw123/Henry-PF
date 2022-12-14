@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import style from './Felicidades.module.css'
 import img from '../../assets/dosdagas-png-transparente.png'
 import check from '../../assets/pngegg.png'
-import {userPayments} from '../../redux/actions/actions'
-import { useDispatch } from 'react-redux'
+import {cleanCart, userPayments} from '../../redux/actions/actions'
+import { useDispatch, useSelector } from 'react-redux'
  
 const Felicidades = () => {
     const dispatch = useDispatch();
@@ -16,6 +16,9 @@ const Felicidades = () => {
         dispatch(userPayments(userProduct))
     }, [dispatch]);
     window.localStorage.setItem("carrito", "vacio");
+    
+    // const cart = useSelector(state.cart);
+    // console.log(cart);
 
     let suma = 0;
         for (let i = 0; i < products.length; i++) {
