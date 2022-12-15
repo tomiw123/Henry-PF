@@ -29,7 +29,7 @@ const BusquedaProducts = ()=> {
         <form onSubmit={(e)=> handleSubmit(e)}>
             <div className={s.search}>
                 <input type="text" name="Search" placeholder='Search...' className={s.input} value={input} onChange={(e) => inputHandler(e) }/>
-                <button className={s.button} onClick={()=> clearInput()}>X</button>
+               {/*  <button className={s.button} onClick={()=> clearInput()}>X</button> */}
                 <button className={s.submit} onClick={()=> {submit()}}>Search</button>
             </div>
         </form>

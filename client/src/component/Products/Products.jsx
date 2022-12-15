@@ -21,9 +21,11 @@ export default function Products(props) {
   }, [dispatch]);
   return (
     <>
-
+    <div className={style.filtros}>
       <Filter /> 
       <BusquedaProducts />
+    </div>
+      
         {/* <div className={style.card}>
         <img src={props.img} alt={props.name} />
       </div> */}

@@ -1,25 +1,25 @@
 .search {
-    position: static;
+    /* position: static; */
     width: 98.7vw;
     height: 10vh;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 .input {
-    position: relative;
+    /* position: relative; */
     height: 4vh;
-    margin-right: 1vw;
-    padding-left: 0.5vw;
+   /*  margin-right: 1vw;
+    padding-left: 0.5vw; */
     border: 2px solid black;
     border-radius: 4px;
 }
-.button {
-    position: absolute;
-    right: 14vw;
-}
+/* .button {
+    position: ;
+    right: 16vw;
+} */
 .submit {
-    margin-right: 5vw;
+   /*  margin-right: 5vw; */
     border: 2px solid black;
     border-radius: 4px;
     width: 7vw;
