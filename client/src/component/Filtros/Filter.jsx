@@ -32,11 +32,11 @@ const dispatch = useDispatch();
     if (e.target.value === "parrillas") {
       dispatch(getAllFilters("category", "parrillas",1));
     }
-    if (e.target.value === "fogoneros") {
-      dispatch(getAllFilters("category", "fogoneros",1));
+    if (e.target.value === "fogonero") {
+      dispatch(getAllFilters("category", "fogonero",1));
     }
-     if (e.target.value === "accesorios") {
-      dispatch(getAllFilters("category", "accesorios",1));
+     if (e.target.value === "utencillos") {
+      dispatch(getAllFilters("category", "utensillos",1));
     }
     if (e.target.value === "articulos") {
       dispatch(getAllFilters("category", "articulos",1));
@@ -61,8 +61,8 @@ const dispatch = useDispatch();
         <select className="selector" onChange={(e) => handleFilterCategory(e)}>
           <option value="todo">Todos</option>
           <option value="parrillas">Parrillas</option>
-          <option value="fogoneros">Fogoneros</option>
-          <option value="accesorios">Accesorios</option>
+          <option value="fogonero">Fogoneros</option>
+          <option value="utencillos">Utensillos</option>
           <option value="articulos">Articulos varios</option>
         </select>
       </div>
