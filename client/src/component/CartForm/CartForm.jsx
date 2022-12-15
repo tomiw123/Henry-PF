@@ -9,7 +9,7 @@ import * as Yup from "yup";
 const CartForm = () => {
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
-
+  
 
   let cart = useSelector((state)=> state.cart);
   // let carritoStorageArray

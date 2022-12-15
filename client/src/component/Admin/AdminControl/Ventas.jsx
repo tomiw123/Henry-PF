@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import * as BsReactIcons from 'react-icons/bs';
-import { messege_2 } from '../../../redux/actions/actions';
-import { useDispatch } from 'react-redux'
+import { messege_2, estadoEnvio } from '../../../redux/actions/actions';
+import { useDispatch, useSelector } from 'react-redux'
 import s from "./AdminContronVentas.module.css";
 
 
 export const Ventas = ({recibos}) => {
 
+
+    const dispatch = useDispatch();
     let [open, setOpen] = useState(false);
     let [cambio, setCambio] = useState(false);
-    console.log(recibos);
+    //console.log(recibos);
+    
     let arrSuma = [];
     recibos.products.map(r => arrSuma.push(r.precioUnitario))
                 let suma = 0;
@@ -25,17 +28,19 @@ export const Ventas = ({recibos}) => {
                 }
 
    const estado = () => {
-    if(cambio){
-        setCambio(true)
-        
-    }
-    if(!cambio){
+    if(!recibos.envio){
         setCambio(true)
         //mensaje de envio notificacion
         dispatch(messege_2(recibos)) 
+        dispatch(estadoEnvio(recibos._id)) 
+        window.location.reload()
     }
-   }
+    if(recibos.envio){
+        setOpen(true)
+    }
 
+   }
+   console.log(recibos.envio)
   return (
     <div>
         <div className={s.grid}>
@@ -49,13 +54,14 @@ export const Ventas = ({recibos}) => {
                             <div className={s.elements}>
                             
                             <button 
-            onClick={(e)=>estado()}>
-                                {cambio?(<h1 className="group bg-green-600
-                                   relative flex-items-center w-18 rounded-md border border-transparent  py-2 px-2 text-sm font-medium text-white  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2  mb-4"> Enviado </h1>):(
+                                onClick={(e)=>estado()}>
+                                {recibos.envio?(<h1 className="group bg-green-600
+                                   relative flex-items-center w-18 rounded-md border border-transparent  py-2 px-2 text-sm font-medium text-white  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2  mb-4"> Enviado </h1>)
+                                   :(
                                    <h1 className="group bg-blue-600
                                    relative flex-items-center w-18 rounded-md border border-transparent  py-2 px-2 text-sm font-medium text-white hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2  mb-4 " > Pendiente </h1> 
                                 )}
-                                </button>
+                            </button>
                             
                             </div>
                             
