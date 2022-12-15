@@ -46,7 +46,7 @@ const dispatch = useDispatch();
     <>
     <div className="filtrado">
       <div>
-        Ordenar por:
+        <label>Ordenar por</label>
         <select className="selector" defaultValue="todo" onChange={(e) => handleOrders(e)}>
           <option value="todo">Sin orden...</option>
           <option value="asc">Nombre A-Z</option>
@@ -56,7 +56,8 @@ const dispatch = useDispatch();
         </select>
       </div>
       <div >
-        Categorias:
+        <label>Categorias</label>
+        
         <select className="selector" onChange={(e) => handleFilterCategory(e)}>
           <option value="todo">Todos</option>
           <option value="parrillas">Parrillas</option>
