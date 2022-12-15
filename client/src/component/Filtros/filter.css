@@ -1,26 +1,22 @@
 .filtrado{
   display: flex;
-  flex-direction:row;
-  justify-content: flex-start;
-  margin-left: 5vh;
-  margin-top: 2vh;
+  gap: 10%;
+  width: 60%;
 }
 .selector{
   border-radius: 4px;
+  margin-left: 5px;
 }
-@media only screen and (max-width: 767px) {
-.filtrado{
-display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    
+
+.filtrado select{
+  padding: 3px;
+  width: 190px;
+  font-size: 20px;
+  font-weight: 400;
+  border-radius: 5px;
 }
+
+.filtrado label{
+  font-size: 22px;
+  font-weight: 400;
 }
-@media(max-width: 375px) {
-  .filtrado{
-  display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      
-  }
-  }

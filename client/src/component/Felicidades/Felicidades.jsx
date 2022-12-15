@@ -2,21 +2,28 @@ import React, {useEffect, useState} from 'react'
 import style from './Felicidades.module.css'
 import img from '../../assets/dosdagas-png-transparente.png'
 import check from '../../assets/pngegg.png'
-import {messege_1, userPayments} from '../../redux/actions/actions'
-import { useDispatch } from 'react-redux'
+import { messege_1, userPayments} from '../../redux/actions/actions'
+import { useDispatch, useSelector } from 'react-redux'
  
 const Felicidades = () => {
     const dispatch = useDispatch();
     const [total, setTotal] = useState(0);
     let userProduct = JSON.parse(window.localStorage.getItem('userProduct'));
-    console.log(userProduct);
     const products = userProduct.products
-
+    window.localStorage.setItem('borrador', true)
+    const borrador2 = window.localStorage.getItem('borrador')
     useEffect(() => {
-        dispatch(userPayments(userProduct));
+        dispatch(userPayments(userProduct))
         dispatch(messege_1(userProduct))
     }, [dispatch]);
-    window.localStorage.setItem("carrito", "vacio");
+    // let carritoStorage = window.localStorage.getItem("carrito");
+    // console.log(carritoStorage);
+
+
+    // dispatch(borrador())
+    //console.log(borrador2)
+
+    
 
     let suma = 0;
         for (let i = 0; i < products.length; i++) {
@@ -48,7 +55,6 @@ const Felicidades = () => {
                           products.map((p)=>{
                             //let count = total + p.price
                             //setTotal(count)
-                            console.log(products);
                             return(
                                 <div className={style.grid} key={p.name}>
                                     <div className={style.elemento}>{p.name}</div> 

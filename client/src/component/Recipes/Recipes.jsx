@@ -18,7 +18,9 @@ const Recipes = () => {
 
   return (
     <div className={style.cartita}>
+      <div className={style.filtros}>
       <BusquedaRecetas />
+      </div>
       <div className={style.recetas}>
         {Recipes?.map((e) => {
           return (

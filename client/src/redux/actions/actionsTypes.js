@@ -12,6 +12,7 @@ export const CHANGE_FROM_CART = 'CHANGE_FROM_CART'
 export const GET_RECIPES = "GET_RECIPES"
 export const ADD_RECIPES = "ADD_RECIPES" 
 export const USER_PAYMENTS = "USER_PAYMENTS" 
+export const CLEAN_CART = 'CLEAN_CART'
 //TRAER RECETAS
 export const GET_ID_RECIPES = "GET_ID_RECIPES" 
 export const GET_RECIPES_NAME = 'GET_RECIPES_NAME'
@@ -31,4 +32,5 @@ export const CREATE_REVIEW = "CREATE_REVIEW"
 export const MESSAGE_1 = "MESSAGE_1"
 
 
-
+export const BORRADOR = 'BORRADOR'
+export const BORRADOR_VUELTA = 'BORRADOR_VUELTA'
