@@ -1,30 +1,41 @@
 .search {
-    width: 100vw;
-    height: 10vh;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
     background-color: white;
+    padding-bottom: 20px;
+    padding-right: 7%;
 }
-.input {
-    position: relative;
-    height: 4.5vh;
-    margin-right: 1vw;
-    padding-left: 0.5vw;
+.search input{
+    width: 300px;
+    padding: 3px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 19px;
+}
+
+
+.test{
+    background-color: white;
+    display: flex;
+    padding: 3px;
+    border-radius: 5px;
+    margin-left: -15%;
     border: 2px solid black;
-    border-radius: 4px;
 }
-.button {
-    position: absolute;
-    right: 12.5vw;
+
+.test2{
+    background-color: white;
+    height: 40px;
+    text-align: center;
+    margin-left:5px;
+    padding: 5px;
+    width: 90px;
+    border-radius: 5px;
+    border: 1px solid black;
+    
 }
-.submit {
-    margin-right: 5vw;
-    border: 2px solid black;
-    border-radius: 4px;
-    width: 7vw;
-}
-.submit:hover {
+
+.test2:hover {
     background-color: black;
     color: white;
     border: 2px solid white;

@@ -22,3 +22,9 @@
     width: 98vw;
     height: 55px;
 }
+
+.filtros{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

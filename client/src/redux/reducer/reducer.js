@@ -1,23 +1,23 @@
 
-import { ADD_PRODUCTS, GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD, DELETE_PRODUCT_ADMIN, DELETE_RECIPE_ADMIN, GET_ALL_FILTERS, UPDATE_RECIPE } from "../actions/actionsTypes";
-
-
+import { ADD_PRODUCTS, GET_PRODUCTS,GET_ALL_PRODUCTS, GET_ID_PRODUCTS, ADD_PRODUCTS_CART, DELETE_PRODUCTS_CART, GET_RECIPES, GET_ID_RECIPES,GET_RECIPES_NAME, ADD_RECIPES, CLEAN_RECIPE, CLEAN_PRODUCT, CHANGE_FROM_CART, ADD_COUNT_PROD, DELETE_PRODUCT_ADMIN, DELETE_RECIPE_ADMIN, GET_ALL_FILTERS, UPDATE_RECIPE, USER_PAYMENTS, CREATE_REVIEW, CLEAN_CART, BORRADOR, BORRADOR_VUELTA} from "../actions/actionsTypes";
 
 
 
 const initialState = {
   product: [],
   products: [],
-  productsFilter: [],
+  aplyFilter: {
+    filter:"",
+    valor:"",
+    page:1
+  },
   cart: [],
-  //payment: [],
+  totalVentas: [],
   recipes: [],
   recipe: [],
-  loaderProducts: true,
-  prueba: window.localStorage.getItem('prueba')
+  borrador: false,
+  loaderProducts: true
 }
-
-
 
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -26,7 +26,13 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: action.payload,
-        loaderProducts: false
+        loaderProducts: false,
+        aplyFilter:{
+          // ...state.aplyFilter,
+             filter: "",
+             valor: "",
+             page:""
+           }
       };
     case GET_ALL_PRODUCTS: 
       return {
@@ -36,7 +42,13 @@ export function rootReducer(state = initialState, action) {
       case GET_ALL_FILTERS: 
       return {
         ...state, 
-        products: action.payload
+        products: action.payload[0],
+        aplyFilter:{
+         // ...state.aplyFilter,
+            filter: action.payload[1],
+            valor: action.payload[2],
+            page: action.payload[3] +1
+          }
       };
 
     case GET_ID_PRODUCTS:
@@ -64,6 +76,11 @@ export function rootReducer(state = initialState, action) {
         ...state,
         cart: [...state.cart.filter(p => p.id !== action.payload)]
       }
+    case CLEAN_CART: 
+      return {
+        ...state,
+        cart: []
+      }
     case ADD_COUNT_PROD:
       return {
         ...state,
@@ -76,6 +93,13 @@ export function rootReducer(state = initialState, action) {
         ...state,
         cart: [...state.cart.filter(p => p.id !== action.payload.id), action.payload]
       }
+      
+    case USER_PAYMENTS:
+      return {
+        ...state,
+        totalVentas: action.payload
+      };
+
     case GET_RECIPES:
       return {
         ...state,
@@ -120,7 +144,21 @@ export function rootReducer(state = initialState, action) {
         ...state,
         recipes: [...state.recipes.filter(p => p.id !== action.payload)]
       }
-
+      case CREATE_REVIEW: 
+      return {
+        ...state,
+        product: action.payload
+      }
+      case BORRADOR: 
+      return {
+        ...state,
+        borrador: true
+      }
+      case BORRADOR_VUELTA:
+        return {
+          ...state,
+          borrador: false
+        }
     default:
       return state;
   }

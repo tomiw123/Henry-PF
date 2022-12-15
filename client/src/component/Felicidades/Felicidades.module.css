@@ -38,7 +38,7 @@
     padding-left: 50px;
 }
 .grilla{
-    padding: 20px 0;
+    /* padding: 20px 0; */
     margin: 0 10%;
 }
 .grid{
@@ -49,32 +49,29 @@
     grid-template-columns: 16vw 16vw 16vw 16vw ;
     border: 1px solid black;
     columns: 12vw;
+    
 }
 .elemento{
     display: flex;
     align-content: flex-end;
+    margin: 0 10px;
 }
 
-/* .contacto{
+.contacto{
+    display: flex;
+    margin: 0 50px;
 }
-.contactoConUsted{
-    display: flex;
-    justify-content: start;
+.contacto1{
+    width: 80%;
     font-size: 1.25rem;
-    padding: 15px 0;
-    padding-left: 50px;
-} */
-/* .contactoAgradesco{
-    display: flex;
-    justify-content: start; 
-    font-size: 1.25rem;
-    padding-left: 50px;
-    padding-bottom: 100px;
-} */
-.check{
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    bottom: -80px;
-    right: 250px;
+    padding-top: 25px;
+}
+.contacto1 div{
+    padding-bottom: 10px;
+}
+
+.check img{
+    width: 150px;
+    height: 150px;
+    
 }

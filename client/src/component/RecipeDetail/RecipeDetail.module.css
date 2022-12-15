@@ -22,8 +22,9 @@
 }
 .image{
     display: flex;
-    width: 80vw;
-    height: 45vh;
+    width: 40vw;
+    height: 35vh;
+    /* background-color: aqua; */
    
 }
 .image img{

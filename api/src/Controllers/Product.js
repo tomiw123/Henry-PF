@@ -21,7 +21,7 @@ const getAll = async (req, res) => {
   }
 };
 const getAllFilter = async (req, res) => {
-  //filter: categorias(category) precio(price) alfabeticamente(alfa) fecha creado(create)
+  //filter: categorias(category) precio(price) alfabeticamente(alfa) 
   //category: categorias disponibles //price:1 y -1 //alfa:1 y -1
   const { filter, category, price, alfa } = req.query;
   const limit = req.query.limit || 8;
@@ -35,10 +35,11 @@ const getAllFilter = async (req, res) => {
       }
       if (filter == "price") {
         const products = await Product.paginate({}, { limit, page, sort: { price } });
+        
         res.status(200).json(products);
       }
       if (filter == "alfa") {
-        const products = await Product.paginate({},{ limit, page, sort: { name: alfa } });
+        const products = await Product.paginate({}, { limit, page, sort: { name: alfa } });
         res.status(200).json(products);
       }
     }
@@ -61,7 +62,7 @@ const getId = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  const { name, price, image, description } = req.body;
+  const { name, price, image, category, description } = req.body;
   console.log(name);
   try {
     const exist = await Product.findOne({ name });
@@ -70,6 +71,7 @@ const createProduct = async (req, res) => {
         name,
         price,
         image,
+        category,
         description,
       });
       res.status(200).send(`Product ${name} created`);
@@ -81,9 +83,44 @@ const createProduct = async (req, res) => {
   }
 };
 
+const reviewProduct = async (req, res) => {
+  const { rating, comment, reviewname, user } = req.body;
+  const product = await Product.findById(req.params.id)
+  if (product) {
+    const alreadyReviewed = product.reviews.find(
+      (r) => r.user === user
+      )
+    // console.log(alreadyReviewed);
+    if (alreadyReviewed) {
+      res.status(500).send({message: 'User already review the product'});
+      // throw Error('Product already reviewed')
+    } else {
+      const review = {
+        reviewname,
+        rating: Number(rating),
+        comment,
+        user
+      }
+  
+      product.reviews.push(review);
+      product.numReviews = product.reviews.length;
+      product.rating =
+        product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+        product.reviews.length;
+  
+        await product.save()
+        res.status(201).json({message: 'Reviewed Added'})
+    }
+
+  } else {
+    res.status(404).send('Product not found');
+  }
+
+}
+
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
-  const { name, price, image, description } = req.body;
+  const { name, price, image, category, description } = req.body;
   console.log(name);
   try {
     if (name) {
@@ -94,6 +131,9 @@ const updateProduct = async (req, res) => {
     }
     if (image) {
       var product = await Product.findByIdAndUpdate(_id, { $set: { image } });
+    }
+    if (category) {
+      var product = await Product.findByIdAndUpdate(_id, { $set: { category } });
     }
     if (description) {
       var product = await Product.findByIdAndUpdate(_id, {
@@ -160,4 +200,5 @@ module.exports = {
   removeRecipes,
   deleteProduct,
   getAllFilter,
+  reviewProduct
 };

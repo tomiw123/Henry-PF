@@ -1,10 +1,16 @@
+.inicial{
+  display: flex;
+  background-color: #292626
+}
 .principal{
+  padding-top: 3%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 70%;
   min-height: 800px;
   margin-left: 20%;
+  /* background-color: #292626; */
 }
 
 .form form{
@@ -16,6 +22,7 @@
   border-radius: 10px;
   width: 30vw;
   min-height: 600px;
+  background-color: #a1a1aa ; 
 }
 
 .principal label{
@@ -37,5 +44,6 @@
 }
 .title {
   text-align: center;
-  font-size: 5vh
+  font-size: 5vh;
+  color: aliceblue;
 }

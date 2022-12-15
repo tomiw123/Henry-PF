@@ -1,11 +1,9 @@
 import React from "react";
-//import RecipesJson from "./Recipes.json";
 import CardRecipes from "./CardRecipes/CardRecipes";
 import style from "./Recipe.module.css";
-//import { Link } from "react-router-dom";
-//import Loading from "../Loading/Loading";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipes } from "../../redux/actions/recipesActions";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import {getAllRecipes} from '../../redux/actions/recipesActions'
 import { useEffect } from "react";
 import Paginado from "../Paginado/Paginado";
 import BusquedaRecetas from "../BarraDeBusqueda/BusquedaRecetas";
@@ -20,7 +18,9 @@ const Recipes = () => {
 
   return (
     <div className={style.cartita}>
+      <div className={style.filtros}>
       <BusquedaRecetas />
+      </div>
       <div className={style.recetas}>
         {Recipes?.map((e) => {
           return (

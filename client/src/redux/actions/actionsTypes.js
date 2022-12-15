@@ -11,6 +11,8 @@ export const ADD_COUNT_PROD = 'ADD_COUNT_PROD'
 export const CHANGE_FROM_CART = 'CHANGE_FROM_CART'
 export const GET_RECIPES = "GET_RECIPES"
 export const ADD_RECIPES = "ADD_RECIPES" 
+export const USER_PAYMENTS = "USER_PAYMENTS" 
+export const CLEAN_CART = 'CLEAN_CART'
 //TRAER RECETAS
 export const GET_ID_RECIPES = "GET_ID_RECIPES" 
 export const GET_RECIPES_NAME = 'GET_RECIPES_NAME'
@@ -18,10 +20,18 @@ export const CLEAN_RECIPE = "CLEAN_RECIPE"
 export const DELETE_RECIPE_ADMIN = "DELETE_RECIPE_ADMIN"
 export const UPDATE_RECIPE = "UPDATE_RECIPE"
 
+
 export const DELETE_PRODUCT_ADMIN = "DELETE_PRODUCT_ADMIN"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 //filtros
 export const GET_ALL_FILTERS = "GET_ALL_FILTERS"
 
+//review
+export const CREATE_REVIEW = "CREATE_REVIEW"
+
+export const MESSAGE_1 = "MESSAGE_1"
+export const MESSAGE_2 = "MESSAGE_2"
 
 
+export const BORRADOR = 'BORRADOR'
+export const BORRADOR_VUELTA = 'BORRADOR_VUELTA'

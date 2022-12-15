@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import style from "./Products.module.css";
 import Card from "./CardProducts/Card";
-//import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { geTAllProducts} from "../../redux/actions/actions";
-// import Loading from "../Loading/Loading";
 import Paginado from "../Paginado/Paginado";
 import BusquedaProducts from "../BarraDeBusqueda/BusquedaProducts";
 import Filter from "../Filtros/Filter";
@@ -21,10 +19,11 @@ export default function Products(props) {
   }, [dispatch]);
   return (
     <>
-    <div>
-      <Filter /> <BusquedaProducts />
-    </div>
-      {/* <div className={style.card}>
+      <div className={style.filtros}>
+      <Filter /> 
+      <BusquedaProducts />
+      </div>
+        {/* <div className={style.card}>
         <img src={props.img} alt={props.name} />
       </div> */}
       <div>

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon -L",
     "test": "mocha -w ./tests/*/.spec.js"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "mongoose-autopopulate": "^0.16.1",
     "mongoose-paginate-v2": "^1.7.1",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.8.0",
     "pg": "^8.5.1",
     "socket.io": "^4.5.3"
   },

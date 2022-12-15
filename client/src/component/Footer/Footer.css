@@ -1,71 +1,117 @@
-.footer{
-    min-height: 170px;
-    background-color: #292626;
+.footer {
+  min-height: 170px;
+  background-color: #292626;
+  width: 100%;
+}
+
+.logo {
+  position: absolute;
+  left: 42%;
+}
+
+
+.contact {
+  display: flex;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+.saltooooo {
+  height: 1px;
+  width: 100%;
+  background-color: #c18e0e;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.rs {
+  background-color: transparent;
+  border: 2px solid #c18e0e;
+  margin: 20px;
+  border-radius: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(3px 3px 3px #4444dd);
+  width: 50px;
+  height: 50px;
+margin-left:20px;
+}
+
+.rs:hover {
+  background-color: whitesmoke;
+  border: none;
+}
+
+.icon {
+  color: whitesmoke;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: #110c0c;
+}
+
+.teldic {
+  margin-left: 60%;
+  font-size: 30px;
+  color: white;
+  font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 300px;
+}
+
+.teldic h2 {
+  font-size: 15px;
+  margin-right: 20px;
+}
+
+@media only screen and (min-width: 375px) and (max-width: 767px) {
+  .footer {
     width: 100%;
-    
+  }
+  .rs {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  .logo {
+    position: absolute;
+    width: 30vw;
+    text-align: center;
+    margin-left: 30%;
+  }
+  .teldic {
+    display: none;
+  }
 }
 
-
-.logo{
-    position: relative;
-    padding: 0;
-    margin: 0 auto;
-    left: 28%;
+@media only screen and (min-width: 668px) and (max-width: 1000px) {
+  .footer {
+    width: 100%;
+  }
+  .rs {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  .logo {
+    position: absolute;
+    width: 30vw;
+    text-align: center;
+    margin-left: 30%;
+  }
+  .teldic {
+    display: none;
+  }
 }
 
-.contact{
-    display: flex;
-    justify-content: flex-start;
-}
-.saltooooo{
-   height: 1px;
-   width: 100%;
-   background-color: #c18e0e;
-   margin-bottom: 20px; 
-   box-sizing: border-box;
-}
-
-.rs{
-    background-color: transparent;
-    border: 2px solid #c18e0e;
-    margin: 20px;
-    border-radius: 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: drop-shadow(3px 3px 3px #4444dd);
-    width: 60px;
-    height: 60px;
-}
-
-
-
-.rs:hover{
-    background-color: whitesmoke;
-    border: none;
-}
-
-.icon{
-    color: whitesmoke;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
-.icon:hover{
-    color:  #110c0c
-}
-
-.teldic{
-    margin-left: 50%;
-    font-size: 30px;
-    color: white;
-    font-weight: 500;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 300px;
-}
-
-.teldic h2{
-    font-size: 15px;
-    margin-right: 20px;
-}
