@@ -38,7 +38,7 @@ const CartForm = () => {
         dispatch(deleteFromCart(id));
       }, 50);
       if(cart.length === 1){
-        window.localStorage.removeItem('borrador')
+        window.localStorage.removeItem('carrito')
         }
     };
 

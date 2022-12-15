@@ -15,7 +15,6 @@ import s from "./Carrito.module.css";
 import { useAuth } from "../../context/auth";
 
 const Carrito = () => {
-  //window.localStorage.removeItem('borrador')
   const auth = useAuth();
   const [openedCart, setCart] = useState(false);
   const dispatch = useDispatch();
@@ -96,7 +95,7 @@ const Carrito = () => {
       dispatch(deleteFromCart(id));
     }, 50);
     if (newCart.length === 1) {
-      window.localStorage.removeItem('borrador')
+      window.localStorage.removeItem('carrito')
     }
   };
 
