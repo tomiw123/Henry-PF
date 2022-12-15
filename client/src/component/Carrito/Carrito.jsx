@@ -46,7 +46,7 @@ const Carrito = () => {
       newCart.push(cart[i]);
     }
   }
-window.localStorage.setItem("carrito", JSON.stringify(newCart)); //salvador de todos los programadores
+//window.localStorage.setItem("carrito", JSON.stringify(newCart)); //salvador de todos los programadores
 //revome items props 
   let carritoStorage = window.localStorage.getItem("carrito");
 
