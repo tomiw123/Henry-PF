@@ -6,7 +6,7 @@
 
 .logo {
   position: absolute;
-  left: 38%;
+  left: 42%;
 }
 
 
@@ -54,7 +54,7 @@ margin-left:20px;
 }
 
 .teldic {
-  margin-left: 50%;
+  margin-left: 60%;
   font-size: 30px;
   color: white;
   font-weight: 500;
@@ -114,3 +114,4 @@ margin-left:20px;
     display: none;
   }
 }
+

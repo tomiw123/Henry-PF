@@ -1,19 +1,35 @@
 .cart {
   cursor: pointer;
 }
-.openCart {
+/* .openCart {
   border: 1px solid black;
   background-color: white;
-  z-index: 5;
+
   top: 20%;
   right: 0;
   width: 37vw;
   height: 100vh;
   align-items: center;
   position: fixed;
-  transition: 850ms;
+
   z-index: 5;
+} */
+
+.openCart {
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  z-index: 5;
+  height: 75vh;
+  position: absolute;
+  top: 19.5%;
+  right: -0%;
+  border-top: 4px solid black;
+  border-left: none;
+  border-bottom: none;
+  transition: 850ms;
 }
+
 .closeCart {
   position: fixed;
   right: -37vw;
