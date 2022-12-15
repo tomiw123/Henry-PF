@@ -13,15 +13,12 @@ const Felicidades = () => {
     window.localStorage.setItem('borrador', true)
     const borrador2 = window.localStorage.getItem('borrador')
     useEffect(() => {
-        dispatch(userPayments(userProduct))
+        dispatch(userPayments(userProduct));
         dispatch(messege_1(userProduct))
     }, [dispatch]);
-    // let carritoStorage = window.localStorage.getItem("carrito");
-    // console.log(carritoStorage);
-
 
     // dispatch(borrador())
-    //console.log(borrador2)
+    console.log(borrador2)
 
     
 
