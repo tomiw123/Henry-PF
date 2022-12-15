@@ -38,9 +38,10 @@ const PagoExitoso = async(req, res)=>{
 
     const controlVentas = await ControlVentas.create({
       name,
-      direccion, 
+      direccion,
       contacto,
       fecha:fechaStr,
+      //envio: true,
       products
     })
     res.status(200).json(controlVentas);
@@ -59,9 +60,22 @@ const TotalVentas = async(req, res) => {
   }
 }
 
+const Estado = async(req,res)=>{
+  const {id }= req.params;
+  console.log(id);
+  try {
+    const estado = await ControlVentas.findByIdAndUpdate(id,{
+      $set: { envio : true }
+    });
+    res.status(200).json(estado)
+  } catch(err) {
+    res.status(404).send('NO OK')
+  }
+}
 
   module.exports = {
     TotalVentas,
     Payment,
-    PagoExitoso
+    PagoExitoso,
+    Estado
   }

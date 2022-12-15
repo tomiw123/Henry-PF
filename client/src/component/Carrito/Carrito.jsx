@@ -15,7 +15,6 @@ import s from "./Carrito.module.css";
 import { useAuth } from "../../context/auth";
 
 const Carrito = () => {
-
   const auth = useAuth();
   const [openedCart, setCart] = useState(false);
   const dispatch = useDispatch();
@@ -47,6 +46,7 @@ const Carrito = () => {
       newCart.push(cart[i]);
     }
   }
+  //window.localStorage.setItem("carrito", JSON.stringify(newCart)); //salvador de todos los programadores
 //revome items props 
   let carritoStorage = window.localStorage.getItem("carrito");
 

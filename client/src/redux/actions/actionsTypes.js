@@ -30,6 +30,7 @@ export const GET_ALL_FILTERS = "GET_ALL_FILTERS"
 export const CREATE_REVIEW = "CREATE_REVIEW"
 
 export const MESSAGE_1 = "MESSAGE_1"
+export const MESSAGE_2 = "MESSAGE_2"
 
 
 export const BORRADOR = 'BORRADOR'

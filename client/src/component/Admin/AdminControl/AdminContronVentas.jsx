@@ -1,10 +1,9 @@
 import React,{ useEffect } from "react";
 import s from "./AdminContronVentas.module.css";
-
-//import recibos from './ComprasUser.json'
 import {totalPayment} from '../../../redux/actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { Ventas } from "./Ventas";
+import { Navigate } from "react-router-dom";
 
 const ControlDeVentas = () => {
     const dispatch = useDispatch();
@@ -14,6 +13,10 @@ const ControlDeVentas = () => {
     const recibos = useSelector((state) => state.totalVentas);
     console.log(recibos);
 
+    const user = localStorage.getItem("role");
+    if (user !== "admin") {
+      return <Navigate to="/" />;
+    }
 
     return (
         <div className={s.block}>

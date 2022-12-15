@@ -19,6 +19,10 @@ const ControlVentasSchema = new Schema({
     },
     products:{
         type: Array,
+    },
+    envio:{
+        type: Boolean,
+        default: false
     }
     
 })
