@@ -62,7 +62,7 @@ const getId = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  const { name, price, image, description } = req.body;
+  const { name, price, image, category, description } = req.body;
   console.log(name);
   try {
     const exist = await Product.findOne({ name });
@@ -71,6 +71,7 @@ const createProduct = async (req, res) => {
         name,
         price,
         image,
+        category,
         description,
       });
       res.status(200).send(`Product ${name} created`);
@@ -119,7 +120,7 @@ const reviewProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   const { _id } = req.params;
-  const { name, price, image, description } = req.body;
+  const { name, price, image, category, description } = req.body;
   console.log(name);
   try {
     if (name) {
@@ -130,6 +131,9 @@ const updateProduct = async (req, res) => {
     }
     if (image) {
       var product = await Product.findByIdAndUpdate(_id, { $set: { image } });
+    }
+    if (category) {
+      var product = await Product.findByIdAndUpdate(_id, { $set: { category } });
     }
     if (description) {
       var product = await Product.findByIdAndUpdate(_id, {

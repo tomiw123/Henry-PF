@@ -10,7 +10,9 @@ import {
   changeFromCart,
   getIdProducts,
   cleanProduct,
-  createProductReview,
+  createProductReview
+
+  
 } from "../../redux/actions/actions";
 import { Oval } from "react-loader-spinner";
 import CarrouselProduct from './Carrousel/CarrouselProduct'
@@ -137,6 +139,9 @@ const CardDetailProduct = () => {
             {/********** */}
             <div className={Style.Title}>
               <h1>{Product.name}</h1>
+            </div>
+            <div className={Style.Title}>
+              <h1>Categoria: {Product.category}</h1>
             </div>
             <div className={Style.Starts}>
               <IconContext.Provider value={{ color: "yellow" }}>

@@ -38,7 +38,7 @@ const productSchema = new Schema({
   },
   category: {
     type: String,
-    required: false,
+    required: true,
   },
   reviews: [reviewSchema],
   rating: {

@@ -23,13 +23,18 @@ const CreateProduct = () => {
         name: '',
         price: '',
         image: '',
+        category: '',
         description: ''
     });
+
+   // const [input, setInput] = useState('')
 
 
     const dispatch = useDispatch();
     const history = useNavigate()
     const [img, setImg] = useState([])
+
+   
 
 
     //const changeValue = ( value)=> {
@@ -72,6 +77,13 @@ const CreateProduct = () => {
     function deleteImg(e){
         setImg(img.filter(img=>img!==e))
       }
+
+      function handleChange(e){
+        setModificar({
+            ...modificar,
+            [e.target.name] : e.target.value.toLowerCase() 
+        })
+      }
     
       const hola = async (file) =>{
         var resultado
@@ -94,7 +106,10 @@ const CreateProduct = () => {
             if (window.confirm("Los cambios van a ser modificados, desea continuar?")) {
                 if (modificar) {
                    // const result = await uploadFile(file);
-                    modificar.image = img
+                    modificar.image = img;
+                   // modificar.category = input;
+                    console.log(modificar.category);
+                  //  modificar.category = input.categoria;
                     dispatch(updateProduct(modificar, id));
                     alert("Producto Actualizada!")
                     history('/HAdmin/AdminProducts')
@@ -110,9 +125,16 @@ const CreateProduct = () => {
 
     const validations = (values) => {
         const errors = {};
-        if (values.name.length > 40) errors.name = 'El nombre no puede ser tan largo ';
+        if (values.name.length > 40)
+          errors.name = "El nombre no puede ser tan largo ";
+          if(!values.name)
+            errors.name = "Debe ingresar el nuevo nombre del Producto!"
+          if (!values.description)
+          errors.description = "Debe ingresar la descripcion del producto";
+          if (!values.price)
+          errors.description = "Debe ingresar el precio del producto";
         return errors;
-    }
+      };
     // const user = localStorage.getItem("role")
     // if(user !== "admin" ){
     //     return <Navigate to="/"/>
@@ -124,6 +146,7 @@ const CreateProduct = () => {
                 name: '',
                 price: '',
                 image: '',
+                category: '',
                 description: ''
             }}
                 onSubmit={submit}
@@ -151,9 +174,51 @@ const CreateProduct = () => {
                         <h1 className="text-lg font-semibold text-black  text-black  m-2">Precio del Producto</h1>
                         <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-50 0 sm:text-sm m-2"
                             placeholder="Ingrese el nuevo precio del producto" name="price" type="number" onChange={handlePrice} value={modificar.price} />
+<ErrorMessage name="price">
+              {(msg) => (
+                <div
+                  style={{
+                    color: "red",
+                  }}
+                >
+                  {msg}
+                </div>
+              )}
+            </ErrorMessage>
+
+                    <div >
+                        <label className="text-lg font-semibold text-black  text-black  m-2">Seleccione la Categoria:</label>
+                        <select
+                        name = "category"
+                        id= "category"
+                        value= {modificar.categoria}
+                        className="text-lg font-semibold text-black  text-black  m-2"
+                        onChange={(e)=>handleChange(e)}
+                        >
+                            <option value="seleccionar">Seleccionar...</option>
+                            <option value="parrillas">Parrillas</option>
+                            <option value="fogoneros">Fogoneros</option>
+                            <option value="accesorios">Accesorios</option>
+                            <option value="articulos">Articulos Varios</option>
+                        </select>
+                       
+                </div>
+
                             <h1 className="text-lg font-semibold text-black  text-black  m-2">Descripción del Producto</h1>
                         <Field className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 h-24 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
                             placeholder="Ingrese la nueva descripcion" name="description" type="text" onChange={handleDesc} value={modificar.description} />
+
+<ErrorMessage name="description">
+              {(msg) => (
+                <div
+                  style={{
+                    color: "red",
+                  }}
+                >
+                  {msg}
+                </div>
+              )}
+            </ErrorMessage>
                         <h1 className="text-lg font-semibold text-white m-2" style={{ color: "black" }}>Seleccione la nueva imagen del producto: </h1>
                         {/* <Field className="bg-white relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm m-2"
                             name="image" type="file" onChange={(e) => setFile(e.target.files[0])} /> */}
