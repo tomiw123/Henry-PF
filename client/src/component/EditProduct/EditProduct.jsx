@@ -123,18 +123,20 @@ const CreateProduct = () => {
 
 
 
-    const validations = (values) => {
-        const errors = {};
-        if (values.name.length > 40)
-          errors.name = "El nombre no puede ser tan largo ";
-          if(!values.name)
-            errors.name = "Debe ingresar el nuevo nombre del Producto!"
-          if (!values.description)
-          errors.description = "Debe ingresar la descripcion del producto";
-          if (!values.price)
-          errors.description = "Debe ingresar el precio del producto";
-        return errors;
-      };
+    // const validations = (values) => {
+    //     const errors = {};
+    //     if (values.name.length > 40)
+    //       errors.name = "El nombre no puede ser tan largo ";
+    //       if(!values.name)
+    //         errors.name = "Debe ingresar el nuevo nombre del Producto!"
+    //       if (!values.description)
+    //       errors.description = "Debe ingresar la descripcion del producto";
+    //       if (!values.price)
+    //       errors.description = "Debe ingresar el precio del producto";
+    //     return errors;
+    //  };
+
+    
     // const user = localStorage.getItem("role")
     // if(user !== "admin" ){
     //     return <Navigate to="/"/>
@@ -150,7 +152,7 @@ const CreateProduct = () => {
                 description: ''
             }}
                 onSubmit={submit}
-                validate={validations}
+              //  validate={validations}
             >
                 <div
           className="flex h-screen w-6/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8 m-10 "

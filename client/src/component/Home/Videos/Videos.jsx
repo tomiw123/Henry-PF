@@ -15,13 +15,14 @@ const Video = () => {
           
           url='https://www.youtube.com/watch?v=A2Ni1WhwnW8&ab_channel=DosDagasFogoneros'
 
-          className="my-10 min-h-max hover:scale-110 transition duration-300 ease-in-out"
+          className="my-10 h-40% w-40% hover:scale-110 transition duration-300 ease-in-out"
         />
 
         <ReactPlayer
           url='https://www.youtube.com/shorts/J9KS_yKMI-A'
           // className=" my-10 min-h-max hover:scale-110 transition duration-300 ease-in-out "
           className="my-10 min-h-max hover:scale-110 transition duration-300 ease-in-out "
+          width='30%'
 
         />
       </div>

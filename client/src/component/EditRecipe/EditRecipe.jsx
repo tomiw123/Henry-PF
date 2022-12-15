@@ -106,19 +106,19 @@ const EditRecipe = () => {
     }
 
     
-    const validar = (values) => {
-      const errors = {};
+    // const validar = (modificar) => {
+    //   const errors = {};
       
-      if (values.description.length < 5)
-        errors.description = "Debe ingresar la descripcion de la receta";
-      if(!values.name)
-        errors.name = "Debe ingresar el nombre de la receta!"
-      if (values.name.length > 40)
-        errors.name = "El nombre no puede ser tan largo "
+    //   if (modificar.description.length < 5)
+    //     errors.description = "Debe ingresar la descripcion de la receta";
+    //   if(!modificar.name)
+    //     errors.name = "Debe ingresar el nombre de la receta!"
+    //   if (modificar.name.length > 40)
+    //     errors.name = "El nombre no puede ser tan largo "
       
        
-      return errors;
-    };
+    //   return errors;
+    // };
     
      
 
@@ -142,7 +142,7 @@ const EditRecipe = () => {
         
         
         onSubmit={actualizar}
-        validate={validar}
+       // validate={validar}
       >
 
         <div className="flex h-screen w-6/6 rounded-xl shadow-2xl items-center justify-center py-12 px-4 sm:px-6 lg:px-8 m-10 " style={{ background: "#292626" }}>

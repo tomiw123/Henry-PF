@@ -49,7 +49,9 @@ const Home = () => {
             </Link>
           </div>
         </div>
+       
         <Videos />
+        
       </div>
     </div>
   );

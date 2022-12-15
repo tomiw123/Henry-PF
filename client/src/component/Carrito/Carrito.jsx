@@ -35,7 +35,7 @@ const Carrito = () => {
     }else {
         setCarritoVacio(true)
     }
-})
+    })
     //window.localStorage.setItem('carrito', 'vacio')
 
     // console.log(auth.user);
@@ -47,6 +47,8 @@ const Carrito = () => {
       newCart.push(cart[i]);
     }
   }
+ // window.localStorage.setItem("carrito", JSON.stringify(newCart)) ////LINEA SALVADORA
+  
 //revome items props 
   let carritoStorage = window.localStorage.getItem("carrito");
 
@@ -64,9 +66,9 @@ const Carrito = () => {
       let carritoStorage = window.localStorage.getItem("carrito");
   
       if (carritoStorage !== null && carritoStorage !== 'cambiar') {
-        let carritoStorageArray = JSON.parse(
-          window.localStorage.getItem("carrito")
-        );
+         let carritoStorageArray = JSON.parse(
+           window.localStorage.getItem("carrito")
+         );
         if (carritoStorageArray.length) {
           for (let i = 0; i < carritoStorageArray.length; i++) {
             dispatch(addToCart(carritoStorageArray[i]));
