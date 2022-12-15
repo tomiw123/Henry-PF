@@ -1,40 +1,47 @@
-import React, { useState, useEffect } from 'react'
-import Style from './CardDetailProduct.module.css'
+import React, { useState, useEffect } from "react";
+import Style from "./CardDetailProduct.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router-dom';
- 
+import { AiFillStar } from "react-icons/ai";
+import { IconContext } from "react-icons";
+import { useParams } from "react-router-dom";
+import {
+  addToCart,
+  changeFromCart,
+  getIdProducts,
+  cleanProduct,
+  createProductReview
+} from "../../redux/actions/actions";
+import { Oval } from "react-loader-spinner";
 import CarrouselProduct from './Carrousel/CarrouselProduct'
-import { Link } from 'react-router-dom'
-import { IconContext } from 'react-icons'
-import { AiFillStar } from 'react-icons/ai'
-import { addToCart, changeFromCart, getIdProducts, cleanProduct, createProductReview } from '../../redux/actions/actions';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../../context/auth"
-import { Oval  } from 'react-loader-spinner'
+
+import { Link } from 'react-router-dom'
+
 
 
 const CardDetailProduct = () => {
-  const auth = useAuth()
   const dispatch = useDispatch();
-  const paramsId = useParams()
-  const Product = useSelector(state => state.product);
   const navigate = useNavigate()
+  const paramsId = useParams();
+  const auth = useAuth()
+  const Product = useSelector((state) => state.product);
   // console.log(Product)
-
-  const [userOn, setUserOn] = useState(false)
-  const [loader, setLoader] = useState(true)
-  setTimeout( ()=> {setLoader(false)}, 800)
-  useEffect(()=>{if(Product.length === 0){
-                  dispatch(getIdProducts(paramsId.id))
-                  }
-                  else{
-                   if(Product.id !== paramsId.id){
-                    dispatch(cleanProduct())
-                    dispatch(getIdProducts(paramsId.id))
-                   }
-                  } },[dispatch,paramsId.id])
-
-
+   const [userOn, setUserOn] = useState(false)
+  const [loader, setLoader] = useState(true);
+  setTimeout(() => {
+    setLoader(false);
+  }, 800);
+  useEffect(() => {
+    if (Product.length === 0) {
+      dispatch(getIdProducts(paramsId.id));
+    } else {
+      if (Product.id !== paramsId.id) {
+        dispatch(cleanProduct());
+        dispatch(getIdProducts(paramsId.id));
+      }
+    }
+  }, [dispatch, paramsId.id]);
 
   useEffect(()=> {
     if(auth.user) {
@@ -48,36 +55,35 @@ const CardDetailProduct = () => {
   const [reviewname, setReviewname] = useState('')
 
   function handleMax() {
-    setCounter(counter + 1)
+    setCounter(counter + 1);
   }
 
   function handleMin() {
     if (counter > 1) {
-      setCounter(counter - 1)
+      setCounter(counter - 1);
     }
   }
-
-  const cart = useSelector((state) => state.cart)
+  const cart = useSelector((state) => state.cart);
   // const [cart, setCart] = useState([]);
 
   const addProd = (id, name, image, price, counter) => {
-    let yaEsta = cart.find(p => p.name === name);
+    let yaEsta = cart.find((p) => p.name === name);
     if (!yaEsta) {
-      const obj = { id, name, image, price, quantity: counter }
+      const obj = { id, name, image, price, quantity: counter };
       setTimeout(() => {
-        dispatch(addToCart(obj))
-      }, 50)
-      alert(`${name} agregado al carrito`)
+        dispatch(addToCart(obj));
+      }, 50);
+      alert(`${name} agregado al carrito`);
     } else {
       yaEsta = {
         ...yaEsta,
-        quantity: yaEsta.quantity + counter
-      }
+        quantity: yaEsta.quantity + counter,
+      };
       setTimeout(() => {
-        dispatch(changeFromCart(yaEsta))
-      }, 50)
+        dispatch(changeFromCart(yaEsta));
+      }, 50);
     }
-  }
+  };
 
   const userAuth = auth.user;
 
@@ -98,6 +104,7 @@ const CardDetailProduct = () => {
       <div className={Style.Container2}>
         <div className={Style.ImgCont}>
           <div className={Style.Image}>
+            
             {/* <img className={Style.img} src={Product.image}  alt="" /> */}
            
           {loader? (
@@ -108,21 +115,27 @@ const CardDetailProduct = () => {
                 wrapperStyle={{}}
                 wrapperClass=""
                 visible={true}
-                ariaLabel='oval-loading'
+                ariaLabel="oval-loading"
                 secondaryColor="black"
                 strokeWidth={2}
                 strokeWidthSecondary={2}
               />
+
               ): (
                 <CarrouselProduct 
                 image = {Product.image}
                 />
                // <img className={Style.img} src={Product.image}  alt="" />
               )}
+
           </div>
-          <div className={Style.Container}>{/********** */}
+          <div className={Style.Container}>
+            {/********** */}
             <div className={Style.Title}>
               <h1>{Product.name}</h1>
+            </div>
+            <div className={Style.Title}>
+              <h1>Categoria: {Product.category}</h1>
             </div>
             <div className={Style.Starts}>
               <IconContext.Provider value={{ color: "yellow" }}>
@@ -152,18 +165,35 @@ const CardDetailProduct = () => {
             <div className={Style.Price}>${Product.price},00</div>
             <div className={Style.ContButtom}>
               <div className={Style.Cont}>
-                <button className={Style.btnmaxmin} onClick={handleMin}>-</button>
+                <button className={Style.btnmaxmin} onClick={handleMin}>
+                  -
+                </button>
                 <div className={Style.Num}>{counter}</div>
-                <button className={Style.btnmaxmin} onClick={handleMax}>+</button>
+                <button className={Style.btnmaxmin} onClick={handleMax}>
+                  +
+                </button>
               </div>
               <div className={Style.Compra}>
-                <button className={counter === 0 ? Style.btnDis : Style.btn} onClick={() => { addProd(Product._id, Product.name, Product.image, Product.price, counter) }}>Agregar al Carrito</button>
+                <button
+                  className={counter === 0 ? Style.btnDis : Style.btn}
+                  onClick={() => {
+                    addProd(
+                      Product._id,
+                      Product.name,
+                      Product.image,
+                      Product.price,
+                      counter
+                    );
+                  }}
+                >
+                  Agregar al Carrito
+                </button>
               </div>
             </div>
           </div>
         </div>
         <div className={Style.Description}>
-          <p className='description'>{Product.description}</p>
+          <p className="description">{Product.description}</p>
         </div>
         <div className={Style.line}></div>
         <div className={userOn ? Style.reviewContainer : Style.nodisplay}>
@@ -211,7 +241,7 @@ const CardDetailProduct = () => {
         {/* dejar un apartado para poner abajo las recetas que se pueden hacer con el producto*/}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CardDetailProduct
+export default CardDetailProduct;

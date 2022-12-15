@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import * as BsReactIcons from 'react-icons/bs';
+import { messege_2 } from '../../../redux/actions/actions';
+import { useDispatch } from 'react-redux'
 import s from "./AdminContronVentas.module.css";
 
 
@@ -29,6 +31,8 @@ export const Ventas = ({recibos}) => {
     }
     if(!cambio){
         setCambio(true)
+        //mensaje de envio notificacion
+        dispatch(messege_2(recibos)) 
     }
    }
 

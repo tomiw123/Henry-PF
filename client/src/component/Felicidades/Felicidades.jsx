@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import style from './Felicidades.module.css'
 import img from '../../assets/dosdagas-png-transparente.png'
 import check from '../../assets/pngegg.png'
-import {userPayments} from '../../redux/actions/actions'
+import {messege_1, userPayments} from '../../redux/actions/actions'
 import { useDispatch } from 'react-redux'
  
 const Felicidades = () => {
@@ -14,7 +14,7 @@ const Felicidades = () => {
 
     useEffect(() => {
         dispatch(userPayments(userProduct))
-     //   window.localStorage.setItem("userProduct", "vacio");
+        dispatch(messege_1(userProduct))
     }, [dispatch]);
     // let carritoStorage = window.localStorage.getItem("carrito");
     // console.log(carritoStorage);

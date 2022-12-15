@@ -9,6 +9,7 @@ import {
   addCount,
   payment,
   addToCart,
+  cleanCart,
 } from "../../redux/actions/actions";
 import s from "./Carrito.module.css";
 import { useAuth } from "../../context/auth";
@@ -22,6 +23,8 @@ const Carrito = () => {
   const openCart = () => {
     setCart(!openedCart);
   };
+  //window.localStorage.setItem('carrito', 'vacio')
+  //window.localStorage.setItem('userProduct', 'vacio')
   let cart = useSelector((state) => state.cart);
   let newCart = [];
   const [carritoVacio, setCarritoVacio] = useState(false);
@@ -49,7 +52,9 @@ const Carrito = () => {
     window.localStorage.setItem("carrito", "vacio");
   }
   if (newCart.length) {
-    window.localStorage.setItem("carrito", JSON.stringify(newCart));
+    
+      window.localStorage.setItem("carrito", JSON.stringify(newCart));
+  
   } else {
     let carritoStorage = window.localStorage.getItem("carrito");
 
@@ -62,9 +67,9 @@ const Carrito = () => {
           dispatch(addToCart(carritoStorageArray[i]));
         }
       }
-    }
+    } 
   }
-
+  console.log(cart)
   useEffect(() => {
     let suma = 0;
     for (let i = 0; i < cart.length; i++) {

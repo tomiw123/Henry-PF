@@ -16,6 +16,7 @@
     "dotenv": "^16.0.3",
     "firebase": "^9.14.0",
     "formik": "^2.2.9",
+    "framer-motion": "^7.8.0",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.6.6",
     "react-bootstrap": "^2.7.0",
