@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import * as BsReactIcons from 'react-icons/bs';
 import { messege_2, estadoEnvio } from '../../../redux/actions/actions';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import s from "./AdminContronVentas.module.css";
 
 
@@ -10,8 +10,7 @@ export const Ventas = ({recibos}) => {
 
     const dispatch = useDispatch();
     let [open, setOpen] = useState(false);
-    let [cambio, setCambio] = useState(false);
-    //console.log(recibos);
+    let [cambio, setCambio] = useState(recibos.envio);
     
     let arrSuma = [];
     recibos.products.map(r => arrSuma.push(r.precioUnitario))
@@ -33,14 +32,13 @@ export const Ventas = ({recibos}) => {
         //mensaje de envio notificacion
         dispatch(messege_2(recibos)) 
         dispatch(estadoEnvio(recibos._id)) 
-        window.location.reload()
     }
     if(recibos.envio){
-        setOpen(true)
+        
+        setCambio(true)
     }
-
    }
-   console.log(recibos.envio)
+
   return (
     <div>
         <div className={s.grid}>
@@ -54,8 +52,8 @@ export const Ventas = ({recibos}) => {
                             <div className={s.elements}>
                             
                             <button 
-                                onClick={(e)=>estado()}>
-                                {recibos.envio?(<h1 className="group bg-green-600
+                                onClick={()=>estado()} className={s.button}>
+                                {cambio?(<h1 className="group bg-green-600
                                    relative flex-items-center w-18 rounded-md border border-transparent  py-2 px-2 text-sm font-medium text-white  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2  mb-4"> Enviado </h1>)
                                    :(
                                    <h1 className="group bg-blue-600
@@ -69,7 +67,7 @@ export const Ventas = ({recibos}) => {
 
                         <div className={open? s.opened: s.closed}>
                             <div className={s.miniGrid}>
-                                <div></div>
+                                {/* <div></div> */}
                                 <div className={s.miniElements}>Correo Electronico </div>
                                 <div className={s.miniElements}>Productos</div>
                                 <div className={s.miniElements}>Cantidad</div>
@@ -77,7 +75,7 @@ export const Ventas = ({recibos}) => {
                                 
                             </div>
                             <div className={s.miniGrid}>
-                                <div></div>
+                                {/* <div></div> */}
                                 <div className={s.miniElements}>{recibos.contacto}</div>
                                 <div className={s.miniElements}>
                                     <ul className={s.list}> 
