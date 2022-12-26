@@ -22,3 +22,19 @@
     width: 98vw;
     height: 55px;
 }
+
+.filtros{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+@media only screen and  (max-width: 820px) {
+
+    .filtros{
+        display: flex;
+       /*  align-items: center;
+        justify-content: space-around; */
+        flex-direction: column;
+}
+
+}

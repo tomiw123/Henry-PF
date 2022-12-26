@@ -38,7 +38,7 @@
     padding-left: 50px;
 }
 .grilla{
-    padding: 20px 0;
+    /* padding: 20px 0; */
     margin: 0 10%;
 }
 .grid{
@@ -49,25 +49,28 @@
     grid-template-columns: 16vw 16vw 16vw 16vw ;
     border: 1px solid black;
     columns: 12vw;
+    
 }
 .elemento{
     display: flex;
     align-content: flex-end;
+    margin: 0 10px;
 }
 
+<<<<<<< HEAD
 /* .contacto{
 }
 .contactoConUsted{
+=======
+.contacto{
+>>>>>>> 31e8b2c03cc98a19dd12d5f33b6a25aa6aa316a6
     display: flex;
-    justify-content: start;
-    font-size: 1.25rem;
-    padding: 15px 0;
-    padding-left: 50px;
+    margin: 0 50px;
 }
-.contactoAgradesco{
-    display: flex;
-    justify-content: start;
+.contacto1{
+    width: 80%;
     font-size: 1.25rem;
+<<<<<<< HEAD
     padding-left: 50px;
     padding-bottom: 100px;
 } */
@@ -78,3 +81,16 @@
     bottom: -80px;
     right: 250px;
 }
+=======
+    padding-top: 25px;
+}
+.contacto1 div{
+    padding-bottom: 10px;
+}
+
+.check img{
+    width: 150px;
+    height: 150px;
+    
+}
+>>>>>>> 31e8b2c03cc98a19dd12d5f33b6a25aa6aa316a6

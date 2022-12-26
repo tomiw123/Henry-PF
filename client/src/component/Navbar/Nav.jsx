@@ -8,6 +8,7 @@ import { RiAdminFill } from "react-icons/ri";
 function Nav() {
   const auth = useAuth();
   const admin = localStorage.getItem("role");
+  const localUser = localStorage.getItem("username");
   return (
     <div
       className="flex items-center w-full justify-between pr-3 pl-1 h-10"
@@ -33,12 +34,13 @@ function Nav() {
           <div className="bg-slate-800 text-white text-center rounded-md ml-3 w-auto pr-2 pl-2 flex items-center">
             
             <Link to="/login" className="flex items-center">
-              <label>{auth.userName}</label>
+              <p>{auth.userName || localUser}</p>
               <RiRadioButtonLine className="ml-2 animate-pulse text-green-500" />
             </Link>
             {admin === "admin" ? (
                 <div>
-                <Link to="HAdmin">
+                <Link to="HAdmin"className=" flex items-center" >
+                  <p className="ml-7">admin</p>
                   <RiAdminFill className="ml-2 animate-pulse text-red-500" />
                 </Link>
                 </div>

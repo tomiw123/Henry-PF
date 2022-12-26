@@ -1,0 +1,15 @@
+.contenedor{
+    height: 100%;
+    width: 100%;
+   
+  }
+   .contenedor img{
+      width: 100%;
+      height: 345px;
+      border-radius: 15px;
+  } 
+  /* .img{
+    width: 100%;
+    height: 328px;
+    border-radius: 15px;
+} */

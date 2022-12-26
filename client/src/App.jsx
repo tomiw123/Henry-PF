@@ -22,16 +22,16 @@ import AdminRecipes from './component/Admin/AdminRecipes/AdminRecipes'
 import EditRecipe from "./component/EditRecipe/EditRecipe";
 import CartForm from "./component/CartForm/CartForm";
 import ControlDeVentas from "./component/Admin/AdminControl/AdminContronVentas";
+import Reviews from "./component/Reviews/Reviews";
 import Felicidades from "./component/Felicidades/Felicidades";
 
-
-//el mati confirma que esta todo bien
 function App() {
   return (
     <div className="h-screen">
       <Nav />
       <SearchBar />
       <Routes>
+        
         <Route path="/" element={<Home/>} />
         <Route path="/HAdmin" element={<HomeAdmin/>} />
         <Route path="/HAdmin/AdminProducts" element={<AdminProducts/>} />
@@ -51,9 +51,13 @@ function App() {
         <Route path="/contacto" element={ <Contacto/> }/>
         <Route path="/cartform" element={ <CartForm/> }/>
         <Route path="/controlDeVentas" element={<ControlDeVentas/>} />
+        <Route path="/reviews/:id" element={<Reviews/>} />
         <Route path="/felicidades" element={<Felicidades/>} />
 
+        
+
         </Routes>
+        
       <Footer/>
       </div>
   );

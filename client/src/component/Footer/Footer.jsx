@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import "./Footer.css";
 import image from "../../assets/dosdagas-png-transparente.png";
+import './Footer.css'
 
 const Footer = () => {
   return (
@@ -32,7 +33,6 @@ const Footer = () => {
             <FaWhatsapp className="icon" style={{ width: "80px" }} />
           </div>
         </a>
-
         <div className="logo">
           <Link to="/">
             <img src={image} alt="not-found" width={200} />
@@ -43,7 +43,7 @@ const Footer = () => {
             <h1>CONTACTO</h1>
           </Link>
           <h2>Email: dosdagashenry@gmail.com</h2>
-          <h2>Telefono: xxxxxxxxxxx</h2>
+          <h2>Telefono: 387 458 7647</h2>
         </div>
       </div>
     </div>
