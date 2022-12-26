@@ -57,31 +57,13 @@
     margin: 0 10px;
 }
 
-<<<<<<< HEAD
-/* .contacto{
-}
-.contactoConUsted{
-=======
 .contacto{
->>>>>>> 31e8b2c03cc98a19dd12d5f33b6a25aa6aa316a6
     display: flex;
     margin: 0 50px;
 }
 .contacto1{
     width: 80%;
     font-size: 1.25rem;
-<<<<<<< HEAD
-    padding-left: 50px;
-    padding-bottom: 100px;
-} */
-.check{
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    bottom: -80px;
-    right: 250px;
-}
-=======
     padding-top: 25px;
 }
 .contacto1 div{
@@ -93,4 +75,3 @@
     height: 150px;
     
 }
->>>>>>> 31e8b2c03cc98a19dd12d5f33b6a25aa6aa316a6
