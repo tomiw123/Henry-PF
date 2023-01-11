@@ -35,7 +35,7 @@ const Footer = () => {
         </a>
         <div className="logo">
           <Link to="/">
-            <img src={image} alt="not-found" width={200} />
+            <img src={image} alt="not-found" width={180} />
           </Link>
         </div>
         <div className="teldic">
